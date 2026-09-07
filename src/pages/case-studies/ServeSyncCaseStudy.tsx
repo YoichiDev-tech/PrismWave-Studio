@@ -1,213 +1,236 @@
-import BrowserChrome from "../../components/Badge";
-import Screenshot from "../../components/Screenshot";
+import { Link } from "react-router";
+import { ReceiptFrame } from "../../components/case-study/ReceiptFrame";
+
+const metrics = [
+  { label: "Admin saved weekly", value: "11 hrs" },
+  { label: "Monthly savings", value: "$1,800+" },
+  { label: "Waste reduction", value: "-30%" },
+  { label: "Admin automated", value: "70%" },
+  { label: "Manual scheduling", value: "0 min" },
+];
+
+const stack = [
+  "React",
+  "TypeScript",
+  "Vite",
+  "Tailwind CSS",
+  "Supabase (Auth · Postgres · RLS)",
+  "Vercel (serverless + Cron)",
+  "Power Automate (scheduling engine)",
+  "Resend (email delivery)",
+];
 
 export default function ServeSyncCaseStudy() {
   return (
-    <section className="bg-ink text-paper py-24 md:py-32 cursor-default">
-      <div className="mx-auto max-w-4xl px-6">
+    <article className="bg-ink text-paper cursor-default">
 
-        {/* Hero */}
-        <h1 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
-          ServeSync — Case Study
-        </h1>
-        <p className="mt-6 text-paper/70 leading-relaxed">
-          ServeSync is a hospitality operations engine built to give operators
-          their time, their margin, and their evenings back — by automating the
-          recurring admin nobody has time for. From schedules to stock counts,
-          from supplier reconciliation to compliance logs, ServeSync runs the
-          back office quietly in the background.
+      {/* Header */}
+      <header className="mx-auto max-w-3xl px-6 pb-10 pt-20 text-center">
+        <Link to="/" className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper">
+          &larr; Back to studio
+        </Link>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-paper/60">
+          Case Study — Hospitality / SaaS Automation
         </p>
 
-        <div className="mt-12">
-          <BrowserChrome bg="#E8E8E8">
-            <Screenshot label="ServeSync dashboard screenshot placeholder" />
-          </BrowserChrome>
-        </div>
+        <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+          ServeSync
+        </h1>
 
-        {/* Weekly Savings Ticket */}
-        <div className="mt-20">
-          <h2 className="font-display text-2xl font-semibold">Weekly Savings Ticket</h2>
-          <ul className="mt-4 text-paper/70 leading-relaxed list-disc pl-6">
-            <li>Time: 11 hrs returned weekly</li>
-            <li>Money: $1,800+ monthly savings</li>
-            <li>Waste: -30% reduction</li>
-            <li>Admin: 70% automated</li>
-            <li>Shifts: 0 min manual typing</li>
-          </ul>
-        </div>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-paper/80">
+          ServeSync is a back-office automation platform for hospitality
+          operators. It returns time, margin, and clarity to restaurants,
+          cafés, and multi-location groups by automating the admin nobody
+          has time for.
+        </p>
 
-        {/* Problem */}
-        <div className="mt-20">
-          <h2 className="font-display text-2xl font-semibold">The Problem</h2>
-          <p className="mt-4 text-paper/70 leading-relaxed">
-            Hospitality operators didn't open a restaurant to become data-entry
-            clerks. Every week they re-type the same shift schedule, re-count the
-            same stockroom, chase the same invoices, and re-explain the same
-            closing checklist — hours that never make it back to them.
-          </p>
-          <p className="mt-4 text-paper/70 leading-relaxed">
-            This unpaid second job shows up as spoiled stock, overtime you didn't
-            approve, and evenings spent on a laptop instead of at home.
-          </p>
-        </div>
+        <StatusBadge />
+      </header>
 
-        {/* Five Things ServeSync Fixes */}
-        <div className="mt-20">
-          <h2 className="font-display text-2xl font-semibold">
-            The Five Things ServeSync Fixes
-          </h2>
-
-          <div className="mt-8 space-y-10">
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Time — Get your hours back</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Every recurring task you currently do by hand — schedules, counts,
-                reports, reminders — runs in the background instead. The hours you
-                used to lose to admin come back to you every single week.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Money — Spend less, keep more</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                ServeSync flags overtime before it happens, catches supplier invoice
-                errors automatically, and keeps ordering aligned to what you actually
-                sell — so less revenue leaks out through repeated small mistakes.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Waste — See spoilage before it happens</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Breakage and spoilage get logged in seconds, not shrugged off.
-                ServeSync tracks the pattern and warns you before the next batch
-                turns — so waste becomes a number you manage, not a surprise you
-                absorb.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Admin — Automate the paperwork</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Invoices, compliance logs, temperature checks, supplier
-                reconciliation — the recurring low-value tasks that eat a manager's
-                day run themselves in the background. Fewer typos, no missed steps,
-                and your energy goes to the parts of the business only you can run.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Shifts — The schedule builds itself</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Staff submit availability through a simple form. ServeSync — powered
-                by Power Automate under the hood — turns that into a finished weekly
-                schedule, handles swap requests, and notifies the team. You never
-                type a shift by hand again.
-              </p>
-            </div>
-
+      {/* Hero Screenshot */}
+      <section className="px-6 pb-20">
+        <ReceiptFrame label="servesync.app">
+          <div className="flex aspect-[16/10] items-center justify-center bg-[color:var(--color-steam,#EDE7DD)] font-mono text-xs opacity-50">
+            <img
+              src="/images/serve-sync/servesync.jpg"
+              alt="ServeSync homepage screenshot"
+              className="w-auto h-auto object-cover"
+              loading="lazy"
+            />
           </div>
+        </ReceiptFrame>
+      </section>
+
+      {/* Problem */}
+      <Section eyebrow="The problem" title="Hospitality runs on people, not paperwork">
+        <p>
+          Operators lose hours every week to repetitive admin: re-typing
+          schedules, re-counting stockrooms, chasing invoices, and
+          re-explaining closing checklists. None of it moves the business
+          forward — and none of it is why anyone opened a restaurant.
+        </p>
+        <p>
+          The result is predictable: spoiled stock, overtime that wasn't
+          approved, and evenings spent on a laptop instead of at home.
+          ServeSync eliminates that second unpaid job by automating the
+          recurring tasks that quietly drain time and margin.
+        </p>
+      </Section>
+
+      {/* Metrics */}
+      <Section eyebrow="Impact" title="Weekly savings operators see">
+        <dl className="grid grid-cols-2 gap-6 sm:grid-cols-3 font-mono text-sm">
+          {metrics.map((m) => (
+            <div key={m.label} className="space-y-1">
+              <dt className="uppercase tracking-wide text-paper/60">{m.label}</dt>
+              <dd className="font-display text-xl font-semibold">{m.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+
+      {/* Five Problems */}
+      <Section eyebrow="What ServeSync fixes" title="Five problems. One platform.">
+        <ul className="space-y-6">
+          <li>
+            <strong>Time —</strong> recurring tasks run automatically instead of
+            by hand. Operators get back an average of <em>11 hours</em> per week.
+          </li>
+          <li>
+            <strong>Money —</strong> overtime alerts, supplier invoice checks,
+            and aligned ordering reduce leakage by <em>$1,800+ monthly</em>.
+          </li>
+          <li>
+            <strong>Waste —</strong> spoilage is logged instantly and predicted
+            before it happens, reducing waste by <em>30%</em>.
+          </li>
+          <li>
+            <strong>Admin —</strong> compliance logs, temperature checks,
+            invoices, and daily checklists run quietly in the background —
+            <em>70% automated</em>.
+          </li>
+          <li>
+            <strong>Shifts —</strong> staff submit availability; ServeSync builds
+            the schedule automatically. <em>0 minutes</em> of manual typing.
+          </li>
+        </ul>
+      </Section>
+
+      {/* Built For */}
+      <Section eyebrow="Who it's built for" title="Built for hospitality, not adapted to it">
+        <ul className="space-y-3 opacity-90">
+          <li>Family restaurants — one site, tight crew, no back office</li>
+          <li>Full-service & QSR — higher volume, tighter margins</li>
+          <li>Multi-location groups — consistency across every site</li>
+          <li>Cafés & coffee shops — fast turns, thin staffing</li>
+          <li>Shopping centers — shared services across tenants</li>
+        </ul>
+      </Section>
+
+      {/* Stack */}
+      <Section eyebrow="Stack" title="Built with">
+        <ul className="grid grid-cols-2 gap-x-6 gap-y-2 font-mono text-sm sm:grid-cols-3">
+          {stack.map((tech) => (
+            <li key={tech} className="opacity-80">
+              · {tech}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* Roadmap */}
+      <Section eyebrow="Roadmap" title="What's next">
+        <ol className="space-y-3 font-mono text-sm">
+          <RoadmapItem status="next">Staff list & editing</RoadmapItem>
+          <RoadmapItem status="next">Shift scheduling engine (Power Automate)</RoadmapItem>
+          <RoadmapItem status="next">Waste forecasting & reorder alerts</RoadmapItem>
+          <RoadmapItem status="later">Multi-location portfolio dashboard</RoadmapItem>
+          <RoadmapItem status="later">Public launch</RoadmapItem>
+        </ol>
+      </Section>
+
+      {/* CTA */}
+      <section className="mx-auto max-w-3xl px-6 pb-24 pt-12 text-center">
+        <h2 className="font-display text-2xl font-semibold tracking-tight">See ServeSync in action</h2>
+        <p className="mt-3 text-paper/80">
+          Explore the live marketing site or reach out for a deeper technical
+          walkthrough of the scheduling engine, compliance logs, or RLS schema.
+        </p>
+
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="https://my-servesync.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-ink-line px-6 py-2 font-mono text-xs uppercase tracking-wide text-paper/70 transition-colors hover:border-amber hover:text-paper"
+          >
+            View live site
+          </a>
+          <a
+            href="mailto:hello-prismwave-studio@example.com"
+            className="rounded-full px-6 py-2 font-mono text-xs uppercase tracking-wide text-paper/70 underline underline-offset-4 transition-colors hover:text-amber"
+          >
+            Get in touch
+          </a>
         </div>
+      </section>
+    </article>
+  );
+}
 
-        {/* Runs quietly in the background */}
-        <div className="mt-20">
-          <h2 className="font-display text-2xl font-semibold">
-            Runs quietly in the background
-          </h2>
+// Components
+function StatusBadge() {
+  return (
+    <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-ink-line px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-paper/70">
+      <span className="h-1.5 w-1.5 rounded-full bg-amber" />
+      In active development · core product shipping module by module
+    </div>
+  );
+}
 
-          <div className="mt-8 space-y-10">
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Compliance & safety logs</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Temperature checks, HACCP records, and opening/closing sign-offs are
-                timestamped and stored automatically — ready the moment an inspector
-                asks.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Guest inquiries, answered</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Common questions — hours, bookings, allergens — get handled
-                instantly, so front-of-house isn't interrupted every five minutes.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Multi-site reporting</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Labor, waste, and sales roll up across every location into one
-                dashboard, so groups and shopping-center operators see the whole
-                portfolio at a glance.
-              </p>
-            </div>
-
-          </div>
+function Section({
+  eyebrow,
+  title,
+  children,
+  className = "",
+}: {
+  eyebrow: string;
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={`px-6 py-16 ${className}`}>
+      <div className="mx-auto max-w-2xl">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-paper/50">
+          {eyebrow}
+        </p>
+        <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
+        <div className="mt-6 space-y-4 leading-relaxed text-paper/90">
+          {children}
         </div>
-
-        {/* Built for hospitality */}
-        <div className="mt-20">
-          <h2 className="font-display text-2xl font-semibold">
-            Built for hospitality, not adapted from it
-          </h2>
-
-          <ul className="mt-4 text-paper/70 leading-relaxed list-disc pl-6">
-            <li>Family restaurants — one site, tight crew, no back office</li>
-            <li>Full-service & QSR — higher volume, tighter margins</li>
-            <li>Multi-location groups — consistency across every site</li>
-            <li>Cafés & coffee shops — fast turns, thin staffing</li>
-            <li>Shopping centers — shared services across tenants</li>
-          </ul>
-        </div>
-
-        {/* Pricing */}
-        <div className="mt-20">
-          <h2 className="font-display text-2xl font-semibold">Pricing</h2>
-
-          <div className="mt-8 space-y-12">
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Counter — $39/month</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Auto-built weekly schedule, inventory & waste tracking, daily
-                checklists — for single-site cafés and family restaurants.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Kitchen — $99/month</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Everything in Counter, plus predictive waste alerts, invoice
-                reconciliation, labor-cost alerts — for full-service restaurants and
-                QSR.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-xl font-semibold">Group — Custom</h3>
-              <p className="mt-2 text-paper/70 leading-relaxed">
-                Unlimited locations, portfolio-wide reporting, dedicated onboarding
-                — built for multi-location groups and shopping centers.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Outcome */}
-        <div className="mt-20">
-          <h2 className="font-display text-2xl font-semibold">Outcome</h2>
-          <p className="mt-4 text-paper/70 leading-relaxed">
-            ServeSync gives hospitality operators their time, their margin, and
-            their evenings back. It replaces spreadsheets, WhatsApp groups, manual
-            counts, and repetitive admin with a single automated platform — running
-            quietly in the background while the team runs the floor.
-          </p>
-        </div>
-
       </div>
     </section>
+  );
+}
+
+function RoadmapItem({
+  status,
+  children,
+}: {
+  status: "next" | "later";
+  children: React.ReactNode;
+}) {
+  return (
+    <li className="flex items-center gap-3">
+      <span
+        className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wide ${
+          status === "next" ? "opacity-100" : "opacity-50"
+        }`}
+      >
+        {status}
+      </span>
+      <span className="opacity-90">{children}</span>
+    </li>
   );
 }

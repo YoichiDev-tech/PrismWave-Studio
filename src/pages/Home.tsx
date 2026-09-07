@@ -16,6 +16,7 @@ import Calendly from "../components/Calendly";
 import Process from "../components/Process";
 import AuditWidget from "../components/AuditWidget";
 import SprintConfigurator from "../components/SprintConfigurator";
+import WhoWeHelp from "../components/WhoWeHelp";
 
 export type Intent = "audit" | "build";
 
@@ -54,6 +55,18 @@ export default function Home() {
     [scrollToContact]
   );
 
+  const handleAudienceSelect = useCallback(
+    (segment: string) => {
+      setIntent("build");
+      setPrefill({
+        message: `We're a ${segment.toLowerCase()} and would like to talk about our project.`,
+        nonce: Date.now(),
+      });
+      scrollToContact();
+    },
+    [scrollToContact]
+  );
+
   return (
     <>
       <Nav onSelectIntent={setIntent} />
@@ -61,6 +74,7 @@ export default function Home() {
         <Hero onSelectIntent={setIntent} />
         <SignsOutdated onSelectIntent={setIntent} />
         <AuditWidget onRequestFullTeardown={handleAuditTeardown} />
+        <WhoWeHelp onSelectAudience={handleAudienceSelect} />
         <Services />
         <Process />
         <Pricing />
