@@ -7,7 +7,7 @@ import type { Intent } from "../pages/Home";
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Services", href: "#services" },
   { label: "Build", href: "#build", intent: "build" },
-  { label: "Work", href: "/case-studies" },
+  { label: "Work", href: "/work" },
   { label: "Lab", href: "/lab" },
   { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface ReceiptFrameProps {
   label: string; // e.g. a URL, a filename, or a short caption printed at the top like a receipt header

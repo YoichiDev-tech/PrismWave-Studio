@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { ReceiptFrame } from "../../components/case-study/ReceiptFrame";
 
 const metrics = [
@@ -21,19 +22,22 @@ const stack = [
 
 export default function ServeSyncCaseStudy() {
   return (
-    <article className="bg-[color:var(--color-cream,#F7F3EC)] text-[color:var(--color-espresso,#2B1D14)]">
+    <article className="bg-ink text-paper cursor-default">
 
       {/* Header */}
       <header className="mx-auto max-w-3xl px-6 pb-10 pt-20 text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] opacity-60">
+        <Link to="/" className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper">
+          &larr; Back to studio
+        </Link>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-paper/60">
           Case Study — Hospitality / SaaS Automation
         </p>
 
-        <h1 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
+        <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
           ServeSync
         </h1>
 
-        <p className="mx-auto mt-4 max-w-xl text-lg opacity-80">
+        <p className="mx-auto mt-4 max-w-xl text-lg text-paper/80">
           ServeSync is a back-office automation platform for hospitality
           operators. It returns time, margin, and clarity to restaurants,
           cafés, and multi-location groups by automating the admin nobody
@@ -78,8 +82,8 @@ export default function ServeSyncCaseStudy() {
         <dl className="grid grid-cols-2 gap-6 sm:grid-cols-3 font-mono text-sm">
           {metrics.map((m) => (
             <div key={m.label} className="space-y-1">
-              <dt className="uppercase tracking-wide opacity-60">{m.label}</dt>
-              <dd className="text-xl font-serif">{m.value}</dd>
+              <dt className="uppercase tracking-wide text-paper/60">{m.label}</dt>
+              <dd className="font-display text-xl font-semibold">{m.value}</dd>
             </div>
           ))}
         </dl>
@@ -147,8 +151,8 @@ export default function ServeSyncCaseStudy() {
 
       {/* CTA */}
       <section className="mx-auto max-w-3xl px-6 pb-24 pt-12 text-center">
-        <h2 className="font-serif text-2xl">See ServeSync in action</h2>
-        <p className="mt-3 opacity-80">
+        <h2 className="font-display text-2xl font-semibold tracking-tight">See ServeSync in action</h2>
+        <p className="mt-3 text-paper/80">
           Explore the live marketing site or reach out for a deeper technical
           walkthrough of the scheduling engine, compliance logs, or RLS schema.
         </p>
@@ -158,13 +162,13 @@ export default function ServeSyncCaseStudy() {
             href="https://my-servesync.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-current px-6 py-2 font-mono text-xs uppercase tracking-wide transition hover:opacity-70"
+            className="rounded-full border border-ink-line px-6 py-2 font-mono text-xs uppercase tracking-wide text-paper/70 transition-colors hover:border-amber hover:text-paper"
           >
             View live site
           </a>
           <a
             href="mailto:hello-prismwave-studio@example.com"
-            className="rounded-full px-6 py-2 font-mono text-xs uppercase tracking-wide underline underline-offset-4 transition hover:opacity-70"
+            className="rounded-full px-6 py-2 font-mono text-xs uppercase tracking-wide text-paper/70 underline underline-offset-4 transition-colors hover:text-amber"
           >
             Get in touch
           </a>
@@ -177,11 +181,8 @@ export default function ServeSyncCaseStudy() {
 // Components
 function StatusBadge() {
   return (
-    <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-current px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] opacity-70">
-      <span
-        className="h-1.5 w-1.5 rounded-full"
-        style={{ background: "var(--color-ember, #C4622D)" }}
-      />
+    <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-ink-line px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-paper/70">
+      <span className="h-1.5 w-1.5 rounded-full bg-amber" />
       In active development · core product shipping module by module
     </div>
   );
@@ -201,11 +202,11 @@ function Section({
   return (
     <section className={`px-6 py-16 ${className}`}>
       <div className="mx-auto max-w-2xl">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] opacity-50">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-paper/50">
           {eyebrow}
         </p>
-        <h2 className="mt-3 font-serif text-2xl sm:text-3xl">{title}</h2>
-        <div className="mt-6 space-y-4 leading-relaxed opacity-90">
+        <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
+        <div className="mt-6 space-y-4 leading-relaxed text-paper/90">
           {children}
         </div>
       </div>
