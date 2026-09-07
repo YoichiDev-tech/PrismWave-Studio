@@ -7,7 +7,7 @@ import type { Intent } from "../pages/Home";
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Services", href: "#services" },
   { label: "Build", href: "#build", intent: "build" },
-  { label: "Work", href: "#work" },
+  { label: "Work", href: "/work" },
   { label: "Lab", href: "/lab" },
   { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },
@@ -40,8 +40,10 @@ export default function Nav({ onSelectIntent }: NavProps) {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a
-          href="#top"
+
+        {/* LOGO — FIXED */}
+        <Link
+          to="/"
           className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-paper"
         >
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
@@ -60,7 +62,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             </defs>
           </svg>
           PrismWave
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
           {LINKS.map((link) =>
