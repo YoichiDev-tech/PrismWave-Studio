@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { BackToStudioBadge, PickThisTemplateBadge } from "../../components/Badge";
 import LoafSpread from "../../components/illustrations/LoafSpread";
 import OvenScene from "../../components/illustrations/OvenScene";
-import AiMetadata from "../../components/AiMetadata";
+import AiMetadata, { AiIntent } from "../../components/AiMetadata";
 
 const SERIF = "'Fraunces', Georgia, serif";
 const INK = "#2B2416";
@@ -28,7 +28,7 @@ export default function FieldingRye() {
   return (
     <div
       style={{ background: PAPER, color: INK, fontFamily: "'Inter', sans-serif" }}
-      className="min-h-screen cursor-default"
+      ai-tag="template" data-ai="page" className="min-h-screen cursor-default"
     >
       <AiMetadata
         map={["Bakery hero", "Weekly bake schedule", "Today's case", "Our story", "Hours and location", "Order ahead"]}
@@ -40,7 +40,7 @@ export default function FieldingRye() {
       <PickThisTemplateBadge tone="light" />
 
       {/* Nav */}
-      <header className="border-b" style={{ borderColor: RULE }}>
+      <header data-ai="navigation" className="border-b" style={{ borderColor: RULE }}>
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
           <p className="text-lg tracking-tight" style={{ fontFamily: SERIF }}>
             Fielding &amp; Rye
@@ -60,10 +60,11 @@ export default function FieldingRye() {
         </div>
       </header>
 
-      <main>
+      <main data-ai="main-content">
 
         {/* Hero */}
-        <section aria-labelledby="fielding-hero" className="mx-auto max-w-5xl px-6 pb-16 pt-14">
+        <section aria-labelledby="fielding-hero" aria-describedby="fielding-hero-intent" role="region" data-ai="hero" className="mx-auto max-w-5xl px-6 pb-16 pt-14">
+          <AiIntent id="fielding-hero-intent">Introduce Fielding and Rye and direct local customers toward the weekly bake and ordering ahead.</AiIntent>
           <p
             className="text-center text-[11px] uppercase tracking-[0.3em]"
             style={{ opacity: 0.6 }}
@@ -112,9 +113,9 @@ export default function FieldingRye() {
               >
                 This week's bake
               </p>
-              <ul className="mt-4 space-y-4">
+              <ul role="list" className="mt-4 space-y-4">
                 {SCHEDULE.map((row) => (
-                  <li key={row.day} className="border-b pb-4" style={{ borderColor: RULE }}>
+                  <li key={row.day} role="listitem" className="border-b pb-4" style={{ borderColor: RULE }}>
                     <p
                       className="text-[12px] uppercase tracking-wide"
                       style={{ color: RUST }}
@@ -133,7 +134,8 @@ export default function FieldingRye() {
         </section>
 
         {/* Menu */}
-        <section id="order" aria-labelledby="fielding-menu" className="border-t py-16" style={{ borderColor: RULE }}>
+        <section id="order" aria-labelledby="fielding-menu" aria-describedby="fielding-menu-intent" role="region" data-ai="menu" className="border-t py-16" style={{ borderColor: RULE }}>
+          <AiIntent id="fielding-menu-intent">Present the current bakery case with item descriptions and prices for ordering ahead.</AiIntent>
           <div className="mx-auto max-w-5xl px-6">
             <div className="flex items-baseline justify-between">
               <h2 id="fielding-menu" className="text-3xl" style={{ fontFamily: SERIF }}>
@@ -147,11 +149,11 @@ export default function FieldingRye() {
               </p>
             </div>
 
-            <div className="mt-8 divide-y" style={{ borderColor: RULE }}>
+            <div className="mt-8 divide-y" style={{ borderColor: RULE }} role="list">
               {MENU.map((item) => (
                 <article
                   key={item.no}
-                  className="flex items-baseline gap-6 py-5"
+                  role="listitem" ai-tag="menu-item" data-ai="product" className="flex items-baseline gap-6 py-5"
                   style={{ borderColor: RULE }}
                 >
                   <span className="w-8 shrink-0 font-mono text-[12px]" style={{ opacity: 0.4 }}>
@@ -175,7 +177,8 @@ export default function FieldingRye() {
         </section>
 
         {/* Story */}
-        <section aria-labelledby="fielding-story" className="border-t py-16" style={{ borderColor: RULE }}>
+        <section aria-labelledby="fielding-story" aria-describedby="fielding-story-intent" role="region" data-ai="story" className="border-t py-16" style={{ borderColor: RULE }}>
+          <AiIntent id="fielding-story-intent">Share the bakery's origin story and reinforce its neighborhood identity.</AiIntent>
           <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
             <div
               className="h-56 overflow-hidden rounded-sm border"
@@ -206,7 +209,8 @@ export default function FieldingRye() {
         </section>
 
         {/* Visit */}
-        <section aria-labelledby="fielding-visit" className="border-t py-16" style={{ borderColor: RULE }}>
+        <section aria-labelledby="fielding-visit" aria-describedby="fielding-visit-intent" role="region" data-ai="visit" className="border-t py-16" style={{ borderColor: RULE }}>
+          <AiIntent id="fielding-visit-intent">Provide hours, location, and contact information for visiting or ordering ahead.</AiIntent>
           <div className="mx-auto grid max-w-5xl gap-10 px-6 sm:grid-cols-3">
             <article>
               <p
@@ -251,7 +255,7 @@ export default function FieldingRye() {
 
       </main>
 
-      <footer className="border-t py-8" style={{ borderColor: RULE }}>
+      <footer data-ai="footer" className="border-t py-8" style={{ borderColor: RULE }}>
         <div
           className="mx-auto flex max-w-5xl flex-col gap-2 px-6 text-[11px] uppercase tracking-widest sm:flex-row sm:items-center sm:justify-between"
           style={{ opacity: 0.5 }}

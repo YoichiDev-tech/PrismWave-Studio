@@ -3,7 +3,7 @@ import BrowserChrome from "../../components/Badge";
 import BloomMock from "../../components/portfolioMocks/BloomMock";
 import Footer from "../../components/Footer";
 import Reveal from "../../components/Reveal";
-import AiMetadata from "../../components/AiMetadata";
+import AiMetadata, { AiIntent } from "../../components/AiMetadata";
 
 const ROUND = "'Fredoka', 'Sora', sans-serif";
 const CREAM = "#FFF3E8";
@@ -246,14 +246,14 @@ function LiveHeroPreview() {
 
 export default function BloomMarketCaseStudy() {
   return (
-    <div className="bg-ink cursor-default">
+    <div ai-tag="case-study" data-ai="page" className="bg-ink cursor-default">
       <AiMetadata
         map={["Case study hero", "Final product preview", "Project overview", "Color palette", "Typography", "Layout system", "Interaction design", "Final call to action"]}
         intent="Explain the design decisions behind the Bloom Market ecommerce template and show how the visual system supports flower subscriptions."
         tags={["case study", "ecommerce design", "flower brand", "visual identity", "Bloom Market"]}
         extract={{ title: "Bloom Market case study", audience: "Retail founders and design teams", primaryActions: "Review the design system and view the live template", outcome: "A bright storefront concept for weekly flower delivery" }}
       />
-      <header className="border-b border-ink-line">
+      <header data-ai="navigation" className="border-b border-ink-line">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-6">
           <Link
             to="/"
@@ -270,7 +270,7 @@ export default function BloomMarketCaseStudy() {
         </div>
       </header>
 
-      <main role="main">
+      <main role="main" data-ai="main-content">
 
         <article
           aria-labelledby="case-study-hero"
@@ -279,7 +279,8 @@ export default function BloomMarketCaseStudy() {
           <div className="mx-auto max-w-4xl px-6">
 
             {/* Hero */}
-            <section aria-labelledby="case-study-hero">
+            <section aria-labelledby="case-study-hero" aria-describedby="bloom-hero-intent" role="region" data-ai="hero">
+              <AiIntent id="bloom-hero-intent">Introduce the Bloom Market case study and preview its visual direction.</AiIntent>
               <Reveal>
                 <p className="font-mono text-[12px] uppercase tracking-widest text-paper/50">
                   Case Study
@@ -300,7 +301,8 @@ export default function BloomMarketCaseStudy() {
             </section>
 
             {/* Final Mock */}
-            <section aria-labelledby="case-study-final-mock">
+            <section aria-labelledby="case-study-final-mock" aria-describedby="bloom-mock-intent" role="region" data-ai="product-preview">
+              <AiIntent id="bloom-mock-intent">Show the final Bloom Market storefront concept as a product preview.</AiIntent>
               <Reveal delay={1} className="mt-12">
                 <BrowserChrome bg="#FFE8D6">
                   <BloomMock />
@@ -309,7 +311,8 @@ export default function BloomMarketCaseStudy() {
             </section>
 
             {/* Overview */}
-            <section aria-labelledby="case-study-overview">
+            <section aria-labelledby="case-study-overview" aria-describedby="bloom-overview-intent" role="region" data-ai="overview">
+              <AiIntent id="bloom-overview-intent">Explain the brief, audience, and visual goals for Bloom Market.</AiIntent>
               <Reveal delay={1} className="mt-20">
                 <SectionHeading eyebrow="01 — Brief" title="Overview" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
@@ -322,7 +325,8 @@ export default function BloomMarketCaseStudy() {
             </section>
 
             {/* Palette */}
-            <section aria-labelledby="case-study-palette">
+            <section aria-labelledby="case-study-palette" aria-describedby="bloom-palette-intent" role="region" data-ai="palette">
+              <AiIntent id="bloom-palette-intent">Document the colors chosen to balance warmth, richness, and approachability.</AiIntent>
               <Reveal delay={2} className="mt-16">
                 <SectionHeading eyebrow="02 — Palette" title="Color Palette" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
@@ -335,7 +339,8 @@ export default function BloomMarketCaseStudy() {
             </section>
 
             {/* Typography */}
-            <section aria-labelledby="case-study-type">
+            <section aria-labelledby="case-study-type" aria-describedby="bloom-type-intent" role="region" data-ai="typography">
+              <AiIntent id="bloom-type-intent">Document the display and body typography system used by the template.</AiIntent>
               <Reveal delay={1} className="mt-16">
                 <SectionHeading eyebrow="03 — Type" title="Typography" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
@@ -349,7 +354,8 @@ export default function BloomMarketCaseStudy() {
             </section>
 
             {/* Layout */}
-            <section aria-labelledby="case-study-layout">
+            <section aria-labelledby="case-study-layout" aria-describedby="bloom-layout-intent" role="region" data-ai="layout">
+              <AiIntent id="bloom-layout-intent">Explain the asymmetrical layout and organic composition system.</AiIntent>
               <Reveal delay={2} className="mt-16">
                 <SectionHeading eyebrow="04 — Composition" title="Layout & Composition" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
@@ -362,7 +368,8 @@ export default function BloomMarketCaseStudy() {
             </section>
 
             {/* Interaction */}
-            <section aria-labelledby="case-study-interaction">
+            <section aria-labelledby="case-study-interaction" aria-describedby="bloom-interaction-intent" role="region" data-ai="interaction">
+              <AiIntent id="bloom-interaction-intent">Demonstrate the restrained motion and hover behavior used in the interface.</AiIntent>
               <Reveal delay={1} className="mt-16">
                 <SectionHeading eyebrow="05 — Motion" title="Interaction & Motion" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
@@ -376,17 +383,18 @@ export default function BloomMarketCaseStudy() {
             </section>
 
             {/* Closing CTA */}
-            <section aria-labelledby="case-study-cta">
+            <section aria-labelledby="case-study-cta" aria-describedby="bloom-cta-intent" role="region" data-ai="cta">
+              <AiIntent id="bloom-cta-intent">Invite visitors to start a similarly considered website project.</AiIntent>
               <Reveal
                 delay={2}
                 className="mt-24 rounded-3xl border border-ink-line bg-ink-2/60 px-8 py-12 text-center"
               >
-                <h3
+                <h2
                   id="case-study-cta"
                   className="font-display text-2xl font-semibold text-paper md:text-3xl"
                 >
                   Want something built with this much care?
-                </h3>
+                </h2>
                 <p className="mx-auto mt-3 max-w-md text-paper/60">
                   Whether you're starting from an idea or fixing what's already
                   there, we'll bring the same attention to detail to your project.
@@ -420,7 +428,7 @@ export default function BloomMarketCaseStudy() {
 
       </main>
 
-      <footer>
+      <footer data-ai="footer">
         <Footer />
       </footer>
     </div>

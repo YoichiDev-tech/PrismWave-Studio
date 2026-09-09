@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BackToStudioBadge, PickThisTemplateBadge } from "../../components/Badge";
-import AiMetadata from "../../components/AiMetadata";
+import AiMetadata, { AiIntent } from "../../components/AiMetadata";
 
 const MONO = "'IBM Plex Mono', ui-monospace, monospace";
 const BG = "#0B1220";
@@ -25,7 +25,7 @@ export default function NovaCloud() {
   return (
     <div
       style={{ background: BG, color: "#E7ECF5", fontFamily: "'Inter', sans-serif" }}
-      className="min-h-screen cursor-default"
+      ai-tag="template" data-ai="page" className="min-h-screen cursor-default"
     >
       <AiMetadata
         map={["Uptime hero", "Product features", "Performance statistics", "Pricing tiers"]}
@@ -36,7 +36,7 @@ export default function NovaCloud() {
       <BackToStudioBadge tone="dark" />
       <PickThisTemplateBadge tone="dark" />
 
-      <header className="border-b" style={{ borderColor: LINE }}>
+      <header data-ai="navigation" className="border-b" style={{ borderColor: LINE }}>
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <p className="text-base font-semibold" style={{ fontFamily: MONO }}>
             nova<span style={{ color: MINT }}>_</span>cloud
@@ -57,10 +57,11 @@ export default function NovaCloud() {
         </div>
       </header>
 
-      <main>
+      <main data-ai="main-content">
 
         {/* Hero */}
-        <section aria-labelledby="nova-hero" className="relative overflow-hidden">
+        <section aria-labelledby="nova-hero" aria-describedby="nova-hero-intent" role="region" data-ai="hero" className="relative overflow-hidden">
+          <AiIntent id="nova-hero-intent">Introduce Nova Cloud and direct technical teams toward a trustworthy uptime monitoring trial.</AiIntent>
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full opacity-20 blur-[110px] will-change-transform transform-gpu"
@@ -106,7 +107,7 @@ export default function NovaCloud() {
               </div>
             </div>
 
-            <aside
+            <aside data-ai="product-preview"
               className="rounded-xl border p-5"
               style={{ borderColor: LINE, background: PANEL }}
             >
@@ -201,7 +202,8 @@ export default function NovaCloud() {
         </section>
 
         {/* Features */}
-        <section id="features" aria-labelledby="nova-features" className="border-t py-20" style={{ borderColor: LINE }}>
+        <section id="features" aria-labelledby="nova-features" aria-describedby="nova-features-intent" role="region" data-ai="features" className="border-t py-20" style={{ borderColor: LINE }}>
+          <AiIntent id="nova-features-intent">Explain the core observability capabilities available to on-call engineering teams.</AiIntent>
           <div className="mx-auto max-w-6xl px-6">
             <p
               className="text-[11px] uppercase tracking-widest text-white/40"
@@ -212,12 +214,12 @@ export default function NovaCloud() {
               Everything an on-call engineer actually opens.
             </h2>
 
-            <div
+            <div role="list"
               className="mt-12 grid gap-px overflow-hidden rounded-xl border"
               style={{ borderColor: LINE, background: LINE }}
             >
               {FEATURES.map((f) => (
-                <article
+                <article role="listitem" ai-tag="feature" data-ai="feature"
                   key={f.title}
                   className="p-6 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6"
                   style={{ background: BG }}
@@ -241,14 +243,16 @@ export default function NovaCloud() {
         </section>
 
         {/* Stats */}
-        <section aria-labelledby="nova-stats" className="border-t py-16" style={{ borderColor: LINE, background: PANEL }}>
+        <section aria-labelledby="nova-stats" aria-describedby="nova-stats-intent" role="region" data-ai="proof" className="border-t py-16" style={{ borderColor: LINE, background: PANEL }}>
+          <AiIntent id="nova-stats-intent">Provide quantitative proof points for uptime, alert latency, and customer adoption.</AiIntent>
+          <h2 id="nova-stats" className="sr-only">Nova Cloud performance statistics</h2>
           <div className="mx-auto grid max-w-6xl gap-8 px-6 sm:grid-cols-3">
             {[
               { n: "99.98%", l: "Average uptime across customers" },
               { n: "40ms", l: "Median alert-to-page latency" },
               { n: "1,200+", l: "Teams monitoring on Nova" },
             ].map((s) => (
-              <article key={s.l}>
+              <article key={s.l} data-ai="stat">
                 <p
                   className="text-3xl font-semibold"
                   style={{ fontFamily: MONO, color: MINT }}
@@ -262,7 +266,8 @@ export default function NovaCloud() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" aria-labelledby="nova-pricing" className="border-t py-20" style={{ borderColor: LINE }}>
+        <section id="pricing" aria-labelledby="nova-pricing" aria-describedby="nova-pricing-intent" role="region" data-ai="pricing" className="border-t py-20" style={{ borderColor: LINE }}>
+          <AiIntent id="nova-pricing-intent">Present transparent Nova Cloud tiers and guide teams toward starting a trial or contacting sales.</AiIntent>
           <div className="mx-auto max-w-6xl px-6">
             <h2 id="nova-pricing" className="text-3xl font-semibold">
               Simple pricing, no surprise overages.
@@ -270,7 +275,7 @@ export default function NovaCloud() {
 
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {TIERS.map((tier) => (
-                <article
+                <article ai-tag="pricing-tier" data-ai="offer"
                   key={tier.name}
                   className="rounded-xl border p-6"
                   style={{
@@ -307,7 +312,7 @@ export default function NovaCloud() {
 
       </main>
 
-      <footer className="border-t py-8" style={{ borderColor: LINE }}>
+      <footer data-ai="footer" className="border-t py-8" style={{ borderColor: LINE }}>
         <div
           className="mx-auto flex max-w-6xl flex-col gap-2 px-6 text-[11px] uppercase tracking-widest text-white/40 sm:flex-row sm:items-center sm:justify-between"
           style={{ fontFamily: MONO }}

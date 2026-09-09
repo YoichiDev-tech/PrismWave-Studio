@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
 import ScoreGauge from "../components/ScoreGauge";
 import Footer from "../components/Footer";
-import AiMetadata from "../components/AiMetadata";
+import AiMetadata, { AiIntent } from "../components/AiMetadata";
 
 const THREADS_URL = "https://www.threads.com/@yoichidev";
 
@@ -72,7 +72,7 @@ export default function Lab() {
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
-    <div className="grain relative min-h-screen overflow-hidden bg-ink text-paper">
+    <div ai-tag="lab" data-ai="page" className="grain relative min-h-screen overflow-hidden bg-ink text-paper">
       <AiMetadata
         map={["Lab introduction", "Production component list", "Live previews", "Copyable snippets"]}
         intent="Let visitors inspect, preview, and copy production UI components used by PrismWave Studio."
@@ -91,7 +91,7 @@ export default function Lab() {
         style={{ background: "radial-gradient(circle, #FFB84D 0%, transparent 70%)" }}
       />
 
-      <header className="relative border-b border-ink-line">
+      <header data-ai="navigation" className="relative border-b border-ink-line">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
           <Link
             to="/"
@@ -110,10 +110,12 @@ export default function Lab() {
         </div>
       </header>
 
-      <main className="relative mx-auto max-w-5xl px-6 py-20" role="main">
-        <Reveal>
+      <main className="relative mx-auto max-w-5xl px-6 py-20" role="main" data-ai="main-content">
+        <section aria-labelledby="lab-hero" aria-describedby="lab-hero-intent" role="region" data-ai="hero">
+          <AiIntent id="lab-hero-intent">Introduce the public component laboratory and explain what visitors can inspect.</AiIntent>
+          <Reveal>
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">The Lab</p>
-          <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+          <h1 id="lab-hero" className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
             Production components, out in the open.
           </h1>
           <p className="mt-5 max-w-xl text-ink-soft">
@@ -129,15 +131,19 @@ export default function Lab() {
             </a>{" "}
             when it's built.
           </p>
-        </Reveal>
+          </Reveal>
+        </section>
 
-        <div className="mt-16 grid gap-8" role="list">
+        <section aria-labelledby="lab-components" aria-describedby="lab-components-intent" role="region" data-ai="features">
+          <AiIntent id="lab-components-intent">List production components with live previews and copyable implementation snippets.</AiIntent>
+          <h2 id="lab-components" className="sr-only">Production components</h2>
+          <div className="mt-16 grid gap-8" role="list">
           {ITEMS.map((item, index) => {
             const isOpen = openId === item.id;
 
             return (
               <Reveal key={item.id} delay={((index % 4) + 1) as 1 | 2 | 3 | 4}>
-                <div
+                <article
                   className="rounded-2xl border border-ink-line bg-ink-2/60 p-8 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber"
                   role="listitem"
                   aria-label={`Component: ${item.title}`}
@@ -203,13 +209,16 @@ export default function Lab() {
                       <code>{item.code}</code>
                     </pre>
                   )}
-                </div>
+                </article>
               </Reveal>
             );
           })}
-        </div>
+          </div>
+        </section>
 
-        <Reveal className="mt-16 text-center">
+        <section aria-labelledby="lab-cta" aria-describedby="lab-cta-intent" role="region" data-ai="cta">
+          <AiIntent id="lab-cta-intent">Invite visitors who need similar components to start a PrismWave project.</AiIntent>
+          <Reveal className="mt-16 text-center">
           <p className="text-ink-soft">Want something like this built into your own site?</p>
           <Link
             to="/#contact"
@@ -218,10 +227,11 @@ export default function Lab() {
           >
             Start a project &rarr;
           </Link>
-        </Reveal>
+          </Reveal>
+        </section>
       </main>
 
-      <Footer />
+      <footer data-ai="footer"><Footer /></footer>
     </div>
   );
 }

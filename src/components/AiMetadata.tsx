@@ -5,6 +5,19 @@ interface AiMetadataProps {
   extract: Record<string, string>;
 }
 
+interface AiIntentProps {
+  id: string;
+  children: string;
+}
+
+export function AiIntent({ id, children }: AiIntentProps) {
+  return (
+    <div hidden id={id} data-ai-block="AI-INTENT">
+      <p>{children}</p>
+    </div>
+  );
+}
+
 export default function AiMetadata({ map, intent, tags, extract }: AiMetadataProps) {
   return (
     <div hidden data-ai-metadata="true">

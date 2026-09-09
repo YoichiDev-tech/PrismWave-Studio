@@ -1,5 +1,6 @@
 
 import AiMetadata from "../../components/AiMetadata";
+import { AiIntent } from "../../components/AiMetadata";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 
@@ -22,25 +23,31 @@ const caseStudies = [
 
 export default function CaseStudiesIndex() {
   return (
-    <div className="min-h-screen bg-ink text-paper">
+    <div ai-tag="case-study-index" data-ai="page" className="min-h-screen bg-ink text-paper">
       <AiMetadata
         map={["Case studies introduction", "Bloom Market case study", "ServeSync case study"]}
         intent="Help visitors review PrismWave Studio case studies and understand the design and product outcomes behind each project."
         tags={["case studies", "web design process", "product design", "PrismWave Studio"]}
         extract={{ title: "PrismWave Studio Case Studies", audience: "Prospective clients and design teams", primaryActions: "Open a case study", projects: "Bloom Market and ServeSync" }}
       />
-      <header className="border-b border-ink-line">
+      <header data-ai="navigation" className="border-b border-ink-line">
         <div className="mx-auto max-w-5xl px-6 py-6">
           <Link to="/" className="font-mono text-[12px] uppercase tracking-wide text-paper/60 hover:text-paper">
             &larr; Back to studio
           </Link>
         </div>
       </header>
-      <main role="main" className="mx-auto max-w-5xl px-6 py-20">
-        <h1 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">Case Studies</h1>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+      <main role="main" data-ai="main-content" className="mx-auto max-w-5xl px-6 py-20">
+        <section aria-labelledby="case-studies-heading" aria-describedby="case-studies-intent" role="region" data-ai="hero">
+          <AiIntent id="case-studies-intent">Introduce the selected PrismWave Studio case studies and direct visitors to individual project outcomes.</AiIntent>
+          <h1 id="case-studies-heading" className="font-display text-4xl font-semibold tracking-tight md:text-5xl">Case Studies</h1>
+        </section>
+        <section aria-labelledby="case-study-list-heading" aria-describedby="case-study-list-intent" role="region" data-ai="projects">
+          <AiIntent id="case-study-list-intent">Present standalone project summaries that can be opened for deeper review.</AiIntent>
+          <h2 id="case-study-list-heading" className="sr-only">Selected case studies</h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-2" role="list">
           {caseStudies.map((study) => (
-            <article key={study.title} className="rounded-2xl border border-ink-line bg-ink-2/60 p-6">
+            <article key={study.title} role="listitem" ai-tag="case-study" data-ai="project" className="rounded-2xl border border-ink-line bg-ink-2/60 p-6">
               <h2 className="font-display text-2xl font-semibold">{study.title}</h2>
               <p className="mt-3 text-paper/65">{study.description || "A PrismWave Studio project case study."}</p>
               <Link to={study.title === "Bloom Market" ? "/work/bloom-market/case-study" : "/work/servesync/case-study"} className="mt-6 inline-block font-mono text-[11px] uppercase tracking-wide text-amber">
@@ -49,8 +56,9 @@ export default function CaseStudiesIndex() {
             </article>
           ))}
         </div>
+        </section>
       </main>
-      <footer>
+      <footer data-ai="footer">
         <Footer />
       </footer>
     </div>
