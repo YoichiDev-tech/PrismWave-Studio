@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import { trackAction } from "../lib/track";
 
 export default function Pricing() {
   return (
@@ -89,6 +90,7 @@ export default function Pricing() {
             href="https://calendly.com/hello-prismwave-studio/15min"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackAction("cta_click", { metadata: { label: "Book a free 15-min call", location: "pricing" } })}
             className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
             style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
           >

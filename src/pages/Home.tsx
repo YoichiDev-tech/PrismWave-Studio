@@ -16,21 +16,15 @@ import Calendly from "../components/Calendly";
 import Process from "../components/Process";
 import AuditWidget from "../components/AuditWidget";
 import SprintConfigurator from "../components/SprintConfigurator";
-import WhoWeHelp from "../components/WhoWeHelp";
 
 export type Intent = "audit" | "build";
 
 export default function Home() {
-  // Shared across the whole page: whichever CTA the visitor clicks first
-  // (audit vs build) pre-selects the matching path in the contact form
   const [intent, setIntent] = useState<Intent | null>(null);
-
-  // A pending message/siteUrl to drop into Contact — set by AuditWidget or
-  // SprintConfigurator so a visitor's work isn't lost when they hit "get scoped"
   const [prefill, setPrefill] = useState<ContactPrefill | null>(null);
 
   const scrollToContact = useCallback(() => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("contact");
   }, []);
 
   const handleAuditTeardown = useCallback(
@@ -69,25 +63,12 @@ export default function Home() {
 
   return (
     <>
-      <Nav onSelectIntent={setIntent} />
-      <main>
-        <Hero onSelectIntent={setIntent} />
-        <SignsOutdated onSelectIntent={setIntent} />
-        <AuditWidget onRequestFullTeardown={handleAuditTeardown} />
-        <WhoWeHelp onSelectAudience={handleAudienceSelect} />
-        <Services />
-        <Process />
-        <Pricing />
-        <SprintConfigurator onRequestScope={handleSprintScope} />
-        <BuildYourIdea onSelectIntent={setIntent} />
-        <Portfolio />
-        <WhyChooseUs />
-        <FAQ />
-        <About />
-        <Calendly />
-        <Contact intent={intent} onIntentChange={setIntent} prefill={prefill} />
+
       </main>
-      <Footer />
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

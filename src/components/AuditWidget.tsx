@@ -6,7 +6,6 @@ import { scoreAudit } from "../lib/auditScoring";
 import type { AuditResult } from "../lib/auditScoring";
 import type { AuditSignals } from "../types/audit";
 import { trackAction } from "../lib/track";
-
 interface AuditWidgetProps {
   // Lets a "See my results" CTA hand off straight into the Contact form,
   // matching the intent-routing pattern already used across the page
@@ -32,7 +31,7 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
     setStatus("loading");
     setError(null);
     setResult(null);
-    trackAction("audit_run", { intent: "audit" });
+    trackAction("audit_run", { intent: "audit", metadata: { url: url.trim() } });
 
     try {
       const res = await fetch("/api/audit", {
@@ -50,9 +49,13 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
       }
 
       setSignals(data.signals);
-      setResult(scoreAudit(data.signals));
+      const auditResult = scoreAudit(data.signals);
+      setResult(auditResult);
       setStatus("done");
-      trackAction("audit_completed", { intent: "audit" });
+      trackAction("audit_completed", {
+        intent: "audit",
+        metadata: { url: data.signals.finalUrl, overallScore: auditResult.overall },
+      });
     } catch {
       setError("Couldn't reach the audit service. Check your connection and try again.");
       setStatus("error");
@@ -149,7 +152,12 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
               <div className="mt-10 flex justify-center">
                 <button
                   type="button"
-                  onClick={() => onRequestFullTeardown(signals.finalUrl)}
+                  onClick={() => {
+                    trackAction("audit_teardown_requested", {
+                      metadata: { url: signals.finalUrl, overallScore: result.overall },
+                    });
+                    onRequestFullTeardown(signals.finalUrl);
+                  }}
                   className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
                   style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
                 >

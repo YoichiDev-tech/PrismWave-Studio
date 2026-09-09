@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { getSupabaseAdmin } from "./_lib/supabaseAdmin";
+import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin";
 
 interface VercelLikeRequest {
   method?: string;
@@ -20,7 +20,7 @@ interface TrackPayload {
   path?: string;
   intent?: "audit" | "build";
   sessionId: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Json;
 }
 
 const ALLOWED_EVENT_NAMES = new Set([
@@ -28,8 +28,10 @@ const ALLOWED_EVENT_NAMES = new Set([
   "contact_submitted",
   "audit_run",
   "audit_completed",
+  "audit_teardown_requested",
   "chat_opened",
   "chat_message_sent",
+  "cta_click",
 ]);
 
 function isTrackPayload(data: unknown): data is TrackPayload {

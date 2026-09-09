@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Intent } from "../pages/Home";
+import { trackAction } from "../lib/track";
 
 // Href starting with "/" routes via react-router (Lab is its own page)
 // Anchors ("#...") stay as in-page scroll links on the Home page
@@ -91,7 +92,10 @@ export default function Nav({ onSelectIntent }: NavProps) {
 
         <a
           href="#contact"
-          onClick={() => onSelectIntent("audit")}
+          onClick={() => {
+            onSelectIntent("audit");
+            trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
+          }}
           className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] md:inline-block"
         >
           Get a Free Audit
@@ -156,6 +160,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             href="#contact"
             onClick={() => {
               onSelectIntent("audit");
+              trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile" } });
               handleLinkClick();
             }}
             className="mt-3 inline-block rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink"

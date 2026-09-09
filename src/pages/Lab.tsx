@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
 import ScoreGauge from "../components/ScoreGauge";
 import Footer from "../components/Footer";
+import AiMetadata from "../components/AiMetadata";
 
 const THREADS_URL = "https://www.threads.com/@yoichidev";
 
@@ -72,6 +73,12 @@ export default function Lab() {
 
   return (
     <div className="grain relative min-h-screen overflow-hidden bg-ink text-paper">
+      <AiMetadata
+        map={["Lab introduction", "Production component list", "Live previews", "Copyable snippets"]}
+        intent="Let visitors inspect, preview, and copy production UI components used by PrismWave Studio."
+        tags={["component library", "frontend patterns", "React components", "UI snippets", "web design lab"]}
+        extract={{ title: "PrismWave Studio Lab", audience: "Developers and designers", primaryActions: "Inspect a component, preview it, or copy its code", format: "Public component showcase" }}
+      />
       
       <div
         aria-hidden="true"
@@ -90,7 +97,7 @@ export default function Lab() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-ink-soft hover:text-paper"
           >
-            &larr; BrightWave Studio
+            &larr; PrismWave Studio
           </Link>
           <a
             href={THREADS_URL}
@@ -103,7 +110,7 @@ export default function Lab() {
         </div>
       </header>
 
-      <main className="relative mx-auto max-w-5xl px-6 py-20">
+      <main className="relative mx-auto max-w-5xl px-6 py-20" role="main">
         <Reveal>
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">The Lab</p>
           <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
@@ -124,13 +131,17 @@ export default function Lab() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-8">
+        <div className="mt-16 grid gap-8" role="list">
           {ITEMS.map((item, index) => {
             const isOpen = openId === item.id;
 
             return (
               <Reveal key={item.id} delay={((index % 4) + 1) as 1 | 2 | 3 | 4}>
-                <div className="rounded-2xl border border-ink-line bg-ink-2/60 p-8 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber">
+                <div
+                  className="rounded-2xl border border-ink-line bg-ink-2/60 p-8 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber"
+                  role="listitem"
+                  aria-label={`Component: ${item.title}`}
+                >
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
                       <h2 className="font-display text-xl font-semibold text-paper">{item.title}</h2>
@@ -139,7 +150,11 @@ export default function Lab() {
                   </div>
 
                   {/* Live preview */}
-                  <div className="mt-6 flex min-h-[120px] items-center justify-center rounded-xl border border-ink-line bg-ink-2 p-8">
+                  <div
+                    className="mt-6 flex min-h-[120px] items-center justify-center rounded-xl border border-ink-line bg-ink-2 p-8"
+                    role="region"
+                    aria-label={`Live preview: ${item.title}`}
+                  >
                     {item.id === "gradient-button" && (
                       <button
                         type="button"

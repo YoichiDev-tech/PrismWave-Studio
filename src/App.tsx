@@ -12,10 +12,10 @@ import CaseStudiesIndex from "./pages/case-studies/index";
 import TypographyPreview from "./pages/TypographyPreview";
 import Work from "./pages/Work";
 import Lab from "./pages/Lab";
-// import usePageTracking from "./hooks/usePageTracking";
+import usePageTracking from "./hooks/usePageTracking";
 
 export default function App() {
-  // usePageTracking();
+  usePageTracking();
 
   return (
     <>
