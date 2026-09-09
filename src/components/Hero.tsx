@@ -1,10 +1,18 @@
+import type { MouseEvent } from "react";
 import type { Intent } from "../pages/Home";
+import { trackAction } from "../lib/track";
+import { scrollToSection } from "../lib/scroll";
 
 interface HeroProps {
   onSelectIntent: (intent: Intent) => void;
 }
 
 export default function Hero({ onSelectIntent }: HeroProps) {
+  const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    scrollToSection(id);
+  };
+
   return (
     <section
       id="top"
@@ -47,7 +55,11 @@ export default function Hero({ onSelectIntent }: HeroProps) {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#contact"
-              onClick={() => onSelectIntent("audit")}
+              onClick={(event) => {
+                handleSectionClick(event, "contact");
+                onSelectIntent("audit");
+                trackAction("cta_click", { metadata: { label: "Get a Free Website Audit", location: "hero" } });
+              }}
               className="group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] bg-amber"
               style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
             >
@@ -56,7 +68,11 @@ export default function Hero({ onSelectIntent }: HeroProps) {
             </a>
             <a
               href="#build"
-              onClick={() => onSelectIntent("build")}
+              onClick={(event) => {
+                handleSectionClick(event, "build");
+                onSelectIntent("build");
+                trackAction("cta_click", { metadata: { label: "I Have an Idea, Not a Site", location: "hero" } });
+              }}
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-ink-line px-7 py-3.5 font-display text-sm font-semibold text-paper transition-colors hover:border-amber hover:text-amber"
             >
               I Have an Idea, Not a Site
@@ -67,6 +83,10 @@ export default function Hero({ onSelectIntent }: HeroProps) {
           <div className="mt-8">
             <a
               href="#work"
+              onClick={(event) => {
+                handleSectionClick(event, "work");
+                trackAction("cta_click", { metadata: { label: "See our work", location: "hero" } });
+              }}
               className="font-mono text-[12px] uppercase tracking-wide text-ink-soft underline underline-offset-4 transition-colors hover:text-paper"
             >
               Or just see our work &rarr;

@@ -26,6 +26,8 @@ interface TrackOptions {
 }
 
 export function track(kind: EventKind, eventName: string, options: TrackOptions = {}): void {
+  if (import.meta.env.DEV) return;
+
   const body = JSON.stringify({
     kind,
     eventName,
@@ -59,7 +61,14 @@ export function trackPageview(path?: string): void {
 }
 
 export function trackAction(
-  eventName: "contact_submitted" | "audit_run" | "audit_completed" | "chat_opened" | "chat_message_sent",
+  eventName:
+    | "contact_submitted"
+    | "audit_run"
+    | "audit_completed"
+    | "audit_teardown_requested"
+    | "chat_opened"
+    | "chat_message_sent"
+    | "cta_click",
   options: TrackOptions = {}
 ): void {
   track("action", eventName, options);

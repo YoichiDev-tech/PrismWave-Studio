@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Intent } from "../pages/Home";
+import { trackAction } from "../lib/track";
 
 // Href starting with "/" routes via react-router (Lab is its own page)
 // Anchors ("#...") stay as in-page scroll links on the Home page
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Services", href: "#services" },
   { label: "Build", href: "#build", intent: "build" },
-  { label: "Work", href: "#work" },
+  { label: "Work", href: "/work" },
   { label: "Lab", href: "/lab" },
   { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },
@@ -40,8 +41,10 @@ export default function Nav({ onSelectIntent }: NavProps) {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a
-          href="#top"
+
+        {/* LOGO — FIXED */}
+        <Link
+          to="/"
           className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-paper"
         >
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
@@ -60,7 +63,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             </defs>
           </svg>
           PrismWave
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
           {LINKS.map((link) =>
@@ -89,7 +92,10 @@ export default function Nav({ onSelectIntent }: NavProps) {
 
         <a
           href="#contact"
-          onClick={() => onSelectIntent("audit")}
+          onClick={() => {
+            onSelectIntent("audit");
+            trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
+          }}
           className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] md:inline-block"
         >
           Get a Free Audit
@@ -154,6 +160,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             href="#contact"
             onClick={() => {
               onSelectIntent("audit");
+              trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile" } });
               handleLinkClick();
             }}
             className="mt-3 inline-block rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink"

@@ -16,20 +16,17 @@ import Calendly from "../components/Calendly";
 import Process from "../components/Process";
 import AuditWidget from "../components/AuditWidget";
 import SprintConfigurator from "../components/SprintConfigurator";
+import AiMetadata from "../components/AiMetadata";
+import { scrollToSection } from "../lib/scroll";
 
 export type Intent = "audit" | "build";
 
 export default function Home() {
-  // Shared across the whole page: whichever CTA the visitor clicks first
-  // (audit vs build) pre-selects the matching path in the contact form
   const [intent, setIntent] = useState<Intent | null>(null);
-
-  // A pending message/siteUrl to drop into Contact — set by AuditWidget or
-  // SprintConfigurator so a visitor's work isn't lost when they hit "get scoped"
   const [prefill, setPrefill] = useState<ContactPrefill | null>(null);
 
   const scrollToContact = useCallback(() => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("contact");
   }, []);
 
   const handleAuditTeardown = useCallback(
@@ -56,24 +53,77 @@ export default function Home() {
 
   return (
     <>
-      <Nav onSelectIntent={setIntent} />
-      <main>
-        <Hero onSelectIntent={setIntent} />
-        <SignsOutdated onSelectIntent={setIntent} />
-        <AuditWidget onRequestFullTeardown={handleAuditTeardown} />
-        <Services />
-        <Process />
-        <Pricing />
-        <SprintConfigurator onRequestScope={handleSprintScope} />
-        <BuildYourIdea onSelectIntent={setIntent} />
-        <Portfolio />
-        <WhyChooseUs />
-        <FAQ />
-        <About />
-        <Calendly />
-        <Contact intent={intent} onIntentChange={setIntent} prefill={prefill} />
+      <AiMetadata
+        map={["Hero", "Signs your site is outdated", "AI-ready site audit", "Services", "Process", "Pricing", "Sprint configurator", "Portfolio", "FAQ", "Contact"]}
+        intent="Help a founder assess, plan, and start a website audit or custom website build with PrismWave Studio."
+        tags={["web design studio", "website audit", "website development", "small business websites", "AI-readable websites"]}
+        extract={{ title: "PrismWave Studio", audience: "Founders, creators, and small businesses", primaryActions: "Run a free audit or request a project scope", location: "Online studio" }}
+      />
+      <header>
+        <Nav onSelectIntent={setIntent} />
+      </header>
+
+      <main role="main">
+        <section aria-labelledby="hero-section">
+          <Hero onSelectIntent={setIntent} />
+        </section>
+
+        <section aria-labelledby="signs-section">
+          <SignsOutdated onSelectIntent={setIntent} />
+        </section>
+
+        <section aria-labelledby="audit-section">
+          <AuditWidget onRequestFullTeardown={handleAuditTeardown} />
+        </section>
+
+        <section aria-labelledby="services-section">
+          <Services />
+        </section>
+
+        <section aria-labelledby="process-section">
+          <Process />
+        </section>
+
+        <section aria-labelledby="pricing-section">
+          <Pricing />
+        </section>
+
+        <section aria-labelledby="sprint-section">
+          <SprintConfigurator onRequestScope={handleSprintScope} />
+        </section>
+
+        <section aria-labelledby="build-section">
+          <BuildYourIdea onSelectIntent={setIntent} />
+        </section>
+
+        <section aria-labelledby="portfolio-section">
+          <Portfolio />
+        </section>
+
+        <section aria-labelledby="why-section">
+          <WhyChooseUs />
+        </section>
+
+        <section aria-labelledby="faq-section">
+          <FAQ />
+        </section>
+
+        <section aria-labelledby="about-section">
+          <About />
+        </section>
+
+        <section aria-labelledby="calendly-section">
+          <Calendly />
+        </section>
+
+        <section aria-labelledby="contact-section">
+          <Contact intent={intent} onIntentChange={setIntent} prefill={prefill} />
+        </section>
       </main>
-      <Footer />
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

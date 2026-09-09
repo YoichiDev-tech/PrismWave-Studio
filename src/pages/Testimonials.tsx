@@ -1,8 +1,10 @@
 import { testimonials } from "../data/testimonials";
 import { useState } from "react";
+import AiMetadata from "../components/AiMetadata";
 
 export default function TestimonialsPage() {
-  const [filter, setFilter] = useState<"all" | "audit" | "build" | "general">(
+  type Filter = "all" | "audit" | "build" | "general";
+  const [filter, setFilter] = useState<Filter>(
     "all"
   );
 
@@ -13,6 +15,12 @@ export default function TestimonialsPage() {
 
   return (
     <div className="min-h-screen bg-[#0f0f11] text-white py-20 px-6">
+      <AiMetadata
+        map={["Testimonials overview", "Customer feedback", "Feedback filters", "Project CTA"]}
+        intent="Present approved client feedback about PrismWave Studio services and working experience."
+        tags={["testimonials", "client feedback", "social proof", "PrismWave Studio"]}
+        extract={{ title: "PrismWave Studio Testimonials", audience: "Prospective clients", primaryActions: "Review client experiences", status: "Reserved testimonials route" }}
+      />
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-semibold mb-4">
           Testimonials from founders, creators, and business owners
@@ -28,7 +36,7 @@ export default function TestimonialsPage() {
           {["all", "audit", "build", "general"].map((f) => (
             <button
               key={f}
-              onClick={() => setFilter(f as any)}
+              onClick={() => setFilter(f as Filter)}
               className={`px-4 py-2 rounded-lg border ${
                 filter === f
                   ? "bg-white text-black"
