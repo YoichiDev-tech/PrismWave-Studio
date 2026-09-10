@@ -19,13 +19,82 @@
     <meta property="og:title" content="PrismWave Studio — Websites that carry your business further" />
     <meta property="og:description" content="Fast, modern, conversion-focused websites for small businesses — from landing pages to full redesigns. Fixed-scope pricing, built on modern frameworks." />
     <meta property="og:image" content="/images/og-cover.jpg" />
-    <meta property="og:url" content="https://prismwavestudio.com/" />
+    <meta property="og:url" content="https://prismwave-studio.vercel.app/" />
 
     <!-- X Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PrismWave Studio — Websites that carry your business further" />
     <meta name="twitter:description" content="Fast, modern, conversion-focused websites for small businesses — from landing pages to full redesigns." />
     <meta name="twitter:image" content="/images/og-cover.jpg" />
+    <link rel="canonical" href="https://prismwave-studio.vercel.app/" />
+
+    <!-- Structured data: gives search engines and AI assistants an
+         unambiguous, machine-readable summary of who we are, what we do,
+         and the questions we already answer — separate from (and in
+         addition to) the in-page AiMetadata/AiIntent tagging used
+         throughout the app. Kept in sync with src/components/FAQ.tsx. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "PrismWave Studio",
+      "url": "https://prismwave-studio.vercel.app/",
+      "description": "PrismWave Studio designs and builds fast, modern, conversion-focused websites for small businesses, founders, and new ideas — from landing pages to full custom builds, with fixed-scope pricing and a 2-4 week turnaround.",
+      "areaServed": "Worldwide",
+      "priceRange": "$$",
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Free Website Audit",
+          "description": "A free teardown of an existing website's design, performance, and conversion gaps, with concrete next steps."
+        },
+        {
+          "@type": "Offer",
+          "name": "Custom Website Build",
+          "description": "Design and development of a new website, e-commerce store, or web app from an early idea through launch."
+        }
+      ],
+      "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a project take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most landing pages take 3-7 days. Small business sites usually take 2-3 weeks depending on content readiness and revision rounds." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I own the site after it's built?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — you fully own the code, design, and all exported assets. Nothing is locked behind subscriptions or proprietary builders." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I need changes after launch?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You can request additional updates anytime. Small fixes are quick; larger changes can be scoped as a mini-project." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer hosting or maintenance?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Hosting and domains are handled by providers like Vercel or Namecheap. We do offer ongoing maintenance, but you stay in full control." }
+        },
+        {
+          "@type": "Question",
+          "name": "What do you need from me to get started?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A short description of your business, your goals, any existing content, and examples of sites you like. That's enough to begin." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I don't have a logo or brand yet?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No problem — we can design a simple starter brand or work with neutral styling until you have a full identity." }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
