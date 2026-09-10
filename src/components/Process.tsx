@@ -43,7 +43,7 @@ export default function Process() {
         {/* Steps */}
         <Reveal delay={1} className="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {/* Step 1 */}
-          <div className="rounded-2xl border border-ink-line bg-ink-2/60 p-8 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber">
+          <div className="card-interaction rounded-2xl border border-ink-line bg-ink-2/60 p-8 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber">
             <h3 className="font-display text-xl text-paper mb-3">1. Discovery</h3>
             <p className="text-ink-soft text-sm">
               We learn about your business, goals, audience, and what success looks like.

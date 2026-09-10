@@ -13,7 +13,7 @@ export function CaseStudyCard({ title, category, description, to, image }: CaseS
     <Link
       to={to}
       aria-label={`View the ${title} case study`}
-      className="group block h-full rounded-2xl border border-ink-line bg-ink-2/60 p-7 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber"
+      className="card-interaction group block h-full rounded-2xl border border-ink-line bg-ink-2/60 p-7 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber"
     >
       {image && (
         <img
