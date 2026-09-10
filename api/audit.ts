@@ -27,7 +27,7 @@ export interface AuditSignals {
   hasStructuredData: boolean; // JSON-LD (application/ld+json)
   imageCount: number;
   imagesMissingAlt: number;
-  hasMediaQueries: boolean; // best-effort, inline <style> only
+  hasMediaQueries: boolean; // inline styles or linked stylesheets
   hasOpenGraph: boolean;
 }
 
@@ -44,7 +44,7 @@ function normalizeUrl(raw: string): string {
 // Cheap, dependency-free HTML sniffing
 // This is intentionally not a full DOM parser — good enough to give honest,
 // directional signals without pulling in a heavy parsing library for a lightweight edge function
-function analyzeHtml(html: string): Omit<AuditSignals, "finalUrl" | "isHttps" | "responseTimeMs" | "pageWeightKb"> {
+function analyzeHtml(html: string, hasMediaQueries = false): Omit<AuditSignals, "finalUrl" | "isHttps" | "responseTimeMs" | "pageWeightKb"> {
   const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
   const imgTags = html.match(/<img\b[^>]*>/gi) ?? [];
   const imagesMissingAlt = imgTags.filter((tag) => !/\balt\s*=\s*["'][^"']*["']/i.test(tag)).length;
@@ -59,9 +59,33 @@ function analyzeHtml(html: string): Omit<AuditSignals, "finalUrl" | "isHttps" | 
     hasStructuredData: /<script[^>]+type=["']application\/ld\+json["']/i.test(html),
     imageCount: imgTags.length,
     imagesMissingAlt,
-    hasMediaQueries: styleBlocks.some((block) => /@media/i.test(block)),
+    hasMediaQueries: hasMediaQueries || styleBlocks.some((block) => /@media/i.test(block)),
     hasOpenGraph: /<meta[^>]+property=["']og:title["']/i.test(html),
   };
+}
+
+async function hasResponsiveStyles(html: string, pageUrl: string, signal: AbortSignal): Promise<boolean> {
+  if (/<style[^>]*>[\s\S]*?@media/i.test(html)) return true;
+
+  const stylesheetUrls = [...html.matchAll(/<link\b[^>]*rel=["'][^"']*stylesheet[^"']*["'][^>]*>/gi)]
+    .map(([tag]) => tag.match(/\bhref=["']([^"']+)["']/i)?.[1])
+    .filter((href): href is string => Boolean(href))
+    .slice(0, 8);
+
+  for (const href of stylesheetUrls) {
+    try {
+      const stylesheetUrl = new URL(href, pageUrl).toString();
+      const response = await fetch(stylesheetUrl, {
+        signal,
+        headers: { "User-Agent": "PrismWaveStudio-AuditBot/1.0 (+https://prismwavestudio.com)" },
+      });
+      if (response.ok && /@media\b/i.test(await response.text())) return true;
+    } catch {
+      // A blocked stylesheet should not make the entire audit fail.
+    }
+  }
+
+  return false;
 }
 
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
@@ -108,7 +132,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
     const html = await response.text();
     const pageWeightKb = Math.round(new TextEncoder().encode(html).length / 1024);
-    const analyzed = analyzeHtml(html);
+    const analyzed = analyzeHtml(html, await hasResponsiveStyles(html, response.url || targetUrl, controller.signal));
 
     const signals: AuditSignals = {
       finalUrl: response.url || targetUrl,

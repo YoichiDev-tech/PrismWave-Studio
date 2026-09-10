@@ -6,6 +6,9 @@
          matching the --color-ink token in src/index.css -->
     <style>
       html, body { background-color: #0a0e1a; }
+      @media (max-width: 640px) {
+        #root > header, #root > main, #root > footer { padding-left: 1rem; padding-right: 1rem; }
+      }
     </style>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -128,7 +131,16 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <header aria-label="PrismWave Studio navigation">
+        <a href="/">PrismWave Studio</a>
+      </header>
+      <main>
+        <h1>Websites that carry your business further.</h1>
+        <p>PrismWave Studio designs and builds fast, modern, conversion-focused websites for small businesses.</p>
+      </main>
+      <footer>PrismWave Studio</footer>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
