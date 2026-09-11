@@ -52,7 +52,7 @@ export default function Hero({ onSelectIntent }: HeroProps) {
             Start with a real audit or tell us what you want to build.
           </p>
 
-          <p className="mt-4 max-w-lg font-mono text-[11px] uppercase tracking-wide text-ink-soft">
+          <p className="mt-7 max-w-lg text-lg leading-relaxed text-ink-soft">
             Strategy, design, and development — fixed scope, clear pricing, full ownership.
           </p>
 
