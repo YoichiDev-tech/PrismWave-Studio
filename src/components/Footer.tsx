@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 const LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Work", href: "/#work" },
+  { label: "Why Us", href: "/#why-us" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 // Build-in-public social channels 
@@ -46,7 +47,7 @@ export default function Footer() {
       >
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <a href="#top" className="flex items-center gap-2.5 font-display text-lg font-semibold text-paper">
+            <a href="/" className="flex items-center gap-2.5 font-display text-lg font-semibold text-paper">
               <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true">
                 <path
                   d="M2 15c2.5 0 2.5-6 5-6s2.5 6 5 6 2.5-6 5-6 2.5 6 5 6"
@@ -77,7 +78,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-ink-line text-ink-soft transition-colors hover:border-amber hover:text-paper"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-ink-line text-ink-soft transition-colors hover:border-amber hover:text-paper"
                 >
                   {social.icon}
                 </a>
@@ -105,6 +106,15 @@ export default function Footer() {
                 <li>Mon-Fri, 9:00am-5:30pm</li>
               </ul>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-ink-line pt-6">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Legal &amp; regulatory</p>
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-paper/70">
+            <Link to="/terms" className="min-h-11 inline-flex items-center transition-colors hover:text-paper">Terms of Use</Link>
+            <Link to="/privacy" className="min-h-11 inline-flex items-center transition-colors hover:text-paper">Privacy</Link>
+            <Link to="/regulatory" className="min-h-11 inline-flex items-center transition-colors hover:text-paper">Regulatory Information</Link>
           </div>
         </div>
 

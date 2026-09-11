@@ -68,8 +68,11 @@ export default function Services() {
         <Reveal className="max-w-xl">
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">What we build</p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-paper md:text-5xl">
-            Four ways to move your site forward.
+            One clear outcome: a site that helps your business move.
           </h2>
+          <p className="mt-5 max-w-2xl text-ink-soft">
+            Choose the starting point that matches where you are now. We can sharpen an existing site, launch a focused page, or build the larger idea behind it.
+          </p>
         </Reveal>
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ink-line bg-ink-line sm:grid-cols-2 lg:grid-cols-4">

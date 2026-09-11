@@ -47,9 +47,13 @@ export default function Hero({ onSelectIntent }: HeroProps) {
           </h1>
 
           <p className="mt-7 max-w-lg text-lg leading-relaxed text-ink-soft">
-            Two ways in: your current site is holding you back and needs a
-            second look — or you've got an idea and nothing built yet.
-            Either way, tell us where you're starting from.
+            PrismWave helps small businesses turn unclear, outdated, or
+            unbuilt ideas into fast websites that make the next action obvious.
+            Start with a real audit or tell us what you want to build.
+          </p>
+
+          <p className="mt-4 max-w-lg font-mono text-[11px] uppercase tracking-wide text-ink-soft">
+            Strategy, design, and development — fixed scope, clear pricing, full ownership.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -60,7 +64,7 @@ export default function Hero({ onSelectIntent }: HeroProps) {
                 onSelectIntent("audit");
                 trackAction("cta_click", { metadata: { label: "Get a Free Website Audit", location: "hero" } });
               }}
-              className="group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] bg-amber"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] bg-amber"
               style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
             >
               Get a Free Website Audit
@@ -73,7 +77,7 @@ export default function Hero({ onSelectIntent }: HeroProps) {
                 onSelectIntent("build");
                 trackAction("cta_click", { metadata: { label: "I Have an Idea, Not a Site", location: "hero" } });
               }}
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-ink-line px-7 py-3.5 font-display text-sm font-semibold text-paper transition-colors hover:border-amber hover:text-amber"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink-line px-7 py-3.5 font-display text-sm font-semibold text-paper transition-colors hover:border-amber hover:text-amber"
             >
               I Have an Idea, Not a Site
               <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
@@ -103,12 +107,11 @@ export default function Hero({ onSelectIntent }: HeroProps) {
         </div>
 
         {/* Signature: animated waveform */}
-        <div className="relative flex items-center justify-center rounded-3xl border border-ink-line p-2 transition-colors hover:border-amber hover:bg-ink-2 sm:p-3 md:transition-transform md:hover:scale-[1.02]">
-          <div className="relative w-full max-w-sm rounded-[1.35rem] border border-ink-line bg-ink-2/60 p-5 backdrop-blur-sm sm:p-7">
+        <div className="group relative flex min-h-[350px] w-full max-w-sm flex-col justify-center rounded-3xl border border-ink-line bg-ink-2/60 p-5 transition-colors duration-300 hover:border-amber hover:bg-ink-2 sm:min-h-[390px] sm:p-7">
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Signal — live preview</p>
-            <svg viewBox="0 0 340 160" className="mt-5 w-full sm:mt-6" aria-hidden="true">
+            <svg viewBox="0 0 340 160" className="mt-5 block w-full shrink-0 sm:mt-6" aria-hidden="true">
               <defs>
-                <linearGradient id="hero-wave" x1="0" y1="0" x2="340" y2="0" gradientUnits="userSpaceOnUse">
+                <linearGradient id="hero-wave" x1="-340" y1="0" x2="0" y2="0" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#FFB84D" />
                   <stop offset="0.32" stopColor="#FF7A59" />
                   <stop offset="0.64" stopColor="#6C63FF" />
@@ -116,7 +119,7 @@ export default function Hero({ onSelectIntent }: HeroProps) {
                   <animateTransform
                     attributeName="gradientTransform"
                     type="translate"
-                    values="0 0; 340 0; 0 0"
+                    values="-340 0; 340 0; -340 0"
                     dur="7s"
                     repeatCount="indefinite"
                   />
@@ -131,7 +134,7 @@ export default function Hero({ onSelectIntent }: HeroProps) {
                 strokeLinecap="round"
               />
             </svg>
-            <div className="mt-5 grid grid-cols-3 gap-3 border-t border-ink-line pt-5 sm:mt-6 sm:gap-4">
+            <div className="mt-auto grid grid-cols-3 gap-3 border-t border-ink-line pt-5 sm:gap-4">
               <div className="min-w-0">
                 <p className="font-display text-2xl font-semibold leading-none text-paper">3</p>
                 <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Live templates</p>
@@ -145,14 +148,6 @@ export default function Hero({ onSelectIntent }: HeroProps) {
                 <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Weeks typical</p>
               </div>
             </div>
-          </div>
-
-          <div
-            aria-hidden="true"
-            className="float-slow absolute -bottom-6 -left-6 hidden rounded-2xl border border-ink-line bg-ink-2 px-4 py-3 shadow-xl sm:block"
-          >
-            <p className="font-mono text-[11px] text-ink-soft">Mobile-first &check;</p>
-          </div>
         </div>
       </div>
     </section>

@@ -19,6 +19,12 @@ const caseStudies = [
     to: "/work/bloom-market/case-study",
     image: "/images/case-studies-livePreview/bloom-market-preview.png",
   },
+  {
+    title: "Appointment Workflow",
+    category: "Concept · Operations Modernization",
+    description: "A clearly labeled concept for reducing booking friction, no-shows, and manual scheduling work for appointment-based businesses.",
+    to: "/work/appointment-workflows/concept",
+  },
 ];
 
 export default function CaseStudiesIndex() {
@@ -50,8 +56,8 @@ export default function CaseStudiesIndex() {
             <article key={study.title} role="listitem" ai-tag="case-study" data-ai="project" className="rounded-2xl border border-ink-line bg-ink-2/60 p-6">
               <h2 className="font-display text-2xl font-semibold">{study.title}</h2>
               <p className="mt-3 text-paper/65">{study.description || "A PrismWave Studio project case study."}</p>
-              <Link to={study.title === "Bloom Market" ? "/work/bloom-market/case-study" : "/work/servesync/case-study"} className="mt-6 inline-block font-mono text-[11px] uppercase tracking-wide text-amber">
-                Read case study &rarr;
+              <Link to={study.to} className="mt-6 inline-block font-mono text-[11px] uppercase tracking-wide text-amber">
+                {study.title === "Appointment Workflow" ? "Explore concept &rarr;" : "Read case study &rarr;"}
               </Link>
             </article>
           ))}

@@ -9,6 +9,7 @@ const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Services", href: "#services" },
   { label: "Build", href: "#build", intent: "build" },
   { label: "Work", href: "/work" },
+  { label: "Revamp", href: "/revamp" },
   { label: "Lab", href: "/lab" },
   { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },
@@ -23,10 +24,25 @@ export default function Nav({ onSelectIntent }: NavProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    let frame = 0;
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        setScrolled((current) => {
+          const next = window.scrollY > 12;
+          return current === next ? current : next;
+        });
+      });
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   const handleLinkClick = () => setOpen(false);
