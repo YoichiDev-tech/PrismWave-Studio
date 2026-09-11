@@ -67,6 +67,8 @@ copy describing the service, but the service running in the browser.
 - Interaction tracking (pageviews + key actions) piped server-side into
   Supabase, no client-side keys involved — powers a separate private
   ops dashboard
+- Structured lead records include contact intent, audit context, scope
+  estimates, session attribution, and follow-up status.
 - Fully responsive across mobile, tablet, and desktop
 - Production deployment on Vercel
 
@@ -92,6 +94,15 @@ copy describing the service, but the service running in the browser.
 - Buy `prismwavestudio.com` and set up `hello@` on it
 - Add analytics before driving traffic to it
 - Revisit copy once there's a first real client project to reference
+
+## Sales pipeline setup
+
+Run `supabase/schema.sql` in the same Supabase project used by the Studio
+serverless functions and Ops dashboard. Studio requires `SUPABASE_URL`,
+`SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, and `CONTACT_TO_EMAIL` as
+server-side variables. Ops should use the same `SUPABASE_URL` and database,
+with its own authenticated operator allowlist and server-side service role
+key. Never expose the service role key with a `VITE_` prefix.
 
 ## Changelog
 

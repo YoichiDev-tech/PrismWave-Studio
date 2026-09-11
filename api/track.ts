@@ -28,10 +28,12 @@ const ALLOWED_EVENT_NAMES = new Set([
   "contact_submitted",
   "audit_run",
   "audit_completed",
+  "audit_lead_captured",
   "audit_teardown_requested",
   "chat_opened",
   "chat_message_sent",
   "cta_click",
+  "booking_completed",
 ]);
 
 function isTrackPayload(data: unknown): data is TrackPayload {

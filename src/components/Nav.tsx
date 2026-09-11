@@ -91,7 +91,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
         </ul>
 
         <a
-          href="#contact"
+            href="#audit-tool"
           onClick={() => {
             onSelectIntent("audit");
             trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });

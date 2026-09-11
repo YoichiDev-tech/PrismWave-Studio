@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -20,6 +21,11 @@ interface ContactPayload {
   siteUrl: string;
   idea: string;
   message: string;
+  sessionId?: string;
+  attribution?: Json;
+  auditScore?: number;
+  auditFindings?: string[];
+  scopeEstimate?: string;
 }
 
 // Minimal structural types for Vercel's Node.js request/response objects.
@@ -97,7 +103,38 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       ? [`Current site: ${siteUrl || "—"}`]
       : [`Idea: ${idea || "—"}`];
 
+  const auditLines =
+    typeof payload.auditScore === "number"
+      ? [
+          `Audit score: ${payload.auditScore}/100`,
+          `Top findings: ${(payload.auditFindings ?? []).join(" | ") || "None reported"}`,
+        ]
+      : [];
+
   try {
+    const supabase = getSupabaseAdmin();
+    const { error: leadError } = await supabase.from("leads").insert({
+      intent,
+      name,
+      email,
+      business: business || null,
+      site_url: siteUrl || null,
+      idea: idea || null,
+      message,
+      session_id: payload.sessionId ?? null,
+      audit_score: typeof payload.auditScore === "number" ? payload.auditScore : null,
+      audit_findings: payload.auditFindings ?? [],
+      scope_estimate: payload.scopeEstimate ?? null,
+      attribution: payload.attribution ?? {},
+      status: "new",
+    });
+
+    if (leadError) {
+      console.error("Lead persistence error:", leadError);
+      res.status(500).json({ error: "Your message could not be recorded. Please try again." });
+      return;
+    }
+
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
@@ -109,6 +146,8 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
         `Email: ${email}`,
         `Business: ${business || "—"}`,
         ...detailLines,
+        ...auditLines,
+        `Scope estimate: ${payload.scopeEstimate || "—"}`,
         "",
         "Message:",
         message,
@@ -120,6 +159,29 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       res.status(502).json({ error: "The message could not be sent. Please try again." });
       return;
     }
+
+    const confirmation = await resend.emails.send({
+      from: FROM_EMAIL,
+      to: email,
+      replyTo: TO_EMAIL,
+      subject: "We received your PrismWave Studio inquiry",
+      text: [
+        `Hi ${name},`,
+        "",
+        "Thanks for reaching out to PrismWave Studio. Your message is in, and we'll reply within one business day with next steps.",
+        "",
+        `Request type: ${intentLabel}`,
+        ...detailLines,
+        ...auditLines,
+        `Scope estimate: ${payload.scopeEstimate || "—"}`,
+        "",
+        "No action is needed from you right now.",
+        "",
+        "PrismWave Studio",
+      ].join("\n"),
+    });
+
+    if (confirmation.error) console.error("Confirmation email error:", confirmation.error);
 
     res.status(200).json({ ok: true });
   } catch (err) {

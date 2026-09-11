@@ -5,11 +5,11 @@ import ScoreGauge from "./ScoreGauge";
 import { scoreAudit } from "../lib/auditScoring";
 import type { AuditResult } from "../lib/auditScoring";
 import type { AuditSignals } from "../types/audit";
-import { trackAction } from "../lib/track";
+import { getAttribution, getSessionIdForLead, trackAction } from "../lib/track";
 interface AuditWidgetProps {
   // Lets a "See my results" CTA hand off straight into the Contact form,
   // matching the intent-routing pattern already used across the page
-  onRequestFullTeardown: (siteUrl: string) => void;
+  onRequestFullTeardown: (context: { siteUrl: string; score: number; findings: string[] }) => void;
 }
 
 type Status = "idle" | "loading" | "done" | "error";
@@ -20,6 +20,8 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<AuditResult | null>(null);
   const [signals, setSignals] = useState<AuditSignals | null>(null);
+  const [email, setEmail] = useState("");
+  const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "captured" | "error">("idle");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,6 +53,8 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
       setSignals(data.signals);
       const auditResult = scoreAudit(data.signals);
       setResult(auditResult);
+      setEmail("");
+      setLeadStatus("idle");
       setStatus("done");
       trackAction("audit_completed", {
         intent: "audit",
@@ -59,6 +63,43 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
     } catch {
       setError("Couldn't reach the audit service. Check your connection and try again.");
       setStatus("error");
+    }
+  };
+
+  const handleUnlock = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!signals || !result || !email.trim()) return;
+
+    setLeadStatus("sending");
+    try {
+      const res = await fetch("/api/audit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          siteUrl: signals.finalUrl,
+          auditScore: result.overall,
+          auditFindings: result.categories.flatMap((category) => category.findings).slice(0, 5),
+          sessionId: getSessionIdForLead(),
+          attribution: getAttribution(),
+        }),
+      });
+
+      const data: { ok?: boolean; error?: string } = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setError(data.error ?? "We couldn't send the report. Please try again.");
+        setLeadStatus("error");
+        return;
+      }
+
+      setLeadStatus("captured");
+      trackAction("audit_lead_captured", {
+        intent: "audit",
+        metadata: { url: signals.finalUrl, overallScore: result.overall },
+      });
+    } catch {
+      setError("Couldn't reach the report service. Check your connection and try again.");
+      setLeadStatus("error");
     }
   };
 
@@ -72,14 +113,13 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
 
       <div className="relative mx-auto max-w-4xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Free, instant, no signup</p>
+          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Free scan, no account required</p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-paper md:text-5xl">
             Is your site ready for AI search — and actual visitors?
           </h2>
           <p className="mt-5 text-ink-soft">
-            Drop your URL below. We'll check page speed, UI/UX modernism, mobile responsiveness,
-            and AI readability — the four things that decide whether people (and AI answer
-            engines) can actually find and trust your business.
+            Drop your URL below for an instant score across page speed, UI/UX modernism, mobile responsiveness,
+            and AI readability. See the preview immediately, then email yourself the prioritized findings and next steps.
           </p>
         </Reveal>
 
@@ -130,41 +170,73 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
                 ))}
               </div>
 
-              {/* Top findings across all categories — capped so the widget stays scannable */}
-              <div className="mt-10 border-t border-ink-line pt-8">
-                <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">What's holding it back</p>
-                <ul className="mt-4 space-y-2.5">
-                  {result.categories
-                    .flatMap((c) => c.findings)
-                    .slice(0, 5)
-                    .map((finding, i) => (
-                      <li key={i} className="flex gap-2.5 text-sm text-ink-soft">
-                        <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-coral" aria-hidden="true" />
-                        {finding}
-                      </li>
-                    ))}
-                  {result.categories.every((c) => c.findings.length === 0) && (
-                    <li className="text-sm text-ink-soft">No major issues detected in this pass — nice work.</li>
-                  )}
-                </ul>
-              </div>
+              {leadStatus === "captured" ? (
+                <>
+                  <div className="mt-10 border-t border-ink-line pt-8">
+                    <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Your prioritized findings</p>
+                    <ul className="mt-4 space-y-2.5">
+                      {result.categories.flatMap((category) => category.findings).slice(0, 5).map((finding, i) => (
+                        <li key={i} className="flex gap-2.5 text-sm text-ink-soft">
+                          <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-coral" aria-hidden="true" />
+                          {finding}
+                        </li>
+                      ))}
+                      {result.categories.every((category) => category.findings.length === 0) && (
+                        <li className="text-sm text-ink-soft">No major issues detected in this pass — nice work.</li>
+                      )}
+                    </ul>
+                  </div>
 
-              <div className="mt-10 flex justify-center">
-                <button
-                  type="button"
-                  onClick={() => {
-                    trackAction("audit_teardown_requested", {
-                      metadata: { url: signals.finalUrl, overallScore: result.overall },
-                    });
-                    onRequestFullTeardown(signals.finalUrl);
-                  }}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
-                  style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
-                >
-                  Get the full teardown — free
-                  <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-                </button>
-              </div>
+                  <div className="mt-10 flex flex-col items-center gap-3 text-center">
+                    <p className="text-sm text-ink-soft">Your report is on its way. Want a human read on what to fix first?</p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        trackAction("audit_teardown_requested", {
+                          metadata: { url: signals.finalUrl, overallScore: result.overall },
+                        });
+                        onRequestFullTeardown({
+                          siteUrl: signals.finalUrl,
+                          score: result.overall,
+                          findings: result.categories.flatMap((category) => category.findings).slice(0, 5),
+                        });
+                      }}
+                      className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
+                      style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
+                    >
+                      Request the full teardown
+                      <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <form onSubmit={handleUnlock} className="mt-10 border-t border-ink-line pt-8">
+                  <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Unlock your full report</p>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-soft">
+                    Your score is ready. Enter your email to receive the prioritized findings and next-step summary for {signals.finalUrl}. No newsletter, no sales sequence.
+                  </p>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                    <input
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      placeholder="you@business.com"
+                      autoComplete="email"
+                      className="flex-1 rounded-lg border border-ink-line bg-transparent px-4 py-3 text-paper placeholder:text-ink-soft/60 transition-colors focus:border-amber"
+                    />
+                    <button
+                      type="submit"
+                      disabled={leadStatus === "sending"}
+                      className="inline-flex items-center justify-center rounded-full px-6 py-3 font-display text-sm font-semibold text-ink disabled:opacity-60"
+                      style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
+                    >
+                      {leadStatus === "sending" ? "Sending report…" : "Email me the report"}
+                    </button>
+                  </div>
+                  {leadStatus === "error" && <p className="mt-3 font-mono text-[12px] text-coral">{error}</p>}
+                </form>
+              )}
             </div>
           </Reveal>
         )}

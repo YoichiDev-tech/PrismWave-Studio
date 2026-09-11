@@ -85,7 +85,16 @@ export default function Pricing() {
           </div>
         </Reveal>
 
-        <Reveal delay={2} className="mt-16 flex justify-center">
+        <Reveal delay={2} className="mx-auto mt-10 max-w-3xl rounded-2xl border border-amber/30 bg-amber/5 p-6 text-center md:p-8">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-amber">A lower-risk way to start</p>
+          <h3 className="mt-3 font-display text-2xl font-semibold text-paper">See the plan before you commit.</h3>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-ink-soft">
+            Start with the free audit or a 15-minute fit call. Your project is only scoped and scheduled after we agree on the goal, deliverables, price, and timeline.
+          </p>
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-paper/60">No retainers. No surprise add-ons. No locked-in platform.</p>
+        </Reveal>
+
+        <Reveal delay={3} className="mt-16 flex justify-center">
           <a
             href="https://calendly.com/hello-prismwave-studio/15min"
             target="_blank"

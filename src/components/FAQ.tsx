@@ -11,6 +11,14 @@ const FAQS = [
     a: "Yes — you fully own the code, design, and all exported assets. Nothing is locked behind subscriptions or proprietary builders.",
   },
   {
+    q: "Why should I trust PrismWave with my website?",
+    a: "You can inspect the work before committing: the audit uses real signals from your site, pricing is visible upfront, and the portfolio shows live builds rather than vague promises. You keep ownership of the finished code, and every project starts with a clear scope and timeline.",
+  },
+  {
+    q: "What happens if the project is not the right fit?",
+    a: "We start with a short conversation and a defined scope before any work begins. If the goals, budget, or timeline do not line up, I will say so and you can walk away without being pushed into a package.",
+  },
+  {
     q: "What if I need changes after launch?",
     a: "You can request additional updates anytime. Small fixes are quick; larger changes can be scoped as a mini-project.",
   },

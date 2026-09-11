@@ -54,9 +54,9 @@ export default function Hero({ onSelectIntent }: HeroProps) {
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href="#contact"
+                href="#audit-tool"
               onClick={(event) => {
-                handleSectionClick(event, "contact");
+                  handleSectionClick(event, "audit-tool");
                 onSelectIntent("audit");
                 trackAction("cta_click", { metadata: { label: "Get a Free Website Audit", location: "hero" } });
               }}
@@ -123,15 +123,18 @@ export default function Hero({ onSelectIntent }: HeroProps) {
                 strokeLinecap="round"
               />
             </svg>
-            <div className="mt-6 flex items-center justify-between border-t border-ink-line pt-5">
+            <div className="mt-6 grid grid-cols-3 border-t border-ink-line pt-5">
               <div>
-                <p className="font-display text-2xl font-semibold text-paper">98</p>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Lighthouse score</p>
+                <p className="font-display text-2xl font-semibold text-paper">3</p>
+                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Live templates</p>
               </div>
-              <div className="h-8 w-px bg-ink-line" />
               <div>
-                <p className="font-display text-2xl font-semibold text-paper">1.2s</p>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Avg. load time</p>
+                <p className="font-display text-2xl font-semibold text-paper">4</p>
+                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Audit signals</p>
+              </div>
+              <div>
+                <p className="font-display text-2xl font-semibold text-paper">2-4</p>
+                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Weeks typical</p>
               </div>
             </div>
           </div>

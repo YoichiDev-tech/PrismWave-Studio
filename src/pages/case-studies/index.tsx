@@ -56,6 +56,13 @@ export default function CaseStudiesIndex() {
             </article>
           ))}
         </div>
+        <div className="mt-12 rounded-2xl border border-amber/40 bg-amber/5 p-8 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-amber">Have a similar problem?</p>
+          <h2 className="mt-3 font-display text-2xl font-semibold">Let&apos;s find the right next move for your site.</h2>
+          <a href="/#audit-tool" className="mt-6 inline-flex rounded-full bg-amber px-6 py-3 font-display text-sm font-semibold text-ink">
+            Run a free website audit &rarr;
+          </a>
+        </div>
         </section>
       </main>
       <footer data-ai="footer">

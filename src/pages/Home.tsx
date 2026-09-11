@@ -30,10 +30,12 @@ export default function Home() {
   }, []);
 
   const handleAuditTeardown = useCallback(
-    (siteUrl: string) => {
+    (context: { siteUrl: string; score: number; findings: string[] }) => {
       setIntent("audit");
       setPrefill({
-        siteUrl,
+        siteUrl: context.siteUrl,
+        auditScore: context.score,
+        auditFindings: context.findings,
         message: "I ran the audit tool on my site and would like the full teardown plus next steps.",
         nonce: Date.now(),
       });
@@ -45,7 +47,7 @@ export default function Home() {
   const handleSprintScope = useCallback(
     (summary: string, scopeIntent: Intent) => {
       setIntent(scopeIntent);
-      setPrefill({ message: summary, nonce: Date.now() });
+      setPrefill({ message: summary, scopeEstimate: summary.split("\n")[1], nonce: Date.now() });
       scrollToContact();
     },
     [scrollToContact]

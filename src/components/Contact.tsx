@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import type { Intent } from "../pages/Home";
 import Reveal from "./Reveal";
-import { trackAction } from "../lib/track";
+import { getAttribution, getSessionIdForLead, trackAction } from "../lib/track";
 
 // A pending hand-off from another section (AuditWidget, SprintConfigurator)
 // that wants to pre-fill this form instead of leaving it blank
@@ -11,6 +11,9 @@ import { trackAction } from "../lib/track";
 export interface ContactPrefill {
   message?: string;
   siteUrl?: string;
+  auditScore?: number;
+  auditFindings?: string[];
+  scopeEstimate?: string;
   nonce: number;
 }
 
@@ -95,7 +98,15 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
       const res = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, intent: activeIntent }),
+        body: JSON.stringify({
+          ...form,
+          intent: activeIntent,
+          sessionId: getSessionIdForLead(),
+          attribution: getAttribution(),
+          auditScore: prefill?.auditScore,
+          auditFindings: prefill?.auditFindings,
+          scopeEstimate: prefill?.scopeEstimate,
+        }),
       });
 
       const data: { ok?: boolean; error?: string } = await res.json().catch(() => ({}));
@@ -131,6 +142,10 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
           <div className="mt-10 space-y-4 font-mono text-[13px] text-ink-soft">
             <p>yoichi_dev@proton.me</p>
             <p>Mon-Fri, 9:00am-5:30pm</p>
+          </div>
+          <div className="mt-8 max-w-sm border-l border-amber pl-4 text-sm leading-relaxed text-ink-soft">
+            <p className="font-display font-semibold text-paper">No pressure after you reach out.</p>
+            <p className="mt-2">You will get a clear reply within one business day. We confirm fit and scope before any payment or project commitment.</p>
           </div>
         </Reveal>
 

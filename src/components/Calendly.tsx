@@ -1,6 +1,20 @@
+import { useEffect } from "react";
 import Reveal from "./Reveal";
+import { trackAction } from "../lib/track";
+
+function handleCalendlyMessage(event: MessageEvent) {
+  if (event.origin !== "https://calendly.com") return;
+  if (typeof event.data === "object" && event.data?.event === "calendly.event_scheduled") {
+    trackAction("booking_completed", { metadata: { source: "calendly_embed" } });
+  }
+}
 
 export default function Calendly() {
+  useEffect(() => {
+    window.addEventListener("message", handleCalendlyMessage);
+    return () => window.removeEventListener("message", handleCalendlyMessage);
+  }, []);
+
   return (
     <section id="calendly" className="grain relative overflow-hidden bg-ink py-24 md:py-32 cursor-default">
       <div
