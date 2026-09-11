@@ -54,9 +54,9 @@ export default function Hero({ onSelectIntent }: HeroProps) {
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-                href="#audit-tool"
+              href="#audit-tool"
               onClick={(event) => {
-                  handleSectionClick(event, "audit-tool");
+                handleSectionClick(event, "audit-tool");
                 onSelectIntent("audit");
                 trackAction("cta_click", { metadata: { label: "Get a Free Website Audit", location: "hero" } });
               }}
@@ -103,15 +103,23 @@ export default function Hero({ onSelectIntent }: HeroProps) {
         </div>
 
         {/* Signature: animated waveform */}
-        <div className="relative flex items-center justify-center rounded-3xl border border-ink-line transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber">
-          <div className="relative w-full max-w-sm rounded-3xl border border-ink-line bg-ink-2/60 p-8 backdrop-blur-sm">
+        <div className="relative flex items-center justify-center rounded-3xl border border-ink-line p-2 transition-colors hover:border-amber hover:bg-ink-2 sm:p-3 md:transition-transform md:hover:scale-[1.02]">
+          <div className="relative w-full max-w-sm rounded-[1.35rem] border border-ink-line bg-ink-2/60 p-5 backdrop-blur-sm sm:p-7">
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Signal — live preview</p>
-            <svg viewBox="0 0 340 160" className="mt-6 w-full" aria-hidden="true">
+            <svg viewBox="0 0 340 160" className="mt-5 w-full sm:mt-6" aria-hidden="true">
               <defs>
                 <linearGradient id="hero-wave" x1="0" y1="0" x2="340" y2="0" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#FFB84D" />
-                  <stop offset="0.5" stopColor="#FF7A59" />
-                  <stop offset="1" stopColor="#6C63FF" />
+                  <stop offset="0.32" stopColor="#FF7A59" />
+                  <stop offset="0.64" stopColor="#6C63FF" />
+                  <stop offset="1" stopColor="#FFB84D" />
+                  <animateTransform
+                    attributeName="gradientTransform"
+                    type="translate"
+                    values="0 0; 340 0; 0 0"
+                    dur="7s"
+                    repeatCount="indefinite"
+                  />
                 </linearGradient>
               </defs>
               <path
@@ -123,18 +131,18 @@ export default function Hero({ onSelectIntent }: HeroProps) {
                 strokeLinecap="round"
               />
             </svg>
-            <div className="mt-6 grid grid-cols-3 border-t border-ink-line pt-5">
-              <div>
-                <p className="font-display text-2xl font-semibold text-paper">3</p>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Live templates</p>
+            <div className="mt-5 grid grid-cols-3 gap-3 border-t border-ink-line pt-5 sm:mt-6 sm:gap-4">
+              <div className="min-w-0">
+                <p className="font-display text-2xl font-semibold leading-none text-paper">3</p>
+                <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Live templates</p>
               </div>
-              <div>
-                <p className="font-display text-2xl font-semibold text-paper">4</p>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Audit signals</p>
+              <div className="min-w-0">
+                <p className="font-display text-2xl font-semibold leading-none text-paper">4</p>
+                <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Audit signals</p>
               </div>
-              <div>
-                <p className="font-display text-2xl font-semibold text-paper">2-4</p>
-                <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Weeks typical</p>
+              <div className="min-w-0">
+                <p className="font-display text-2xl font-semibold leading-none text-paper">2-4</p>
+                <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Weeks typical</p>
               </div>
             </div>
           </div>
