@@ -110,7 +110,7 @@ export default function Revamp() {
     setActiveSite(site);
     setIsAnalyzing(true);
     setAnalysisStep(0);
-    trackAction("cta_click", { metadata: { label: "Generate modern preview", location: "revamp" } });
+    trackAction("revamp_preview_generated", { metadata: { location: "revamp", site: site.name, industry: site.industry } });
   };
 
   const handleAnalyze = (event: React.FormEvent<HTMLFormElement>) => {

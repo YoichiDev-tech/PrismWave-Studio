@@ -64,7 +64,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
   try {
     const supabase = getSupabaseAdmin();
-    const { error: leadError } = await supabase.from("leads").insert({
+    const lead = {
       intent: "audit",
       name: "Audit lead",
       email,
@@ -74,8 +74,23 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       audit_score: req.body.auditScore,
       audit_findings: findings,
       attribution: req.body.attribution ?? {},
-      status: "new",
-    });
+    };
+    const { data: existingLead, error: lookupError } = await supabase
+      .from("leads")
+      .select("id")
+      .eq("email", email)
+      .eq("site_url", siteUrl)
+      .maybeSingle();
+
+    if (lookupError) {
+      console.error("Audit lead lookup error:", lookupError);
+      res.status(500).json({ error: "The report could not be prepared. Please try again." });
+      return;
+    }
+
+    const { error: leadError } = existingLead
+      ? await supabase.from("leads").update(lead).eq("id", existingLead.id)
+      : await supabase.from("leads").insert({ ...lead, status: "new" });
 
     if (leadError) {
       console.error("Audit lead persistence error:", leadError);

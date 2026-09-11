@@ -113,7 +113,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
   try {
     const supabase = getSupabaseAdmin();
-    const { error: leadError } = await supabase.from("leads").insert({
+    const lead = {
       intent,
       name,
       email,
@@ -122,12 +122,33 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       idea: idea || null,
       message,
       session_id: payload.sessionId ?? null,
-      audit_score: typeof payload.auditScore === "number" ? payload.auditScore : null,
-      audit_findings: payload.auditFindings ?? [],
-      scope_estimate: payload.scopeEstimate ?? null,
       attribution: payload.attribution ?? {},
-      status: "new",
-    });
+      ...(typeof payload.auditScore === "number" ? { audit_score: payload.auditScore } : {}),
+      ...(payload.auditFindings?.length ? { audit_findings: payload.auditFindings } : {}),
+      ...(payload.scopeEstimate ? { scope_estimate: payload.scopeEstimate } : {}),
+    };
+    let leadLookup = supabase
+      .from("leads")
+      .select("id")
+      .eq("email", email);
+    leadLookup = siteUrl ? leadLookup.eq("site_url", siteUrl) : leadLookup.is("site_url", null);
+    const { data: existingLead, error: lookupError } = await leadLookup.maybeSingle();
+
+    if (lookupError) {
+      console.error("Lead lookup error:", lookupError);
+      res.status(500).json({ error: "Your message could not be recorded. Please try again." });
+      return;
+    }
+
+    const { error: leadError } = existingLead
+      ? await supabase.from("leads").update(lead).eq("id", existingLead.id)
+      : await supabase.from("leads").insert({
+          ...lead,
+          audit_score: typeof payload.auditScore === "number" ? payload.auditScore : null,
+          audit_findings: payload.auditFindings ?? [],
+          scope_estimate: payload.scopeEstimate ?? null,
+          status: "new",
+        });
 
     if (leadError) {
       console.error("Lead persistence error:", leadError);

@@ -30,6 +30,7 @@ const ALLOWED_EVENT_NAMES = new Set([
   "audit_completed",
   "audit_lead_captured",
   "audit_teardown_requested",
+  "revamp_preview_generated",
   "chat_opened",
   "chat_message_sent",
   "cta_click",
