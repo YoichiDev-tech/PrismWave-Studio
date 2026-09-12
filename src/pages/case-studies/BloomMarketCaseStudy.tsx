@@ -4,6 +4,7 @@ import BloomMock from "../../components/portfolioMocks/BloomMock";
 import Footer from "../../components/Footer";
 import Reveal from "../../components/Reveal";
 import AiMetadata, { AiIntent } from "../../components/AiMetadata";
+import SEO from "../../components/SEO";
 
 const ROUND = "'Fredoka', 'Sora', sans-serif";
 const CREAM = "#FFF3E8";
@@ -247,6 +248,11 @@ function LiveHeroPreview() {
 export default function BloomMarketCaseStudy() {
   return (
     <div ai-tag="case-study" data-ai="page" className="bg-ink cursor-default">
+      <SEO
+        title="Bloom Market — Case Study"
+        description="Design system and product concept behind Bloom Market, a bright storefront template for weekly flower delivery businesses."
+        path="/work/bloom-market/case-study"
+      />
       <AiMetadata
         map={["Case study hero", "Final product preview", "Project overview", "Color palette", "Typography", "Layout system", "Interaction design", "Final call to action"]}
         intent="Explain the design decisions behind the Bloom Market ecommerce template and show how the visual system supports flower subscriptions."

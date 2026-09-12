@@ -11,6 +11,7 @@ import {
   IconPottedPlant,
 } from "../../components/illustrations/BloomIcons";
 import AiMetadata, { AiIntent } from "../../components/AiMetadata";
+import SEO from "../../components/SEO";
 
 const ROUND = "'Fredoka', 'Sora', sans-serif";
 const CREAM = "#FFF3E8";
@@ -37,6 +38,11 @@ const GRID_TILES: { bg: string; art: ComponentType<{ className?: string }> }[] =
 export default function BloomMarket() {
   return (
     <div ai-tag="template" data-ai="page" style={{ background: CREAM, color: PLUM, fontFamily: "'Inter', sans-serif" }} className="min-h-screen cursor-default">
+      <SEO
+        title="Bloom Market — Live Template"
+        description="A bright, fast storefront template for flower delivery and small retail businesses, built by PrismWave Studio."
+        path="/work/bloom-market"
+      />
       <AiMetadata
         map={["Flower shop hero", "Weekly product favorites", "Subscription offer", "Brand story"]}
         intent="Present a flower delivery storefront and guide visitors toward shopping or subscribing."

@@ -3,6 +3,7 @@ import { BackToStudioBadge, PickThisTemplateBadge } from "../../components/Badge
 import LoafSpread from "../../components/illustrations/LoafSpread";
 import OvenScene from "../../components/illustrations/OvenScene";
 import AiMetadata, { AiIntent } from "../../components/AiMetadata";
+import SEO from "../../components/SEO";
 
 const SERIF = "'Fraunces', Georgia, serif";
 const INK = "#2B2416";
@@ -30,6 +31,11 @@ export default function FieldingRye() {
       style={{ background: PAPER, color: INK, fontFamily: "'Inter', sans-serif" }}
       ai-tag="template" data-ai="page" className="min-h-screen cursor-default"
     >
+      <SEO
+        title="Fielding & Rye — Live Template"
+        description="A warm neighborhood bakery template with a weekly bake schedule and order-ahead flow, built by PrismWave Studio."
+        path="/work/fielding-and-rye"
+      />
       <AiMetadata
         map={["Bakery hero", "Weekly bake schedule", "Today's case", "Our story", "Hours and location", "Order ahead"]}
         intent="Show a neighborhood bakery brand template and guide visitors toward ordering bread ahead."

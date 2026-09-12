@@ -2,7 +2,13 @@ import LegalLayout, { LegalSection } from "./LegalLayout";
 
 export default function Privacy() {
   return (
-    <LegalLayout eyebrow="Data and privacy" title="Privacy Notice" updated="September 11, 2026">
+    <LegalLayout
+      eyebrow="Data and privacy"
+      title="Privacy Notice"
+      updated="September 11, 2026"
+      path="/privacy"
+      description="What PrismWave Studio collects through this website, why, and the choices available to visitors."
+    >
       <p>This notice explains what PrismWave Studio collects through this website, why it is collected, and the choices available to visitors.</p>
 
       <LegalSection title="Information you provide">

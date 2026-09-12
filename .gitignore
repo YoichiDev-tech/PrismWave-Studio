@@ -27,3 +27,4 @@ dist-ssr
 .env.*.local
 .vercel
 Updates.txt
+prismwave-seo-and-clarity-fixes.patch

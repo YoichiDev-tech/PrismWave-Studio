@@ -17,6 +17,7 @@ import Process from "../components/Process";
 import AuditWidget from "../components/AuditWidget";
 import SprintConfigurator from "../components/SprintConfigurator";
 import AiMetadata, { AiIntent } from "../components/AiMetadata";
+import SEO from "../components/SEO";
 import { scrollToSection } from "../lib/scroll";
 
 export type Intent = "audit" | "build";
@@ -55,6 +56,11 @@ export default function Home() {
 
   return (
     <div ai-tag="home" data-ai="page">
+      <SEO
+        title="Websites that carry your business further"
+        description="PrismWave Studio designs and builds fast, modern, conversion-focused websites for small businesses — from landing pages to full redesigns."
+        path="/"
+      />
       <AiMetadata
         map={["Hero", "Signs your site is outdated", "AI-ready site audit", "Services", "Process", "Pricing", "Sprint configurator", "Portfolio", "FAQ", "Contact"]}
         intent="Help a founder assess, plan, and start a website audit or custom website build with PrismWave Studio."

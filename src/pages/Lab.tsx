@@ -4,6 +4,7 @@ import Reveal from "../components/Reveal";
 import ScoreGauge from "../components/ScoreGauge";
 import Footer from "../components/Footer";
 import AiMetadata, { AiIntent } from "../components/AiMetadata";
+import SEO from "../components/SEO";
 
 const THREADS_URL = "https://www.threads.com/@yoichidev";
 
@@ -73,6 +74,11 @@ export default function Lab() {
 
   return (
     <div ai-tag="lab" data-ai="page" className="grain relative min-h-screen overflow-hidden bg-ink text-paper">
+      <SEO
+        title="The Lab — Open Component Showcase"
+        description="Copy-paste ready components and interaction patterns from the PrismWave Studio live site — open, free to use."
+        path="/lab"
+      />
       <AiMetadata
         map={["Lab introduction", "Production component list", "Live previews", "Copyable snippets"]}
         intent="Let visitors inspect, preview, and copy production UI components used by PrismWave Studio."

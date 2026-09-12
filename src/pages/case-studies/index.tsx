@@ -1,7 +1,7 @@
-
 import AiMetadata from "../../components/AiMetadata";
 import { AiIntent } from "../../components/AiMetadata";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 import { Link } from "react-router-dom";
 
 const caseStudies = [
@@ -30,6 +30,11 @@ const caseStudies = [
 export default function CaseStudiesIndex() {
   return (
     <div ai-tag="case-study-index" data-ai="page" className="min-h-screen bg-ink text-paper">
+      <SEO
+        title="Case Studies"
+        description="How PrismWave Studio approaches design and product problems — selected case studies covering hospitality, retail, and appointment-based businesses."
+        path="/case-studies"
+      />
       <AiMetadata
         map={["Case studies introduction", "Bloom Market case study", "ServeSync case study"]}
         intent="Help visitors review PrismWave Studio case studies and understand the design and product outcomes behind each project."

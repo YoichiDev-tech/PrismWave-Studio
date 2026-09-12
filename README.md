@@ -27,6 +27,7 @@ copy describing the service, but the service running in the browser.
 - TypeScript
 - Vite
 - Tailwind CSS
+- react-helmet-async (per-route SEO and social share tags)
 - Supabase (live — interaction tracking; testimonials engine still planned)
 - Vercel Serverless Functions
 - Resend (transactional email)
@@ -44,8 +45,15 @@ copy describing the service, but the service running in the browser.
   server-side and scores it for real, no fake numbers
 - Sprint Configurator hands its output straight into the Contact form, pre-filled
 - The Lab (`/lab`) — a small open component showcase, copy-paste ready
+- Legal pages live: Terms of Use, Privacy Notice, and Regulatory Information
+  (`/terms`, `/privacy`, `/regulatory`) — Regulatory still carries a placeholder
+  for the studio's formal business registration details, to be filled in once
+  registered
+- Every route now ships its own SEO metadata — title, meta description,
+  canonical URL, and Open Graph/Twitter tags — instead of one shared set
+  copied across every page
 - No real client testimonials, case studies, or production assets yet —
-  content is illustrative
+  content is illustrative, and clearly labeled as such where numbers are shown
 - Fixed a layout bug where the Crisp chat integration was letting the whole
   page drag sideways to reveal the chat icon — page is locked to vertical
   scroll only now
@@ -68,7 +76,9 @@ copy describing the service, but the service running in the browser.
   Supabase, no client-side keys involved — powers a separate private
   ops dashboard
 - Structured lead records include contact intent, audit context, scope
-  estimates, session attribution, and follow-up status.
+  estimates, session attribution, and follow-up status
+- Per-page SEO and social share metadata — each route serves its own
+  title, description, canonical link, and OG/Twitter card
 - Fully responsive across mobile, tablet, and desktop
 - Production deployment on Vercel
 
@@ -81,18 +91,27 @@ copy describing the service, but the service running in the browser.
 - Create a Facebook Page and link Instagram Business account
 - Implement serverless API route for Instagram data
 - Add caching layer for stable API performance
-- Add a privacy policy
-- Add analytics
+- Verify the site in Google Search Console and submit `sitemap.xml`; add a
+  lightweight public analytics tool (e.g. Plausible) for traffic/SEO
+  visibility — separate from the internal Supabase ops tracking, which is
+  already live
 - Build the actual "agent runs the outreach" job — the ops dashboard
   (separate project, `prismwave-ops`) already has the drafting +
   approval queue; still need the cron job that finds leads and the
   send-on-approval step
 - Confirm real Threads/Instagram handles across Footer + Lab (currently placeholders)
+- Fill in real business registration details on the Regulatory page once
+  the studio is formally registered
+- Write a first blog/content post to start building an organic search and
+  authority channel
+- Decide whether to package the portfolio templates (Bloom Market,
+  Fielding & Rye, Nova Cloud) as downloadable, priced products, and if so,
+  wire up a checkout (Lemon Squeezy or Stripe Payment Links)
 
 ## End-Project Considerations
 
 - Buy `prismwavestudio.com` and set up `hello@` on it
-- Add analytics before driving traffic to it
+- Verify in Search Console and add public analytics before driving traffic to it
 - Revisit copy once there's a first real client project to reference
 
 ## Sales pipeline setup
@@ -174,6 +193,23 @@ key. Never expose the service role key with a `VITE_` prefix.
   tracking data and shows three report windows (morning/evening/night)
   plus an AI-drafted outreach approval queue. Nothing about it lives in
   this repo on purpose — see that project's own README for why
+
+### 12/09/2026
+- Added per-route SEO via `react-helmet-async` and a shared `<SEO />`
+  component: every page now ships its own title, meta description, and
+  canonical URL, fixing a bug where the canonical tag pointed every route
+  at the homepage instead of itself
+- Added `lastmod` dates to `sitemap.xml` and included the previously
+  missing Appointment Workflow concept URL
+- Relabeled ServeSync's weekly savings figures as illustrative targets
+  rather than measured results, matching the disclosure pattern already
+  used on the Appointment Workflow concept, and added a closing
+  "no fabricated testimonial" section
+- Added payment clarity to Pricing: deposit split, accepted payment
+  methods, currency, and how work beyond included revisions is handled
+- Added TODO markers on the Regulatory page for real business
+  registration details, ready to fill in once the studio is formally
+  registered in Italy
 
 ## Author
 

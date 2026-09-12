@@ -1,17 +1,23 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 interface LegalLayoutProps {
   eyebrow: string;
   title: string;
   updated: string;
+  /** Route path, e.g. "/privacy" — used for the canonical URL and OG tags */
+  path: string;
+  /** One-line meta description for this specific legal page */
+  description: string;
   children: ReactNode;
 }
 
-export default function LegalLayout({ eyebrow, title, updated, children }: LegalLayoutProps) {
+export default function LegalLayout({ eyebrow, title, updated, path, description, children }: LegalLayoutProps) {
   return (
     <div className="min-h-screen bg-ink text-paper">
+      <SEO title={title} description={description} path={path} noIndex />
       <header className="border-b border-ink-line">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
           <Link to="/" className="font-display text-lg font-semibold tracking-tight text-paper">

@@ -1,12 +1,17 @@
-
 import { Link } from "react-router-dom";
 import AiMetadata from "../components/AiMetadata";
 import Footer from "../components/Footer";
 import Portfolio from "../components/Portfolio";
+import SEO from "../components/SEO";
 
 export default function Work() {
 	return (
 		<div className="min-h-screen bg-ink text-paper">
+			<SEO
+				title="Work & Templates"
+				description="Live, clickable portfolio templates from PrismWave Studio — Bloom Market, Fielding & Rye, and Nova Cloud — plus case studies behind each build."
+				path="/work"
+			/>
 			<AiMetadata
 				map={["Work introduction", "Selected templates", "Project cards", "Studio footer"]}
 				intent="Showcase PrismWave Studio website work and direct visitors to complete portfolio templates and case studies."
@@ -29,4 +34,3 @@ export default function Work() {
 		</div>
 	);
 }
-

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AiMetadata, { AiIntent } from "../../components/AiMetadata";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const metrics = [
   { value: "+45%", label: "Illustrative booking conversion target" },
@@ -70,6 +71,11 @@ function WorkflowPreview() {
 export default function AppointmentWorkflowConcept() {
   return (
     <div className="min-h-screen bg-ink text-paper">
+      <SEO
+        title="Modernizing Appointment Workflows — Concept"
+        description="A clearly labeled concept for reducing booking friction and no-shows for appointment-based businesses, illustrative rather than a measured client result."
+        path="/work/appointment-workflows/concept"
+      />
       <AiMetadata
         map={["Concept case study", "Client challenge", "Engineering strategy", "Illustrative targets", "Workflow preview"]}
         intent="Show how PrismWave could modernize appointment workflows for a local service business, clearly labeled as a concept rather than a client result."

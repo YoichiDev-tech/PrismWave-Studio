@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { BackToStudioBadge, PickThisTemplateBadge } from "../../components/Badge";
 import AiMetadata, { AiIntent } from "../../components/AiMetadata";
+import SEO from "../../components/SEO";
 
 const MONO = "'IBM Plex Mono', ui-monospace, monospace";
 const BG = "#0B1220";
@@ -27,6 +28,11 @@ export default function NovaCloud() {
       style={{ background: BG, color: "#E7ECF5", fontFamily: "'Inter', sans-serif" }}
       ai-tag="template" data-ai="page" className="min-h-screen cursor-default"
     >
+      <SEO
+        title="Nova Cloud — Live Template"
+        description="An observability SaaS landing page template with pricing tiers and a free-trial flow, built by PrismWave Studio."
+        path="/work/nova-cloud"
+      />
       <AiMetadata
         map={["Uptime hero", "Product features", "Performance statistics", "Pricing tiers"]}
         intent="Present an observability SaaS template and move technical teams toward starting a free trial."

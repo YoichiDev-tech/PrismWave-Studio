@@ -92,6 +92,9 @@ export default function Pricing() {
             Start with the free audit or a 15-minute fit call. Your project is only scoped and scheduled after we agree on the goal, deliverables, price, and timeline.
           </p>
           <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-paper/60">No retainers. No surprise add-ons. No locked-in platform.</p>
+          <p className="mt-2 font-mono text-[11px] uppercase tracking-wide text-paper/60">
+            50% deposit to start, 50% on delivery. Paid by card or bank transfer. Prices in USD unless agreed otherwise. Work beyond included revisions is scoped and quoted separately before starting.
+          </p>
         </Reveal>
 
         <Reveal delay={3} className="mt-16 flex justify-center">

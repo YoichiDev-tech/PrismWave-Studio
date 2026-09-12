@@ -2,7 +2,13 @@ import LegalLayout, { LegalSection } from "./LegalLayout";
 
 export default function Terms() {
   return (
-    <LegalLayout eyebrow="Studio terms" title="Terms of Use" updated="September 11, 2026">
+    <LegalLayout
+      eyebrow="Studio terms"
+      title="Terms of Use"
+      updated="September 11, 2026"
+      path="/terms"
+      description="Terms of Use for PrismWave Studio's website, audit tool, and web design and development services."
+    >
       <p>These Terms of Use govern access to the PrismWave Studio website, tools, and services. By using this site, you agree to use it lawfully and respectfully.</p>
 
       <LegalSection title="Services and project agreements">

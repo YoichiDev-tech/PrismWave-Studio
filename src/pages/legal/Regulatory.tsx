@@ -2,12 +2,24 @@ import LegalLayout, { LegalSection } from "./LegalLayout";
 
 export default function Regulatory() {
   return (
-    <LegalLayout eyebrow="Transparency" title="Regulatory Information" updated="September 11, 2026">
+    <LegalLayout
+      eyebrow="Transparency"
+      title="Regulatory Information"
+      updated="September 11, 2026"
+      path="/regulatory"
+      description="Operational transparency about PrismWave Studio's business identity and the limits of the tools offered on this site."
+    >
       <p>This page provides operational transparency about PrismWave Studio and the limits of the tools offered on this website.</p>
 
       <LegalSection title="Business identity">
         <p>PrismWave Studio is an independent online web design and development studio operated by Yoichi. Primary contact: <a className="text-amber underline underline-offset-4" href="mailto:yoichi_dev@proton.me">yoichi_dev@proton.me</a>.</p>
         <p>Before publishing a legal or tax registration number, registered address, or jurisdiction-specific disclosures, those details must be supplied and verified by the studio owner.</p>
+        {/* TODO once registered in Italy — fill in and remove this comment:
+            - Legal entity name (once P.IVA is registered)
+            - Partita IVA number
+            - Registered/operating address
+            - VAT regime note (e.g. regime forfettario, reverse charge for EU B2B clients)
+            - Governing jurisdiction statement ("governed by the laws of Italy") */}
       </LegalSection>
 
       <LegalSection title="No professional certification claim">
