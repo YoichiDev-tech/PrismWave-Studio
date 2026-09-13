@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin";
+import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin.js";
 
 interface VercelLikeRequest {
   method?: string;

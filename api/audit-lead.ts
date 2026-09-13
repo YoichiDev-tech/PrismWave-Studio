@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin";
+import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin.js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "PrismWave Studio <onboarding@resend.dev>";
