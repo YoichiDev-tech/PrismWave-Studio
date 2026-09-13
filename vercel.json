@@ -1,9 +1,20 @@
 {
-  "rewrites": [
-    { "source": "/google428d2d34023ad9b7.html", "destination": "/google428d2d34023ad9b7.html" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  "routes": [
+    {
+      "src": "/google428d2d34023ad9b7.html",
+      "dest": "/google428d2d34023ad9b7.html"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
