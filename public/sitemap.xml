@@ -1,63 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://prismwave-studio.vercel.app/</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/work</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/case-studies</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/work/bloom-market/case-study</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/work/servesync/case-study</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/work/appointment-workflows/concept</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/work/bloom-market</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/work/fielding-and-rye</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/work/nova-cloud</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://prismwave-studio.vercel.app/lab</loc>
-    <lastmod>2026-09-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+
+  <!-- Core pages -->
+  <url><loc>https://prismwave-studio.vercel.app/</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/work</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/lab</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/revamp</loc></url>
+
+  <!-- Case studies -->
+  <url><loc>https://prismwave-studio.vercel.app/case-studies</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/case-studies/BloomMarketCaseStudy</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/case-studies/ServeSyncCaseStudy</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/case-studies/AppointmentWorkflowConcept</loc></url>
+
+  <!-- Templates -->
+  <url><loc>https://prismwave-studio.vercel.app/templates/BloomMarket</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/templates/FieldingRye</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/templates/NovaCloud</loc></url>
+
+  <!-- Legal pages -->
+  <url><loc>https://prismwave-studio.vercel.app/legal/privacy</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/legal/terms</loc></url>
+  <url><loc>https://prismwave-studio.vercel.app/legal/regulatory</loc></url>
+
 </urlset>
