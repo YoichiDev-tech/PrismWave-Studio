@@ -18,6 +18,12 @@ import Terms from "./pages/legal/Terms";
 import Privacy from "./pages/legal/Privacy";
 import Regulatory from "./pages/legal/Regulatory";
 import Revamp from "./pages/Revamp";
+import Packages from "./pages/Packages";
+import LocalServiceLandingPage from "./pages/packages/LocalServiceLandingPage";
+import RestaurantCafeLandingPage from "./pages/packages/RestaurantCafeLandingPage";
+import ProfessionalOnePager from "./pages/packages/ProfessionalOnePager";
+import SeoAdjustment from "./pages/packages/SeoAdjustment";
+import InsightsDashboardShowcase from "./pages/packages/InsightsDashboardShowcase";
 
 export default function App() {
   usePageTracking();
@@ -45,6 +51,13 @@ export default function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/regulatory" element={<Regulatory />} />
+
+        <Route path="/packages" element={<Packages />} />
+        <Route path="/packages/local-service-landing-page" element={<LocalServiceLandingPage />} />
+        <Route path="/packages/restaurant-cafe-landing-page" element={<RestaurantCafeLandingPage />} />
+        <Route path="/packages/professional-one-pager" element={<ProfessionalOnePager />} />
+        <Route path="/packages/seo-adjustment" element={<SeoAdjustment />} />
+        <Route path="/packages/insights-dashboard-showcase" element={<InsightsDashboardShowcase />} />
       </Routes>
     </>
   );

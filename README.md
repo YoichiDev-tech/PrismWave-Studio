@@ -4,7 +4,7 @@ PrismWave Studio
 
 ## Screenshot
 
-![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## Description
 
@@ -39,6 +39,9 @@ copy describing the service, but the service running in the browser.
   Portfolio, Why Choose Us, FAQ, About, Contact, Footer
 - 3 portfolio templates are live, clickable routes (`/work/...`), each a
   full standalone landing page
+- 5 fixed-price packages are live, clickable routes (`/packages/...`) —
+  same click-through-to-full-page pattern as the portfolio templates,
+  now paired with a fixed price and a scoped included/not-included list
 - Contact form is wired to a real backend via Resend (`/api/send`) — actually
   sends, not simulated
 - AI-Ready Site Audit tool is live (`/api/audit`) — fetches a visitor's site
@@ -67,6 +70,13 @@ copy describing the service, but the service running in the browser.
   (speed, UI/UX modernism, mobile responsiveness, AI readability)
 - Architecture & MVP Sprint Configurator — toggle-based scope + instant
   price/timeline estimate, feeds straight into Contact
+- Fixed-price Packages (`/packages`) — 5 productized offers (local service
+  landing page, restaurant/café landing page, professional one-pager, SEO
+  adjustment, insights dashboard showcase), each with its own scoped page:
+  what's included, what's not, turnaround, and a fixed price up front.
+  The Insights Dashboard package is explicitly labeled as running on
+  sample data in the UI itself, same disclosure pattern used elsewhere
+  on the site for illustrative numbers
 - The Lab — public, copyable component snippets with live previews
 - Crisp live chat fully integrated and mobile-synced
 - Real-time visitor tracking via Crisp
@@ -104,9 +114,15 @@ copy describing the service, but the service running in the browser.
   the studio is formally registered
 - Write a first blog/content post to start building an organic search and
   authority channel
-- Decide whether to package the portfolio templates (Bloom Market,
-  Fielding & Rye, Nova Cloud) as downloadable, priced products, and if so,
-  wire up a checkout (Lemon Squeezy or Stripe Payment Links)
+- Wire up checkout (Lemon Squeezy or Stripe Payment Links) for the 5
+  Packages — pages and pricing are live, but "Get this package" still
+  routes to Contact rather than taking payment directly
+- Decide whether to also package the 3 portfolio templates (Bloom Market,
+  Fielding & Rye, Nova Cloud) themselves as downloadable, priced products,
+  separate from the service Packages above
+- Build the real data-connection phase for the Insights Dashboard package
+  once a client actually buys it (backend, auth, live source — explicitly
+  out of scope on the sample-data version)
 
 ## End-Project Considerations
 
@@ -210,6 +226,27 @@ key. Never expose the service role key with a `VITE_` prefix.
 - Added TODO markers on the Regulatory page for real business
   registration details, ready to fill in once the studio is formally
   registered in Italy
+
+### 15/09/2026
+- Added Packages (`/packages`): 5 fixed-price, productized service
+  offers — Local Service Landing Page, Restaurant/Café Landing Page,
+  Professional One-Pager, SEO Adjustment, and Insights Dashboard
+  Showcase — separate from the free `/work` portfolio templates
+- Each package gets its own full route (`/packages/<slug>`) using the
+  same click-a-card-to-open-the-full-page pattern as the portfolio
+  templates: scoped included/not-included lists, turnaround time, and
+  a fixed price up front instead of a custom quote
+- Built one shared `PackagePageLayout` component driven off a single
+  `packages.ts` data file, so every package page stays structurally
+  consistent and a 6th package is one data entry + one route away
+- Insights Dashboard Showcase built on sample data only, labeled as
+  such on both the card and the full page (same disclosure standard
+  already used for ServeSync and the Appointment Workflow concept);
+  price bundles the build with the first maintenance cycle, real data
+  connection scoped as a separate future phase
+- Added "Packages" to Nav (desktop + mobile), positioned after "Work"
+- Checkout not wired yet — "Get this package" currently routes to
+  Contact, same as the portfolio template CTAs
 
 ## Author
 

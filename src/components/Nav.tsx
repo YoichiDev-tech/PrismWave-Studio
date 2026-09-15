@@ -9,6 +9,7 @@ const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Services", href: "#services" },
   { label: "Build", href: "#build", intent: "build" },
   { label: "Work", href: "/work" },
+  { label: "Packages", href: "/packages" },
   { label: "Revamp", href: "/revamp" },
   { label: "Lab", href: "/lab" },
   { label: "Why Us", href: "#why-us" },
