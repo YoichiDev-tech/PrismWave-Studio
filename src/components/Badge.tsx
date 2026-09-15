@@ -42,6 +42,23 @@ export function BackToStudioBadge({ tone = "dark" }: TemplateChromeProps) {
   );
 }
 
+export function BackToPackagesBadge({ tone = "dark" }: TemplateChromeProps) {
+  const isDark = tone === "dark";
+  return (
+    <Link
+      to="/packages"
+      className={`fixed right-4 top-4 z-50 inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-[11px] uppercase tracking-wide backdrop-blur-md transition-transform hover:scale-105 sm:right-6 sm:top-6 ${
+        isDark
+          ? "border-white/15 bg-black/40 text-white/80 hover:text-white"
+          : "border-black/10 bg-white/70 text-black/70 hover:text-black"
+      }`}
+    >
+      All Packages
+      <span aria-hidden="true">&rarr;</span>
+    </Link>
+  );
+}
+
 export function PickThisTemplateBadge({ tone = "dark" }: TemplateChromeProps) {
   const isDark = tone === "dark";
   return (
