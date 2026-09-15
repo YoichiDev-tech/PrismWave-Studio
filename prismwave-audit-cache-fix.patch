@@ -1,0 +1,354 @@
+diff --git a/api/_lib/supabaseAdmin.ts b/api/_lib/supabaseAdmin.ts
+index cd3d25f..7c0b3be 100644
+--- a/api/_lib/supabaseAdmin.ts
++++ b/api/_lib/supabaseAdmin.ts
+@@ -104,6 +104,27 @@ interface Database {
+         }>;
+         Relationships: [];
+       };
++      audit_cache: {
++        Row: {
++          cache_key: string;
++          final_url: string;
++          signals: Json;
++          checked_at: string;
++        };
++        Insert: {
++          cache_key: string;
++          final_url: string;
++          signals: Json;
++          checked_at?: string;
++        };
++        Update: Partial<{
++          cache_key: string;
++          final_url: string;
++          signals: Json;
++          checked_at: string;
++        }>;
++        Relationships: [];
++      };
+     };
+     Views: Record<string, never>;
+     Functions: Record<string, never>;
+diff --git a/api/audit.ts b/api/audit.ts
+index 73da3f1..248048d 100644
+--- a/api/audit.ts
++++ b/api/audit.ts
+@@ -1,7 +1,18 @@
+ // Fetches a prospect's site server-side (avoids browser CORS)
+-// and returns raw, honest signals about it 
++// and returns raw, honest signals about it
+ // No fake scores are computed here: the scoring happens client-side in AuditWidget.tsx
+ // from these real signals, so it's easy to see exactly what's being measured and why
++//
++// A single live fetch's responseTimeMs is inherently noisy (cold starts, target
++// server load, routing) — enough to flip the speed score run to run on the exact
++// same site. So results are cached per normalized URL for CACHE_TTL_MS: testing
++// the same URL again within that window returns the same, labeled measurement
++// instead of a brand-new noisy one. Cache failures (e.g. Supabase not configured
++// locally) never block an audit — they just fall back to always-live behavior.
++
++import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin.js";
++
++const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
+ 
+ // Types structure for vercel's node.js request/response objects
+ interface VercelLikeRequest {
+@@ -31,7 +42,7 @@ export interface AuditSignals {
+   hasOpenGraph: boolean;
+ }
+ 
+-function isPayload(data: unknown): data is { url: string } {
++function isPayload(data: unknown): data is { url: string; forceRefresh?: boolean } {
+   return typeof data === "object" && data !== null && typeof (data as Record<string, unknown>).url === "string";
+ }
+ 
+@@ -41,6 +52,20 @@ function normalizeUrl(raw: string): string {
+   return `https://${trimmed}`;
+ }
+ 
++// Cache key ignores scheme, "www.", trailing slash, and case so
++// "Example.com", "www.example.com/", and "https://example.com" all
++// hit the same cached result instead of each looking "different."
++function cacheKeyFor(normalizedUrl: string): string {
++  try {
++    const u = new URL(normalizedUrl);
++    const host = u.hostname.replace(/^www\./i, "").toLowerCase();
++    const path = u.pathname.replace(/\/+$/, "");
++    return `${host}${path}${u.search}`.toLowerCase();
++  } catch {
++    return normalizedUrl.toLowerCase();
++  }
++}
++
+ // Cheap, dependency-free HTML sniffing
+ // This is intentionally not a full DOM parser — good enough to give honest,
+ // directional signals without pulling in a heavy parsing library for a lightweight edge function
+@@ -109,6 +134,27 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
+     return;
+   }
+ 
++  const key = cacheKeyFor(targetUrl);
++  const forceRefresh = payload.forceRefresh === true;
++
++  if (!forceRefresh) {
++    try {
++      const supabase = getSupabaseAdmin();
++      const { data: cached } = await supabase
++        .from("audit_cache")
++        .select("signals, checked_at")
++        .eq("cache_key", key)
++        .maybeSingle();
++
++      if (cached && Date.now() - new Date(cached.checked_at).getTime() < CACHE_TTL_MS) {
++        res.status(200).json({ ok: true, signals: cached.signals, cached: true, checkedAt: cached.checked_at });
++        return;
++      }
++    } catch {
++      // No cache configured / lookup failed — fall through to a live measurement.
++    }
++  }
++
+   const controller = new AbortController();
+   const timeout = setTimeout(() => controller.abort(), 8000);
+ 
+@@ -142,7 +188,18 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
+       ...analyzed,
+     };
+ 
+-    res.status(200).json({ ok: true, signals });
++    const checkedAt = new Date().toISOString();
++
++    try {
++      const supabase = getSupabaseAdmin();
++      await supabase
++        .from("audit_cache")
++        .upsert({ cache_key: key, final_url: signals.finalUrl, signals: signals as unknown as Json, checked_at: checkedAt });
++    } catch {
++      // Caching is best-effort — a failed write shouldn't fail the audit response.
++    }
++
++    res.status(200).json({ ok: true, signals, cached: false, checkedAt });
+   } catch (err) {
+     clearTimeout(timeout);
+     const aborted = err instanceof Error && err.name === "AbortError";
+diff --git a/src/components/AuditWidget.tsx b/src/components/AuditWidget.tsx
+index 58f24e1..9f1b145 100644
+--- a/src/components/AuditWidget.tsx
++++ b/src/components/AuditWidget.tsx
+@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
+ import ScoreGauge from "./ScoreGauge";
+ import { scoreAudit } from "../lib/auditScoring";
+ import type { AuditResult } from "../lib/auditScoring";
+-import type { AuditSignals } from "../types/audit";
++import type { AuditSignals, AuditMeta } from "../types/audit";
+ import { getAttribution, getSessionIdForLead, trackAction } from "../lib/track";
+ interface AuditWidgetProps {
+   // Lets a "See my results" CTA hand off straight into the Contact form,
+@@ -14,35 +14,41 @@ interface AuditWidgetProps {
+ 
+ type Status = "idle" | "loading" | "done" | "error";
+ 
++function formatRelativeTime(iso: string): string {
++  const diffMs = Date.now() - new Date(iso).getTime();
++  const minutes = Math.round(diffMs / 60000);
++  if (minutes < 1) return "just now";
++  if (minutes < 60) return `${minutes}m ago`;
++  const hours = Math.round(minutes / 60);
++  return `${hours}h ago`;
++}
++
+ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps) {
+   const [url, setUrl] = useState("");
+   const [status, setStatus] = useState<Status>("idle");
+   const [error, setError] = useState<string | null>(null);
+   const [result, setResult] = useState<AuditResult | null>(null);
+   const [signals, setSignals] = useState<AuditSignals | null>(null);
++  const [meta, setMeta] = useState<AuditMeta | null>(null);
+   const [email, setEmail] = useState("");
+   const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "captured" | "error">("idle");
+ 
+-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+-    e.preventDefault();
+-    if (!url.trim()) {
+-      setError("Enter a site URL to analyze.");
+-      return;
+-    }
+-
++  const runAudit = async (targetUrl: string, forceRefresh: boolean) => {
+     setStatus("loading");
+     setError(null);
+     setResult(null);
+-    trackAction("audit_run", { intent: "audit", metadata: { url: url.trim() } });
++    trackAction("audit_run", { intent: "audit", metadata: { url: targetUrl, forceRefresh } });
+ 
+     try {
+       const res = await fetch("/api/audit", {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+-        body: JSON.stringify({ url: url.trim() }),
++        body: JSON.stringify({ url: targetUrl, forceRefresh }),
+       });
+ 
+-      const data: { ok?: boolean; signals?: AuditSignals; error?: string } = await res.json().catch(() => ({}));
++      const data: { ok?: boolean; signals?: AuditSignals; error?: string; cached?: boolean; checkedAt?: string } = await res
++        .json()
++        .catch(() => ({}));
+ 
+       if (!res.ok || !data.ok || !data.signals) {
+         setError(data.error ?? "Something went wrong analyzing that site.");
+@@ -51,6 +57,7 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
+       }
+ 
+       setSignals(data.signals);
++      setMeta(data.checkedAt ? { cached: Boolean(data.cached), checkedAt: data.checkedAt } : null);
+       const auditResult = scoreAudit(data.signals);
+       setResult(auditResult);
+       setEmail("");
+@@ -58,7 +65,7 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
+       setStatus("done");
+       trackAction("audit_completed", {
+         intent: "audit",
+-        metadata: { url: data.signals.finalUrl, overallScore: auditResult.overall },
++        metadata: { url: data.signals.finalUrl, overallScore: auditResult.overall, cached: Boolean(data.cached) },
+       });
+     } catch {
+       setError("Couldn't reach the audit service. Check your connection and try again.");
+@@ -66,6 +73,15 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
+     }
+   };
+ 
++  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
++    e.preventDefault();
++    if (!url.trim()) {
++      setError("Enter a site URL to analyze.");
++      return;
++    }
++    await runAudit(url.trim(), false);
++  };
++
+   const handleUnlock = async (e: FormEvent<HTMLFormElement>) => {
+     e.preventDefault();
+     if (!signals || !result || !email.trim()) return;
+@@ -162,6 +178,21 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
+                 <p className="max-w-sm text-sm text-ink-soft">
+                   Results for <span className="text-paper">{signals.finalUrl}</span>
+                 </p>
++                {meta && (
++                  <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft/70">
++                    {meta.cached ? `Cached result · checked ${formatRelativeTime(meta.checkedAt)}` : "Just measured live"}
++                    {meta.cached && (
++                      <button
++                        type="button"
++                        onClick={() => runAudit(signals.finalUrl, true)}
++                        disabled={status === "loading"}
++                        className="ml-2 underline decoration-dotted underline-offset-2 hover:text-paper disabled:opacity-60"
++                      >
++                        Re-check now
++                      </button>
++                    )}
++                  </p>
++                )}
+               </div>
+ 
+               <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-4">
+diff --git a/src/lib/auditScoring.ts b/src/lib/auditScoring.ts
+index 4af5a43..94bd173 100644
+--- a/src/lib/auditScoring.ts
++++ b/src/lib/auditScoring.ts
+@@ -16,30 +16,33 @@ function clamp(n: number, min = 0, max = 100): number {
+   return Math.max(min, Math.min(max, n));
+ }
+ 
++// Continuous falloff instead of hard buckets, so a site whose real response
++// time hovers near a boundary (e.g. 780ms vs 820ms) doesn't swing a chunk of
++// points from one test to the next on nothing but ordinary network jitter.
++// goodMs still earns full marks; badMs is where it bottoms out at the floor.
++function scoreWithFalloff(value: number, goodMs: number, badMs: number, maxPoints: number, floorPoints: number): number {
++  if (value <= goodMs) return maxPoints;
++  if (value >= badMs) return floorPoints;
++  const t = (value - goodMs) / (badMs - goodMs);
++  return Math.round(maxPoints - t * (maxPoints - floorPoints));
++}
++
+ function scoreSpeed(s: AuditSignals): AuditCategory {
+   const findings: string[] = [];
+-  let score = 0;
+ 
+-  // Response time — 60 pts
+-  if (s.responseTimeMs < 300) score += 60;
+-  else if (s.responseTimeMs < 800) score += 48;
+-  else if (s.responseTimeMs < 1500) score += 34;
+-  else if (s.responseTimeMs < 3000) score += 18;
+-  else {
+-    score += 6;
++  // Response time — 60 pts, smooth falloff from 300ms (full marks) to 3000ms (floor)
++  const speedPoints = scoreWithFalloff(s.responseTimeMs, 300, 3000, 60, 6);
++  if (s.responseTimeMs >= 800) {
+     findings.push(`Server response took ${(s.responseTimeMs / 1000).toFixed(1)}s — visitors expect under 1s.`);
+   }
+ 
+-  // Page weight — 40 pts
+-  if (s.pageWeightKb < 300) score += 40;
+-  else if (s.pageWeightKb < 800) score += 30;
+-  else if (s.pageWeightKb < 1500) score += 18;
+-  else {
+-    score += 6;
++  // Page weight — 40 pts, smooth falloff from 300KB (full marks) to 1500KB (floor)
++  const weightPoints = scoreWithFalloff(s.pageWeightKb, 300, 1500, 40, 6);
++  if (s.pageWeightKb >= 800) {
+     findings.push(`HTML payload is ${s.pageWeightKb}KB — likely unoptimized markup or inline assets.`);
+   }
+ 
+-  return { key: "speed", label: "Page Speed", score: clamp(score), findings };
++  return { key: "speed", label: "Page Speed", score: clamp(speedPoints + weightPoints), findings };
+ }
+ 
+ function scoreModernism(s: AuditSignals): AuditCategory {
+diff --git a/src/types/audit.ts b/src/types/audit.ts
+index 3b6c8fe..91b7d24 100644
+--- a/src/types/audit.ts
++++ b/src/types/audit.ts
+@@ -15,4 +15,11 @@ export interface AuditSignals {
+   imagesMissingAlt: number;
+   hasMediaQueries: boolean;
+   hasOpenGraph: boolean;
++}
++
++// Cache metadata returned alongside signals by /api/audit — lets the UI show
++// visitors *why* a repeat test of the same URL matches their last result.
++export interface AuditMeta {
++  cached: boolean;
++  checkedAt: string;
+ }
+\ No newline at end of file
+diff --git a/supabase/schema.sql b/supabase/schema.sql
+index 210e8d6..ce2f0a2 100644
+--- a/supabase/schema.sql
++++ b/supabase/schema.sql
+@@ -40,6 +40,25 @@ create index if not exists leads_created_at_idx on public.leads (created_at desc
+ create index if not exists leads_status_idx on public.leads (status);
+ create index if not exists leads_email_idx on public.leads (email);
+ 
++-- Caches live audit measurements per normalized URL so retesting the same
++-- site within the TTL window returns the same, labeled result instead of a
++-- brand-new live measurement (which is naturally noisy run to run).
++create table if not exists public.audit_cache (
++  cache_key text primary key,
++  final_url text not null,
++  signals jsonb not null,
++  checked_at timestamptz not null default now()
++);
++
++create index if not exists audit_cache_checked_at_idx on public.audit_cache (checked_at desc);
++
++alter table public.audit_cache enable row level security;
++
++drop policy if exists "operators can read audit cache" on public.audit_cache;
++create policy "operators can read audit cache"
++on public.audit_cache for select
++to authenticated using (true);
++
+ create or replace function public.touch_leads_updated_at()
+ returns trigger
+ language plpgsql
