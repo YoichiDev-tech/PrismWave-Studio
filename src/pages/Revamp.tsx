@@ -95,8 +95,7 @@ async function fetchScreenshot(url: string): Promise<string> {
 }
 
 // FIXED: return a real image URL, not HTML
-function generatePreviewImage(siteName: string, accent: string): string {
-  // Simple, reliable modern preview image for now
+function generatePreviewImage(): string {
   return "/images/revamps/aurora-fitness/after.png";
 }
 
@@ -142,7 +141,7 @@ export default function Revamp() {
 
     if (site.id.startsWith("custom-")) {
       before = await fetchScreenshot(site.url);
-      after = generatePreviewImage(site.name, site.accent);
+      after = generatePreviewImage();
     }
 
     setActiveSite({
