@@ -1,4 +1,13 @@
 {
+  "functions": {
+    "api/revamp.ts": { "maxDuration": 60 }
+  },
+  "rewrites": [
+    { "source": "/google428d2d34023ad9b7.html", "destination": "/google428d2d34023ad9b7.html" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

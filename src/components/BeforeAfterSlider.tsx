@@ -1,29 +1,118 @@
-import { useRef, useState, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { PreviewSource } from "../types/revamp";
 
 interface BeforeAfterSliderProps {
-  beforeSrc: string;
-  afterSrc: string;
+  before: PreviewSource;
+  after: PreviewSource;
   beforeLabel?: string;
   afterLabel?: string;
+  /** Width (px) the HTML previews are laid out at before being scaled to fit. */
+  virtualWidth?: number;
+  /** Tailwind aspect-ratio class for the comparison frame. */
+  aspectClass?: string;
+}
+
+interface Size {
+  w: number;
+  h: number;
+}
+
+const BROKEN_MESSAGE = "This preview couldn't be loaded — try generating it again.";
+
+/**
+ * A full HTML page rendered like a screenshot: laid out at `virtualWidth`
+ * (so media queries behave like a real desktop/tablet/phone), then scaled down
+ * to fit the slider. sandbox="" (no allow-scripts, no allow-same-origin) means
+ * nothing inside can run code or reach this site's cookies/DOM. pointer-events
+ * are off so the slider keeps receiving drags.
+ */
+function HtmlFrame({ html, title, virtualWidth, size }: { html: string; title: string; virtualWidth: number; size: Size }) {
+  if (!size.w || !size.h) return null;
+  const scale = size.w / virtualWidth;
+  return (
+    <iframe
+      title={title}
+      sandbox=""
+      srcDoc={html}
+      referrerPolicy="no-referrer"
+      tabIndex={-1}
+      className="absolute left-0 top-0 border-0 bg-white"
+      style={{
+        width: virtualWidth,
+        height: size.h / scale,
+        transform: `scale(${scale})`,
+        transformOrigin: "top left",
+        pointerEvents: "none",
+      }}
+    />
+  );
+}
+
+function PreviewLayer({
+  source,
+  label,
+  size,
+  virtualWidth,
+}: {
+  source: PreviewSource;
+  label: string;
+  size: Size;
+  virtualWidth: number;
+}) {
+  // Remember WHICH src failed rather than a boolean, so a new src is retried automatically
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+
+  if (source.type === "html") {
+    return <HtmlFrame html={source.html} title={label} virtualWidth={virtualWidth} size={size} />;
+  }
+
+  if (failedSrc === source.src) {
+    return source.fallbackHtml ? (
+      <HtmlFrame html={source.fallbackHtml} title={label} virtualWidth={virtualWidth} size={size} />
+    ) : (
+      <div className="absolute inset-0 flex items-center justify-center bg-ink-2 px-4 text-center font-mono text-xs text-ink-soft">
+        {BROKEN_MESSAGE}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={source.src}
+      alt={label}
+      className="absolute inset-0 h-full w-full object-cover object-top"
+      draggable={false}
+      referrerPolicy="no-referrer"
+      onError={() => setFailedSrc(source.src)}
+    />
+  );
 }
 
 export function BeforeAfterSlider({
-  beforeSrc,
-  afterSrc,
+  before,
+  after,
   beforeLabel = "BEFORE",
   afterLabel = "AFTER",
+  virtualWidth = 1280,
+  aspectClass = "aspect-[16/9]",
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(50);
+  const [size, setSize] = useState<Size>({ w: 0, h: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
 
-  // Remember WHICH source failed instead of a true/false flag. When the src
-  // prop changes, the failed value no longer matches and the image is retried
-  // automatically — no reset effect needed.
-  const [failedBefore, setFailedBefore] = useState<string | null>(null);
-  const [failedAfter, setFailedAfter] = useState<string | null>(null);
-  const beforeBroken = failedBefore === beforeSrc;
-  const afterBroken = failedAfter === afterSrc;
+  // Track the frame's rendered size so HTML previews can be scaled to fit it.
+  // ResizeObserver fires once on observe(), so this also does the first measure.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      setSize((prev) => (prev.w === width && prev.h === height ? prev : { w: width, h: height }));
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const updatePosition = useCallback((clientX: number) => {
     const el = containerRef.current;
@@ -62,6 +151,10 @@ export function BeforeAfterSlider({
     }
   };
 
+  // Changing the source remounts the layer, which also clears its failed-image state
+  const beforeKey = before.type === "image" ? `img:${before.src}` : "html:before";
+  const afterKey = after.type === "image" ? `img:${after.src}` : "html:after";
+
   return (
     <div
       ref={containerRef}
@@ -72,60 +165,30 @@ export function BeforeAfterSlider({
       aria-valuemin={0}
       aria-valuemax={100}
       onKeyDown={handleKeyDown}
-      className="relative w-full aspect-[16/9] overflow-hidden rounded-lg select-none touch-none cursor-ew-resize focus:outline-none focus:ring-2 focus:ring-amber"
+      className={`relative w-full ${aspectClass} overflow-hidden rounded-lg select-none touch-none cursor-ew-resize bg-white focus:outline-none focus:ring-2 focus:ring-amber`}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
     >
       {/* After (base layer) */}
-      {afterBroken ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-ink-2 text-center text-xs font-mono text-ink-soft px-4">
-          This preview is still being finished — check back soon.
-        </div>
-      ) : (
-        <img
-          src={afterSrc}
-          alt={afterLabel}
-          className="absolute inset-0 h-full w-full object-cover"
-          draggable={false}
-          onError={() => setFailedAfter(afterSrc)}
-        />
-      )}
-      <span className="absolute top-3 right-3 text-xs font-mono tracking-wide bg-ink/80 text-paper px-2 py-1 rounded">
+      <PreviewLayer key={afterKey} source={after} label={afterLabel} size={size} virtualWidth={virtualWidth} />
+      <span className="absolute right-3 top-3 z-10 rounded bg-ink/80 px-2 py-1 font-mono text-xs tracking-wide text-paper">
         {afterLabel}
       </span>
 
-      {/* Before layer with clip-path */}
-      <div
-        className="absolute inset-0"
-        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
-      >
-        {beforeBroken ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-ink-2 text-center text-xs font-mono text-ink-soft px-4">
-            This preview is still being finished — check back soon.
-          </div>
-        ) : (
-          <img
-            src={beforeSrc}
-            alt={beforeLabel}
-            className="absolute inset-0 h-full w-full object-cover"
-            draggable={false}
-            onError={() => setFailedBefore(beforeSrc)}
-          />
-        )}
+      {/* Before layer, clipped to the left of the divider */}
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
+        <PreviewLayer key={beforeKey} source={before} label={beforeLabel} size={size} virtualWidth={virtualWidth} />
         {/* Lives inside the clipped layer so it disappears with the Before side */}
-        <span className="absolute top-3 left-3 text-xs font-mono tracking-wide bg-ink/80 text-paper px-2 py-1 rounded">
+        <span className="absolute left-3 top-3 z-10 rounded bg-ink/80 px-2 py-1 font-mono text-xs tracking-wide text-paper">
           {beforeLabel}
         </span>
       </div>
 
       {/* Divider line & handle */}
-      <div
-        className="absolute inset-y-0 w-0.5 bg-paper shadow-md"
-        style={{ left: `${position}%` }}
-      >
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-9 w-9 rounded-full bg-paper shadow-lg flex items-center justify-center text-ink text-sm font-bold">
+      <div className="absolute inset-y-0 z-10 w-0.5 bg-paper shadow-md" style={{ left: `${position}%` }}>
+        <div className="absolute top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-paper text-sm font-bold text-ink shadow-lg">
           ⟨ ⟩
         </div>
       </div>

@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { BeforeAfterSlider } from "../components/BeforeAfterSlider";
 import AiMetadata, { AiIntent } from "../components/AiMetadata";
 import { getAttribution, getSessionIdForLead, trackAction } from "../lib/track";
+import type { PreviewSource, RevampApiResponse } from "../types/revamp";
 
 type Viewport = "desktop" | "tablet" | "mobile";
 
@@ -39,11 +40,27 @@ const DEMO_SITES: DemoSite[] = [
 ];
 
 const ANALYSIS_STEPS = [
-  "Reading the page structure...",
-  "Mapping content and conversion paths...",
-  "Applying PrismWave design tokens...",
-  "Preparing a responsive preview...",
+  "Fetching the live page...",
+  "Reading structure, copy and brand colours...",
+  "Designing the new layout...",
+  "Rendering your preview...",
 ];
+
+// How wide each device preview is laid out (px) before being scaled to fit,
+// and the frame shape that suits it
+const VIEWPORT_WIDTH: Record<Viewport, number> = { desktop: 1280, tablet: 820, mobile: 390 };
+const VIEWPORT_ASPECT: Record<Viewport, string> = {
+  desktop: "aspect-[16/9]",
+  tablet: "aspect-[4/3]",
+  mobile: "aspect-[9/16]",
+};
+
+// What a visitor sees when the Revamp page opens, and when they pick the sample
+type LivePreview = {
+  before: PreviewSource;
+  after: PreviewSource;
+  generator: "ai" | "template";
+};
 
 function Icon({
   name,
@@ -88,15 +105,12 @@ function Icon({
   );
 }
 
-// FIXED: always use a full URL with protocol, return an image URL
-async function fetchScreenshot(url: string): Promise<string> {
-  const fullUrl = /^https?:\/\//i.test(url) ? url : `https://${url}`;
-  return `https://image.thum.io/get/width/1200/${encodeURIComponent(fullUrl)}`;
-}
-
-// FIXED: return a real image URL, not HTML
-function generatePreviewImage(): string {
-  return "/images/revamps/aurora-fitness/after.png";
+// Screenshot of the live site, used as the "before" only when the page is
+// built with JavaScript (a script-free snapshot would look empty). The URL is
+// appended RAW: thum.io expects /get/<options>/<url>, and percent-encoding the
+// URL (what the old code did) is not the documented form.
+function screenshotUrl(fullUrl: string): string {
+  return `https://image.thum.io/get/width/1280/crop/800/noanimate/${fullUrl}`;
 }
 
 export default function Revamp() {
@@ -109,6 +123,11 @@ export default function Revamp() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [live, setLive] = useState<LivePreview | null>(null);
+  const [previewError, setPreviewError] = useState<string | null>(null);
+  // Guards against a slow earlier request overwriting a newer one
+  const requestId = useRef(0);
+  const inFlight = useRef<AbortController | null>(null);
   const [lead, setLead] = useState({
     name: "",
     email: "",
@@ -116,52 +135,103 @@ export default function Revamp() {
     note: "",
   });
 
+  // Purely cosmetic: walks the progress labels while the request is running.
+  // It never ends the analysis — only the request finishing does. (The old
+  // version flipped isAnalyzing off after ~2s no matter what, so the preview
+  // was declared "done" before anything had actually been generated.)
   useEffect(() => {
     if (!isAnalyzing) return;
     const timer = window.setInterval(() => {
-      setAnalysisStep((current) => {
-        if (current >= ANALYSIS_STEPS.length - 1) {
-          window.clearInterval(timer);
-          setIsAnalyzing(false);
-          return current;
-        }
-        return current + 1;
-      });
-    }, 500);
+      setAnalysisStep((current) => Math.min(current + 1, ANALYSIS_STEPS.length - 1));
+    }, 3500);
     return () => window.clearInterval(timer);
   }, [isAnalyzing]);
 
-  // FIXED: only screenshot for custom sites; keep demo images intact
   const analyze = async (site: DemoSite) => {
+    const myRequest = ++requestId.current;
+    inFlight.current?.abort();
+    setPreviewError(null);
+
+    // Built-in sample: instant, no network involved
+    if (!site.id.startsWith("custom-")) {
+      setLive(null);
+      setActiveSite(site);
+      setIsAnalyzing(false);
+      trackAction("revamp_preview_generated", {
+        metadata: { location: "revamp", site: site.name, industry: site.industry, generator: "sample" },
+      });
+      return;
+    }
+
     setIsAnalyzing(true);
     setAnalysisStep(0);
 
-    let before = site.beforeSrc;
-    let after = site.afterSrc;
+    const controller = new AbortController();
+    inFlight.current = controller;
+    // Server budget is ~9s to fetch the site + ~40s for the model; give it a little headroom
+    const timeoutId = window.setTimeout(() => controller.abort(), 58_000);
 
-    if (site.id.startsWith("custom-")) {
-      before = await fetchScreenshot(site.url);
-      after = generatePreviewImage();
+    try {
+      const response = await fetch("/api/revamp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: site.url }),
+        signal: controller.signal,
+      });
+      const data = (await response.json().catch(() => null)) as
+        | RevampApiResponse
+        | { error?: string }
+        | null;
+
+      if (myRequest !== requestId.current) return; // a newer request took over
+
+      if (!response.ok || !data || !("ok" in data) || !data.ok) {
+        const message = data && "error" in data ? data.error : undefined;
+        throw new Error(message ?? "The preview could not be generated. Please try again.");
+      }
+
+      const before: PreviewSource = data.jsHeavy
+        ? { type: "image", src: screenshotUrl(data.finalUrl), fallbackHtml: data.beforeHtml }
+        : { type: "html", html: data.beforeHtml };
+
+      setLive({ before, after: { type: "html", html: data.afterHtml }, generator: data.generator });
+      setActiveSite({
+        ...site,
+        name: data.siteName,
+        url: data.finalUrl,
+        originalTitle: data.title || `${data.siteName} — current experience`,
+        originalSubtitle:
+          data.description || "A real audit can reveal the highest-impact opportunities.",
+        modernTitle: `A clearer digital front door for ${data.siteName}.`,
+        modernSubtitle:
+          "A concept built from your site's own content — a starting point for a focused redesign around your goals, audience and next action.",
+      });
+
+      trackAction("revamp_preview_generated", {
+        metadata: {
+          location: "revamp",
+          site: data.host,
+          industry: site.industry,
+          generator: data.generator,
+        },
+      });
+    } catch (analysisError) {
+      if (myRequest !== requestId.current) return;
+      const aborted = analysisError instanceof Error && analysisError.name === "AbortError";
+      setPreviewError(
+        aborted
+          ? "That took too long. Try again, or try a simpler page such as the homepage."
+          : analysisError instanceof Error
+          ? analysisError.message
+          : "The preview could not be generated. Please try again."
+      );
+    } finally {
+      window.clearTimeout(timeoutId);
+      if (myRequest === requestId.current) setIsAnalyzing(false);
     }
-
-    setActiveSite({
-      ...site,
-      beforeSrc: before,
-      afterSrc: after,
-    });
-
-    setIsAnalyzing(false);
-
-    trackAction("revamp_preview_generated", {
-      metadata: {
-        location: "revamp",
-        site: site.name,
-        industry: site.industry,
-      },
-    });
   };
 
-  // FIXED: normalize URL so screenshots work
+  // Normalise + validate the address, then generate
   const handleAnalyze = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -175,7 +245,17 @@ export default function Revamp() {
 
     const normalizedUrl = /^https?:\/\//i.test(rawInput)
       ? rawInput
-      : `https://${cleanHost}`;
+      : `https://${rawInput.replace(/\s+/g, "")}`;
+
+    if (!preset) {
+      try {
+        const parsed = new URL(/^https?:\/\//i.test(rawInput) ? rawInput : `https://${cleanHost}`);
+        if (!parsed.hostname.includes(".")) throw new Error("no dot");
+      } catch {
+        setPreviewError("That doesn't look like a website address — try something like yourbusiness.com");
+        return;
+      }
+    }
 
     const targetSite: DemoSite = preset ?? {
       id: `custom-${Date.now()}`,
@@ -194,6 +274,15 @@ export default function Revamp() {
     };
 
     analyze(targetSite);
+  };
+
+  // Opening the form after a live preview prefills the required "business" field,
+  // so the visitor isn't asked to retype what they just typed
+  const openModal = () => {
+    setLead((current) =>
+      current.business || !live ? current : { ...current, business: activeSite.name }
+    );
+    setModalOpen(true);
   };
 
   const handleCloseModal = () => {
@@ -219,8 +308,10 @@ export default function Revamp() {
           siteUrl: activeSite.url,
           idea: "",
           message:
-            lead.note ||
-            `I want to explore a full revamp for ${activeSite.name}.`,
+            (lead.note || `I want to explore a full revamp for ${activeSite.name}.`) +
+            `\n\n[Revamp engine — previewed: ${activeSite.url} (${
+              live ? `${live.generator === "ai" ? "AI" : "template"} concept` : "built-in sample"
+            })]`,
           sessionId: getSessionIdForLead(),
           attribution: getAttribution(),
         }),
@@ -250,7 +341,7 @@ export default function Revamp() {
       ? "max-w-sm"
       : viewport === "tablet"
       ? "max-w-xl"
-      : "max-w-3xl";
+      : "max-w-4xl";
 
   return (
     <div className="grain min-h-screen overflow-x-clip bg-ink text-paper">
@@ -284,7 +375,7 @@ export default function Revamp() {
           </Link>
           <button
             type="button"
-            onClick={() => setModalOpen(true)}
+            onClick={openModal}
             className="inline-flex min-h-11 items-center gap-2 rounded-full bg-amber px-4 py-2.5 font-display text-xs font-semibold text-ink transition-colors hover:bg-coral sm:text-sm"
           >
             Request full implementation <Icon name="arrow" />
@@ -337,6 +428,11 @@ export default function Revamp() {
               {isAnalyzing ? "Preparing preview..." : "Generate modern preview"}
             </button>
           </form>
+          {previewError && (
+            <p role="alert" className="mt-3 text-center font-mono text-xs text-coral">
+              {previewError}
+            </p>
+          )}
           <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-ink-soft">
             <span className="mr-1">Try a sample:</span>
             {DEMO_SITES.map((site) => (
@@ -393,6 +489,11 @@ export default function Revamp() {
             <p className="hidden text-xs text-ink-soft lg:block">
               <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400" />
               Previewing {activeSite.name}
+              {live && (
+                <span className="ml-2 rounded border border-ink-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-amber">
+                  {live.generator === "ai" ? "AI concept" : "Concept"}
+                </span>
+              )}
             </p>
           </div>
 
@@ -421,11 +522,19 @@ export default function Revamp() {
             )}
             <div className="min-h-[520px] p-4 sm:p-6">
               <BeforeAfterSlider
-                beforeSrc={activeSite.beforeSrc}
-                afterSrc={activeSite.afterSrc}
-                beforeLabel={`BEFORE (${activeSite.industry})`}
-                afterLabel="AFTER (PrismWave redesign)"
+                before={live?.before ?? { type: "image", src: activeSite.beforeSrc }}
+                after={live?.after ?? { type: "image", src: activeSite.afterSrc }}
+                beforeLabel={live ? "BEFORE (current site)" : `BEFORE (${activeSite.industry})`}
+                afterLabel={live ? "AFTER (PrismWave concept)" : "AFTER (PrismWave redesign)"}
+                virtualWidth={VIEWPORT_WIDTH[viewport]}
+                aspectClass={VIEWPORT_ASPECT[viewport]}
               />
+              {live && (
+                <p className="mt-3 text-center text-[11px] leading-relaxed text-ink-soft">
+                  Concept generated from {activeSite.name}&apos;s public page content — not a final
+                  design. Images, copy and layout are refined in a real build.
+                </p>
+              )}
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-[#a89f92]">
@@ -450,7 +559,7 @@ export default function Revamp() {
                   </p>
                   <button
                     type="button"
-                    onClick={() => setModalOpen(true)}
+                    onClick={openModal}
                     className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-amber px-5 py-3 font-display text-sm font-semibold text-ink transition-colors hover:bg-coral"
                   >
                     Book the next step <Icon name="arrow" />
