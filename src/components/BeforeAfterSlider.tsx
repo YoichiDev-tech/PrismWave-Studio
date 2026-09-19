@@ -6,9 +6,7 @@ interface BeforeAfterSliderProps {
   after: PreviewSource;
   beforeLabel?: string;
   afterLabel?: string;
-  /** Width (px) the HTML previews are laid out at before being scaled to fit. */
   virtualWidth?: number;
-  /** Tailwind aspect-ratio class for the comparison frame. */
   aspectClass?: string;
 }
 
@@ -19,13 +17,6 @@ interface Size {
 
 const BROKEN_MESSAGE = "This preview couldn't be loaded — try generating it again.";
 
-/**
- * A full HTML page rendered like a screenshot: laid out at `virtualWidth`
- * (so media queries behave like a real desktop/tablet/phone), then scaled down
- * to fit the slider. sandbox="" (no allow-scripts, no allow-same-origin) means
- * nothing inside can run code or reach this site's cookies/DOM. pointer-events
- * are off so the slider keeps receiving drags.
- */
 function HtmlFrame({ html, title, virtualWidth, size }: { html: string; title: string; virtualWidth: number; size: Size }) {
   if (!size.w || !size.h) return null;
   const scale = size.w / virtualWidth;
@@ -59,7 +50,6 @@ function PreviewLayer({
   size: Size;
   virtualWidth: number;
 }) {
-  // Remember WHICH src failed rather than a boolean, so a new src is retried automatically
   const [failedSrc, setFailedSrc] = useState<string | null>(null);
 
   if (source.type === "html") {
@@ -101,8 +91,6 @@ export function BeforeAfterSlider({
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
 
-  // Track the frame's rendered size so HTML previews can be scaled to fit it.
-  // ResizeObserver fires once on observe(), so this also does the first measure.
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -138,9 +126,7 @@ export function BeforeAfterSlider({
     dragging.current = false;
     try {
       (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
-    } catch {
-      // Safely ignore capture release edge cases
-    }
+    } catch {}
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -151,7 +137,6 @@ export function BeforeAfterSlider({
     }
   };
 
-  // Changing the source remounts the layer, which also clears its failed-image state
   const beforeKey = before.type === "image" ? `img:${before.src}` : "html:before";
   const afterKey = after.type === "image" ? `img:${after.src}` : "html:after";
 
@@ -173,20 +158,23 @@ export function BeforeAfterSlider({
     >
       {/* After (base layer) */}
       <PreviewLayer key={afterKey} source={after} label={afterLabel} size={size} virtualWidth={virtualWidth} />
-      <span className="absolute right-3 top-3 z-10 rounded bg-ink/80 px-2 py-1 font-mono text-xs tracking-wide text-paper">
-        {afterLabel}
-      </span>
 
-      {/* Before layer, clipped to the left of the divider */}
+      {position < 50 ? null : (
+        <span className="absolute right-3 top-3 z-10 rounded bg-ink/80 px-2 py-1 font-mono text-xs tracking-wide text-paper">
+          {afterLabel}
+        </span>
+      )}
+
+      {/* Before layer */}
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
         <PreviewLayer key={beforeKey} source={before} label={beforeLabel} size={size} virtualWidth={virtualWidth} />
-        {/* Lives inside the clipped layer so it disappears with the Before side */}
+
         <span className="absolute left-3 top-3 z-10 rounded bg-ink/80 px-2 py-1 font-mono text-xs tracking-wide text-paper">
           {beforeLabel}
         </span>
       </div>
 
-      {/* Divider line & handle */}
+      {/* Divider */}
       <div className="absolute inset-y-0 z-10 w-0.5 bg-paper shadow-md" style={{ left: `${position}%` }}>
         <div className="absolute top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-paper text-sm font-bold text-ink shadow-lg">
           ⟨ ⟩
