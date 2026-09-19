@@ -2,25 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Core pages -->
-  <url><loc>https://prismwave-studio.vercel.app/</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/work</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/lab</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/revamp</loc></url>
+  <url><loc>https://prismwavestudio.com/</loc></url>
+  <url><loc>https://prismwavestudio.com/work</loc></url>
+  <url><loc>https://prismwavestudio.com/lab</loc></url>
+  <url><loc>https://prismwavestudio.com/revamp</loc></url>
 
-  <!-- Case studies -->
-  <url><loc>https://prismwave-studio.vercel.app/case-studies</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/case-studies/BloomMarketCaseStudy</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/case-studies/ServeSyncCaseStudy</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/case-studies/AppointmentWorkflowConcept</loc></url>
+  <!-- Templates (these previously pointed at /templates/... which does not
+       exist as a route — the real paths live under /work/...) -->
+  <url><loc>https://prismwavestudio.com/work/fielding-and-rye</loc></url>
+  <url><loc>https://prismwavestudio.com/work/nova-cloud</loc></url>
+  <url><loc>https://prismwavestudio.com/work/bloom-market</loc></url>
 
-  <!-- Templates -->
-  <url><loc>https://prismwave-studio.vercel.app/templates/BloomMarket</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/templates/FieldingRye</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/templates/NovaCloud</loc></url>
+  <!-- Case studies (previously pointed at /case-studies/<PascalCase> which
+       does not exist either — real paths are under /work/...) -->
+  <url><loc>https://prismwavestudio.com/case-studies</loc></url>
+  <url><loc>https://prismwavestudio.com/work/bloom-market/case-study</loc></url>
+  <url><loc>https://prismwavestudio.com/work/servesync/case-study</loc></url>
+  <url><loc>https://prismwavestudio.com/work/appointment-workflows/concept</loc></url>
 
-  <!-- Legal pages -->
-  <url><loc>https://prismwave-studio.vercel.app/legal/privacy</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/legal/terms</loc></url>
-  <url><loc>https://prismwave-studio.vercel.app/legal/regulatory</loc></url>
+  <!-- Legal pages (previously pointed at /legal/... which does not exist —
+       these are top-level routes) -->
+  <url><loc>https://prismwavestudio.com/terms</loc></url>
+  <url><loc>https://prismwavestudio.com/privacy</loc></url>
+  <url><loc>https://prismwavestudio.com/regulatory</loc></url>
 
 </urlset>

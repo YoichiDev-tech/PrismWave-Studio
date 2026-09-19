@@ -104,9 +104,36 @@ interface Database {
         }>;
         Relationships: [];
       };
+      rate_limits: {
+        Row: {
+          key: string;
+          window_start: string;
+          count: number;
+        };
+        Insert: {
+          key: string;
+          window_start?: string;
+          count?: number;
+        };
+        Update: Partial<{
+          key: string;
+          window_start: string;
+          count: number;
+        }>;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      check_rate_limit: {
+        Args: { p_key: string; p_limit: number; p_window_seconds: number };
+        Returns: boolean;
+      };
+      prune_rate_limits: {
+        Args: Record<string, never>;
+        Returns: undefined;
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };

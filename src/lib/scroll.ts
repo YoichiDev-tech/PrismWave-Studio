@@ -3,7 +3,9 @@ export function scrollToSection(id: string, duration = 420): void {
   if (!target) return;
 
   const start = window.scrollY;
-  const distance = target.getBoundingClientRect().top;
+  // Honor the section's scroll-margin-top so the fixed nav doesn't cover it
+  const offset = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+  const distance = target.getBoundingClientRect().top - offset;
   const startTime = performance.now();
 
   const step = (currentTime: number) => {

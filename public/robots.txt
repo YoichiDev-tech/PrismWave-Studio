@@ -17,4 +17,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://prismwave-studio.vercel.app/sitemap.xml
+Sitemap: https://prismwavestudio.com/sitemap.xml

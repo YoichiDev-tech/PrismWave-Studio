@@ -1,5 +1,6 @@
-import { createHash } from "node:crypto";
 import { getSupabaseAdmin, type Json } from "./_lib/supabaseAdmin.js";
+import { getClientIp, hashIp } from "./_lib/ipHash.js";
+import { isRateLimited } from "./_lib/rateLimit.js";
 
 interface VercelLikeRequest {
   method?: string;
@@ -50,15 +51,6 @@ function isTrackPayload(data: unknown): data is TrackPayload {
   );
 }
 
-// Salted hash so we can spot abusive bursts from one IP without ever storing
-// a raw IP address. Rotate SESSION_HASH_SALT periodically if you want old
-// hashes to stop correlating with new ones
-const SALT = process.env.SESSION_HASH_SALT ?? "prismwave-fallback-salt";
-
-function hashIp(ip: string): string {
-  return createHash("sha256").update(`${SALT}:${ip}`).digest("hex").slice(0, 32);
-}
-
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed." });
@@ -73,9 +65,17 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     return;
   }
 
-  const forwardedFor = req.headers["x-forwarded-for"];
-  const ip = Array.isArray(forwardedFor) ? forwardedFor[0] : forwardedFor?.split(",")[0]?.trim();
+  const ip = getClientIp(req.headers);
+  const ipHash = ip ? hashIp(ip) : null;
   const userAgent = req.headers["user-agent"];
+
+  // Generous ceiling — this only exists to stop a scripted flood from
+  // filling interaction_events, not to police normal browsing. Real
+  // visitors triggering pageviews/clicks never get near 120/min.
+  if (ipHash && (await isRateLimited(ipHash, { bucket: "track", limit: 120, windowSeconds: 60 }))) {
+    res.status(200).json({ ok: true });
+    return;
+  }
 
   try {
     const supabase = getSupabaseAdmin();
@@ -86,7 +86,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       intent: payload.intent ?? null,
       session_id: payload.sessionId,
       metadata: payload.metadata ?? {},
-      ip_hash: ip ? hashIp(ip) : null,
+      ip_hash: ipHash,
       user_agent: typeof userAgent === "string" ? userAgent.slice(0, 300) : null,
     });
 

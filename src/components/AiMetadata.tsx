@@ -1,8 +1,8 @@
 interface AiMetadataProps {
-  map: string[];
-  intent: string;
-  tags: string[];
-  extract: Record<string, string>;
+  map?: string[];
+  intent?: string;
+  tags?: string[];
+  extract?: Record<string, string>;
 }
 
 interface AiIntentProps {
@@ -18,13 +18,15 @@ export function AiIntent({ id, children }: AiIntentProps) {
   );
 }
 
-export default function AiMetadata({ map, intent, tags, extract }: AiMetadataProps) {
+export default function AiMetadata({ map = [], intent = "", tags = [], extract = {} }: AiMetadataProps) {
   return (
     <div hidden data-ai-metadata="true">
       <section data-ai-block="AI-MAP" aria-label="AI-MAP">
         <h2>AI-MAP</h2>
         <ul>
-          {map.map((item) => <li key={item}>{item}</li>)}
+          {map.map((item, idx) => (
+            <li key={`${item}-${idx}`}>{item}</li>
+          ))}
         </ul>
       </section>
       <section data-ai-block="AI-INTENT" aria-label="AI-INTENT">
@@ -34,7 +36,9 @@ export default function AiMetadata({ map, intent, tags, extract }: AiMetadataPro
       <section data-ai-block="AI-TAG" aria-label="AI-TAG">
         <h2>AI-TAG</h2>
         <ul>
-          {tags.map((tag) => <li key={tag}>{tag}</li>)}
+          {tags.map((tag, idx) => (
+            <li key={`${tag}-${idx}`}>{tag}</li>
+          ))}
         </ul>
       </section>
       <section data-ai-block="AI-EXTRACT" aria-label="AI-EXTRACT">

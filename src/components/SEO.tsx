@@ -1,6 +1,10 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://prismwave-studio.vercel.app";
+// TODO: confirm this is the final live domain before launch — it must match
+// index.html, public/robots.txt, and public/sitemap.xml exactly, or
+// canonical/OG/sitemap URLs will point at a different host than the one
+// visitors and crawlers are actually on
+const SITE_URL = "https://prismwavestudio.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og-cover-prismwave.jpg`;
 
 interface SEOProps {

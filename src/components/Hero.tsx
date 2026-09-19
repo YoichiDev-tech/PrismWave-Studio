@@ -1,155 +1,98 @@
-import type { MouseEvent } from "react";
 import type { Intent } from "../pages/Home";
+import Section from "./Section";
+import StartCard from "./StartCard";
 import { trackAction } from "../lib/track";
-import { scrollToSection } from "../lib/scroll";
 
 interface HeroProps {
   onSelectIntent: (intent: Intent) => void;
+  onRequestFullTeardown: (context: { siteUrl: string; score: number; findings: string[] }) => void;
+  onStartIdea: (idea: string) => void;
 }
 
-export default function Hero({ onSelectIntent }: HeroProps) {
-  const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
-    event.preventDefault();
-    scrollToSection(id);
-  };
+const TRUST = ["2-4 weeks turnaround", "Fixed-scope pricing", "You own the code"];
 
+export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIdea }: HeroProps) {
   return (
-    <section
+    <Section
       id="top"
-      className="grain relative overflow-x-hidden bg-ink pb-24 pt-36 md:pb-32 md:pt-44 cursor-default"
+      ai="hero"
+      intent="Introduce PrismWave Studio and let visitors start with a free site audit or by describing an idea."
+      labelledBy="hero-title"
+      className="grain relative overflow-x-hidden bg-ink pb-16 pt-28 md:pb-24 md:pt-36"
     >
+      <style>{`
+        .flow-text {
+          background: linear-gradient(100deg, #FFB84D, #FF7A59, #6C63FF, #FFB84D);
+          background-size: 600px 100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: flow 7s linear infinite;
+        }
+        @keyframes flow {
+          0% { background-position: -340px 0; }
+          50% { background-position: 340px 0; }
+          100% { background-position: -340px 0; }
+        }
+      `}</style>
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-0 translate-x-[35%] h-[560px] w-[560px] rounded-full opacity-20 blur-[130px]"
+        className="pointer-events-none absolute -top-40 right-0 h-[560px] w-[560px] translate-x-[35%] rounded-full opacity-20 blur-[130px]"
         style={{ background: "radial-gradient(circle, #6C63FF 0%, transparent 70%)" }}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 left-0 -translate-x-[35%] h-[420px] w-[420px] rounded-full opacity-10 blur-[130px]"
+        className="pointer-events-none absolute -bottom-32 left-0 h-[420px] w-[420px] -translate-x-[35%] rounded-full opacity-10 blur-[130px]"
         style={{ background: "radial-gradient(circle, #FFB84D 0%, transparent 70%)" }}
       />
 
-      <div className="relative mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-[1.15fr_0.85fr] md:items-center">
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-14">
         <div>
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-ink-line px-3.5 py-1.5 font-mono text-[12px] uppercase tracking-widest text-ink-soft">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-ink-line px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-widest text-ink-soft sm:text-[12px]">
             <span className="relative flex h-1.5 w-1.5">
               <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-amber" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber" />
             </span>
-            Now booking Q3 projects
+            Websites & SaaS for small businesses and startups
           </p>
 
-          <h1 className="font-display text-[clamp(2.2rem,9vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-paper sm:text-6xl md:text-[4.2rem]">
-            Websites that carry
+          <h1
+            id="hero-title"
+            className="font-display text-[clamp(2.2rem,9vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-paper sm:text-6xl md:text-[3.8rem] lg:text-[4.2rem]"
+          >
+            Websites built from zero —
             <br />
-            your business <span className="text-gradient">further.</span>
+            <span className="flow-text">or rebuilt the right way.</span>
           </h1>
 
-          <p className="mt-7 max-w-lg text-lg leading-relaxed text-ink-soft">
-            PrismWave helps small businesses turn unclear, outdated, or
-            unbuilt ideas into fast websites that make the next action obvious.
-            Start with a real audit or tell us what you want to build.
+          <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-soft">
+            Fast, modern sites for small businesses and startups. Fixed scope, transparent pricing, and you own everything we build.
           </p>
 
-          <p className="mt-7 max-w-lg text-lg leading-relaxed text-ink-soft">
-            Strategy, design, and development — fixed scope, clear pricing, full ownership.
-          </p>
+          <ul className="mt-6 hidden flex-wrap items-center gap-x-6 sm:flex gap-y-2 font-mono text-[12px] uppercase tracking-wide text-ink-soft">
+            {TRUST.map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <span aria-hidden="true" className="h-1 w-1 rounded-full bg-amber" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              href="#audit-tool"
-              onClick={(event) => {
-                handleSectionClick(event, "audit-tool");
-                onSelectIntent("audit");
-                trackAction("cta_click", { metadata: { label: "Get a Free Website Audit", location: "hero" } });
-              }}
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] bg-amber"
-              style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
-            >
-              Get a Free Website Audit
-              <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
-            <a
-              href="#build"
-              onClick={(event) => {
-                handleSectionClick(event, "build");
-                onSelectIntent("build");
-                trackAction("cta_click", { metadata: { label: "I Have an Idea, Not a Site", location: "hero" } });
-              }}
-              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink-line px-7 py-3.5 font-display text-sm font-semibold text-paper transition-colors hover:border-amber hover:text-amber"
-            >
-              I Have an Idea, Not a Site
-              <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-            </a>
-          </div>
-
-          <div className="mt-8">
+        <div>
+          <StartCard onSelectIntent={onSelectIntent} onRequestFullTeardown={onRequestFullTeardown} onStartIdea={onStartIdea} />
+          <p className="mt-4 text-center font-mono text-[12px] uppercase tracking-wide text-ink-soft">
+            Just browsing?{" "}
             <a
               href="#work"
-              onClick={(event) => {
-                handleSectionClick(event, "work");
-                trackAction("cta_click", { metadata: { label: "See our work", location: "hero" } });
-              }}
-              className="font-mono text-[12px] uppercase tracking-wide text-ink-soft underline underline-offset-4 transition-colors hover:text-paper"
+              onClick={() => trackAction("cta_click", { metadata: { label: "See our work", location: "hero" } })}
+              className="text-paper underline underline-offset-4 transition-colors hover:text-amber"
             >
-              Or just see our work &rarr;
+              See our work &rarr;
             </a>
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-[12px] uppercase tracking-wide text-ink-soft">
-            <span>2-4 weeks turnaround</span>
-            <span className="hidden h-1 w-1 rounded-full bg-ink-line sm:inline-block" />
-            <span>Fixed-scope pricing</span>
-            <span className="hidden h-1 w-1 rounded-full bg-ink-line sm:inline-block" />
-            <span>Built on modern frameworks</span>
-          </div>
-        </div>
-
-        {/* Signature: animated waveform */}
-        <div className="group relative flex min-h-[350px] w-full max-w-sm flex-col justify-center rounded-3xl border border-ink-line bg-ink-2/60 p-5 transition-colors duration-300 hover:border-amber hover:bg-ink-2 sm:min-h-[390px] sm:p-7">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Signal — live preview</p>
-            <svg viewBox="0 0 340 160" className="mt-5 block w-full shrink-0 sm:mt-6" aria-hidden="true">
-              <defs>
-                <linearGradient id="hero-wave" x1="-340" y1="0" x2="0" y2="0" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#FFB84D" />
-                  <stop offset="0.32" stopColor="#FF7A59" />
-                  <stop offset="0.64" stopColor="#6C63FF" />
-                  <stop offset="1" stopColor="#FFB84D" />
-                  <animateTransform
-                    attributeName="gradientTransform"
-                    type="translate"
-                    values="-340 0; 340 0; -340 0"
-                    dur="7s"
-                    repeatCount="indefinite"
-                  />
-                </linearGradient>
-              </defs>
-              <path
-                className="wave-path"
-                d="M0 80 C 20 20, 40 20, 60 80 S 100 140, 120 80 S 160 20, 180 80 S 220 140, 240 80 S 280 20, 300 80 S 330 100, 340 80"
-                fill="none"
-                stroke="url(#hero-wave)"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-            </svg>
-            <div className="mt-auto grid grid-cols-3 gap-3 border-t border-ink-line pt-5 sm:gap-4">
-              <div className="min-w-0">
-                <p className="font-display text-2xl font-semibold leading-none text-paper">3</p>
-                <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Live templates</p>
-              </div>
-              <div className="min-w-0">
-                <p className="font-display text-2xl font-semibold leading-none text-paper">4</p>
-                <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Audit signals</p>
-              </div>
-              <div className="min-w-0">
-                <p className="font-display text-2xl font-semibold leading-none text-paper">2-4</p>
-                <p className="mt-2 max-w-[7ch] font-mono text-[10px] uppercase leading-[1.35] tracking-wide text-ink-soft sm:text-[11px]">Weeks typical</p>
-              </div>
-            </div>
+          </p>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

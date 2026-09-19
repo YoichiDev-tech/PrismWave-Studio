@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 const LINKS = [
-  { label: "Services", href: "/#services" },
   { label: "Work", href: "/#work" },
-  { label: "Why Us", href: "/#why-us" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -40,7 +40,7 @@ const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-ink-line bg-ink cursor-default">
+    <footer data-ai="footer" className="border-t border-ink-line bg-ink cursor-default">
       <div
         className="mx-auto max-w-6xl px-6 py-14"
         style={{ paddingBottom: "max(3.5rem, env(safe-area-inset-bottom))" }}
@@ -92,9 +92,9 @@ export default function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {LINKS.map((link) => (
                   <li key={link.href}>
-                    <a href={link.href} className="text-sm text-paper/80 transition-colors hover:text-paper">
+                    <Link to={link.href} className="text-sm text-paper/80 transition-colors hover:text-paper">
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

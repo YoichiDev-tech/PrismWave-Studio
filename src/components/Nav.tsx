@@ -6,12 +6,11 @@ import { trackAction } from "../lib/track";
 // Href starting with "/" routes via react-router (Lab is its own page)
 // Anchors ("#...") stay as in-page scroll links on the Home page
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
-  { label: "Services", href: "#services" },
-  { label: "Build", href: "#build", intent: "build" },
-  { label: "Work", href: "/work" },
+  { label: "Work", href: "#work" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "About", href: "#about" },
   { label: "Revamp", href: "/revamp" },
   { label: "Lab", href: "/lab" },
-  { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -49,6 +48,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
 
   return (
     <header
+      data-ai="navigation"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
@@ -107,7 +107,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
         </ul>
 
         <a
-            href="#audit-tool"
+          href="#audit-tool"
           onClick={() => {
             onSelectIntent("audit");
             trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
@@ -115,6 +115,17 @@ export default function Nav({ onSelectIntent }: NavProps) {
           className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] md:inline-block"
         >
           Get a Free Audit
+        </a>
+
+        <a
+          href="#audit-tool"
+          onClick={() => {
+            onSelectIntent("audit");
+            trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile-bar" } });
+          }}
+          className="ml-auto mr-2 rounded-full bg-paper px-4 py-2 font-display text-[13px] font-semibold text-ink md:hidden"
+        >
+          Free audit
         </a>
 
         <button
@@ -173,7 +184,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             )}
           </ul>
           <a
-            href="#contact"
+            href="#audit-tool"
             onClick={() => {
               onSelectIntent("audit");
               trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile" } });

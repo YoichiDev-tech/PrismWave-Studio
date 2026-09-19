@@ -1,27 +1,29 @@
 import { useCallback, useState } from "react";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
-import SignsOutdated from "../components/SignsOutdated";
-import Services from "../components/Services";
-import BuildYourIdea from "../components/BuildYourIdea";
 import Portfolio from "../components/Portfolio";
-import WhyChooseUs from "../components/WhyChooseUs";
+import Pricing from "../components/Pricing";
+import Process from "../components/Process";
+import About from "../components/About";
+import FAQ from "../components/FAQ";
 import Contact from "../components/Contact";
 import type { ContactPrefill } from "../components/Contact";
 import Footer from "../components/Footer";
-import Pricing from "../components/Pricing";
-import FAQ from "../components/FAQ";
-import About from "../components/About";
-import Calendly from "../components/Calendly";
-import Process from "../components/Process";
-import AuditWidget from "../components/AuditWidget";
-import SprintConfigurator from "../components/SprintConfigurator";
-import AiMetadata, { AiIntent } from "../components/AiMetadata";
+import AiMetadata from "../components/AiMetadata";
 import SEO from "../components/SEO";
 import { scrollToSection } from "../lib/scroll";
 
 export type Intent = "audit" | "build";
 
+// Page architecture — one job per section, in the order a visitor decides:
+//   1. Hero + Start card  -> hook, and the first low-friction action (audit / idea)
+//   2. Work               -> proof, kept to one screen
+//   3. Pricing            -> fixed prices + estimator (was Pricing + Configurator)
+//   4. Process            -> removes "what happens after I say yes" doubt
+//   5. About              -> who is behind it and why hospitality matters
+//   6. FAQ                -> last objections
+//   7. Contact            -> form + optional call booking (was Calendly + Contact)
+// A future testimonials preview belongs between FAQ and Contact
 export default function Home() {
   const [intent, setIntent] = useState<Intent | null>(null);
   const [prefill, setPrefill] = useState<ContactPrefill | null>(null);
@@ -45,7 +47,7 @@ export default function Home() {
     [scrollToContact]
   );
 
-  const handleSprintScope = useCallback(
+  const handleScope = useCallback(
     (summary: string, scopeIntent: Intent) => {
       setIntent(scopeIntent);
       setPrefill({ message: summary, scopeEstimate: summary.split("\n")[1], nonce: Date.now() });
@@ -54,85 +56,42 @@ export default function Home() {
     [scrollToContact]
   );
 
+  const handleStartIdea = useCallback(
+    (idea: string) => {
+      setIntent("build");
+      setPrefill({ idea: idea || undefined, nonce: Date.now() });
+      scrollToContact();
+    },
+    [scrollToContact]
+  );
+
   return (
     <div ai-tag="home" data-ai="page">
       <SEO
-        title="Websites that carry your business further"
+        title="Websites built from zero — or rebuilt the right way"
         description="PrismWave Studio designs and builds fast, modern, conversion-focused websites for small businesses — from landing pages to full redesigns."
         path="/"
       />
       <AiMetadata
-        map={["Hero", "Signs your site is outdated", "AI-ready site audit", "Services", "Process", "Pricing", "Sprint configurator", "Portfolio", "FAQ", "Contact"]}
+        map={["Hero and free audit", "Selected work", "Pricing and estimator", "Process", "About", "FAQ", "Contact and booking"]}
         intent="Help a founder assess, plan, and start a website audit or custom website build with PrismWave Studio."
         tags={["web design studio", "website audit", "website development", "small business websites", "AI-readable websites"]}
         extract={{ title: "PrismWave Studio", audience: "Founders, creators, and small businesses", primaryActions: "Run a free audit or request a project scope", location: "Online studio" }}
       />
-      <header data-ai="navigation">
-        <Nav onSelectIntent={setIntent} />
-      </header>
 
-      <main role="main" data-ai="main-content">
-        <section aria-labelledby="hero-section" aria-describedby="hero-intent" role="region" data-ai="hero">
-          <AiIntent id="hero-intent">Introduce PrismWave Studio and direct visitors to audit or build a website.</AiIntent>
-          <Hero onSelectIntent={setIntent} />
-        </section>
-        <section aria-labelledby="signs-section" aria-describedby="signs-intent" role="region" data-ai="problem">
-          <AiIntent id="signs-intent">Help visitors recognize signs that their current website needs improvement.</AiIntent>
-          <SignsOutdated onSelectIntent={setIntent} />
-        </section>
-        <section aria-labelledby="audit-section" aria-describedby="audit-intent" role="region" data-ai="audit">
-          <AiIntent id="audit-intent">Let visitors evaluate their website and request a full audit teardown.</AiIntent>
-          <AuditWidget onRequestFullTeardown={handleAuditTeardown} />
-        </section>
-        <section aria-labelledby="services-section" aria-describedby="services-intent" role="region" data-ai="services">
-          <AiIntent id="services-intent">Explain the website strategy, design, and development services available.</AiIntent>
-          <Services />
-        </section>
-        <section aria-labelledby="process-section" aria-describedby="process-intent" role="region" data-ai="process">
-          <AiIntent id="process-intent">Show the steps from initial direction through launch and iteration.</AiIntent>
-          <Process />
-        </section>
-        <section aria-labelledby="pricing-section" aria-describedby="pricing-intent" role="region" data-ai="pricing">
-          <AiIntent id="pricing-intent">Present project pricing and help visitors choose an appropriate engagement.</AiIntent>
-          <Pricing />
-        </section>
-        <section aria-labelledby="sprint-section" aria-describedby="sprint-intent" role="region" data-ai="configurator">
-          <AiIntent id="sprint-intent">Collect project requirements and generate a focused website sprint scope.</AiIntent>
-          <SprintConfigurator onRequestScope={handleSprintScope} />
-        </section>
-        <section aria-labelledby="build-section" aria-describedby="build-intent" role="region" data-ai="build-cta">
-          <AiIntent id="build-intent">Help visitors turn an early website idea into a concrete build conversation.</AiIntent>
-          <BuildYourIdea onSelectIntent={setIntent} />
-        </section>
-        <section aria-labelledby="portfolio-section" aria-describedby="portfolio-intent" role="region" data-ai="portfolio">
-          <AiIntent id="portfolio-intent">Show selected website work and the range of visual systems PrismWave can build.</AiIntent>
-          <Portfolio />
-        </section>
-        <section aria-labelledby="why-section" aria-describedby="why-intent" role="region" data-ai="proof">
-          <AiIntent id="why-intent">Explain why founders choose PrismWave Studio for strategic, readable websites.</AiIntent>
-          <WhyChooseUs />
-        </section>
-        <section aria-labelledby="faq-section" aria-describedby="faq-intent" role="region" data-ai="faq">
-          <AiIntent id="faq-intent">Answer common questions about the studio, process, pricing, and project fit.</AiIntent>
-          <FAQ />
-        </section>
-        <section aria-labelledby="about-section" aria-describedby="about-intent" role="region" data-ai="about">
-          <AiIntent id="about-intent">Give visitors context about the studio and its approach to digital work.</AiIntent>
-          <About />
-        </section>
-        <section aria-labelledby="calendly-section" aria-describedby="calendly-intent" role="region" data-ai="booking">
-          <AiIntent id="calendly-intent">Offer a direct way to schedule an introductory conversation.</AiIntent>
-          <Calendly />
-        </section>
-        <section aria-labelledby="contact-section" aria-describedby="contact-intent" role="region" data-ai="cta">
-          <AiIntent id="contact-intent">Capture a project inquiry with the visitor's selected intent and scope.</AiIntent>
-          <Contact intent={intent} onIntentChange={setIntent} prefill={prefill} />
-        </section>
+      <Nav onSelectIntent={setIntent} />
+
+      <main data-ai="main-content">
+        <Hero onSelectIntent={setIntent} onRequestFullTeardown={handleAuditTeardown} onStartIdea={handleStartIdea} />
+        <Portfolio variant="teaser" />
+        <Pricing onRequestScope={handleScope} />
+        <Process />
+        <About />
+        <FAQ />
+        <Contact intent={intent} onIntentChange={setIntent} prefill={prefill} />
       </main>
 
-      <footer data-ai="footer">
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }

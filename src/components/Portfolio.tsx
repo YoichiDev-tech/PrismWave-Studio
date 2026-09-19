@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
+import Section from "./Section";
 import BloomMock from "./portfolioMocks/BloomMock";
 import BrowserChrome from "./Badge";
 
@@ -102,7 +103,95 @@ const projects: Project[] = [
   },
 ];
 
-export default function Portfolio() {
+function ProjectCard({ project }: { project: Project }) {
+  const Mock = project.mock;
+  return (
+    <Link
+      to={project.path}
+      aria-label={`View the full ${project.name} template`}
+      className="group relative block h-full rounded-2xl border border-ink-line bg-ink-2/60 p-4 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber"
+    >
+      {/* Persistent badge: these are speculative concepts, not completed client work */}
+      <span className="absolute right-6 top-6 z-10 rounded-full border border-ink-line bg-ink/80 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-paper/60 backdrop-blur-sm">
+        Concept
+      </span>
+      <div
+        className={
+          project.hover === "slide"
+            ? "relative transition-transform duration-500 group-hover:-translate-y-1.5"
+            : project.hover === "scan"
+              ? "relative transition-transform duration-500 group-hover:scale-[1.02]"
+              : "relative transition-transform duration-500 group-hover:rotate-[0.5deg] group-hover:scale-[1.02]"
+        }
+      >
+        <Mock />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-ink/50 opacity-0 transition-all duration-300 group-hover:opacity-100">
+          <span className="translate-y-2 rounded-full bg-paper px-4 py-2 font-display text-xs font-semibold text-ink shadow-lg transition-transform duration-300 group-hover:translate-y-0">
+            View case study &rarr;
+          </span>
+        </div>
+      </div>
+      <div className="p-2 pt-5">
+        <div className="flex items-center justify-between">
+          <h3 className="font-display text-lg font-semibold">{project.name}</h3>
+          <span className="font-mono text-[11px] uppercase tracking-wide text-paper/40 transition-transform duration-300 group-hover:translate-x-1">
+            &rarr;
+          </span>
+        </div>
+        <p className="mt-1 font-mono text-[11px] uppercase tracking-wide text-paper/40">{project.category}</p>
+        <p className="mt-3 text-sm leading-relaxed text-paper/65">{project.desc}</p>
+      </div>
+    </Link>
+  );
+}
+
+interface PortfolioProps {
+  /** "page" = full /work page section (unchanged). "teaser" = compact home-page version */
+  variant?: "page" | "teaser";
+}
+
+export default function Portfolio({ variant = "page" }: PortfolioProps) {
+  if (variant === "teaser") {
+    return (
+      <Section
+        id="work"
+        ai="portfolio"
+        intent="Show selected website work and the range of visual systems PrismWave can build."
+        labelledBy="work-title"
+        className="bg-ink py-16 text-paper md:py-24"
+      >
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-xl">
+              <p className="font-mono text-[12px] uppercase tracking-widest text-paper/50">Selected work</p>
+              <h2 id="work-title" className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
+                Three concepts. Three completely different businesses.
+              </h2>
+            </div>
+            <Link
+              to="/work"
+              className="font-mono text-[12px] uppercase tracking-wide text-paper/60 underline underline-offset-4 transition-colors hover:text-amber"
+            >
+              See all work &rarr;
+            </Link>
+          </Reveal>
+
+          {/* Mobile: swipeable row (saves ~1,300px of scroll). Desktop: three-up grid */}
+          <ul
+            className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 md:mx-0 md:mt-10 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0"
+            style={{ touchAction: "pan-x pan-y" }}
+          >
+            {projects.map((project) => (
+              <li key={project.name} className="w-[82%] shrink-0 snap-center sm:w-[60%] md:w-auto">
+                <ProjectCard project={project} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+    );
+  }
+
   return (
     <section id="work" className="bg-ink py-24 text-paper md:py-32 cursor-default">
       <div className="mx-auto max-w-6xl px-6">
@@ -119,45 +208,11 @@ export default function Portfolio() {
         </Reveal>
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {projects.map((project, i) => {
-            const Mock = project.mock;
-            return (
-              <Reveal key={project.name} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-                <Link
-                  to={project.path}
-                  aria-label={`View the full ${project.name} template`}
-                  className="group block h-full rounded-2xl border border-ink-line bg-ink-2/60 p-4 transition-transform hover:scale-[1.02] hover:bg-ink-2 hover:border-amber"
-                >
-                  <div
-                    className={
-                      project.hover === "slide"
-                        ? "relative transition-transform duration-500 group-hover:-translate-y-1.5"
-                        : project.hover === "scan"
-                          ? "relative transition-transform duration-500 group-hover:scale-[1.02]"
-                          : "relative transition-transform duration-500 group-hover:rotate-[0.5deg] group-hover:scale-[1.02]"
-                    }
-                  >
-                    <Mock />
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-ink/50 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                      <span className="translate-y-2 rounded-full bg-paper px-4 py-2 font-display text-xs font-semibold text-ink shadow-lg transition-transform duration-300 group-hover:translate-y-0">
-                        View case study &rarr;
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-2 pt-5">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-display text-lg font-semibold">{project.name}</h3>
-                      <span className="font-mono text-[11px] uppercase tracking-wide text-paper/40 transition-transform duration-300 group-hover:translate-x-1">
-                        &rarr;
-                      </span>
-                    </div>
-                    <p className="mt-1 font-mono text-[11px] uppercase tracking-wide text-paper/40">{project.category}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-paper/65">{project.desc}</p>
-                  </div>
-                </Link>
-              </Reveal>
-            );
-          })}
+          {projects.map((project, i) => (
+            <Reveal key={project.name} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
+              <ProjectCard project={project} />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

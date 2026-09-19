@@ -75,3 +75,75 @@ to authenticated using (true) with check (true);
 
 -- Serverless functions use the service role for public inserts.
 -- Keep the service role key server-side only.
+
+-- ---------------------------------------------------------------------
+-- Rate limiting for the public API routes (api/audit.ts, api/send.ts,
+-- api/audit-lead.ts, api/track.ts). Only ever touched via the service
+-- role from those routes' check_rate_limit() calls, so no public RLS
+-- policies are needed beyond RLS being on (default-deny).
+-- ---------------------------------------------------------------------
+
+create table if not exists public.rate_limits (
+  key text primary key,
+  window_start timestamptz not null default now(),
+  count integer not null default 0
+);
+
+alter table public.rate_limits enable row level security;
+
+-- Atomic check-and-increment for a fixed-window rate limit. Returns true
+-- when the caller is still within the limit (and counts this call), false
+-- when the limit for the current window has been hit. `for update` locks
+-- the row so concurrent serverless invocations can't both read the same
+-- stale count and both get allowed through
+create or replace function public.check_rate_limit(p_key text, p_limit integer, p_window_seconds integer)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  current_count integer;
+  window_started timestamptz;
+begin
+  select count, window_start into current_count, window_started
+  from public.rate_limits
+  where key = p_key
+  for update;
+
+  if not found then
+    insert into public.rate_limits (key, window_start, count)
+    values (p_key, now(), 1);
+    return true;
+  end if;
+
+  if now() - window_started > make_interval(secs => p_window_seconds) then
+    update public.rate_limits
+    set window_start = now(), count = 1
+    where key = p_key;
+    return true;
+  end if;
+
+  if current_count >= p_limit then
+    return false;
+  end if;
+
+  update public.rate_limits
+  set count = count + 1
+  where key = p_key;
+  return true;
+end;
+$$;
+
+-- Optional housekeeping: rate_limits rows are tiny and self-overwriting,
+-- but if you want to prune stale keys periodically, this deletes anything
+-- untouched for a day. Run it from the SQL editor or on a cron/pg_cron job
+-- — it is NOT called automatically by check_rate_limit()
+create or replace function public.prune_rate_limits()
+returns void
+language sql
+security definer
+set search_path = public
+as $$
+  delete from public.rate_limits where window_start < now() - interval '1 day';
+$$;

@@ -104,10 +104,10 @@ function scoreAiReadability(s: AuditSignals): AuditCategory {
   if (s.hasStructuredData) score += 25;
   else findings.push("No structured data (JSON-LD) — AI answer engines lean on this to understand what the page offers.");
 
-  if (s.imageCount === 0) {
+  if (!s.imageCount || s.imageCount === 0) {
     score += 25;
   } else {
-    const altCoverage = 1 - s.imagesMissingAlt / s.imageCount;
+    const altCoverage = 1 - Math.min(s.imagesMissingAlt, s.imageCount) / s.imageCount;
     score += Math.round(altCoverage * 25);
     if (s.imagesMissingAlt > 0) {
       findings.push(`${s.imagesMissingAlt} of ${s.imageCount} images are missing alt text.`);

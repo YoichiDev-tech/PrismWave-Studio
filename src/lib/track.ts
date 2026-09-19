@@ -1,5 +1,4 @@
-const SESSION_KEY = "bw_session_id";
-
+const SESSION_KEY = "pw_session_id";
 const ATTRIBUTION_KEY = "pw_attribution";
 
 export interface Attribution {
@@ -12,6 +11,7 @@ export interface Attribution {
 
 function getSessionId(): string {
   try {
+    if (typeof window === "undefined") return "ssr-session";
     const existing = window.sessionStorage.getItem(SESSION_KEY);
     if (existing) return existing;
     const fresh =
@@ -21,8 +21,6 @@ function getSessionId(): string {
     window.sessionStorage.setItem(SESSION_KEY, fresh);
     return fresh;
   } catch {
-    // sessionStorage can throw in locked-down browser contexts (rare) —
-    // fall back to a per-call random id rather than breaking tracking
     return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
   }
 }
@@ -40,21 +38,28 @@ export function getSessionIdForLead(): string {
 }
 
 export function getAttribution(): Attribution {
+  const isClient = typeof window !== "undefined";
+  const isDoc = typeof document !== "undefined";
+
   const fallback: Attribution = {
     source: "direct",
     medium: "none",
     campaign: "",
-    referrer: typeof document !== "undefined" ? document.referrer : "",
-    landingPath: typeof window !== "undefined" ? window.location.pathname : "/",
+    referrer: isDoc ? document.referrer : "",
+    landingPath: isClient ? window.location.pathname : "/",
   };
+
+  if (!isClient) return fallback;
 
   try {
     const stored = window.sessionStorage.getItem(ATTRIBUTION_KEY);
     if (stored) return { ...fallback, ...(JSON.parse(stored) as Partial<Attribution>) };
 
     const params = new URLSearchParams(window.location.search);
+    const referrerHost = document.referrer ? new URL(document.referrer).hostname : "";
+
     const attribution: Attribution = {
-      source: params.get("utm_source") ?? (document.referrer ? new URL(document.referrer).hostname : "direct"),
+      source: params.get("utm_source") ?? (referrerHost || "direct"),
       medium: params.get("utm_medium") ?? (document.referrer ? "referral" : "none"),
       campaign: params.get("utm_campaign") ?? "",
       referrer: document.referrer,
@@ -68,7 +73,9 @@ export function getAttribution(): Attribution {
 }
 
 export function track(kind: EventKind, eventName: string, options: TrackOptions = {}): void {
-  if (import.meta.env.DEV) return;
+  // Prevent tracking during development builds
+  if (typeof import.meta !== "undefined" && import.meta.env?.DEV) return;
+  if (typeof window === "undefined") return;
 
   const body = JSON.stringify({
     kind,
@@ -79,9 +86,6 @@ export function track(kind: EventKind, eventName: string, options: TrackOptions 
     metadata: { ...options.metadata, attribution: getAttribution() },
   });
 
-  // sendBeacon fires-and-forgets even during page unload/navigation, which
-  // matters for pageview-on-route-change in an SPA. Fall back to a
-  // keepalive fetch for browsers/environments without sendBeacon
   if (typeof navigator !== "undefined" && "sendBeacon" in navigator) {
     const blob = new Blob([body], { type: "application/json" });
     navigator.sendBeacon("/api/track", blob);
@@ -93,9 +97,7 @@ export function track(kind: EventKind, eventName: string, options: TrackOptions 
     headers: { "Content-Type": "application/json" },
     body,
     keepalive: true,
-  }).catch(() => {
-    // Tracking is best-effort — never let a failed beacon affect the visitor
-  });
+  }).catch(() => {});
 }
 
 export function trackPageview(path?: string): void {
