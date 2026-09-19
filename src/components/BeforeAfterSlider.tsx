@@ -159,7 +159,8 @@ export function BeforeAfterSlider({
       {/* After (base layer) */}
       <PreviewLayer key={afterKey} source={after} label={afterLabel} size={size} virtualWidth={virtualWidth} />
 
-      {position < 50 ? null : (
+      {/* Hide AFTER label when fully BEFORE */}
+      {position === 100 ? null : (
         <span className="absolute right-3 top-3 z-10 rounded bg-ink/80 px-2 py-1 font-mono text-xs tracking-wide text-paper">
           {afterLabel}
         </span>
