@@ -19,7 +19,7 @@ const AppointmentWorkflowConcept = lazy(() => import("./pages/case-studies/Appoi
 const CaseStudiesIndex = lazy(() => import("./pages/case-studies/index"));
 const TypographyPreview = lazy(() => import("./pages/TypographyPreview"));
 const Work = lazy(() => import("./pages/Work"));
-const Lab = lazy(() => import("./pages/Lab"));
+// const Lab = lazy(() => import("./pages/Lab"));
 const Terms = lazy(() => import("./pages/legal/Terms"));
 const Privacy = lazy(() => import("./pages/legal/Privacy"));
 const Regulatory = lazy(() => import("./pages/legal/Regulatory"));
@@ -53,7 +53,7 @@ export default function App() {
           <Route path="/case-studies" element={<CaseStudiesIndex />} />
           {/* <Route path="/testimonials" element={<Testimonials />} /> */}
           <Route path="/typography-preview" element={<TypographyPreview />} />
-          <Route path="/lab" element={<Lab />} />
+          {/* <Route path="/lab" element={<Lab />} />*/}
           <Route path="/revamp" element={<Revamp />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />

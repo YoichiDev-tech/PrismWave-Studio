@@ -10,7 +10,6 @@ const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
   { label: "Revamp", href: "/revamp" },
-  { label: "Lab", href: "/lab" },
   { label: "Contact", href: "#contact" },
 ];
 
