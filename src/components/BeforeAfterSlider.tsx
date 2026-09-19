@@ -114,10 +114,11 @@ export function BeforeAfterSlider({
             onError={() => setFailedBefore(beforeSrc)}
           />
         )}
+        {/* Lives inside the clipped layer so it disappears with the Before side */}
+        <span className="absolute top-3 left-3 text-xs font-mono tracking-wide bg-ink/80 text-paper px-2 py-1 rounded">
+          {beforeLabel}
+        </span>
       </div>
-      <span className="absolute top-3 left-3 text-xs font-mono tracking-wide bg-ink/80 text-paper px-2 py-1 rounded">
-        {beforeLabel}
-      </span>
 
       {/* Divider line & handle */}
       <div
