@@ -135,7 +135,6 @@ export default function Revamp() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lead, setLead] = useState({ name: "", email: "", business: "", note: "" });
-  const [generatedPreview, setGeneratedPreview] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isAnalyzing) return;
