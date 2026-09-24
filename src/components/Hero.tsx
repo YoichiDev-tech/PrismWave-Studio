@@ -71,7 +71,7 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
           </h1>
 
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-soft">
-            PrismWave builds fast, modern websites and SaaS MVPs with fixed-scope pricing and 2–4 week turnaround.
+            PrismWave builds fast, modern websites and SaaS MVPs with fixed-scope pricing and 2-4 week turnaround.
             No templates, no surprises — and you own everything we build.
           </p>
 
