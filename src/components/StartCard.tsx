@@ -18,8 +18,8 @@ const TABS: { id: Intent; label: string }[] = [
 ];
 
 // The hero's single conversion surface. Two visitor types, two low-friction
-// first steps — both end in the same Contact form with the right intent set.
-// Tab switch animates left/right; panel content slides with the active tab.
+// first steps — both end in the same Contact form with the right intent set
+// Tab switch animates left/right; panel content slides with the active tab
 export default function StartCard({ onSelectIntent, onRequestFullTeardown, onStartIdea }: StartCardProps) {
   const [tab, setTab] = useState<Intent>("audit");
   const [idea, setIdea] = useState("");
@@ -105,7 +105,7 @@ export default function StartCard({ onSelectIntent, onRequestFullTeardown, onSta
                   type="text"
                   value={idea}
                   onChange={(e) => setIdea(e.target.value)}
-                  placeholder="e.g. a booking site for my barber shop"
+                  placeholder="e.g. a cafe shop site"
                   className="min-h-12 min-w-0 flex-1 rounded-lg border border-ink-line bg-transparent px-4 text-paper placeholder:text-ink-soft/60 transition-colors focus:border-amber"
                 />
                 <button

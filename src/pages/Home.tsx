@@ -11,6 +11,8 @@ import type { ContactPrefill } from "../components/Contact";
 import Footer from "../components/Footer";
 import AiMetadata from "../components/AiMetadata";
 import SEO from "../components/SEO";
+import TrustBadges from "../components/TrustBadges";
+import CapacitySignal from "../components/CapacitySignal";
 import { scrollToSection } from "../lib/scroll";
 
 export type Intent = "audit" | "build";
@@ -22,6 +24,10 @@ function FooterCTA() {
       <p className="mt-2 text-ink-soft">
         Run a free audit in seconds — or tell us about your idea. No obligation either way.
       </p>
+
+      <div className="mt-4 flex justify-center">
+        <CapacitySignal />
+      </div>
 
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <button
@@ -98,6 +104,7 @@ export default function Home() {
         map={[
           "Hero and free audit",
           "Selected work",
+          "Trust badges",
           "Pricing and estimator",
           "Process",
           "About",
@@ -130,6 +137,8 @@ export default function Home() {
         />
 
         <Portfolio variant="teaser" />
+
+        <TrustBadges />
 
         <Pricing onRequestScope={handleScope} />
 
