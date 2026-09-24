@@ -2,8 +2,10 @@ import { Resend } from "resend";
 import { isClientRateLimited } from "./_lib/rateLimit.js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
+const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "PrismWave Studio <onboarding@resend.dev>";
+const TO_OWNER = process.env.CONTACT_TO_EMAIL ?? "";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SITE_URL = "https://prismwave-studio.vercel.app";
 
 interface VercelLikeRequest {
   method?: string;
@@ -21,9 +23,6 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     return res.status(405).json({ error: "Method not allowed." });
   }
 
-  // Looser than /api/send since this is a lower-intent, one-field capture,
-  // but still capped — this is what stops someone from using your Resend
-  // quota as a free email-sending relay.
   if (await isClientRateLimited(req.headers, { bucket: "audit-lead", limit: 5, windowSeconds: 300 })) {
     return res.status(429).json({ error: "Too many requests — try again in a few minutes." });
   }
@@ -42,7 +41,6 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     return res.status(400).json({ error: "Please enter a valid email address." });
   }
 
-  // Safe Supabase logging
   try {
     const { getSupabaseAdmin } = await import("./_lib/supabaseAdmin.js");
     const supabase = getSupabaseAdmin();
@@ -64,36 +62,65 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     return res.status(200).json({ ok: true, note: "Audit lead saved (mock email)" });
   }
 
+  const topFindings =
+    auditFindings.length > 0 ? auditFindings.slice(0, 5) : ([] as string[]);
+
   const findingsBlock =
-    auditFindings.length > 0
-      ? auditFindings.map((f, i) => `${i + 1}. ${f}`).join("\n")
+    topFindings.length > 0
+      ? topFindings.map((f, i) => `${i + 1}. ${f}`).join("\n")
       : "No major issues were flagged in this automated pass.";
 
-  const textBody = `Your PrismWave site audit for ${siteUrl}
+  const visitorText = `Thanks for running the free audit on ${siteUrl}.
 
 Overall score: ${auditScore}/100
 
-Prioritized findings:
+From the automated pass, the highest-impact items to look at first are:
 ${findingsBlock}
 
 ---
 What this means
-These are the highest-impact issues the automated pass detected. Fixing them usually improves clarity, speed, and how both people and AI tools read your site.
+These are the issues the tool flagged as most likely to hurt clarity, speed, or how people (and AI tools) read your site.
 
 Want a human read?
-Reply to this email or use the “Get a free 15-min review” button on the site. We’ll walk through the findings and, if it makes sense, give you a fixed-scope plan. No obligation.
+Reply to this email for a free 15-min review. We'll walk through the findings and, if it makes sense, outline a fixed-scope option (price + timeline). No obligation.
 
-— PrismWave Studio
-https://prismwave-studio.vercel.app
+— Yoichi
+PrismWave Studio
+${SITE_URL}
 `;
 
   try {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
-      subject: `Your audit report for ${siteUrl} — ${auditScore}/100`,
-      text: textBody,
+      ...(TO_OWNER ? { replyTo: TO_OWNER } : {}),
+      subject: `Your audit for ${siteUrl} — ${auditScore}/100`,
+      text: visitorText,
     });
+
+    if (TO_OWNER && TO_OWNER !== email) {
+      try {
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: TO_OWNER,
+          subject: `[PrismWave lead] Audit report requested — ${siteUrl} (${auditScore}/100)`,
+          text: `New audit lead
+
+Email: ${email}
+Site: ${siteUrl}
+Score: ${auditScore}/100
+
+Findings:
+${findingsBlock}
+
+They already received the automated report + 15-min review invite.
+Reply from your inbox if you want to follow up personally.
+`,
+        });
+      } catch (notifyErr) {
+        console.warn("Owner notify failed:", notifyErr);
+      }
+    }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
