@@ -1,4 +1,3 @@
-const SLOTS_TOTAL = 3;
 const SLOTS_TAKEN = 0; // manual for now
 
 export default function CapacitySignal() {
@@ -15,7 +14,7 @@ export default function CapacitySignal() {
       </span>
 
       <span
-        className="font-mono text-xs md:text-[11px] text-ink whitespace-nowrap transition-transform hover:translate-x-[2px]"
+        className="font-mono text-sm md:text-base text-ink whitespace-nowrap transition-transform hover:translate-x-[2px]"
         aria-live="polite"
       >
         {isFree
