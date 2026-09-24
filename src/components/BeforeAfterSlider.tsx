@@ -126,7 +126,9 @@ export function BeforeAfterSlider({
     dragging.current = false;
     try {
       (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
-    } catch {}
+    } catch {
+      // releasePointerCapture can throw if capture was never set
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

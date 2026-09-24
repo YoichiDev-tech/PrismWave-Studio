@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import type { Intent } from "../pages/Home";
 import { trackAction } from "../lib/track";
 
@@ -20,6 +20,7 @@ interface NavProps {
 export default function Nav({ onSelectIntent }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     let frame = 0;
@@ -45,6 +46,18 @@ export default function Nav({ onSelectIntent }: NavProps) {
 
   const handleLinkClick = () => setOpen(false);
 
+  /** Logo: always return to top of home. If already on home, smooth-scroll; otherwise navigate. */
+  const handleLogoClick = (e: { preventDefault: () => void }) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      handleLinkClick();
+    } else {
+      handleLinkClick();
+      // Let Link navigate; ScrollToTop will jump to top on route change
+    }
+  };
+
   return (
     <header
       data-ai="navigation"
@@ -56,11 +69,10 @@ export default function Nav({ onSelectIntent }: NavProps) {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-
-        {/* LOGO — FIXED */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-paper"
+          onClick={handleLogoClick}
+          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-paper transition-opacity hover:opacity-80"
         >
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
             <path
@@ -111,7 +123,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             onSelectIntent("audit");
             trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
           }}
-          className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] md:inline-block"
+          className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98] md:inline-block"
         >
           Get a Free Audit
         </a>
@@ -122,7 +134,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             onSelectIntent("audit");
             trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile-bar" } });
           }}
-          className="ml-auto mr-2 rounded-full bg-paper px-4 py-2 font-display text-[13px] font-semibold text-ink md:hidden"
+          className="ml-auto mr-2 rounded-full bg-paper px-4 py-2 font-display text-[13px] font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98] md:hidden"
         >
           Free audit
         </a>
@@ -133,7 +145,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="relative -mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="relative -mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-1.5 transition-opacity hover:opacity-80 md:hidden"
         >
           <span
             className={`h-[1.5px] w-5 bg-paper transition-transform duration-300 ${
@@ -161,7 +173,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
                   <Link
                     to={link.href}
                     onClick={handleLinkClick}
-                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft hover:text-paper"
+                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
                   >
                     {link.label}
                   </Link>
@@ -174,7 +186,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
                       if (link.intent) onSelectIntent(link.intent);
                       handleLinkClick();
                     }}
-                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft hover:text-paper"
+                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
                   >
                     {link.label}
                   </a>
@@ -189,7 +201,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
               trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile" } });
               handleLinkClick();
             }}
-            className="mt-3 inline-block rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink"
+            className="mt-3 inline-block rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98]"
           >
             Get a Free Audit
           </a>

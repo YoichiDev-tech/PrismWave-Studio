@@ -177,7 +177,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
           </div>
 
           <p className="mx-auto mt-4 max-w-3xl text-center font-mono text-[11px] leading-relaxed text-ink-soft">
-            {plan.excludes} The estimate is directional — scope is confirmed together before any work starts. 50% deposit to start, 50% on delivery.
+            {plan.excludes} The estimate is directional — scope is confirmed together before any work starts. 35% deposit to start, 65% on delivery.
             Prices in USD unless agreed otherwise. No retainers, no surprise add-ons, no locked-in platform.
           </p>
         </Reveal>

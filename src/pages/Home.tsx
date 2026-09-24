@@ -15,15 +15,35 @@ import { scrollToSection } from "../lib/scroll";
 
 export type Intent = "audit" | "build";
 
-// Page architecture — one job per section, in the order a visitor decides:
-//   1. Hero + Start card  -> hook, and the first low-friction action (audit / idea)
-//   2. Work               -> proof, kept to one screen
-//   3. Pricing            -> fixed prices + estimator (was Pricing + Configurator)
-//   4. Process            -> removes "what happens after I say yes" doubt
-//   5. About              -> who is behind it and why hospitality matters
-//   6. FAQ                -> last objections
-//   7. Contact            -> form + optional call booking (was Calendly + Contact)
-// A future testimonials preview belongs between FAQ and Contact
+function FooterCTA() {
+  return (
+    <section className="grain bg-ink py-24 text-center">
+      <h2 className="font-display text-3xl font-semibold text-paper">Ready to start?</h2>
+      <p className="mt-2 text-ink-soft">
+        Run a free audit in seconds — or tell us about your idea. No obligation either way.
+      </p>
+
+      <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <button
+          type="button"
+          onClick={() => scrollToSection("audit-tool")}
+          className="rounded-full px-8 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98]"
+          style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
+        >
+          Get a Free Audit
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollToSection("contact")}
+          className="rounded-full border border-ink-line px-8 py-3 font-display text-sm font-semibold text-paper transition-colors hover:border-amber active:scale-[0.98]"
+        >
+          Book a 15-min call
+        </button>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [intent, setIntent] = useState<Intent | null>(null);
   const [prefill, setPrefill] = useState<ContactPrefill | null>(null);
@@ -39,7 +59,8 @@ export default function Home() {
         siteUrl: context.siteUrl,
         auditScore: context.score,
         auditFindings: context.findings,
-        message: "I ran the audit tool on my site and would like the full teardown plus next steps.",
+        message:
+          "I ran the free audit on my site and would like a short review of the findings plus next steps (fixed-scope options if it makes sense).",
         nonce: Date.now(),
       });
       scrollToContact();
@@ -66,28 +87,60 @@ export default function Home() {
   );
 
   return (
-    <div ai-tag="home" data-ai="page">
+    <div ai-tag="home" data-ai="page" className="grain bg-ink min-h-screen">
       <SEO
         title="Websites built from zero — or rebuilt the right way"
         description="PrismWave Studio designs and builds fast, modern, conversion-focused websites for small businesses — from landing pages to full redesigns."
         path="/"
       />
+
       <AiMetadata
-        map={["Hero and free audit", "Selected work", "Pricing and estimator", "Process", "About", "FAQ", "Contact and booking"]}
+        map={[
+          "Hero and free audit",
+          "Selected work",
+          "Pricing and estimator",
+          "Process",
+          "About",
+          "FAQ",
+          "Contact and booking",
+        ]}
         intent="Help a founder assess, plan, and start a website audit or custom website build with PrismWave Studio."
-        tags={["web design studio", "website audit", "website development", "small business websites", "AI-readable websites"]}
-        extract={{ title: "PrismWave Studio", audience: "Founders, creators, and small businesses", primaryActions: "Run a free audit or request a project scope", location: "Online studio" }}
+        tags={[
+          "web design studio",
+          "website audit",
+          "website development",
+          "small business websites",
+          "AI-readable websites",
+        ]}
+        extract={{
+          title: "PrismWave Studio",
+          audience: "Founders, creators, and small businesses",
+          primaryActions: "Run a free audit or request a project scope",
+          location: "Online studio",
+        }}
       />
 
       <Nav onSelectIntent={setIntent} />
 
       <main data-ai="main-content">
-        <Hero onSelectIntent={setIntent} onRequestFullTeardown={handleAuditTeardown} onStartIdea={handleStartIdea} />
+        <Hero
+          onSelectIntent={setIntent}
+          onRequestFullTeardown={handleAuditTeardown}
+          onStartIdea={handleStartIdea}
+        />
+
         <Portfolio variant="teaser" />
+
         <Pricing onRequestScope={handleScope} />
+
         <Process />
+
         <About />
+
         <FAQ />
+
+        <FooterCTA />
+
         <Contact intent={intent} onIntentChange={setIntent} prefill={prefill} />
       </main>
 

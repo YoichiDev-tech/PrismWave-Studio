@@ -9,7 +9,12 @@ interface HeroProps {
   onStartIdea: (idea: string) => void;
 }
 
-const TRUST = ["2-4 weeks turnaround", "Fixed-scope pricing", "You own the code"];
+const TRUST = [
+  "2–4 week turnaround",
+  "Fixed-scope pricing",
+  "You own the code",
+  "No templates — custom builds",
+];
 
 export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIdea }: HeroProps) {
   return (
@@ -53,7 +58,7 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
               <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-amber" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber" />
             </span>
-            Websites & SaaS for small businesses and startups
+            Modern websites & SaaS MVPs for small businesses
           </p>
 
           <h1
@@ -66,7 +71,8 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
           </h1>
 
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-soft">
-            Fast, modern sites for small businesses and startups. Fixed scope, transparent pricing, and you own everything we build.
+            PrismWave builds fast, modern websites and SaaS MVPs with fixed-scope pricing and 2–4 week turnaround.
+            No templates, no surprises — and you own everything we build.
           </p>
 
           <ul className="mt-6 hidden flex-wrap items-center gap-x-6 sm:flex gap-y-2 font-mono text-[12px] uppercase tracking-wide text-ink-soft">
@@ -80,15 +86,25 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
         </div>
 
         <div>
-          <StartCard onSelectIntent={onSelectIntent} onRequestFullTeardown={onRequestFullTeardown} onStartIdea={onStartIdea} />
-          <p className="mt-4 text-center font-mono text-[12px] uppercase tracking-wide text-ink-soft">
-            Just browsing?{" "}
+          <StartCard
+            onSelectIntent={onSelectIntent}
+            onRequestFullTeardown={onRequestFullTeardown}
+            onStartIdea={onStartIdea}
+          />
+
+          {/* Extra top margin so this line is not glued to the StartCard */}
+          <p className="mt-8 text-center font-mono text-[12px] uppercase tracking-wide text-ink-soft">
+            Just browsing{" "}
             <a
               href="#work"
-              onClick={() => trackAction("cta_click", { metadata: { label: "See our work", location: "hero" } })}
+              onClick={() =>
+                trackAction("cta_click", {
+                  metadata: { label: "See our work", location: "hero" },
+                })
+              }
               className="text-paper underline underline-offset-4 transition-colors hover:text-amber"
             >
-              See our work &rarr;
+              See our work →
             </a>
           </p>
         </div>

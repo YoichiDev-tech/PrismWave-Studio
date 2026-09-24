@@ -64,12 +64,35 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     return res.status(200).json({ ok: true, note: "Audit lead saved (mock email)" });
   }
 
+  const findingsBlock =
+    auditFindings.length > 0
+      ? auditFindings.map((f, i) => `${i + 1}. ${f}`).join("\n")
+      : "No major issues were flagged in this automated pass.";
+
+  const textBody = `Your PrismWave site audit for ${siteUrl}
+
+Overall score: ${auditScore}/100
+
+Prioritized findings:
+${findingsBlock}
+
+---
+What this means
+These are the highest-impact issues the automated pass detected. Fixing them usually improves clarity, speed, and how both people and AI tools read your site.
+
+Want a human read?
+Reply to this email or use the “Get a free 15-min review” button on the site. We’ll walk through the findings and, if it makes sense, give you a fixed-scope plan. No obligation.
+
+— PrismWave Studio
+https://prismwave-studio.vercel.app
+`;
+
   try {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
-      subject: `Your audit report for ${siteUrl}`,
-      text: `Audit score: ${auditScore}/100\n\nFindings:\n${(auditFindings || []).join("\n")}`,
+      subject: `Your audit report for ${siteUrl} — ${auditScore}/100`,
+      text: textBody,
     });
 
     return res.status(200).json({ ok: true });

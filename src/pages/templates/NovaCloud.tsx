@@ -1,3 +1,5 @@
+import { useState } from "react";
+import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { BackToStudioBadge, PickThisTemplateBadge } from "../../components/Badge";
 import AiMetadata, { AiIntent } from "../../components/AiMetadata";
@@ -22,11 +24,37 @@ const TIERS = [
   { name: "Scale", price: "Custom", blurb: "For platforms with strict SLAs.", cta: "Talk to us" },
 ];
 
+const REGIONS = [
+  { region: "US-East", ms: 91, pct: 68 },
+  { region: "EU-West", ms: 58, pct: 43 },
+  { region: "AP-SE", ms: 121, pct: 90 },
+];
+
 export default function NovaCloud() {
+  const [activeRegion, setActiveRegion] = useState("US-East");
+  const [selectedTier, setSelectedTier] = useState("Team");
+  const [email, setEmail] = useState("");
+  const [trialOpen, setTrialOpen] = useState(false);
+  const [trialSent, setTrialSent] = useState(false);
+
+  const openTrial = (tierName?: string) => {
+    if (tierName) setSelectedTier(tierName);
+    setTrialOpen(true);
+    setTrialSent(false);
+  };
+
+  const handleTrial = (e: FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setTrialSent(true);
+  };
+
   return (
     <div
       style={{ background: BG, color: "#E7ECF5", fontFamily: "'Inter', sans-serif" }}
-      ai-tag="template" data-ai="page" className="min-h-screen cursor-default"
+      ai-tag="template"
+      data-ai="page"
+      className="min-h-screen cursor-default"
     >
       <SEO
         title="Nova Cloud — Live Template"
@@ -37,7 +65,13 @@ export default function NovaCloud() {
         map={["Uptime hero", "Product features", "Performance statistics", "Pricing tiers"]}
         intent="Present an observability SaaS template and move technical teams toward starting a free trial."
         tags={["SaaS landing page", "observability", "uptime monitoring", "developer tools", "status monitoring"]}
-        extract={{ title: "Nova Cloud", audience: "Engineering and platform teams", primaryActions: "Start a free trial or review features", pricing: "Starter free; Team $49; Scale custom", proof: "99.98% average uptime across customers" }}
+        extract={{
+          title: "Nova Cloud",
+          audience: "Engineering and platform teams",
+          primaryActions: "Start a free trial or review features",
+          pricing: "Starter free; Team $49; Scale custom",
+          proof: "99.98% average uptime across customers",
+        }}
       />
       <BackToStudioBadge tone="dark" />
       <PickThisTemplateBadge tone="dark" />
@@ -48,26 +82,45 @@ export default function NovaCloud() {
             nova<span style={{ color: MINT }}>_</span>cloud
           </p>
           <ul className="hidden gap-8 text-[13px] text-white/60 md:flex">
-            <li>Product</li>
-            <li>Pricing</li>
-            <li>Docs</li>
-            <li>Changelog</li>
+            <li>
+              <a href="#features" className="transition-colors hover:text-white">
+                Product
+              </a>
+            </li>
+            <li>
+              <a href="#pricing" className="transition-colors hover:text-white">
+                Pricing
+              </a>
+            </li>
+            <li>
+              <a href="#features" className="transition-colors hover:text-white">
+                Docs
+              </a>
+            </li>
+            <li className="text-white/35">Changelog</li>
           </ul>
-          <a
-            href="#pricing"
-            className="rounded-md px-4 py-2 text-[13px] font-medium"
+          <button
+            type="button"
+            onClick={() => openTrial("Team")}
+            className="rounded-md px-4 py-2 text-[13px] font-medium transition-transform hover:scale-[1.03] active:scale-[0.98]"
             style={{ background: MINT, color: "#04211C" }}
           >
             Start free trial
-          </a>
+          </button>
         </div>
       </header>
 
       <main data-ai="main-content">
-
-        {/* Hero */}
-        <section aria-labelledby="nova-hero" aria-describedby="nova-hero-intent" role="region" data-ai="hero" className="relative overflow-hidden">
-          <AiIntent id="nova-hero-intent">Introduce Nova Cloud and direct technical teams toward a trustworthy uptime monitoring trial.</AiIntent>
+        <section
+          aria-labelledby="nova-hero"
+          aria-describedby="nova-hero-intent"
+          role="region"
+          data-ai="hero"
+          className="relative overflow-hidden"
+        >
+          <AiIntent id="nova-hero-intent">
+            Introduce Nova Cloud and direct technical teams toward a trustworthy uptime monitoring trial.
+          </AiIntent>
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full opacity-20 blur-[110px] will-change-transform transform-gpu"
@@ -82,38 +135,35 @@ export default function NovaCloud() {
                 <span className="h-1.5 w-1.5 rounded-full" style={{ background: MINT }} />
                 status.novacloud.io — all systems green
               </p>
-              <h1
-                id="nova-hero"
-                className="mt-6 text-4xl font-semibold leading-[1.08] sm:text-5xl"
-              >
-                Uptime you can <span style={{ color: MINT }}>prove</span>, not
-                just promise.
+              <h1 id="nova-hero" className="mt-6 text-4xl font-semibold leading-[1.08] sm:text-5xl">
+                Uptime you can <span style={{ color: MINT }}>prove</span>, not just promise.
               </h1>
               <p className="mt-5 max-w-md text-white/60">
-                Nova Cloud watches every endpoint, traces every failure to its
-                root cause, and pages the right engineer before your customers
-                notice.
+                Nova Cloud watches every endpoint, traces every failure to its root cause, and pages the right
+                engineer before your customers notice.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#pricing"
-                  className="rounded-md px-5 py-3 text-sm font-semibold"
+                <button
+                  type="button"
+                  onClick={() => openTrial("Team")}
+                  className="rounded-md px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] active:scale-[0.98]"
                   style={{ background: MINT, color: "#04211C" }}
                 >
                   Start free trial
-                </a>
+                </button>
                 <a
                   href="#features"
-                  className="rounded-md border px-5 py-3 text-sm font-semibold text-white/80"
+                  className="rounded-md border px-5 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-white/30 hover:text-white"
                   style={{ borderColor: LINE }}
                 >
-                  View docs
+                  View product
                 </a>
               </div>
             </div>
 
-            <aside data-ai="product-preview"
+            <aside
+              data-ai="product-preview"
               className="rounded-xl border p-5"
               style={{ borderColor: LINE, background: PANEL }}
             >
@@ -121,26 +171,20 @@ export default function NovaCloud() {
                 <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
                 <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
                 <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-                <span
-                  className="ml-3 text-[11px] text-white/40"
-                  style={{ fontFamily: MONO }}
-                >
+                <span className="ml-3 text-[11px] text-white/40" style={{ fontFamily: MONO }}>
                   terminal — nova status
                 </span>
               </div>
 
-              <pre
-                className="mt-4 overflow-x-auto text-[12px] leading-relaxed text-white/70"
-                style={{ fontFamily: MONO }}
-              >
-                {`$ nova status --region us-east
-                ✓ api.checkout        122ms  200
-                ✓ api.auth             48ms  200
-                ✓ worker.payments      91ms  200
-                ✓ edge.cdn              9ms  200
+              <pre className="mt-4 overflow-x-auto text-[12px] leading-relaxed text-white/70" style={{ fontFamily: MONO }}>
+                {`$ nova status --region ${activeRegion.toLowerCase().replace("-", "-")}
+✓ api.checkout        122ms  200
+✓ api.auth             48ms  200
+✓ worker.payments      91ms  200
+✓ edge.cdn              9ms  200
 
-                uptime (30d)  99.98%
-                p95 latency    134ms`}
+uptime (30d)  99.98%
+p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
               </pre>
 
               <div
@@ -148,110 +192,112 @@ export default function NovaCloud() {
                 style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${LINE}` }}
               >
                 <div className="flex items-center justify-between">
-                  <p
-                    className="text-[11px] uppercase tracking-widest text-white/45"
-                    style={{ fontFamily: MONO }}
-                  >
-                    p95 latency by region
+                  <p className="text-[11px] uppercase tracking-widest text-white/45" style={{ fontFamily: MONO }}>
+                    p95 latency by region — click a bar
                   </p>
-                  <span
-                    className="flex items-center gap-1.5 text-[11px] text-white/45"
-                    style={{ fontFamily: MONO }}
-                  >
-                    <span
-                      className="inline-block h-2 w-2 rounded-sm"
-                      style={{
-                        background: `linear-gradient(180deg, ${MINT}, ${BLUE})`,
-                      }}
-                    />
-                    ms
-                  </span>
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-4">
-                  {[
-                    { region: "US-East", ms: 91, pct: 68 },
-                    { region: "EU-West", ms: 58, pct: 43 },
-                    { region: "AP-SE", ms: 121, pct: 90 },
-                  ].map((bar) => (
-                    <div key={bar.region} className="flex flex-col items-center">
-                      <span
-                        className="text-[12px] font-semibold text-white/85"
-                        style={{ fontFamily: MONO }}
+                  {REGIONS.map((bar) => {
+                    const active = activeRegion === bar.region;
+                    return (
+                      <button
+                        key={bar.region}
+                        type="button"
+                        onClick={() => setActiveRegion(bar.region)}
+                        className="flex flex-col items-center rounded-md p-1 transition-transform hover:scale-[1.03] active:scale-[0.98]"
+                        style={{
+                          outline: active ? `1px solid ${MINT}` : "1px solid transparent",
+                          background: active ? "rgba(55,230,196,0.08)" : "transparent",
+                        }}
                       >
-                        {bar.ms}
-                      </span>
-                      <div
-                        className="mt-1.5 flex h-16 w-full items-end rounded-md p-1"
-                        style={{ background: "rgba(255,255,255,0.04)" }}
-                      >
+                        <span className="text-[12px] font-semibold text-white/85" style={{ fontFamily: MONO }}>
+                          {bar.ms}
+                        </span>
                         <div
-                          className="w-full rounded-sm"
-                          style={{
-                            height: `${bar.pct}%`,
-                            background: `linear-gradient(180deg, ${MINT}, ${BLUE})`,
-                          }}
-                        />
-                      </div>
-                      <span
-                        className="mt-1.5 text-[10px] uppercase tracking-wide text-white/40"
-                        style={{ fontFamily: MONO }}
-                      >
-                        {bar.region}
-                      </span>
-                    </div>
-                  ))}
+                          className="mt-1.5 flex h-16 w-full items-end rounded-md p-1"
+                          style={{ background: "rgba(255,255,255,0.04)" }}
+                        >
+                          <div
+                            className="w-full rounded-sm transition-all duration-300"
+                            style={{
+                              height: `${bar.pct}%`,
+                              background: `linear-gradient(180deg, ${MINT}, ${BLUE})`,
+                              opacity: active ? 1 : 0.55,
+                            }}
+                          />
+                        </div>
+                        <span
+                          className="mt-1.5 text-[10px] uppercase tracking-wide text-white/40"
+                          style={{ fontFamily: MONO }}
+                        >
+                          {bar.region}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </aside>
           </div>
         </section>
 
-        {/* Features */}
-        <section id="features" aria-labelledby="nova-features" aria-describedby="nova-features-intent" role="region" data-ai="features" className="border-t py-20" style={{ borderColor: LINE }}>
-          <AiIntent id="nova-features-intent">Explain the core observability capabilities available to on-call engineering teams.</AiIntent>
+        <section
+          id="features"
+          aria-labelledby="nova-features"
+          aria-describedby="nova-features-intent"
+          role="region"
+          data-ai="features"
+          className="border-t py-20"
+          style={{ borderColor: LINE }}
+        >
+          <AiIntent id="nova-features-intent">
+            Explain the core observability capabilities available to on-call engineering teams.
+          </AiIntent>
           <div className="mx-auto max-w-6xl px-6">
-            <p
-              className="text-[11px] uppercase tracking-widest text-white/40"
-              style={{ fontFamily: MONO }}
-            >
-            </p>
             <h2 id="nova-features" className="mt-3 text-3xl font-semibold">
               Everything an on-call engineer actually opens.
             </h2>
 
-            <div role="list"
+            <div
+              role="list"
               className="mt-12 grid gap-px overflow-hidden rounded-xl border"
               style={{ borderColor: LINE, background: LINE }}
             >
               {FEATURES.map((f) => (
-                <article role="listitem" ai-tag="feature" data-ai="feature"
+                <article
+                  role="listitem"
+                  ai-tag="feature"
+                  data-ai="feature"
                   key={f.title}
-                  className="p-6 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6"
+                  className="p-6 transition-colors hover:bg-white/[0.02] sm:grid sm:grid-cols-3 sm:items-start sm:gap-6"
                   style={{ background: BG }}
                 >
-                  <p
-                    className="text-[11px] uppercase tracking-widest"
-                    style={{ fontFamily: MONO, color: MINT }}
-                  >
+                  <p className="text-[11px] uppercase tracking-widest" style={{ fontFamily: MONO, color: MINT }}>
                     {f.tag}
                   </p>
-                  <h3 className="mt-3 text-base font-semibold sm:mt-0">
-                    {f.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-white/55 sm:mt-0">
-                    {f.desc}
-                  </p>
+                  <h3 className="mt-3 text-base font-semibold sm:mt-0">{f.title}</h3>
+                  <p className="mt-2 text-sm text-white/55 sm:mt-0">{f.desc}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Stats */}
-        <section aria-labelledby="nova-stats" aria-describedby="nova-stats-intent" role="region" data-ai="proof" className="border-t py-16" style={{ borderColor: LINE, background: PANEL }}>
-          <AiIntent id="nova-stats-intent">Provide quantitative proof points for uptime, alert latency, and customer adoption.</AiIntent>
-          <h2 id="nova-stats" className="sr-only">Nova Cloud performance statistics</h2>
+        <section
+          aria-labelledby="nova-stats"
+          aria-describedby="nova-stats-intent"
+          role="region"
+          data-ai="proof"
+          className="border-t py-16"
+          style={{ borderColor: LINE, background: PANEL }}
+        >
+          <AiIntent id="nova-stats-intent">
+            Provide quantitative proof points for uptime, alert latency, and customer adoption.
+          </AiIntent>
+          <h2 id="nova-stats" className="sr-only">
+            Nova Cloud performance statistics
+          </h2>
           <div className="mx-auto grid max-w-6xl gap-8 px-6 sm:grid-cols-3">
             {[
               { n: "99.98%", l: "Average uptime across customers" },
@@ -259,10 +305,7 @@ export default function NovaCloud() {
               { n: "1,200+", l: "Teams monitoring on Nova" },
             ].map((s) => (
               <article key={s.l} data-ai="stat">
-                <p
-                  className="text-3xl font-semibold"
-                  style={{ fontFamily: MONO, color: MINT }}
-                >
+                <p className="text-3xl font-semibold" style={{ fontFamily: MONO, color: MINT }}>
                   {s.n}
                 </p>
                 <p className="mt-2 text-sm text-white/55">{s.l}</p>
@@ -271,51 +314,116 @@ export default function NovaCloud() {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section id="pricing" aria-labelledby="nova-pricing" aria-describedby="nova-pricing-intent" role="region" data-ai="pricing" className="border-t py-20" style={{ borderColor: LINE }}>
-          <AiIntent id="nova-pricing-intent">Present transparent Nova Cloud tiers and guide teams toward starting a trial or contacting sales.</AiIntent>
+        <section
+          id="pricing"
+          aria-labelledby="nova-pricing"
+          aria-describedby="nova-pricing-intent"
+          role="region"
+          data-ai="pricing"
+          className="border-t py-20"
+          style={{ borderColor: LINE }}
+        >
+          <AiIntent id="nova-pricing-intent">
+            Present transparent Nova Cloud tiers and guide teams toward starting a trial or contacting sales.
+          </AiIntent>
           <div className="mx-auto max-w-6xl px-6">
             <h2 id="nova-pricing" className="text-3xl font-semibold">
               Simple pricing, no surprise overages.
             </h2>
 
             <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {TIERS.map((tier) => (
-                <article ai-tag="pricing-tier" data-ai="offer"
-                  key={tier.name}
-                  className="rounded-xl border p-6"
-                  style={{
-                    borderColor: tier.featured ? MINT : LINE,
-                    background: tier.featured ? "rgba(55,230,196,0.06)" : PANEL,
-                  }}
-                >
-                  <p className="text-sm font-semibold text-white/80">
-                    {tier.name}
-                  </p>
-                  <p
-                    className="mt-2 text-3xl font-semibold"
-                    style={{ fontFamily: MONO }}
+              {TIERS.map((tier) => {
+                const selected = selectedTier === tier.name;
+                return (
+                  <article
+                    ai-tag="pricing-tier"
+                    data-ai="offer"
+                    key={tier.name}
+                    className="rounded-xl border p-6 transition-transform hover:scale-[1.01]"
+                    style={{
+                      borderColor: selected || tier.featured ? MINT : LINE,
+                      background: selected || tier.featured ? "rgba(55,230,196,0.06)" : PANEL,
+                    }}
                   >
-                    {tier.price}
-                  </p>
-                  <p className="mt-3 text-sm text-white/55">{tier.blurb}</p>
-                  <button
-                    type="button"
-                    className="mt-6 w-full rounded-md py-2.5 text-sm font-semibold"
-                    style={
-                      tier.featured
-                        ? { background: MINT, color: "#04211C" }
-                        : { border: `1px solid ${LINE}`, color: "#E7ECF5" }
-                    }
-                  >
-                    {tier.cta}
-                  </button>
-                </article>
-              ))}
+                    <p className="text-sm font-semibold text-white/80">{tier.name}</p>
+                    <p className="mt-2 text-3xl font-semibold" style={{ fontFamily: MONO }}>
+                      {tier.price}
+                    </p>
+                    <p className="mt-3 text-sm text-white/55">{tier.blurb}</p>
+                    <button
+                      type="button"
+                      onClick={() => openTrial(tier.name)}
+                      className="mt-6 w-full rounded-md py-2.5 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                      style={
+                        tier.featured || selected
+                          ? { background: MINT, color: "#04211C" }
+                          : { border: `1px solid ${LINE}`, color: "#E7ECF5" }
+                      }
+                    >
+                      {tier.cta}
+                    </button>
+                  </article>
+                );
+              })}
             </div>
+
+            {trialOpen && (
+              <div
+                className="mt-10 rounded-xl border p-6"
+                style={{ borderColor: LINE, background: PANEL }}
+                id="trial"
+              >
+                {trialSent ? (
+                  <div>
+                    <p className="text-lg font-semibold" style={{ color: MINT }}>
+                      You&apos;re on the list for {selectedTier}.
+                    </p>
+                    <p className="mt-2 text-sm text-white/60">
+                      Demo only — no email was sent. In a real build this would start the trial or open a calendar
+                      link.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setTrialOpen(false);
+                        setTrialSent(false);
+                        setEmail("");
+                      }}
+                      className="mt-4 text-sm text-white/70 underline underline-offset-4 transition-colors hover:text-white"
+                    >
+                      Close
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleTrial} className="flex flex-col gap-4 sm:flex-row sm:items-end">
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-white/90">
+                        Start {selectedTier} — enter work email
+                      </p>
+                      <p className="mt-1 text-xs text-white/45">Demo form. Nothing is stored or emailed.</p>
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="you@company.com"
+                        className="mt-3 min-h-11 w-full rounded-md border bg-transparent px-3 text-sm text-white placeholder:text-white/35"
+                        style={{ borderColor: LINE }}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="min-h-11 rounded-md px-6 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                      style={{ background: MINT, color: "#04211C" }}
+                    >
+                      Continue
+                    </button>
+                  </form>
+                )}
+              </div>
+            )}
           </div>
         </section>
-
       </main>
 
       <footer data-ai="footer" className="border-t py-8" style={{ borderColor: LINE }}>
@@ -324,10 +432,7 @@ export default function NovaCloud() {
           style={{ fontFamily: MONO }}
         >
           <span>© {new Date().getFullYear()} nova_cloud</span>
-          <Link
-            to="/"
-            className="underline underline-offset-4 transition-opacity hover:opacity-70"
-          >
+          <Link to="/" className="underline underline-offset-4 transition-opacity hover:opacity-70">
             Template preview by PrismWave Studio
           </Link>
         </div>

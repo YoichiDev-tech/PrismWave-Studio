@@ -13,7 +13,11 @@ interface AuditWidgetProps {
 type Status = "idle" | "loading" | "done" | "error";
 
 // Card body only — the surrounding section/card lives in StartCard (Hero).
-// Logic, endpoints and tracking events are unchanged from the standalone version
+// Changes for first-sale conversion:
+// - Show 2–3 findings immediately after score (value first, no gate)
+// - Gate the full prioritized list + clearer next step behind email
+// - Stronger, lower-risk CTA after lead capture
+// Tracking events and endpoints are unchanged
 export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps) {
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -124,7 +128,9 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
     }
   };
 
-  const topFindings = result ? result.categories.flatMap((category) => category.findings).slice(0, 5) : [];
+  const allFindings = result ? result.categories.flatMap((category) => category.findings) : [];
+  const previewFindings = allFindings.slice(0, 3);
+  const topFindings = allFindings.slice(0, 5);
 
   return (
     <div>
@@ -182,10 +188,29 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
             ))}
           </div>
 
+          {/* Immediate value: show 2–3 findings without email gate */}
+          {previewFindings.length > 0 && leadStatus !== "captured" && (
+            <div className="mt-6 border-t border-ink-line pt-5">
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
+                Quick findings
+              </p>
+              <ul className="mt-3 space-y-2">
+                {previewFindings.map((finding, i) => (
+                  <li key={i} className="flex gap-2.5 text-sm text-ink-soft">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-coral" aria-hidden="true" />
+                    {finding}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {leadStatus === "captured" ? (
             <>
               <div className="mt-6 border-t border-ink-line pt-5">
-                <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Your prioritized findings</p>
+                <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
+                  Your prioritized findings
+                </p>
                 <ul className="mt-3 space-y-2">
                   {topFindings.map((finding, i) => (
                     <li key={i} className="flex gap-2.5 text-sm text-ink-soft">
@@ -200,28 +225,37 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
               </div>
 
               <div className="mt-6 flex flex-col items-center gap-3 text-center">
-                <p className="text-sm text-ink-soft">Your report is on its way. Want a human read on what to fix first?</p>
+                <p className="text-sm text-ink-soft">
+                  Report sent. Want a human read on what to fix first — and a fixed-scope plan if it makes sense?
+                </p>
                 <button
                   type="button"
                   onClick={() => {
                     trackAction("audit_teardown_requested", {
                       metadata: { url: signals.finalUrl, overallScore: result.overall },
                     });
-                    onRequestFullTeardown({ siteUrl: signals.finalUrl, score: result.overall, findings: topFindings });
+                    onRequestFullTeardown({
+                      siteUrl: signals.finalUrl,
+                      score: result.overall,
+                      findings: topFindings,
+                    });
                   }}
                   className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
                   style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
                 >
-                  Request the full teardown
+                  Get a free 15-min review
                   <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
                 </button>
+                <p className="text-xs text-ink-soft">No obligation. We reply within one business day.</p>
               </div>
             </>
           ) : (
             <form onSubmit={handleUnlock} className="mt-6 border-t border-ink-line pt-5">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Unlock your full report</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
+                Get the full prioritized report
+              </p>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                Enter your email to receive the prioritized findings and next steps. No newsletter, no sales sequence.
+                Enter your email for the complete findings and clear next steps. One email — no newsletter, no sequence.
               </p>
               <div className="mt-4 flex flex-col gap-2.5">
                 <label htmlFor="audit-email" className="sr-only">
@@ -243,10 +277,12 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
                   className="inline-flex min-h-12 items-center justify-center rounded-full px-6 font-display text-sm font-semibold text-ink disabled:opacity-60"
                   style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
                 >
-                  {leadStatus === "sending" ? "Sending report…" : "Email me the report"}
+                  {leadStatus === "sending" ? "Sending report…" : "Email me the full report"}
                 </button>
               </div>
-              {leadStatus === "error" && error && <p className="mt-3 font-mono text-[12px] text-coral">{error}</p>}
+              {leadStatus === "error" && error && (
+                <p className="mt-3 font-mono text-[12px] text-coral">{error}</p>
+              )}
             </form>
           )}
         </div>

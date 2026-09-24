@@ -47,8 +47,6 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState<string | null>(null);
 
-  // Apply a new prefill exactly once per nonce. Adjusting state during render
-  // (instead of in an effect) avoids the extra cascading render
   const [appliedNonce, setAppliedNonce] = useState<number | null>(null);
   if (prefill && prefill.nonce !== appliedNonce) {
     setAppliedNonce(prefill.nonce);
@@ -60,16 +58,16 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
     }));
   }
 
-  const update = (field: keyof FormState) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const update =
+    (field: keyof FormState) =>
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
-    // The API requires a message; if the visitor only filled in the one-line
-    // idea, send that as the message rather than making them type it twice
     const message = form.message.trim() || form.idea.trim();
 
     if (!form.name.trim() || !form.email.trim() || !message) {
@@ -135,8 +133,13 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
         <Reveal className="space-y-8">
           <div>
             <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Get in touch</p>
-            <h2 id="contact-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-[2.5rem]">
-              {activeIntent === "audit" ? "Let's take a look at what you've got." : "Let's build your idea from scratch."}
+            <h2
+              id="contact-title"
+              className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-[2.5rem]"
+            >
+              {activeIntent === "audit"
+                ? "Let's take a look at what you've got."
+                : "Let's build your idea from scratch."}
             </h2>
             <p className="mt-4 max-w-sm text-ink-soft">
               Share your details and we'll reply within one business day with next steps — no obligation.
@@ -168,7 +171,9 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                       type="button"
                       onClick={() => onIntentChange("audit")}
                       className={`rounded-lg border px-4 py-3 text-left font-display text-sm font-semibold ${
-                        activeIntent === "audit" ? "border-amber bg-amber/10 text-paper" : "border-ink-line text-ink-soft"
+                        activeIntent === "audit"
+                          ? "border-amber bg-amber/10 text-paper"
+                          : "border-ink-line text-ink-soft"
                       }`}
                     >
                       Improve an existing site
@@ -177,7 +182,9 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                       type="button"
                       onClick={() => onIntentChange("build")}
                       className={`rounded-lg border px-4 py-3 text-left font-display text-sm font-semibold ${
-                        activeIntent === "build" ? "border-amber bg-amber/10 text-paper" : "border-ink-line text-ink-soft"
+                        activeIntent === "build"
+                          ? "border-amber bg-amber/10 text-paper"
+                          : "border-ink-line text-ink-soft"
                       }`}
                     >
                       Build something new
@@ -236,7 +243,9 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                     value={form.message}
                     onChange={update("message")}
                     rows={4}
-                    placeholder={activeIntent === "build" ? "Optional if you filled in the idea above" : undefined}
+                    placeholder={
+                      activeIntent === "build" ? "Optional if you filled in the idea above" : undefined
+                    }
                     className="resize-none rounded-lg border border-ink-line bg-transparent px-4 py-3 text-paper"
                   />
                 </label>
