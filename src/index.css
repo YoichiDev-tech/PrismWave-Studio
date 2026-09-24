@@ -24,8 +24,8 @@
 
   html {
     scroll-behavior: auto;
-    touch-action: pan-y;
-    /* Overscroll-behavior-x: none;  ← removed */
+    overflow-x: clip;
+    /* touch-action left off html so the browser owns vertical scroll */
   }
 
   body {
@@ -33,8 +33,7 @@
     color: var(--color-paper);
     font-family: var(--font-body);
     font-feature-settings: "ss01" 1;
-    touch-action: pan-y;
-    /* Overscroll-behavior-x: none;  ← removed */
+    overflow-x: clip;
   }
 
   ::selection {

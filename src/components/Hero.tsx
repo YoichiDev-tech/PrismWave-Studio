@@ -10,7 +10,7 @@ interface HeroProps {
 }
 
 const TRUST = [
-  "2–4 week turnaround",
+  "2-4 week turnaround",
   "Fixed-scope pricing",
   "You own the code",
   "No templates — custom builds",
@@ -23,7 +23,7 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
       ai="hero"
       intent="Introduce PrismWave Studio and let visitors start with a free site audit or by describing an idea."
       labelledBy="hero-title"
-      className="grain relative overflow-x-hidden bg-ink pb-16 pt-28 md:pb-24 md:pt-36"
+      className="grain relative overflow-x-clip bg-ink pb-16 pt-28 md:pb-24 md:pt-36"
     >
       <style>{`
         .flow-text {
