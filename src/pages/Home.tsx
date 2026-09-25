@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import Portfolio from "../components/Portfolio";
@@ -105,6 +106,7 @@ export default function Home() {
           "Hero and free audit",
           "Selected work",
           "Trust badges",
+          "Launch history",
           "Pricing and estimator",
           "Process",
           "About",
@@ -139,6 +141,27 @@ export default function Home() {
         <Portfolio variant="teaser" />
 
         <TrustBadges />
+
+        {/* Launch history — short teaser only; full timeline lives on /history */}
+        <section className="border-y border-ink-line bg-ink-2/40 py-14 md:py-16">
+          <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-xl">
+              <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Studio</p>
+              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-paper md:text-3xl">
+                Launch history
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft md:text-[15px]">
+                Project launches, redesigns, and studio milestones — kept honest and public.
+              </p>
+            </div>
+            <Link
+              to="/history"
+              className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-ink-line px-6 font-display text-sm font-semibold text-paper transition-colors hover:border-amber"
+            >
+              View full history →
+            </Link>
+          </div>
+        </section>
 
         <Pricing onRequestScope={handleScope} />
 

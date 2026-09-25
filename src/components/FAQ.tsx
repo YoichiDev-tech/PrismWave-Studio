@@ -4,16 +4,16 @@ import Section from "./Section";
 
 const FAQS = [
   {
-    q: "How long does a project take?",
-    a: "Most landing pages take 3-7 days. Small business sites usually take 2-3 weeks depending on content readiness and revision rounds.",
+    q: "Why should I trust PrismWave with my website?",
+    a: "You can inspect the work before committing: the audit uses real signals from your site, pricing is visible upfront, and the portfolio shows live builds rather than vague promises. You keep ownership of the finished code, and every project starts with a clear scope and timeline.",
   },
   {
     q: "Do I own the site after it's built?",
     a: "Yes — you fully own the code, design, and all exported assets. Nothing is locked behind subscriptions or proprietary builders.",
   },
   {
-    q: "Why should I trust PrismWave with my website?",
-    a: "You can inspect the work before committing: the audit uses real signals from your site, pricing is visible upfront, and the portfolio shows live builds rather than vague promises. You keep ownership of the finished code, and every project starts with a clear scope and timeline.",
+    q: "How long does a project take?",
+    a: "Most landing pages take 3-7 days. Small business sites usually take 2-3 weeks depending on content readiness and revision rounds.",
   },
   {
     q: "What happens if the project is not the right fit?",

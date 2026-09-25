@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { Intent } from "../pages/Home";
 import { trackAction } from "../lib/track";
 
-// Href starting with "/" routes via react-router (Lab is its own page)
-// Anchors ("#...") stay as in-page scroll links on the Home page
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
-  { label: "Work", href: "#work" },
+  { label: "Projects", href: "/projects" },
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
   { label: "Revamp", href: "/revamp" },
@@ -46,15 +44,11 @@ export default function Nav({ onSelectIntent }: NavProps) {
 
   const handleLinkClick = () => setOpen(false);
 
-  /** Logo: always return to top of home. If already on home, smooth-scroll; otherwise navigate. */
-  const handleLogoClick = (e: { preventDefault: () => void }) => {
+  const handleLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {
     if (location.pathname === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
-      handleLinkClick();
-    } else {
-      handleLinkClick();
-      // Let Link navigate; ScrollToTop will jump to top on route change
+      setOpen(false);
     }
   };
 
@@ -72,7 +66,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
         <Link
           to="/"
           onClick={handleLogoClick}
-          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-paper transition-opacity hover:opacity-80"
+          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-paper"
         >
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
             <path
@@ -106,7 +100,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             ) : (
               <li key={link.href}>
                 <a
-                  href={link.href}
+                  href={location.pathname === "/" ? link.href : `/${link.href}`}
                   onClick={link.intent ? () => onSelectIntent(link.intent as Intent) : undefined}
                   className="font-mono text-[13px] uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
                 >
@@ -118,23 +112,23 @@ export default function Nav({ onSelectIntent }: NavProps) {
         </ul>
 
         <a
-          href="#audit-tool"
+          href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
           onClick={() => {
             onSelectIntent("audit");
             trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
           }}
-          className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98] md:inline-block"
+          className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] md:inline-block"
         >
           Get a Free Audit
         </a>
 
         <a
-          href="#audit-tool"
+          href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
           onClick={() => {
             onSelectIntent("audit");
             trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile-bar" } });
           }}
-          className="ml-auto mr-2 rounded-full bg-paper px-4 py-2 font-display text-[13px] font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98] md:hidden"
+          className="ml-auto mr-2 rounded-full bg-paper px-4 py-2 font-display text-[13px] font-semibold text-ink md:hidden"
         >
           Free audit
         </a>
@@ -145,7 +139,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="relative -mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-1.5 transition-opacity hover:opacity-80 md:hidden"
+          className="relative -mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
         >
           <span
             className={`h-[1.5px] w-5 bg-paper transition-transform duration-300 ${
@@ -173,7 +167,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
                   <Link
                     to={link.href}
                     onClick={handleLinkClick}
-                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
+                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft hover:text-paper"
                   >
                     {link.label}
                   </Link>
@@ -181,12 +175,12 @@ export default function Nav({ onSelectIntent }: NavProps) {
               ) : (
                 <li key={link.href}>
                   <a
-                    href={link.href}
+                    href={location.pathname === "/" ? link.href : `/${link.href}`}
                     onClick={() => {
                       if (link.intent) onSelectIntent(link.intent);
                       handleLinkClick();
                     }}
-                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
+                    className="block py-2.5 font-mono text-sm uppercase tracking-wide text-ink-soft hover:text-paper"
                   >
                     {link.label}
                   </a>
@@ -195,13 +189,13 @@ export default function Nav({ onSelectIntent }: NavProps) {
             )}
           </ul>
           <a
-            href="#audit-tool"
+            href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
             onClick={() => {
               onSelectIntent("audit");
               trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile" } });
               handleLinkClick();
             }}
-            className="mt-3 inline-block rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98]"
+            className="mt-3 inline-block rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink"
           >
             Get a Free Audit
           </a>
