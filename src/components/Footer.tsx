@@ -1,17 +1,20 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-const LINKS = [
-  { label: "Work", href: "/#work" },
+const MENU = [
+  { label: "Projects", href: "/projects" },
   { label: "Pricing", href: "/#pricing" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
 
-// Build-in-public social channels 
-// Centralized here so the same list can be reused (e.g. Nav, a future "Follow the build" section) 
-// without duplicating hrefs across components
-// Update handles in one place if they ever change
+const STUDIO = [
+  { label: "History", href: "/history" },
+  { label: "Changelog", href: "/changelog" },
+  { label: "Roadmap", href: "/roadmap" },
+  { label: "Revamp", href: "/revamp" },
+];
+
 const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
   {
     label: "Threads",
@@ -47,7 +50,7 @@ export default function Footer() {
       >
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div>
-            <a href="/" className="flex items-center gap-2.5 font-display text-lg font-semibold text-paper">
+            <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-semibold text-paper">
               <svg width="22" height="22" viewBox="0 0 26 26" fill="none" aria-hidden="true">
                 <path
                   d="M2 15c2.5 0 2.5-6 5-6s2.5 6 5 6 2.5-6 5-6 2.5 6 5 6"
@@ -64,10 +67,9 @@ export default function Footer() {
                 </defs>
               </svg>
               PrismWave
-            </a>
+            </Link>
             <p className="mt-3 max-w-xs text-sm text-ink-soft">
-              Websites for small businesses that want to look — and load — as
-              good as they perform.
+              Websites for small businesses that want to look — and load — as good as they perform.
             </p>
 
             <div className="mt-5 flex items-center gap-3">
@@ -86,11 +88,23 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex gap-10 sm:gap-16">
+          <div className="flex flex-wrap gap-10 sm:gap-16">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Menu</p>
               <ul className="mt-4 space-y-2.5">
-                {LINKS.map((link) => (
+                {MENU.map((link) => (
+                  <li key={link.href}>
+                    <Link to={link.href} className="text-sm text-paper/80 transition-colors hover:text-paper">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Studio</p>
+              <ul className="mt-4 space-y-2.5">
+                {STUDIO.map((link) => (
                   <li key={link.href}>
                     <Link to={link.href} className="text-sm text-paper/80 transition-colors hover:text-paper">
                       {link.label}
@@ -112,9 +126,15 @@ export default function Footer() {
         <div className="mt-10 border-t border-ink-line pt-6">
           <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Legal &amp; regulatory</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-paper/70">
-            <Link to="/terms" className="min-h-11 inline-flex items-center transition-colors hover:text-paper">Terms of Use</Link>
-            <Link to="/privacy" className="min-h-11 inline-flex items-center transition-colors hover:text-paper">Privacy</Link>
-            <Link to="/regulatory" className="min-h-11 inline-flex items-center transition-colors hover:text-paper">Regulatory Information</Link>
+            <Link to="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-paper">
+              Terms of Use
+            </Link>
+            <Link to="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-paper">
+              Privacy
+            </Link>
+            <Link to="/regulatory" className="inline-flex min-h-11 items-center transition-colors hover:text-paper">
+              Regulatory Information
+            </Link>
           </div>
         </div>
 
