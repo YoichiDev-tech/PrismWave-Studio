@@ -16,7 +16,13 @@ import TrustBadges from "../components/TrustBadges";
 import CapacitySignal from "../components/CapacitySignal";
 import { scrollToSection } from "../lib/scroll";
 
-export type Intent = "audit" | "build";
+export type Intent =
+  | "audit"
+  | "build"
+  | "pricing"
+  | "about"
+  | "contact"
+  | undefined;
 
 function FooterCTA() {
   return (

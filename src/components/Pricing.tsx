@@ -10,9 +10,6 @@ interface PricingProps {
   onRequestScope: (summary: string, intent: Intent) => void;
 }
 
-// Pricing + scope estimator in ONE section (they used to be two, with
-// different numbers). Pick a plan, toggle add-ons, see the estimate, send it
-// pre-filled into the contact form
 export default function Pricing({ onRequestScope }: PricingProps) {
   const [planId, setPlanId] = useState<string>(PLANS[0].id);
   const [addonIds, setAddonIds] = useState<Set<string>>(new Set());
@@ -48,10 +45,10 @@ export default function Pricing({ onRequestScope }: PricingProps) {
     ].join("\n");
 
     trackAction("cta_click", {
-      intent: plan.intent,
       metadata: { label: "Get this scoped", location: "pricing", plan: plan.id, estimateMin: minPrice },
     });
-    onRequestScope(summary, plan.intent);
+
+    onRequestScope(summary, plan.intent as Intent);
   };
 
   return (
@@ -168,7 +165,9 @@ export default function Pricing({ onRequestScope }: PricingProps) {
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackAction("cta_click", { metadata: { label: "Book a free 15-min call", location: "pricing" } })}
+                onClick={() =>
+                  trackAction("cta_click", { metadata: { label: "Book a free 15-min call", location: "pricing" } })
+                }
                 className="font-mono text-[12px] uppercase tracking-wide text-ink-soft underline underline-offset-4 transition-colors hover:text-paper"
               >
                 Not sure? Book a free 15-min call
@@ -177,8 +176,9 @@ export default function Pricing({ onRequestScope }: PricingProps) {
           </div>
 
           <p className="mx-auto mt-4 max-w-3xl text-center font-mono text-[11px] leading-relaxed text-ink-soft">
-            {plan.excludes} The estimate is directional — scope is confirmed together before any work starts. 35% deposit to start, 65% on delivery.
-            Prices in USD unless agreed otherwise. No retainers, no surprise add-ons, no locked-in platform.
+            {plan.excludes} The estimate is directional — scope is confirmed together before any work starts. 35% deposit
+            to start, 65% on delivery. Prices in USD unless agreed otherwise. No retainers, no surprise add-ons, no
+            locked-in platform.
           </p>
         </Reveal>
       </div>

@@ -5,6 +5,7 @@ import { trackAction } from "../lib/track";
 
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Projects", href: "/projects" },
+  { label: "Tools", href: "/tools" },
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
   { label: "Revamp", href: "/revamp" },
@@ -50,6 +51,11 @@ export default function Nav({ onSelectIntent }: NavProps) {
       window.scrollTo({ top: 0, behavior: "smooth" });
       setOpen(false);
     }
+  };
+
+  const hrefFor = (href: string) => {
+    if (href.startsWith("/")) return href;
+    return location.pathname === "/" ? href : `/${href}`;
   };
 
   return (
@@ -100,7 +106,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
             ) : (
               <li key={link.href}>
                 <a
-                  href={location.pathname === "/" ? link.href : `/${link.href}`}
+                  href={hrefFor(link.href)}
                   onClick={link.intent ? () => onSelectIntent(link.intent as Intent) : undefined}
                   className="font-mono text-[13px] uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
                 >
@@ -175,7 +181,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
               ) : (
                 <li key={link.href}>
                   <a
-                    href={location.pathname === "/" ? link.href : `/${link.href}`}
+                    href={hrefFor(link.href)}
                     onClick={() => {
                       if (link.intent) onSelectIntent(link.intent);
                       handleLinkClick();

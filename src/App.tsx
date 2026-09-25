@@ -22,6 +22,7 @@ const Terms = lazy(() => import("./pages/legal/Terms"));
 const Privacy = lazy(() => import("./pages/legal/Privacy"));
 const Regulatory = lazy(() => import("./pages/legal/Regulatory"));
 const Revamp = lazy(() => import("./pages/Revamp"));
+const Tools = lazy(() => import("./pages/Tools"));
 
 function RouteFallback() {
   return <div className="min-h-screen bg-ink" aria-hidden="true" />;
@@ -50,6 +51,12 @@ export default function App() {
 
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
+
+          <Route path="/tools" element={<Tools />} />
+
+          <Route path="/products" element={<Navigate to="/tools" replace />} />
+          <Route path="/products/:slug" element={<Navigate to="/tools" replace />} />
+
           <Route path="/history" element={<History />} />
           <Route path="/changelog" element={<Changelog />} />
           <Route path="/roadmap" element={<Roadmap />} />
