@@ -60,11 +60,17 @@ copy describing the service, but the service running in the browser.
 - Every visit and every meaningful action (contact submit, audit run, chat
   opened/messaged) now gets logged to Supabase via `/api/track` — feeds a
   separate private ops dashboard, not visible anywhere on this site
+- Every completed audit now saves to Supabase and gets a shareable
+  `/audit/:id` link — built for cold outreach ("I audited your site,
+  here's the report"), not just for visitors who run it themselves
 
 ## Live Features
 
 - AI-Ready Site Audit — instant, real heuristic scoring of any URL
   (speed, UI/UX modernism, mobile responsiveness, AI readability)
+- Shareable audit reports — every completed audit gets a public
+  `/audit/:id` link (score, category breakdown, top findings), backed
+  by a new `audits` table, no PII stored
 - Architecture & MVP Sprint Configurator — toggle-based scope + instant
   price/timeline estimate, feeds straight into Contact
 - The Lab — public, copyable component snippets with live previews
@@ -100,6 +106,10 @@ copy describing the service, but the service running in the browser.
   approval queue; still need the cron job that finds leads and the
   send-on-approval step
 - Confirm real Threads/Instagram handles across Footer + Lab (currently placeholders)
+- Add crawler-visible OG previews for `/audit/:id` (and ideally site-wide) —
+  `react-helmet-async` tags are client-side only, so link-preview bots
+  (Slack, X, WhatsApp, iMessage) that don't run JS still see nothing
+  custom when a report link gets pasted somewhere
 - Fill in real business registration details on the Regulatory page once
   the studio is formally registered
 - Write a first blog/content post to start building an organic search and
@@ -124,6 +134,22 @@ with its own authenticated operator allowlist and server-side service role
 key. Never expose the service role key with a `VITE_` prefix.
 
 ## Changelog
+
+### 28/09/2026
+- Added shareable audit reports: every completed audit now saves to a new
+  `audits` table (score, category breakdown, audited URL — no PII, no
+  email) and gets a public `/audit/:id` link
+- `AuditWidget` shows a "Copy shareable report link" button once the save
+  completes — async, fire-and-forget, never gates or blocks the score
+  that's already on screen
+- New route `/audit/:id` (`AuditReport.tsx`) renders the saved score,
+  category gauges, and findings for anyone with the link, ending in a
+  Book a Call CTA
+- New endpoints: `/api/audit-save` (POST, persists a client-scored
+  result) and `/api/audit-report` (GET, public read by id)
+- Known gap, not new: OG/social preview tags are still client-side only
+  (`react-helmet-async`), so a `/audit/:id` link pasted into Slack/X/
+  WhatsApp won't show a custom preview card yet — see Next Steps
 
 ### 08/08/2026
 - Updated spacing, layout, and UI polish across all sections

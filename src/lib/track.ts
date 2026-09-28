@@ -115,7 +115,9 @@ export function trackAction(
     | "chat_opened"
     | "chat_message_sent"
     | "cta_click"
-    | "booking_completed",
+    | "booking_completed"
+    | "audit_report_link_copied"
+    | "audit_report_viewed",
   options: TrackOptions = {}
 ): void {
   track("action", eventName, options);

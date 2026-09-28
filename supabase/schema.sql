@@ -147,3 +147,34 @@ set search_path = public
 as $$
   delete from public.rate_limits where window_start < now() - interval '1 day';
 $$;
+
+-- ---------------------------------------------------------------------
+-- Shareable audit reports (api/audit-save.ts, api/audit-report.ts,
+-- src/pages/AuditReport.tsx). Public, non-PII data only: the score,
+-- category breakdown, and the URL audited — no name/email attached.
+-- id is an app-generated short slug (see generateId() in
+-- api/audit-save.ts), used directly in the public /audit/:id URL.
+-- ---------------------------------------------------------------------
+create table if not exists public.audits (
+  id text primary key,
+  url text not null,
+  final_url text not null,
+  overall_score integer not null check (overall_score between 0 and 100),
+  categories jsonb not null default '[]'::jsonb,
+  signals jsonb not null default '{}'::jsonb,
+  session_id text,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists audits_created_at_idx on public.audits (created_at desc);
+
+alter table public.audits enable row level security;
+
+drop policy if exists "operators can read audits" on public.audits;
+create policy "operators can read audits"
+on public.audits for select
+to authenticated using (true);
+
+-- No anon RLS policy: api/audit-report.ts reads a single row by id via
+-- the service role (bypasses RLS), same pattern as leads/rate_limits
+-- above. RLS stays on as default-deny for any other access path.

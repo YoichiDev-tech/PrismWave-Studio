@@ -104,6 +104,39 @@ interface Database {
         }>;
         Relationships: [];
       };
+      audits: {
+        Row: {
+          id: string;
+          url: string;
+          final_url: string;
+          overall_score: number;
+          categories: Json;
+          signals: Json;
+          session_id: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id: string;
+          url: string;
+          final_url: string;
+          overall_score: number;
+          categories?: Json;
+          signals?: Json;
+          session_id?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<{
+          id: string;
+          url: string;
+          final_url: string;
+          overall_score: number;
+          categories: Json;
+          signals: Json;
+          session_id: string | null;
+          created_at: string;
+        }>;
+        Relationships: [];
+      };
       rate_limits: {
         Row: {
           key: string;

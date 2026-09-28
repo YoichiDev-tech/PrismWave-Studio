@@ -26,6 +26,8 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
   const [signals, setSignals] = useState<AuditSignals | null>(null);
   const [email, setEmail] = useState("");
   const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "captured" | "error">("idle");
+  const [reportId, setReportId] = useState<string | null>(null);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,6 +76,32 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
         intent: "audit",
         metadata: { url: data.signals.finalUrl, overallScore: auditResult.overall },
       });
+
+      // Fire-and-forget: persist so this can be shared as /audit/:id — e.g.
+      // for cold outreach ("I audited your site, here's the report").
+      // Never blocks or errors the widget itself; the score above already
+      // rendered regardless of whether this succeeds
+      setReportId(null);
+      setCopyStatus("idle");
+      fetch("/api/audit-save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: url.trim(),
+          finalUrl: data.signals.finalUrl,
+          overall: auditResult.overall,
+          categories: auditResult.categories,
+          signals: data.signals,
+          sessionId: getSessionIdForLead(),
+        }),
+      })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((saved: { ok?: boolean; id?: string } | null) => {
+          if (saved?.ok && saved.id) setReportId(saved.id);
+        })
+        .catch(() => {
+          // No shareable link this time — nothing else in the widget depends on it.
+        });
     } catch {
       setError("Couldn't reach the audit service. Check your connection and try again.");
       setStatus("error");
@@ -180,6 +208,27 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
             <p className="mt-1 break-all text-xs text-ink-soft">
               Results for <span className="text-paper">{signals.finalUrl}</span>
             </p>
+            {reportId && (
+              <button
+                type="button"
+                onClick={() => {
+                  const link = `${window.location.origin}/audit/${reportId}`;
+                  navigator.clipboard
+                    .writeText(link)
+                    .then(() => {
+                      setCopyStatus("copied");
+                      setTimeout(() => setCopyStatus("idle"), 2000);
+                    })
+                    .catch(() => {
+                      // Clipboard can be blocked by permissions — link still exists at /audit/:id
+                    });
+                  trackAction("audit_report_link_copied", { metadata: { url: signals.finalUrl } });
+                }}
+                className="mt-3 font-mono text-[11px] uppercase tracking-wide text-ink-soft underline underline-offset-4 hover:text-amber"
+              >
+                {copyStatus === "copied" ? "Link copied" : "Copy shareable report link"}
+              </button>
+            )}
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-5">
