@@ -3,6 +3,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import LiveChat from "./components/LiveChat";
 import usePageTracking from "./hooks/usePageTracking";
+// import Services from './pages/Services';
+// import CaseStudyPage from './pages/CaseStudyPage';
+// import Reviews from './pages/Reviews';
 
 const Home = lazy(() => import("./pages/Home"));
 const FieldingRye = lazy(() => import("./pages/templates/FieldingRye"));
@@ -49,6 +52,7 @@ export default function App() {
           <Route path="/work/servesync/case-study" element={<ServeSyncCaseStudy />} />
           <Route path="/work/appointment-workflows/concept" element={<AppointmentWorkflowConcept />} />
           <Route path="/case-studies" element={<CaseStudiesIndex />} />
+
 
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />

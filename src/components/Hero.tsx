@@ -10,7 +10,7 @@ interface HeroProps {
 }
 
 const TRUST = [
-  "2-4 week turnaround",
+  "2–4 week turnaround",
   "Fixed-scope pricing",
   "You own the code",
   "No templates — custom builds",
@@ -21,7 +21,7 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
     <Section
       id="top"
       ai="hero"
-      intent="Introduce PrismWave Studio and let visitors start with a free site audit or by describing an idea."
+      intent="Lead with a free site audit so visitors can see the problem first, then start a fixed-scope build or rebuild."
       labelledBy="hero-title"
       className="grain relative overflow-x-clip bg-ink pb-16 pt-28 md:pb-24 md:pt-36"
     >
@@ -58,21 +58,22 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
               <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-amber" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber" />
             </span>
-            Modern websites & SaaS MVPs for small businesses
+            Free site audit · Fixed-scope builds for small businesses
           </p>
 
           <h1
             id="hero-title"
             className="font-display text-[clamp(2.2rem,9vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-paper sm:text-6xl md:text-[3.8rem] lg:text-[4.2rem]"
           >
-            Websites built from zero —
+            See what's holding your website back.
             <br />
-            <span className="flow-text">or rebuilt the right way.</span>
+            <span className="flow-text">Then fix it — or rebuild it properly.</span>
           </h1>
 
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-soft">
-            PrismWave builds fast, modern websites and SaaS MVPs with fixed-scope pricing and 2-4 week turnaround.
-            No templates, no surprises — and you own everything we build.
+            Run a free audit and get clear findings in seconds. No pitch, no obligation —
+            just a direct look at speed, mobile, SEO and conversion issues. When you're ready,
+            we design and build the fix (or a new site) with fixed-scope pricing and 2-4 week turnaround.
           </p>
 
           <ul className="mt-6 hidden flex-wrap items-center gap-x-6 sm:flex gap-y-2 font-mono text-[12px] uppercase tracking-wide text-ink-soft">
