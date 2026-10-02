@@ -24,6 +24,9 @@ export default function Process() {
           <h2 id="process-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl">
             Five predictable steps, from idea to launch.
           </h2>
+          <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+            The build process follows five predictable steps: discovery, design, build, launch, and support. Each phase has clear deliverables and timelines — you know what to expect at every stage.
+          </p>
         </Reveal>
 
         <Reveal delay={1}>

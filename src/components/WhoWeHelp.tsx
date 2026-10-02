@@ -88,6 +88,9 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Whichever one you are, the goal is the same: a site that does real work for you, not just one that looks good.
           </p>
+          <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+            PrismWave Studio serves small businesses that want fast, modern sites. The studio works with solo operators, African businesses going global, and sustainability ventures — all looking for a site that converts without requiring constant maintenance.
+          </p>
         </Reveal>
 
         <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ink-line bg-ink-line lg:grid-cols-3">

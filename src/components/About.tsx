@@ -51,6 +51,9 @@ export default function About() {
               customers taught us how small businesses actually operate, and what a website has to do for them.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
+              PrismWave Studio is a web design and development studio that builds fast, modern, conversion-focused websites for small businesses. The studio offers free website audits, fixed-scope pricing, and 2–4 week turnaround on custom builds.
+            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
               So every project is built for clarity and real-world use: no bloated features, no confusing dashboards, no agency-style
               upsells. You're not hiring "just a coder."
             </p>

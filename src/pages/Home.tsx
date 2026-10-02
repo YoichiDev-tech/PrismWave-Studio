@@ -1,6 +1,9 @@
 import { useCallback, useState } from "react";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
+import AuditDetails from "../components/AuditDetails";
+import AuditFindings from "../components/AuditFindings";
+import WhoWeHelp from "../components/WhoWeHelp";
 import Portfolio from "../components/Portfolio";
 import Pricing from "../components/Pricing";
 import Process from "../components/Process";
@@ -29,7 +32,7 @@ function FooterCTA() {
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <button
           type="button"
-          onClick={() => scrollToSection("audit-tool")}
+          onClick={() => scrollToSection("top")}
           className="rounded-full px-8 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98]"
           style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
         >
@@ -43,6 +46,10 @@ function FooterCTA() {
           Book a 15-min call
         </button>
       </div>
+
+      <p className="mt-6 text-sm text-ink-soft">
+        After the audit, you choose: <span className="text-paper">fix what's broken</span> with targeted fixes or <span className="text-paper">rebuild properly</span> with a full custom build. Both use fixed-scope pricing and 2–4 week turnaround.
+      </p>
     </section>
   );
 }
@@ -92,14 +99,17 @@ export default function Home() {
   return (
     <div ai-tag="home" data-ai="page" className="grain bg-ink min-h-screen">
       <SEO
-        title="Free Website Audit for Small Businesses | PrismWave Studio"
-        description="Run a free website audit in seconds. See clear findings on speed, mobile, SEO and conversion — then get a fixed-scope fix or rebuild. No obligation."
+        title="Free Website Audit & Custom Web Development | PrismWave Studio"
+        description="PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability. Get clear findings in seconds, then choose a fixed-scope fix or full rebuild with 2–4 week turnaround."
         path="/"
       />
 
       <AiMetadata
         map={[
           "Hero and free audit",
+          "What the audit checks",
+          "Audit findings format",
+          "Who this is for",
           "Selected work",
           "Pricing and estimator",
           "Process",
@@ -131,6 +141,16 @@ export default function Home() {
           onRequestFullTeardown={handleAuditTeardown}
           onStartIdea={handleStartIdea}
         />
+
+        <AuditDetails />
+
+        <AuditFindings />
+
+        <WhoWeHelp onSelectAudience={(segment) => {
+          setIntent("build");
+          setPrefill({ message: `I'm interested in a project — I fit the "${segment}" segment.`, nonce: Date.now() });
+          scrollToSection("contact");
+        }} />
 
         <Portfolio variant="teaser" />
 

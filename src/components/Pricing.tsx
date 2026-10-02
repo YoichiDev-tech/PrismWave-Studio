@@ -72,6 +72,9 @@ export default function Pricing({ onRequestScope }: PricingProps) {
             Pick a starting point. See the number instantly.
           </h2>
           <p className="mt-4 text-ink-soft">No vague proposals, no hidden fees — every project is scoped upfront.</p>
+          <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+            Fixed-scope pricing means you see the estimate before any work begins. Projects are defined with clear deliverables, timelines, and costs — no surprise add-ons or billable hours.
+          </p>
         </Reveal>
 
         <Reveal delay={1} className="mt-10">

@@ -10,7 +10,7 @@ interface HeroProps {
 }
 
 const TRUST = [
-  "2–4 week turnaround",
+  "2-4 week turnaround",
   "Fixed-scope pricing",
   "You own the code",
   "No templates — custom builds",
@@ -71,9 +71,7 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
           </h1>
 
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-soft">
-            Run a free audit and get clear findings in seconds. No pitch, no obligation —
-            just a direct look at speed, mobile, SEO and conversion issues. When you're ready,
-            we design and build the fix (or a new site) with fixed-scope pricing and 2-4 week turnaround.
+            PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability in seconds. You get clear, prioritized findings — then choose a fixed-scope fix or a full rebuild with 2–4 week turnaround.
           </p>
 
           <ul className="mt-6 hidden flex-wrap items-center gap-x-6 sm:flex gap-y-2 font-mono text-[12px] uppercase tracking-wide text-ink-soft">
