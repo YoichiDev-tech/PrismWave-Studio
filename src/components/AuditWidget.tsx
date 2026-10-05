@@ -161,6 +161,18 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
   const previewFindings = allFindings.slice(0, 3);
   const topFindings = allFindings.slice(0, 5);
 
+  const handlePackageSelect = (planLabel: string) => {
+    if (!signals || !result) return;
+    trackAction("cta_click", {
+      metadata: { label: "Get this scoped", location: "audit_result", plan: planLabel, overallScore: result.overall },
+    });
+    onRequestFullTeardown({
+      siteUrl: signals.finalUrl,
+      score: result.overall,
+      findings: [`Interested in the "${planLabel}" package`, ...topFindings],
+    });
+  };
+
   return (
     <div>
       <p className="font-display text-xl font-semibold leading-snug text-paper">How does your site score?</p>
@@ -274,19 +286,7 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
                 </ul>
               </div>
 
-              <PackageSuggestion
-                score={result.overall}
-                onSelect={(planLabel) => {
-                  trackAction("cta_click", {
-                    metadata: { label: "Get this scoped", location: "audit_result", plan: planLabel, overallScore: result.overall },
-                  });
-                  onRequestFullTeardown({
-                    siteUrl: signals.finalUrl,
-                    score: result.overall,
-                    findings: [`Interested in the "${planLabel}" package`, ...topFindings],
-                  });
-                }}
-              />
+              <PackageSuggestion score={result.overall} onSelect={handlePackageSelect} />
 
               <div className="mt-6 flex flex-col items-center gap-3 text-center">
                 <p className="text-sm text-ink-soft">
@@ -314,6 +314,8 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
               </div>
             </>
           ) : (
+            <>
+              <PackageSuggestion score={result.overall} onSelect={handlePackageSelect} />
             <form onSubmit={handleUnlock} className="mt-6 border-t border-ink-line pt-5">
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
                 Get the full prioritized report
@@ -348,6 +350,7 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
                 <p className="mt-3 font-mono text-[12px] text-coral">{error}</p>
               )}
             </form>
+            </>
           )}
         </div>
       )}
