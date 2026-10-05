@@ -5,7 +5,11 @@ import { trackAction } from "../lib/track";
 
 interface HeroProps {
   onSelectIntent: (intent: Intent) => void;
-  onRequestFullTeardown: (context: { siteUrl: string; score: number; findings: string[] }) => void;
+  onRequestFullTeardown: (context: {
+    siteUrl: string;
+    score: number;
+    findings: string[];
+  }) => void;
   onStartIdea: (idea: string) => void;
 }
 
@@ -13,10 +17,14 @@ const TRUST = [
   "2-4 week turnaround",
   "Fixed-scope pricing",
   "You own the code",
-  "No templates — custom builds",
+  "15-min review first",
 ];
 
-export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIdea }: HeroProps) {
+export default function Hero({
+  onSelectIntent,
+  onRequestFullTeardown,
+  onStartIdea,
+}: HeroProps) {
   return (
     <Section
       id="top"
@@ -43,12 +51,16 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 right-0 h-[560px] w-[560px] translate-x-[35%] rounded-full opacity-20 blur-[130px]"
-        style={{ background: "radial-gradient(circle, #6C63FF 0%, transparent 70%)" }}
+        style={{
+          background: "radial-gradient(circle, #6C63FF 0%, transparent 70%)",
+        }}
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -bottom-32 left-0 h-[420px] w-[420px] -translate-x-[35%] rounded-full opacity-10 blur-[130px]"
-        style={{ background: "radial-gradient(circle, #FFB84D 0%, transparent 70%)" }}
+        style={{
+          background: "radial-gradient(circle, #FFB84D 0%, transparent 70%)",
+        }}
       />
 
       <div className="relative mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-14">
@@ -65,19 +77,27 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
             id="hero-title"
             className="font-display text-[clamp(2.2rem,9vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-paper sm:text-6xl md:text-[3.8rem] lg:text-[4.2rem]"
           >
-            See what's holding your website back.
+            See what&apos;s holding your website back.
             <br />
-            <span className="flow-text">Then fix it — or rebuild it properly.</span>
+            <span className="flow-text">
+              Then fix it — or rebuild it properly.
+            </span>
           </h1>
 
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-soft">
-            PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability in seconds. You get clear, prioritized findings — then choose a fixed-scope fix or a full rebuild with 2–4 week turnaround.
+            Free audit that scores speed, mobile, SEO and AI-readability in
+            seconds. Then a 15-minute review and a written fixed-scope plan —
+            Site Rescue or a full rebuild — with clear price and 2-4 week
+            delivery. You own the code.
           </p>
 
-          <ul className="mt-6 hidden flex-wrap items-center gap-x-6 sm:flex gap-y-2 font-mono text-[12px] uppercase tracking-wide text-ink-soft">
+          <ul className="mt-6 hidden flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[12px] uppercase tracking-wide text-ink-soft sm:flex">
             {TRUST.map((item) => (
               <li key={item} className="flex items-center gap-2">
-                <span aria-hidden="true" className="h-1 w-1 rounded-full bg-amber" />
+                <span
+                  aria-hidden="true"
+                  className="h-1 w-1 rounded-full bg-amber"
+                />
                 {item}
               </li>
             ))}
@@ -91,7 +111,6 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
             onStartIdea={onStartIdea}
           />
 
-          {/* Extra top margin so this line is not glued to the StartCard */}
           <p className="mt-8 text-center font-mono text-[12px] uppercase tracking-wide text-ink-soft">
             Just browsing{" "}
             <a
@@ -103,7 +122,7 @@ export default function Hero({ onSelectIntent, onRequestFullTeardown, onStartIde
               }
               className="text-paper underline underline-offset-4 transition-colors hover:text-amber"
             >
-              See our work →
+              See concept demos →
             </a>
           </p>
         </div>

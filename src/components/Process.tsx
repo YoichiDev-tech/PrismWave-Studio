@@ -2,11 +2,26 @@ import Reveal from "./Reveal";
 import Section from "./Section";
 
 const STEPS = [
-  { title: "Discovery", desc: "We learn your business, goals and audience." },
-  { title: "Design", desc: "Structure, layout and a visual direction that fits your brand." },
-  { title: "Build", desc: "Fast, responsive, production-ready code." },
-  { title: "Launch", desc: "Deploy, connect your domain, check every device." },
-  { title: "Support", desc: "Updates and improvements after launch." },
+  {
+    title: "Audit or short call",
+    desc: "Free site audit or a 15-minute review. You get clear findings and a realistic recommendation — fix, rebuild, or leave it.",
+  },
+  {
+    title: "Written project summary",
+    desc: "One plain document: exact pages, features, timeline, and what's included or excluded. No vague proposals.",
+  },
+  {
+    title: "Simple agreement + deposit",
+    desc: "You receive a short agreement covering price, deposit, revisions, and ownership. Work starts only after deposit and signed terms.",
+  },
+  {
+    title: "Build & review rounds",
+    desc: "Fixed-scope build in 2-4 weeks. You get the included revision rounds. No surprise hours or scope creep.",
+  },
+  {
+    title: "Launch & full handover",
+    desc: "Deploy, connect domain if needed, handover the complete code and assets. You own 100%. Optional support after that.",
+  },
 ];
 
 export default function Process() {
@@ -14,18 +29,25 @@ export default function Process() {
     <Section
       id="process"
       ai="process"
-      intent="Show the five steps from first conversation through launch and support."
+      intent="Show the clear fixed-scope path from first contact through written agreement, build, and handover."
       labelledBy="process-title"
       className="border-y border-ink-line bg-ink-2 py-16 md:py-20"
     >
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">How it works</p>
-          <h2 id="process-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl">
-            Five predictable steps, from idea to launch.
+          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
+            How it works
+          </p>
+          <h2
+            id="process-title"
+            className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl"
+          >
+            Fixed scope. Written terms. No surprises.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            The build process follows five predictable steps: discovery, design, build, launch, and support. Each phase has clear deliverables and timelines — you know what to expect at every stage.
+            Every project follows the same path: clear findings, a written
+            project summary, a simple agreement, then the build. You see the
+            exact scope and price before any work or deposit begins.
           </p>
         </Reveal>
 
@@ -40,12 +62,27 @@ export default function Process() {
                   0{i + 1}
                 </span>
                 <div>
-                  <h3 className="font-display text-base font-semibold text-paper">{step.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">{step.desc}</p>
+                  <h3 className="font-display text-base font-semibold text-paper">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+                    {step.desc}
+                  </p>
                 </div>
               </li>
             ))}
           </ol>
+        </Reveal>
+
+        <Reveal delay={2} className="mt-10">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-ink-line bg-ink/60 px-6 py-5 text-center">
+            <p className="text-sm leading-relaxed text-ink-soft">
+              <span className="font-semibold text-paper">How payment works:</span>{" "}
+              35% deposit to start after the agreement is signed, 65% on delivery.
+              Scope is locked before work begins. Extra work outside the agreed
+              summary is quoted separately — never billed as surprise hours.
+            </p>
+          </div>
         </Reveal>
       </div>
     </Section>

@@ -18,6 +18,12 @@ export interface Addon {
   weeks: number;
 }
 
+/**
+ * First-sale pricing (0 clients / 0 testimonials).
+ * Goal: remove price as the blocker, deliver well, collect proof, then raise.
+ * Currency: same unit as the live site today (treat as USD display;
+ * for UK outreach state GBP clearly in the Project Summary / Agreement)
+ */
 export const PLANS: Plan[] = [
   {
     id: "landing",
@@ -25,67 +31,91 @@ export const PLANS: Plan[] = [
     price: 350,
     weeks: 1,
     intent: "build",
-    blurb: "A clean, modern landing page built for one clear goal.",
+    blurb: "One clear page built to turn visitors into enquiries or bookings.",
     includes: [
       "Mobile-first responsive design",
-      "Basic SEO setup",
+      "Basic SEO + contact form",
       "Up to 2 revision rounds",
     ],
-    excludes: "Copywriting, hosting, and domain are not included.",
+    excludes: "Copywriting, logo design, hosting and domain are not included.",
   },
-
   {
-    id: "redesign",
-    label: "Website Redesign",
-    price: 800,
+    id: "site-rescue",
+    label: "Site Rescue",
+    price: 750,
     weeks: 2,
     intent: "audit",
-    blurb: "A full rebuild of your existing site with improved UI and UX.",
+    blurb:
+      "Audit findings turned into a fixed-scope fix or rebuild so the site works and converts.",
     includes: [
-      "Modern UI + improved UX",
-      "Performance optimization",
+      "Prioritised audit findings applied",
+      "Modern UI + mobile performance",
+      "Contact / enquiry path fixed",
       "Up to 2 revision rounds",
     ],
-    excludes: "Content rewriting and hosting/domain migration are not included.",
+    excludes:
+      "Full brand redesign, ongoing content writing, and hosting are not included.",
   },
-
   {
     id: "business",
     label: "Small Business Site",
-    price: 1000,
-    weeks: 2,
+    price: 1100,
+    weeks: 5,
     intent: "build",
-    blurb: "A complete 3-6 page website ready to take enquiries.",
+    blurb:
+      "3-6 page site ready to take enquiries — for trades, hospitality and local services.",
     includes: [
       "Navigation + responsive layout",
       "Contact form + email integration",
+      "Core pages agreed in the summary",
       "Up to 3 revision rounds",
     ],
-    excludes: "Brand/logo design, hosting, and domain are not included.",
+    excludes:
+      "Logo design, photography, hosting and domain are not included.",
   },
-
   {
-    id: "saas",
-    label: "Full-Stack SaaS MVP",
-    price: 2500,
-    weeks: 8, // REALISTIC timeline for a solo founder doing all roles
+    id: "saas-mvp",
+    label: "SaaS / Product starter",
+    price: 1800,
+    weeks: 7,
     intent: "build",
-    blurb: "A working MVP: frontend, backend logic, and database.",
+    blurb:
+      "Clean marketing site + core product surface so early users can understand and try the product.",
     includes: [
-      "Custom UI + user flows",
-      "Serverless backend logic",
-      "Database behind it",
+      "Custom UI + key user flows",
+      "Basic backend as scoped",
+      "Up to 2 revision rounds",
     ],
-    excludes: "Hosting and third-party service fees are not included.",
+    excludes:
+      "Ongoing hosting fees, third-party SaaS costs, and post-launch feature work are not included.",
+  },
+  {
+    id: "fintech-lite",
+    label: "Trust / fintech landing",
+    price: 950,
+    weeks: 2,
+    intent: "build",
+    blurb:
+      "High-clarity landing for solo founders and early products that need to look credible fast.",
+    includes: [
+      "Trust-focused layout",
+      "Mobile-first responsive build",
+      "Contact or waitlist path",
+      "Up to 2 revision rounds",
+    ],
+    excludes:
+      "Compliance review, legal copy, and payment integrations are not included unless scoped separately.",
   },
 ];
 
 export const ADDONS: Addon[] = [
-  { id: "supabase-auth", label: "Auth + database setup", price: 400, weeks: 1 },
-  { id: "custom-api", label: "Custom API / backend logic", price: 600, weeks: 1 },
-  { id: "speed-pass", label: "Performance speed pass", price: 200, weeks: 0.5 },
+  { id: "supabase-auth", label: "Auth + database setup", price: 300, weeks: 1 },
+  { id: "custom-api", label: "Custom API / backend logic", price: 450, weeks: 1 },
+  { id: "speed-pass", label: "Performance speed pass", price: 150, weeks: 0.5 },
 ];
 
 export function formatWeeks(weeks: number): string {
-  return weeks === 1 ? "1 week" : `${weeks % 1 === 0 ? weeks : weeks.toFixed(1)} weeks`;
+  return weeks === 1
+    ? "1 week"
+    : `${weeks % 1 === 0 ? weeks : weeks.toFixed(1)} weeks`;
 }

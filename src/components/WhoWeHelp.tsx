@@ -10,7 +10,10 @@ interface Segment {
   icon: ReactElement;
 }
 
-const accentClasses: Record<Segment["accent"], { ring: string; text: string; dot: string; glow: string }> = {
+const accentClasses: Record<
+  Segment["accent"],
+  { ring: string; text: string; dot: string; glow: string }
+> = {
   amber: {
     ring: "group-hover:border-amber",
     text: "group-hover:text-amber",
@@ -33,40 +36,70 @@ const accentClasses: Record<Segment["accent"], { ring: string; text: string; dot
 
 const segments: Segment[] = [
   {
-    eyebrow: "Independent operators",
-    title: "Solo & small businesses",
-    desc: "You're running the business, not maintaining a website. We build a site that gets found, gets booked, and doesn't need you to touch it again — grounded in years spent on the floor of hospitality and service businesses ourselves.",
-    proof: "A booking form that actually reduces no-shows, not just a contact page.",
+    eyebrow: "Building alone",
+    title: "Solo founders",
+    desc: "You're shipping the product and wearing every other hat. You need a site that looks credible, explains what you do in one screen, and turns visitors into conversations — without another tool to maintain.",
+    proof: "A clear homepage and enquiry path so people can say yes without a long pitch.",
     accent: "amber",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 21V10l8-6 8 6v11" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M9 21v-6h6v6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+        <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.6" />
+        <path
+          d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
   {
-    eyebrow: "Expanding internationally",
-    title: "African businesses going global",
-    desc: "A site that reads as credible the moment an overseas client, partner, or investor lands on it — fast, mobile-first, and built to survive the connection speeds and devices your real audience uses, not a demo laptop.",
-    proof: "One clear page that makes the case before a call ever happens.",
+    eyebrow: "Local & service businesses",
+    title: "Small & medium businesses",
+    desc: "Trades, hospitality, professional services — you need enquiries and bookings, not a brochure. We build fixed-scope sites that load fast, work on phones, and make it easy for customers to contact you.",
+    proof: "A site that gets found, gets contacted, and doesn't need weekly babysitting.",
     accent: "coral",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
-        <path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.4 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.4-3.6-8.5S9.6 5.9 12 3.5Z" stroke="currentColor" strokeWidth="1.6" />
+        <path
+          d="M4 21V10l8-6 8 6v11"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M9 21v-6h6v6"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
       </svg>
     ),
   },
   {
-    eyebrow: "Circular economy",
-    title: "Sustainability & recycling ventures",
-    desc: "Most agencies don't speak this space — we do. A site that makes what you do, and why it matters, obvious within one scroll, plus an AI-Ready Audit that shows exactly what's holding your current site back from converting.",
-    proof: "Copy and structure built around impact, not generic startup language.",
+    eyebrow: "Product-led teams",
+    title: "SaaS & early products",
+    desc: "You need a marketing site or lightweight product surface that makes the value obvious and the next step obvious. Clean UI, clear pricing or trial path, built so you can iterate without starting from scratch.",
+    proof: "A page that turns technical credibility into sign-ups or booked demos.",
     accent: "violet",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M7 7 4 12l3 5M17 7l3 5-3 5M10 4h4l-2 4-2-4Zm0 16h4l-2-4-2 4Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round" />
+        <rect
+          x="3.5"
+          y="4.5"
+          width="17"
+          height="15"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth="1.6"
+        />
+        <path d="M3.5 9h17" stroke="currentColor" strokeWidth="1.6" />
+        <path
+          d="M8 14h3M8 17h8"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
       </svg>
     ),
   },
@@ -81,15 +114,16 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
     <section id="who-we-help" className="bg-ink py-24 md:py-32 cursor-default">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="max-w-xl">
-          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Who this is for</p>
+          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
+            Who this is for
+          </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-paper md:text-5xl">
-            Three kinds of businesses. One clear path in.
+            Solo founders. SMBs. SaaS teams.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            Whichever one you are, the goal is the same: a site that does real work for you, not just one that looks good.
-          </p>
-          <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            PrismWave Studio serves small businesses that want fast, modern sites. The studio works with solo operators, African businesses going global, and sustainability ventures — all looking for a site that converts without requiring constant maintenance.
+            Same path for all of them: free audit or short review, written fixed
+            scope, clear price, 2–4 week delivery. A site that does real work —
+            not just one that looks finished.
           </p>
         </Reveal>
 
@@ -97,17 +131,28 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
           {segments.map((segment, i) => {
             const accent = accentClasses[segment.accent];
             return (
-              <Reveal key={segment.title} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} className="h-full">
+              <Reveal
+                key={segment.title}
+                delay={((i % 4) + 1) as 1 | 2 | 3 | 4}
+                className="h-full"
+              >
                 <div className="group relative flex h-full flex-col bg-ink p-8 transition-colors duration-300 hover:bg-ink-2">
                   <div
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    style={{ background: `radial-gradient(200px circle at 40px 30px, ${accent.glow}, transparent 70%)` }}
+                    style={{
+                      background: `radial-gradient(200px circle at 40px 30px, ${accent.glow}, transparent 70%)`,
+                    }}
                   />
                   <div className="relative flex h-full flex-col">
                     <div className="flex items-center gap-2">
-                      <span className={`h-1.5 w-1.5 rounded-full ${accent.dot}`} aria-hidden="true" />
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">{segment.eyebrow}</span>
+                      <span
+                        className={`h-1.5 w-1.5 rounded-full ${accent.dot}`}
+                        aria-hidden="true"
+                      />
+                      <span className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
+                        {segment.eyebrow}
+                      </span>
                     </div>
 
                     <div
@@ -116,8 +161,12 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
                       <div className="h-5 w-5">{segment.icon}</div>
                     </div>
 
-                    <h3 className="mt-6 font-display text-xl font-semibold text-paper">{segment.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-ink-soft">{segment.desc}</p>
+                    <h3 className="mt-6 font-display text-xl font-semibold text-paper">
+                      {segment.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                      {segment.desc}
+                    </p>
 
                     <p className="mt-5 border-t border-ink-line pt-4 text-xs leading-relaxed text-ink-soft">
                       {segment.proof}
@@ -129,7 +178,10 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
                       className={`mt-auto flex items-center gap-2 pt-6 text-left font-mono text-[12px] uppercase tracking-widest text-paper transition-colors duration-300 ${accent.text}`}
                     >
                       Start with this
-                      <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                      <span
+                        aria-hidden="true"
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      >
                         →
                       </span>
                     </button>

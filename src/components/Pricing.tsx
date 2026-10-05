@@ -149,7 +149,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
             <div aria-live="polite">
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Estimated investment</p>
               <p className="mt-1 font-display text-4xl font-semibold text-paper">
-                ${minPrice.toLocaleString()}–${maxPrice.toLocaleString()}
+                ${minPrice.toLocaleString()}-${maxPrice.toLocaleString()}
               </p>
               <p className="mt-1 font-mono text-[13px] text-ink-soft">~{formatWeeks(totalWeeks)} turnaround</p>
             </div>
