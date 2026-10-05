@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import ScoreGauge from "./ScoreGauge";
+import PackageSuggestion from "./PackageSuggestion";
 import { scoreAudit } from "../lib/auditScoring";
 import type { AuditResult } from "../lib/auditScoring";
 import type { AuditSignals } from "../types/audit";
@@ -272,6 +273,20 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
                   )}
                 </ul>
               </div>
+
+              <PackageSuggestion
+                score={result.overall}
+                onSelect={(planLabel) => {
+                  trackAction("cta_click", {
+                    metadata: { label: "Get this scoped", location: "audit_result", plan: planLabel, overallScore: result.overall },
+                  });
+                  onRequestFullTeardown({
+                    siteUrl: signals.finalUrl,
+                    score: result.overall,
+                    findings: [`Interested in the "${planLabel}" package`, ...topFindings],
+                  });
+                }}
+              />
 
               <div className="mt-6 flex flex-col items-center gap-3 text-center">
                 <p className="text-sm text-ink-soft">
