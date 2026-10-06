@@ -203,3 +203,37 @@
 .crisp-client {
   z-index: 999999 !important;
 }
+
+/* 
+   Light theme
+   Dark is the default and is defined by the @theme block above — untouched.
+   Light = the same tokens re-pointed, so every existing bg-ink / text-paper /
+   border-ink-line / text-amber class flips automatically with no component edits.
+   Activated by <html data-theme="light"> (set by useTheme + the index.html script).
+   Note: ink = page surface, paper = main text, in BOTH themes (they swap values).
+   */
+:root[data-theme="light"] {
+  --color-ink: #f3f4f1;        /* page background */
+  --color-ink-2: #ffffff;      /* raised cards / panels */
+  --color-ink-soft: #5a6275;   /* muted text, 5.6:1 contrast */
+  --color-ink-line: #dcd9d0;   /* hairlines and borders */
+  --color-paper: #0a0e1a;      /* primary text */
+
+  /* Accents deepened so amber / coral / violet TEXT stays readable (AA) on light */
+  --color-amber: #ad5700;
+  --color-coral: #c13b1c;
+  --color-violet: #5a51e6;
+}
+
+/* Solid accent buttons keep their bright dark-theme look and dark label in light mode
+   Covers bg-amber buttons and the inline amber→coral gradient CTAs */
+:root[data-theme="light"] .text-ink.bg-amber,
+:root[data-theme="light"] .text-ink[style*="linear-gradient(100deg"] {
+  color: #0a0e1a;
+}
+:root[data-theme="light"] .bg-amber {
+  background-color: #ffb84d;
+}
+:root[data-theme="light"] .hover\:bg-coral:hover {
+  background-color: #ff7a59;
+}

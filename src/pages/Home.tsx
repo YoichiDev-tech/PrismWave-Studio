@@ -15,6 +15,7 @@ import Footer from "../components/Footer";
 import AiMetadata from "../components/AiMetadata";
 import SEO from "../components/SEO";
 import { scrollToSection } from "../lib/scroll";
+// import TrustStrip from "../components/TrustStrip";
 
 export type Intent = "audit" | "build";
 
@@ -141,6 +142,8 @@ export default function Home() {
           onRequestFullTeardown={handleAuditTeardown}
           onStartIdea={handleStartIdea}
         />
+
+        {/* Trust Strip */}
 
         <AuditDetails />
 

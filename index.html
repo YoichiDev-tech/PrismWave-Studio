@@ -6,6 +6,7 @@
          matching the --color-ink token in src/index.css -->
     <style>
       html, body { background-color: #0a0e1a; }
+      html[data-theme="light"], html[data-theme="light"] body { background-color: #f3f4f1; }
       @media (max-width: 640px) {
         #root > header, #root > main, #root > footer { padding-left: 1rem; padding-right: 1rem; }
       }
@@ -15,6 +16,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability. Get clear findings in seconds, then choose a fixed-scope fix or full rebuild with 2–4 week turnaround." />
     <meta name="theme-color" content="#0A0E1A" />
+
+    <!-- Theme bootstrap: runs before first paint so there is never a flash of the wrong
+         theme. Dark is the default; only a saved visitor choice switches to light.
+         Storage key + colours mirror src/lib/theme.ts — keep them in sync. -->
+    <script>
+      (function () {
+        var theme = "dark";
+        try {
+          var saved = localStorage.getItem("prismwave-theme");
+          if (saved === "light" || saved === "dark") theme = saved;
+        } catch (e) {}
+        document.documentElement.setAttribute("data-theme", theme);
+        if (theme === "light") {
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", "#F3F4F1");
+        }
+      })();
+    </script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

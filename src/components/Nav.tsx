@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { Intent } from "../pages/Home";
 import { trackAction } from "../lib/track";
+import ThemeToggle from "./ThemeToggle";
 
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Projects", href: "/projects" },
@@ -92,13 +93,13 @@ export default function Nav({ onSelectIntent }: NavProps) {
           PrismWave
         </Link>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-3 md:flex min-[960px]:gap-8">
           {LINKS.map((link) =>
             link.href.startsWith("/") ? (
               <li key={link.href}>
                 <Link
                   to={link.href}
-                  className="font-mono text-[13px] uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
+                  className="font-mono text-[12px] uppercase tracking-wide text-ink-soft transition-colors hover:text-paper min-[960px]:text-[13px]"
                 >
                   {link.label}
                 </Link>
@@ -108,7 +109,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
                 <a
                   href={hrefFor(link.href)}
                   onClick={link.intent ? () => onSelectIntent(link.intent as Intent) : undefined}
-                  className="font-mono text-[13px] uppercase tracking-wide text-ink-soft transition-colors hover:text-paper"
+                  className="font-mono text-[12px] uppercase tracking-wide text-ink-soft transition-colors hover:text-paper min-[960px]:text-[13px]"
                 >
                   {link.label}
                 </a>
@@ -117,16 +118,19 @@ export default function Nav({ onSelectIntent }: NavProps) {
           )}
         </ul>
 
-        <a
-          href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
-          onClick={() => {
-            onSelectIntent("audit");
-            trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
-          }}
-          className="hidden rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] md:inline-block"
-        >
-          Get a Free Audit
-        </a>
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
+          <a
+            href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
+            onClick={() => {
+              onSelectIntent("audit");
+              trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
+            }}
+            className="inline-block whitespace-nowrap rounded-full bg-paper px-4 py-2.5 min-[960px]:px-5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
+          >
+            Get a Free Audit
+          </a>
+        </div>
 
         <a
           href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
@@ -138,6 +142,11 @@ export default function Nav({ onSelectIntent }: NavProps) {
         >
           Free audit
         </a>
+
+        {/* Phones ≥400px: toggle in the bar. Smaller phones get it inside the menu instead */}
+        <div className="mr-1 hidden min-[400px]:max-md:flex">
+          <ThemeToggle />
+        </div>
 
         <button
           type="button"
@@ -205,6 +214,10 @@ export default function Nav({ onSelectIntent }: NavProps) {
           >
             Get a Free Audit
           </a>
+          <div className="mt-4 hidden items-center justify-between border-t border-ink-line pt-4 max-[399px]:flex">
+            <span className="font-mono text-sm uppercase tracking-wide text-ink-soft">Theme</span>
+            <ThemeToggle />
+          </div>
         </div>
       )}
     </header>
