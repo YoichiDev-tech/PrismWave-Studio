@@ -6,7 +6,7 @@ import { scoreAudit } from "../lib/auditScoring";
 import type { AuditResult } from "../lib/auditScoring";
 import type { AuditSignals } from "../types/audit";
 import { getAttribution, getSessionIdForLead, trackAction } from "../lib/track";
-// import AuditFeedback from "./AuditFeedback";
+import AuditFeedback from "./AuditFeedback";
 
 interface AuditWidgetProps {
   onRequestFullTeardown: (context: { siteUrl: string; score: number; findings: string[] }) => void;
@@ -30,6 +30,8 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
   const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "captured" | "error">("idle");
   const [reportId, setReportId] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
+  // Bumps on every completed audit so the feedback form resets for a new run
+  const [runId, setRunId] = useState(0);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -72,6 +74,7 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
       setSignals(data.signals);
       const auditResult = scoreAudit(data.signals);
       setResult(auditResult);
+      setRunId((n) => n + 1);
       setEmail("");
       setStatus("done");
       trackAction("audit_completed", {
@@ -353,6 +356,12 @@ export default function AuditWidget({ onRequestFullTeardown }: AuditWidgetProps)
             </form>
             </>
           )}
+
+          <AuditFeedback
+            key={runId}
+            auditScore={result.overall}
+            siteUrl={signals.finalUrl}
+          />
         </div>
       )}
     </div>
