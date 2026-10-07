@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import BackToTop from "./components/BackToTop";
 import LiveChat from "./components/LiveChat";
 import usePageTracking from "./hooks/usePageTracking";
 // import Services from './pages/Services';
@@ -38,6 +39,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <BackToTop />
       <LiveChat />
       <Suspense fallback={<RouteFallback />}>
         <Routes>

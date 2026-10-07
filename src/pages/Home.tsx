@@ -1,8 +1,10 @@
 import { useCallback, useState } from "react";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
+import TrustStrip from "../components/TrustStrip";
 import AuditDetails from "../components/AuditDetails";
 import AuditFindings from "../components/AuditFindings";
+import AuditInAction from "../components/AuditInAction";
 import WhoWeHelp from "../components/WhoWeHelp";
 import Portfolio from "../components/Portfolio";
 import Pricing from "../components/Pricing";
@@ -15,7 +17,6 @@ import Footer from "../components/Footer";
 import AiMetadata from "../components/AiMetadata";
 import SEO from "../components/SEO";
 import { scrollToSection } from "../lib/scroll";
-// import TrustStrip from "../components/TrustStrip";
 
 export type Intent = "audit" | "build";
 
@@ -49,7 +50,7 @@ function FooterCTA() {
       </div>
 
       <p className="mt-6 text-sm text-ink-soft">
-        After the audit, you choose: <span className="text-paper">fix what's broken</span> with targeted fixes or <span className="text-paper">rebuild properly</span> with a full custom build. Both use fixed-scope pricing and 2–4 week turnaround.
+        After the audit, you choose: <span className="text-paper">fix what&apos;s broken</span> with targeted fixes or <span className="text-paper">rebuild properly</span> with a full custom build. Both use fixed-scope pricing and 2–4 week turnaround.
       </p>
     </section>
   );
@@ -108,8 +109,10 @@ export default function Home() {
       <AiMetadata
         map={[
           "Hero and free audit",
+          "How working with us works",
           "What the audit checks",
           "Audit findings format",
+          "Audit in action sample report",
           "Who this is for",
           "Selected work",
           "Pricing and estimator",
@@ -143,17 +146,24 @@ export default function Home() {
           onStartIdea={handleStartIdea}
         />
 
-        {/* Trust Strip */}
+        <TrustStrip />
 
         <AuditDetails />
 
         <AuditFindings />
 
-        <WhoWeHelp onSelectAudience={(segment) => {
-          setIntent("build");
-          setPrefill({ message: `I'm interested in a project — I fit the "${segment}" segment.`, nonce: Date.now() });
-          scrollToSection("contact");
-        }} />
+        <AuditInAction />
+
+        <WhoWeHelp
+          onSelectAudience={(segment) => {
+            setIntent("build");
+            setPrefill({
+              message: `I'm interested in a project — I fit the "${segment}" segment.`,
+              nonce: Date.now(),
+            });
+            scrollToSection("contact");
+          }}
+        />
 
         <Portfolio variant="teaser" />
 
