@@ -5,6 +5,7 @@ import TrustStrip from "../components/TrustStrip";
 import AuditDetails from "../components/AuditDetails";
 import AuditFindings from "../components/AuditFindings";
 import AuditInAction from "../components/AuditInAction";
+import AuditUserVoice from "../components/AuditUserVoice";
 import WhoWeHelp from "../components/WhoWeHelp";
 import Portfolio from "../components/Portfolio";
 import Pricing from "../components/Pricing";
@@ -153,6 +154,8 @@ export default function Home() {
         <AuditFindings />
 
         <AuditInAction />
+
+        <AuditUserVoice />
 
         <WhoWeHelp
           onSelectAudience={(segment) => {

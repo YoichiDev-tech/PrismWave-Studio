@@ -4,9 +4,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 import LiveChat from "./components/LiveChat";
 import usePageTracking from "./hooks/usePageTracking";
-// import Services from './pages/Services';
-// import CaseStudyPage from './pages/CaseStudyPage';
-// import Reviews from './pages/Reviews';
 
 const Home = lazy(() => import("./pages/Home"));
 const FieldingRye = lazy(() => import("./pages/templates/FieldingRye"));
@@ -28,6 +25,7 @@ const Regulatory = lazy(() => import("./pages/legal/Regulatory"));
 const Revamp = lazy(() => import("./pages/Revamp"));
 const Tools = lazy(() => import("./pages/Tools"));
 const AuditReport = lazy(() => import("./pages/AuditReport"));
+const Reviews = lazy(() => import("./pages/Reviews"));
 
 function RouteFallback() {
   return <div className="min-h-screen bg-ink" aria-hidden="true" />;
@@ -55,11 +53,12 @@ export default function App() {
           <Route path="/work/appointment-workflows/concept" element={<AppointmentWorkflowConcept />} />
           <Route path="/case-studies" element={<CaseStudiesIndex />} />
 
-
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
 
           <Route path="/tools" element={<Tools />} />
+
+          <Route path="/reviews" element={<Reviews />} />
 
           <Route path="/audit/:id" element={<AuditReport />} />
 

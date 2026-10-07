@@ -6,6 +6,7 @@ import { scoreAudit } from "../lib/auditScoring";
 import type { AuditResult } from "../lib/auditScoring";
 import type { AuditSignals } from "../types/audit";
 import { getAttribution, getSessionIdForLead, trackAction } from "../lib/track";
+import AuditFeedback from "./AuditFeedback";
 
 interface AuditWidgetProps {
   onRequestFullTeardown: (context: { siteUrl: string; score: number; findings: string[] }) => void;
