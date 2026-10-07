@@ -4,8 +4,9 @@ import { scrollToSection } from "../lib/scroll";
 /*
   Fixed back-to-top control.
   Shows when the visitor is near the bottom of the page (contact / footer zone).
+  Same vertical band as the Crisp bubble, horizontally centered at the bottom.
   Scrolls to #top with the same helper as the rest of the site — no navigation,
-  no remount, no full reload. Safer than the logo link on slow connections.
+  no remount, no full reload.
 */
 
 const NEAR_BOTTOM_PX = 900;
@@ -19,7 +20,6 @@ export default function BackToTop() {
       const viewport = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
       const distanceFromBottom = docHeight - (scrollY + viewport);
-      // Near contact/footer, and not still at the very top
       setVisible(distanceFromBottom < NEAR_BOTTOM_PX && scrollY > 400);
     };
 
@@ -33,7 +33,6 @@ export default function BackToTop() {
   }, []);
 
   const goTop = () => {
-    // Prefer the hero anchor so scroll-margin under the fixed nav is respected
     if (document.getElementById("top")) {
       scrollToSection("top");
       return;
@@ -47,7 +46,7 @@ export default function BackToTop() {
       onClick={goTop}
       aria-label="Back to top"
       title="Back to top"
-      className={`fixed bottom-24 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-ink-line bg-ink-2 text-paper shadow-lg transition-all duration-300 hover:border-amber hover:text-amber focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber sm:bottom-28 sm:right-6 ${
+      className={`fixed bottom-5 left-1/2 z-40 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-ink-line bg-ink-2 text-paper shadow-lg transition-all duration-300 hover:border-amber hover:text-amber focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber sm:bottom-6 ${
         visible
           ? "pointer-events-auto translate-y-0 opacity-100"
           : "pointer-events-none translate-y-2 opacity-0"
