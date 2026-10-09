@@ -41,8 +41,9 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
   }
 
   const resendApiKey = process.env.RESEND_API_KEY;
-  if (!resendApiKey && process.env.NODE_ENV !== "development") {
-    console.error("RESEND_API_KEY is missing; refusing to report an audit lead as delivered.");
+  const contactFromEmail = process.env.CONTACT_FROM_EMAIL;
+  if ((!resendApiKey || !contactFromEmail) && process.env.NODE_ENV !== "development") {
+    console.error("RESEND_API_KEY or CONTACT_FROM_EMAIL is missing; refusing to report an audit lead as delivered.");
     return res.status(503).json({
       error: "The audit email service is temporarily unavailable. Please try again shortly.",
     });
@@ -144,7 +145,6 @@ Reply from your inbox if you want to follow up personally.
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("Audit lead dispatch failed:", err);
-    const message = err instanceof Error ? err.message : "Could not dispatch audit lead.";
-    return res.status(500).json({ error: message });
+    return res.status(500).json({ error: "We couldn't deliver your audit report right now. Please try again shortly." });
   }
 }
