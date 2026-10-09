@@ -51,7 +51,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
   try {
     const { getSupabaseAdmin } = await import("./_lib/supabaseAdmin.js");
     const supabase = getSupabaseAdmin();
-    await supabase.from("leads").insert({
+    const { error: leadError } = await supabase.from("leads").insert({
       name,
       email,
       intent: intent || "audit",
@@ -64,8 +64,11 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       scope_estimate: scopeEstimate || null,
       status: "new",
     });
+    if (leadError) {
+      console.error("Supabase contact lead insertion failed:", leadError);
+    }
   } catch (dbErr) {
-    console.warn("Supabase lead insertion skipped or failed:", dbErr);
+    console.error("Supabase contact lead insertion failed:", dbErr);
   }
 
   // Email provider configuration is checked before constructing the SDK client.
@@ -95,13 +98,12 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
     if (emailError) {
       console.error("Resend delivery failed:", emailError);
-      return res.status(500).json({ error: emailError.message || "Failed to deliver email." });
+      return res.status(502).json({ error: "We couldn't deliver your message right now. Please try again shortly." });
     }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("Fatal send error:", err);
-    const message = err instanceof Error ? err.message : "Internal server error.";
-    return res.status(500).json({ error: message });
+    return res.status(502).json({ error: "We couldn't deliver your message right now. Please try again shortly." });
   }
 }
