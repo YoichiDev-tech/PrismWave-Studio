@@ -51,7 +51,7 @@ function FooterCTA() {
       </div>
 
       <p className="mt-6 text-sm text-ink-soft">
-        After the audit, you choose: <span className="text-paper">fix what&apos;s broken</span> with targeted fixes or <span className="text-paper">rebuild properly</span> with a full custom build. Both use fixed-scope pricing and 2–4 week turnaround.
+        After the audit, you choose: <span className="text-paper">fix what&apos;s broken</span> with targeted fixes or <span className="text-paper">rebuild properly</span> with a full custom build. Both use fixed-scope pricing and a delivery timeline agreed before work begins.
       </p>
     </section>
   );
@@ -103,7 +103,7 @@ export default function Home() {
     <div ai-tag="home" data-ai="page" className="grain bg-ink min-h-screen">
       <SEO
         title="Free Website Audit & Custom Web Development | PrismWave Studio"
-        description="PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability. Get clear findings in seconds, then choose a fixed-scope fix or full rebuild with 2–4 week turnaround."
+        description="PrismWave Studio offers a free website audit covering speed, mobile, SEO, and AI-readability. Get clear findings, then choose a fixed-scope fix or custom rebuild with a written price and timeline."
         path="/"
       />
 
