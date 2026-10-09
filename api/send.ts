@@ -1,7 +1,6 @@
 import { Resend } from "resend";
 import { isClientRateLimited } from "./_lib/rateLimit.js";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "hello@prismwavestudio.com";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -69,8 +68,9 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     console.warn("Supabase lead insertion skipped or failed:", dbErr);
   }
 
-  // Send Email via Resend
-  if (!process.env.RESEND_API_KEY || !process.env.CONTACT_FROM_EMAIL) {
+  // Email provider configuration is checked before constructing the SDK client.
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey || !process.env.CONTACT_FROM_EMAIL) {
     if (process.env.NODE_ENV === "development") {
       console.warn("Email provider configuration is incomplete. Returning a local-only form test response; no email was sent.");
       return res.status(200).json({ ok: true, note: "Local development only — no email was sent." });
@@ -81,6 +81,8 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       error: "The contact email service is not fully configured. Please email hello@prismwavestudio.com or book a free 15-minute call.",
     });
   }
+
+  const resend = new Resend(resendApiKey);
 
   try {
     const { error: emailError } = await resend.emails.send({
