@@ -16,7 +16,7 @@ const STEPS = [
   },
   {
     title: "Build & review rounds",
-    desc: "Fixed-scope build in 2-4 weeks. You get the included revision rounds. No surprise hours or scope creep.",
+    desc: "Fixed-scope build to the timeline agreed in writing. You get the included revision rounds. No surprise hours or scope creep.",
   },
   {
     title: "Launch & full handover",
