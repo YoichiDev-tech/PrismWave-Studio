@@ -1,7 +1,6 @@
 import { Resend } from "resend";
 import { isClientRateLimited } from "./_lib/rateLimit.js";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "hello@prismwavestudio.com";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,7 +51,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
   try {
     const { getSupabaseAdmin } = await import("./_lib/supabaseAdmin.js");
     const supabase = getSupabaseAdmin();
-    await supabase.from("leads").insert({
+    const { error: leadError } = await supabase.from("leads").insert({
       name,
       email,
       intent: intent || "audit",
@@ -65,12 +64,16 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       scope_estimate: scopeEstimate || null,
       status: "new",
     });
+    if (leadError) {
+      console.error("Supabase contact lead insertion failed:", leadError);
+    }
   } catch (dbErr) {
-    console.warn("Supabase lead insertion skipped or failed:", dbErr);
+    console.error("Supabase contact lead insertion failed:", dbErr);
   }
 
-  // Send Email via Resend
-  if (!process.env.RESEND_API_KEY || !process.env.CONTACT_FROM_EMAIL) {
+  // Email provider configuration is checked before constructing the SDK client.
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey || !process.env.CONTACT_FROM_EMAIL) {
     if (process.env.NODE_ENV === "development") {
       console.warn("Email provider configuration is incomplete. Returning a local-only form test response; no email was sent.");
       return res.status(200).json({ ok: true, note: "Local development only — no email was sent." });
@@ -81,6 +84,8 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       error: "The contact email service is not fully configured. Please email hello@prismwavestudio.com or book a free 15-minute call.",
     });
   }
+
+  const resend = new Resend(resendApiKey);
 
   try {
     const { error: emailError } = await resend.emails.send({
@@ -93,13 +98,12 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
     if (emailError) {
       console.error("Resend delivery failed:", emailError);
-      return res.status(500).json({ error: emailError.message || "Failed to deliver email." });
+      return res.status(502).json({ error: "We couldn't deliver your message right now. Please try again shortly." });
     }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("Fatal send error:", err);
-    const message = err instanceof Error ? err.message : "Internal server error.";
-    return res.status(500).json({ error: message });
+    return res.status(502).json({ error: "We couldn't deliver your message right now. Please try again shortly." });
   }
 }

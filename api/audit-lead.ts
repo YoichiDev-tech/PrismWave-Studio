@@ -1,7 +1,6 @@
 import { Resend } from "resend";
 import { isClientRateLimited } from "./_lib/rateLimit.js";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "PrismWave Studio <onboarding@resend.dev>";
 const TO_OWNER = process.env.CONTACT_TO_EMAIL ?? "";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,10 +40,21 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     return res.status(400).json({ error: "Please enter a valid email address." });
   }
 
+  const resendApiKey = process.env.RESEND_API_KEY;
+  const contactFromEmail = process.env.CONTACT_FROM_EMAIL;
+  if ((!resendApiKey || !contactFromEmail) && process.env.NODE_ENV !== "development") {
+    console.error("RESEND_API_KEY or CONTACT_FROM_EMAIL is missing; refusing to report an audit lead as delivered.");
+    return res.status(503).json({
+      error: "The audit email service is temporarily unavailable. Please try again shortly.",
+    });
+  }
+
+  const resend = resendApiKey ? new Resend(resendApiKey) : null;
+
   try {
     const { getSupabaseAdmin } = await import("./_lib/supabaseAdmin.js");
     const supabase = getSupabaseAdmin();
-    await supabase.from("leads").insert({
+    const { error: leadError } = await supabase.from("leads").insert({
       name: "Audit tool lead",
       email,
       site_url: siteUrl,
@@ -54,12 +64,18 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       audit_findings: auditFindings || [],
       status: "new",
     });
+    if (leadError) throw leadError;
   } catch (dbErr) {
-    console.warn("Supabase audit logging skipped or failed:", dbErr);
+    console.warn("Supabase audit lead persistence failed:", dbErr);
+    if (process.env.NODE_ENV === "production") {
+      return res.status(503).json({
+        error: "We couldn't save your audit request just now. Please try again shortly.",
+      });
+    }
   }
 
-  if (!process.env.RESEND_API_KEY) {
-    return res.status(200).json({ ok: true, note: "Audit lead saved (mock email)" });
+  if (!resend) {
+    return res.status(200).json({ ok: true, note: "Development only — no email was sent." });
   }
 
   const topFindings =
@@ -90,13 +106,17 @@ ${SITE_URL}
 `;
 
   try {
-    await resend.emails.send({
+    const { error: visitorEmailError } = await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
       ...(TO_OWNER ? { replyTo: TO_OWNER } : {}),
       subject: `Your audit for ${siteUrl} — ${auditScore}/100`,
       text: visitorText,
     });
+    if (visitorEmailError) {
+      console.error("Audit report email delivery failed:", visitorEmailError);
+      return res.status(502).json({ error: "We couldn't send your audit report. Please try again shortly." });
+    }
 
     if (TO_OWNER && TO_OWNER !== email) {
       try {
@@ -125,7 +145,6 @@ Reply from your inbox if you want to follow up personally.
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("Audit lead dispatch failed:", err);
-    const message = err instanceof Error ? err.message : "Could not dispatch audit lead.";
-    return res.status(500).json({ error: message });
+    return res.status(500).json({ error: "We couldn't deliver your audit report right now. Please try again shortly." });
   }
 }
