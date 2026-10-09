@@ -71,8 +71,15 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
   // Send Email via Resend
   if (!process.env.RESEND_API_KEY) {
-    console.warn("RESEND_API_KEY missing. Bypassing email dispatch for local testing.");
-    return res.status(200).json({ ok: true, note: "Form accepted (email mock mode)" });
+    if (process.env.NODE_ENV === "development") {
+      console.warn("RESEND_API_KEY missing. Returning a local-only form test response; no email was sent.");
+      return res.status(200).json({ ok: true, note: "Local development only — no email was sent." });
+    }
+
+    console.error("RESEND_API_KEY is missing; refusing to report a contact submission as delivered.");
+    return res.status(503).json({
+      error: "The contact email service is temporarily unavailable. Please email hello@prismwavestudio.com or book a free 15-minute call.",
+    });
   }
 
   try {
