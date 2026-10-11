@@ -9,36 +9,43 @@ import { trackAction } from "../lib/track";
 
 type Status = "loading" | "ready" | "not-found" | "error";
 
+type ReportState = {
+  id: string | null;
+  status: Status;
+  report: AuditReportData | null;
+};
+
 export default function AuditReport() {
   const { id } = useParams<{ id: string }>();
+  const [result, setResult] = useState<ReportState>({
+    id: id ?? null,
+    status: id ? "loading" : "not-found",
+    report: null,
+  });
 
-  // I initialize the status here to avoid an unnecessary loading-state update during the effect.
-  const [status, setStatus] = useState<Status>(id ? "loading" : "not-found");
-  const [report, setReport] = useState<AuditReportData | null>(null);
+  const status: Status = !id
+    ? "not-found"
+    : result.id === id
+      ? result.status
+      : "loading";
+  const report = id && result.id === id ? result.report : null;
 
   useEffect(() => {
-    if (!id) {
-      setStatus("not-found");
-      setReport(null);
-      return;
-    }
+    if (!id) return;
 
     let cancelled = false;
-
-    setStatus("loading");
-    setReport(null);
 
     fetch(`/api/audit-report?id=${encodeURIComponent(id)}`)
       .then(async (response) => {
         if (cancelled) return;
 
         if (response.status === 404) {
-          setStatus("not-found");
+          setResult({ id, status: "not-found", report: null });
           return;
         }
 
         if (!response.ok) {
-          setStatus("error");
+          setResult({ id, status: "error", report: null });
           return;
         }
 
@@ -50,12 +57,11 @@ export default function AuditReport() {
         if (cancelled) return;
 
         if (!data.ok || !data.report) {
-          setStatus("error");
+          setResult({ id, status: "error", report: null });
           return;
         }
 
-        setReport(data.report);
-        setStatus("ready");
+        setResult({ id, status: "ready", report: data.report });
 
         trackAction("audit_report_viewed", {
           metadata: {
@@ -65,7 +71,9 @@ export default function AuditReport() {
         });
       })
       .catch(() => {
-        if (!cancelled) setStatus("error");
+        if (!cancelled) {
+          setResult({ id, status: "error", report: null });
+        }
       });
 
     return () => {
