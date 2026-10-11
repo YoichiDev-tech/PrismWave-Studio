@@ -9,17 +9,31 @@ import { trackAction } from "../lib/track";
 
 type Status = "loading" | "ready" | "not-found" | "error";
 
+type ReportState = {
+  id: string | null;
+  status: Status;
+  report: AuditReportData | null;
+};
+
 export default function AuditReport() {
   const { id } = useParams<{ id: string }>();
 
-  // I initialize the status here to avoid an unnecessary loading-state update during the effect.
-  const [status, setStatus] = useState<Status>("loading");
-  const [report, setReport] = useState<AuditReportData | null>(null);
+  const [result, setResult] = useState<ReportState>({
+    id: id ?? null,
+    status: id ? "loading" : "not-found",
+    report: null,
+  });
+
+  const status: Status = !id
+    ? "not-found"
+    : result.id === id
+      ? result.status
+      : "loading";
+
+  const report = id && result.id === id ? result.report : null;
 
   useEffect(() => {
-    if (!id) {
-      return;
-    }
+    if (!id) return;
 
     let cancelled = false;
 
@@ -28,12 +42,12 @@ export default function AuditReport() {
         if (cancelled) return;
 
         if (response.status === 404) {
-          setStatus("not-found");
+          setResult({ id, status: "not-found", report: null });
           return;
         }
 
         if (!response.ok) {
-          setStatus("error");
+          setResult({ id, status: "error", report: null });
           return;
         }
 
@@ -45,12 +59,11 @@ export default function AuditReport() {
         if (cancelled) return;
 
         if (!data.ok || !data.report) {
-          setStatus("error");
+          setResult({ id, status: "error", report: null });
           return;
         }
 
-        setReport(data.report);
-        setStatus("ready");
+        setResult({ id, status: "ready", report: data.report });
 
         trackAction("audit_report_viewed", {
           metadata: {
@@ -60,7 +73,9 @@ export default function AuditReport() {
         });
       })
       .catch(() => {
-        if (!cancelled) setStatus("error");
+        if (!cancelled) {
+          setResult({ id, status: "error", report: null });
+        }
       });
 
     return () => {
