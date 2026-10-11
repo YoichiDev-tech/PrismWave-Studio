@@ -13,20 +13,15 @@ export default function AuditReport() {
   const { id } = useParams<{ id: string }>();
 
   // I initialize the status here to avoid an unnecessary loading-state update during the effect.
-  const [status, setStatus] = useState<Status>(id ? "loading" : "not-found");
+  const [status, setStatus] = useState<Status>("loading");
   const [report, setReport] = useState<AuditReportData | null>(null);
 
   useEffect(() => {
     if (!id) {
-      setStatus("not-found");
-      setReport(null);
       return;
     }
 
     let cancelled = false;
-
-    setStatus("loading");
-    setReport(null);
 
     fetch(`/api/audit-report?id=${encodeURIComponent(id)}`)
       .then(async (response) => {
@@ -112,7 +107,7 @@ export default function AuditReport() {
           </p>
         )}
 
-        {status === "not-found" && (
+        {(!id || status === "not-found") && (
           <div>
             <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
               Not found
