@@ -128,8 +128,10 @@ copy describing the service, but the service running in the browser.
 
 Run `supabase/schema.sql` in the same Supabase project used by the Studio
 serverless functions and Ops dashboard. Studio requires `SUPABASE_URL`,
-`SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, and `CONTACT_TO_EMAIL` as
-server-side variables. Ops should use the same `SUPABASE_URL` and database,
+`SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and
+`CONTACT_FROM_EMAIL` as server-side variables. `CONTACT_FROM_EMAIL` must use a sender
+address verified in Resend; do not rely on the Resend test sender for production enquiries.
+Ops should use the same `SUPABASE_URL` and database,
 with its own authenticated operator allowlist and server-side service role
 key. Never expose the service role key with a `VITE_` prefix.
 

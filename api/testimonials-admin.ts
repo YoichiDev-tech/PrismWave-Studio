@@ -54,7 +54,7 @@ export default async function handler(req: Req, res: Res) {
   }
 
   if (req.method === 'PATCH') {
-    let b: Record<string, unknown> = {};
+    let b: Record<string, unknown>;
     try {
       b = (typeof req.body === 'string' ? JSON.parse(req.body) : req.body) as Record<string, unknown>;
     } catch {

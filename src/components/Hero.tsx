@@ -14,7 +14,7 @@ interface HeroProps {
 }
 
 const TRUST = [
-  "2-4 week turnaround",
+  "Scope-based delivery timeline",
   "Fixed-scope pricing",
   "You own the code",
   "15-min review first",
@@ -87,8 +87,8 @@ export default function Hero({
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-soft">
             Free audit that scores speed, mobile, SEO and AI-readability in
             seconds. Then a 15-minute review and a written fixed-scope plan —
-            Site Rescue or a full rebuild — with clear price and 2-4 week
-            delivery. You own the code.
+            Site Rescue or a full rebuild — with a clear price and delivery
+            timeline matched to scope. You own the code.
           </p>
 
           <ul className="mt-6 hidden flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[12px] uppercase tracking-wide text-ink-soft sm:flex">

@@ -122,7 +122,7 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Same path for all of them: free audit or short review, written fixed
-            scope, clear price, 2–4 week delivery. A site that does real work —
+            scope, clear price, and a delivery timeline matched to the project. A site that does real work —
             not just one that looks finished.
           </p>
         </Reveal>

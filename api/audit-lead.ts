@@ -19,7 +19,6 @@ interface VercelLikeResponse {
 }
 
 function sanitizeFindings(value: unknown): string[] {
-  // I accept only plain strings and cap the amount of text stored and emailed.
   if (!Array.isArray(value)) return [];
 
   return value
@@ -141,7 +140,9 @@ export default async function handler(
 
   const findingsBlock =
     auditFindings.length > 0
-      ? auditFindings.map((finding, index) => `${index + 1}. ${finding}`).join("\n")
+      ? auditFindings
+          .map((finding, index) => `${index + 1}. ${finding}`)
+          .join("\n")
       : "This automated pass did not flag any findings in the checks it ran.";
 
   const visitorText = `Thanks for running the free website audit on ${siteUrl}.
@@ -157,9 +158,8 @@ These findings describe the signals detected by the automated checks. They can h
 The scan is not a complete manual review. Some checks use limited signals, and the results should be considered in context before making changes.
 
 Want a human review?
-Reply to this email to discuss a free 15-minute review. I can walk through the findings with you and help determine what is worth investigating first. If paid work makes sense, I will explain the proposed scope, price, and timeline before anything begins. There is no obligation.
+Reply to this email to discuss a free 15-minute review. We can walk through the findings with you and help determine what is worth investigating first. If paid work makes sense, we will explain the proposed scope, price, and timeline before anything begins. There is no obligation.
 
-Yoichi
 PrismWave Studio
 ${SITE_URL}
 `;
@@ -184,7 +184,7 @@ ${SITE_URL}
 
     if (TO_OWNER && TO_OWNER.toLowerCase() !== email.toLowerCase()) {
       try {
-        await resend.emails.send({
+        const { error: ownerEmailError } = await resend.emails.send({
           from: FROM_EMAIL,
           to: TO_OWNER,
           subject: `[PrismWave lead] Audit report requested — ${siteUrl} (${auditScore}/100)`,
@@ -201,6 +201,10 @@ The visitor received the automated report and an invitation to request a free 15
 You can follow up personally by replying to the visitor.
 `,
         });
+
+        if (ownerEmailError) {
+          console.warn("Owner notification failed:", ownerEmailError);
+        }
       } catch (notifyError) {
         console.warn("Owner notification failed:", notifyError);
       }
