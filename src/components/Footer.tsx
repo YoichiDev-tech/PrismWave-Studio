@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const MENU = [
   { label: "Projects", href: "/projects" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Tools", href: "/tools" },
   { label: "Pricing", href: "/#pricing" },
   { label: "About", href: "/#about" },
