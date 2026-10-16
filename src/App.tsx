@@ -12,6 +12,7 @@ const BloomMarket = lazy(() => import("./pages/templates/BloomMarket"));
 const BloomMarketCaseStudy = lazy(() => import("./pages/case-studies/BloomMarketCaseStudy"));
 const ServeSyncCaseStudy = lazy(() => import("./pages/case-studies/ServeSyncCaseStudy"));
 const AppointmentWorkflowConcept = lazy(() => import("./pages/case-studies/AppointmentWorkflowConcept"));
+const OpsRookCaseStudy = lazy(() => import("./pages/case-studies/OpsRookCaseStudy"));
 const CaseStudiesIndex = lazy(() => import("./pages/case-studies/index"));
 const TypographyPreview = lazy(() => import("./pages/TypographyPreview"));
 const Projects = lazy(() => import("./pages/Projects"));
@@ -45,30 +46,22 @@ export default function App() {
           <Route path="/work/fielding-and-rye" element={<FieldingRye />} />
           <Route path="/work/nova-cloud" element={<NovaCloud />} />
           <Route path="/work/bloom-market" element={<BloomMarket />} />
-
           <Route path="/work" element={<Navigate to="/projects" replace />} />
-
           <Route path="/work/bloom-market/case-study" element={<BloomMarketCaseStudy />} />
           <Route path="/work/servesync/case-study" element={<ServeSyncCaseStudy />} />
           <Route path="/work/appointment-workflows/concept" element={<AppointmentWorkflowConcept />} />
+          <Route path="/work/opsrook-vi/case-study" element={<OpsRookCaseStudy />} />
           <Route path="/case-studies" element={<CaseStudiesIndex />} />
-
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
-
           <Route path="/tools" element={<Tools />} />
-
           <Route path="/reviews" element={<Reviews />} />
-
           <Route path="/audit/:id" element={<AuditReport />} />
-
           <Route path="/products" element={<Navigate to="/tools" replace />} />
           <Route path="/products/:slug" element={<Navigate to="/tools" replace />} />
-
           <Route path="/history" element={<History />} />
           <Route path="/changelog" element={<Changelog />} />
           <Route path="/roadmap" element={<Roadmap />} />
-
           <Route path="/typography-preview" element={<TypographyPreview />} />
           <Route path="/revamp" element={<Revamp />} />
           <Route path="/terms" element={<Terms />} />
