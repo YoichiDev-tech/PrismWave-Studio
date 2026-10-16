@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Boxes, Clock3, Gauge, Network } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Boxes, Clock3, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 import AiMetadata, { AiIntent } from "../../components/AiMetadata";
 import Footer from "../../components/Footer";
