@@ -229,10 +229,8 @@ key. Never expose the service role key with a `VITE_` prefix.
   at the homepage instead of itself
 - Added `lastmod` dates to `sitemap.xml` and included the previously
   missing Appointment Workflow concept URL
-- Relabeled ServeSync's weekly savings figures as illustrative targets
-  rather than measured results, matching the disclosure pattern already
-  used on the Appointment Workflow concept, and added a closing
-  "no fabricated testimonial" section
+- Clarified illustrative concept metrics and added a closing
+  "no fabricated testimonial" section to the relevant concept page
 - Added payment clarity to Pricing: deposit split, accepted payment
   methods, currency, and how work beyond included revisions is handled
 - Added TODO markers on the Regulatory page for real business
