@@ -17,7 +17,7 @@ const priorities = [
   { icon: Network, title: "Connect commercial and technical teams", body: "Give both teams a shared view of opportunity status, capacity constraints, and the signals needed to move forward." },
 ];
 
-const demoUrl = "https://northloop-git-design-unified-in-54e785-yoichidev-techs-projects.vercel.app";
+const demoUrl = "https://opsrook-vi.vercel.app";
 
 export default function OpsRookCaseStudy() {
   return (
