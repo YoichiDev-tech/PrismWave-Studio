@@ -117,6 +117,7 @@ export default function Home() {
           "Audit in action sample report",
           "Who this is for",
           "Selected work",
+          "Current collaborations",
           "Pricing and estimator",
           "Process",
           "About",
