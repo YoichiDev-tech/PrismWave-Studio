@@ -7,6 +7,7 @@ import ThemeToggle from "./ThemeToggle";
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Projects", href: "/projects" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Collaborations", href: "#collaborations" },
   { label: "Tools", href: "/tools" },
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
