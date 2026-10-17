@@ -237,3 +237,51 @@
 :root[data-theme="light"] .hover\:bg-coral:hover {
   background-color: #ff7a59;
 }
+
+/* Collaboration marquee: pause for hover/focus and respect reduced motion. */
+@keyframes collaborations-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.collaboration-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.collaboration-track {
+  display: flex;
+  width: max-content;
+  animation: collaborations-scroll 34s linear infinite;
+  will-change: transform;
+}
+
+.collaboration-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+.collaboration-viewport:hover .collaboration-track,
+.collaboration-viewport:focus-within .collaboration-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collaboration-track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .collaboration-viewport {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+
+  .collaboration-duplicate {
+    display: none;
+  }
+}
