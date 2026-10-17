@@ -8,6 +8,7 @@ import AuditInAction from "../components/AuditInAction";
 import AuditUserVoice from "../components/AuditUserVoice";
 import WhoWeHelp from "../components/WhoWeHelp";
 import Portfolio from "../components/Portfolio";
+import Collaborations from "../components/Collaborations";
 import Pricing from "../components/Pricing";
 import Process from "../components/Process";
 import About from "../components/About";
@@ -169,6 +170,8 @@ export default function Home() {
         />
 
         <Portfolio variant="teaser" />
+
+        <Collaborations />
 
         <Pricing onRequestScope={handleScope} />
 
