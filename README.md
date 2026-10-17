@@ -88,36 +88,6 @@ copy describing the service, but the service running in the browser.
 - Fully responsive across mobile, tablet, and desktop
 - Production deployment on Vercel
 
-## Next Steps
-
-- Testimonials engine (hybrid: home preview + full `/testimonials` page,
-  Supabase-backed — plan already written in `Updates.txt`)
-- Instagram Growth Showcase using the official Instagram Graph API
-- Add follower count + engagement metrics to the site
-- Create a Facebook Page and link Instagram Business account
-- Implement serverless API route for Instagram data
-- Add caching layer for stable API performance
-- Verify the site in Google Search Console and submit `sitemap.xml`; add a
-  lightweight public analytics tool (e.g. Plausible) for traffic/SEO
-  visibility — separate from the internal Supabase ops tracking, which is
-  already live
-- Build the actual "agent runs the outreach" job — the ops dashboard
-  (separate project, `prismwave-ops`) already has the drafting +
-  approval queue; still need the cron job that finds leads and the
-  send-on-approval step
-- Confirm real Threads/Instagram handles across Footer + Lab (currently placeholders)
-- Add crawler-visible OG previews for `/audit/:id` (and ideally site-wide) —
-  `react-helmet-async` tags are client-side only, so link-preview bots
-  (Slack, X, WhatsApp, iMessage) that don't run JS still see nothing
-  custom when a report link gets pasted somewhere
-- Fill in real business registration details on the Regulatory page once
-  the studio is formally registered
-- Write a first blog/content post to start building an organic search and
-  authority channel
-- Decide whether to package the portfolio templates (Bloom Market,
-  Fielding & Rye, Nova Cloud) as downloadable, priced products, and if so,
-  wire up a checkout (Lemon Squeezy or Stripe Payment Links)
-
 ## End-Project Considerations
 
 - Buy `prismwavestudio.com` and set up `hello@` on it
