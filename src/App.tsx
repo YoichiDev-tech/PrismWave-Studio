@@ -10,7 +10,6 @@ const FieldingRye = lazy(() => import("./pages/templates/FieldingRye"));
 const NovaCloud = lazy(() => import("./pages/templates/NovaCloud"));
 const BloomMarket = lazy(() => import("./pages/templates/BloomMarket"));
 const BloomMarketCaseStudy = lazy(() => import("./pages/case-studies/BloomMarketCaseStudy"));
-const ServeSyncCaseStudy = lazy(() => import("./pages/case-studies/ServeSyncCaseStudy"));
 const AppointmentWorkflowConcept = lazy(() => import("./pages/case-studies/AppointmentWorkflowConcept"));
 const OpsRookCaseStudy = lazy(() => import("./pages/case-studies/OpsRookCaseStudy"));
 const CaseStudiesIndex = lazy(() => import("./pages/case-studies/index"));
@@ -48,7 +47,6 @@ export default function App() {
           <Route path="/work/bloom-market" element={<BloomMarket />} />
           <Route path="/work" element={<Navigate to="/projects" replace />} />
           <Route path="/work/bloom-market/case-study" element={<BloomMarketCaseStudy />} />
-          <Route path="/work/servesync/case-study" element={<ServeSyncCaseStudy />} />
           <Route path="/work/appointment-workflows/concept" element={<AppointmentWorkflowConcept />} />
           <Route path="/work/opsrook-vi/case-study" element={<OpsRookCaseStudy />} />
           <Route path="/case-studies" element={<CaseStudiesIndex />} />
