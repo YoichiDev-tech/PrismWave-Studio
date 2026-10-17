@@ -93,7 +93,7 @@ export default function Collaborations() {
         </Reveal>
       </div>
 
-      <div className="collaboration-viewport mt-9" aria-label="Current collaborations">
+      <div className="collaboration-viewport mt-9" role="group" aria-label="Current collaborations">
         <div className="collaboration-track">
           <div className="collaboration-group">
             {collaborations.map((item) => <CollaborationCard key={item.name} item={item} />)}
