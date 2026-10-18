@@ -7,12 +7,13 @@ const caseStudies = [
   { title: "OpsRook-VI", category: "AI Infrastructure · Product Strategy", description: "A product and workflow concept connecting lead qualification, pilot readiness, and capacity intelligence.", to: "/work/opsrook-vi/case-study" },
   { title: "Bloom Market", category: "Retail · Inventory Intelligence", description: "Stock tracking, waste prediction, and automated ordering for small retailers.", to: "/work/bloom-market/case-study" },
   { title: "Appointment Workflow", category: "Concept · Operations Modernization", description: "A concept for reducing booking friction and manual scheduling work.", to: "/work/appointment-workflows/concept" },
+  { title: "Razor & Rumble", category: "Local Business · Website Concept", description: "A responsive fictional barbershop website concept with a clear service presentation and reusable React components.", to: "/work/barber-shop/case-study" },
 ];
 
 export default function CaseStudiesIndex() {
   return <div className="min-h-screen bg-ink text-paper">
     <SEO title="Case Studies" description="Selected PrismWave Studio case studies covering product strategy, SaaS, and operational workflows." path="/case-studies" />
-    <AiMetadata map={["Case studies", "OpsRook-VI", "Bloom Market"]} intent="Help visitors review PrismWave Studio case studies and the problems behind each project." tags={["case studies", "product design", "SaaS", "PrismWave Studio"]} extract={{ title: "PrismWave Studio Case Studies", audience: "Prospective clients and product teams", primaryActions: "Open a case study" }} />
+    <AiMetadata map={["Case studies", "OpsRook-VI", "Bloom Market", "Razor & Rumble"]} intent="Help visitors review PrismWave Studio case studies and the problems behind each project." tags={["case studies", "product design", "SaaS", "PrismWave Studio"]} extract={{ title: "PrismWave Studio Case Studies", audience: "Prospective clients and product teams", primaryActions: "Open a case study" }} />
     <header className="border-b border-ink-line"><div className="mx-auto max-w-5xl px-6 py-6"><Link to="/" className="font-mono text-xs uppercase tracking-wide text-paper/60">← Back to studio</Link></div></header>
     <main className="mx-auto max-w-5xl px-6 py-20">
       <AiIntent id="case-studies-intent">Introduce selected PrismWave Studio case studies and direct visitors to project breakdowns.</AiIntent>
