@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 import AiMetadata from "../components/AiMetadata";
-import folioMark from "/images/folio/pw-ig-mark.svg";
+const folioMark = "/images/folio/pw-ig-mark.svg";
 
 type ToolId = "meta" | "headers";
 
