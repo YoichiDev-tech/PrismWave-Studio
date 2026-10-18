@@ -210,3 +210,14 @@ key. Never expose the service role key with a `VITE_` prefix.
 ## Author
 
 Yoichi dev
+
+## Local Folio connection
+
+The Tools page includes a Folio launch card. To enable it locally, run the
+invoice-generator app on port 5174 with `npm run dev -- --port 5174`, then add
+`VITE_FOLIO_URL=http://localhost:5174` to the existing PrismWave Studio
+`.env.local` file without overwriting other variables.
+
+For production, set `VITE_FOLIO_URL` in Vercel to Folio's real deployed HTTPS
+URL only after that deployment exists. If the variable is missing or invalid,
+the launch card remains non-clickable rather than linking to a broken URL.
