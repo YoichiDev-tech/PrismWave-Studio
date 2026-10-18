@@ -12,6 +12,7 @@ const BloomMarket = lazy(() => import("./pages/templates/BloomMarket"));
 const BloomMarketCaseStudy = lazy(() => import("./pages/case-studies/BloomMarketCaseStudy"));
 const AppointmentWorkflowConcept = lazy(() => import("./pages/case-studies/AppointmentWorkflowConcept"));
 const OpsRookCaseStudy = lazy(() => import("./pages/case-studies/OpsRookCaseStudy"));
+const BarberShopCaseStudy = lazy(() => import("./pages/case-studies/BarberShopCaseStudy"));
 const CaseStudiesIndex = lazy(() => import("./pages/case-studies/index"));
 const TypographyPreview = lazy(() => import("./pages/TypographyPreview"));
 const Projects = lazy(() => import("./pages/Projects"));
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/work/bloom-market/case-study" element={<BloomMarketCaseStudy />} />
           <Route path="/work/appointment-workflows/concept" element={<AppointmentWorkflowConcept />} />
           <Route path="/work/opsrook-vi/case-study" element={<OpsRookCaseStudy />} />
+          <Route path="/work/barber-shop/case-study" element={<BarberShopCaseStudy />} />
           <Route path="/case-studies" element={<CaseStudiesIndex />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<ProjectDetail />} />
