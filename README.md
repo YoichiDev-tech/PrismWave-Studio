@@ -221,3 +221,10 @@ invoice-generator app on port 5174 with `npm run dev -- --port 5174`, then add
 For production, set `VITE_FOLIO_URL` in Vercel to Folio's real deployed HTTPS
 URL only after that deployment exists. If the variable is missing or invalid,
 the launch card remains non-clickable rather than linking to a broken URL.
+
+
+## Local-business concept demo
+
+The Case Studies page includes Razor & Rumble, a fictional barbershop website concept from [YoichiDev-tech/Barber-shop](https://github.com/YoichiDev-tech/Barber-shop). It links to the source repository and only shows a live-demo link when `VITE_BARBER_SHOP_URL` is configured with a valid HTTPS URL (or localhost HTTP for local testing). No production demo URL is assumed or fabricated.
+
+For local integration, run the Barber-shop Vite app on a separate port, then set `VITE_BARBER_SHOP_URL=http://localhost:5174` in the Studio `.env.local` file. For production, deploy Barber-shop first and set `VITE_BARBER_SHOP_URL` to the actual HTTPS deployment URL in Vercel.
