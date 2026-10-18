@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <title>PW&amp;IG mark</title>
+  <defs>
+    <linearGradient id="prism" x1="23" y1="22" x2="72" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#2DD4BF"/>
+    </linearGradient>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 12H57L75 30V70L67 76L59 70L51 76L43 70L35 76L27 70L19 76V19Q19 12 26 12Z" stroke="#172A40" stroke-width="3.5"/>
+    <path d="M57 12V30H75" stroke="#172A40" stroke-width="3.5"/>
+    <path d="M34 37V57M34 38H47C56 38 56 49 47 49H34" stroke="#172A40" stroke-width="3.5"/>
+    <path d="M34 61L43 69L53 55L61 64L68 57" stroke="url(#prism)" stroke-width="4"/>
+  </g>
+</svg>
