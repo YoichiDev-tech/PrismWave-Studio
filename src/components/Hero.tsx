@@ -92,10 +92,10 @@ export default function Hero({
             id="hero-title"
             className="font-display text-[clamp(2.2rem,8vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-paper sm:text-6xl md:text-[3.5rem] lg:text-[3.8rem]"
           >
-            Find out what&apos;s holding your website back.
+            Is your website holding you back?
             <br />
             <span className="flow-text">
-              Then fix it or rebuild it.
+              Find out why and fix it.
             </span>
           </h1>
 
