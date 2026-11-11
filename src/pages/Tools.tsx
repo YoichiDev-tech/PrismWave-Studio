@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 import AiMetadata from "../components/AiMetadata";
+const folioMark = "/images/folio/pw-ig-mark.svg";
 
 type ToolId = "meta" | "headers";
 
@@ -33,6 +34,19 @@ export default function Tools() {
   const [error, setError] = useState<string | null>(null);
   const [meta, setMeta] = useState<MetaResult | null>(null);
   const [headers, setHeaders] = useState<HeadersResult | null>(null);
+
+  const folioUrl = import.meta.env.VITE_FOLIO_URL?.trim();
+  const folioHref = (() => {
+    if (!folioUrl) return undefined;
+    try {
+      const parsedUrl = new URL(folioUrl);
+      const isSecure = parsedUrl.protocol === "https:";
+      const isLocalDevelopment = parsedUrl.protocol === "http:" && parsedUrl.hostname === "localhost";
+      return isSecure || isLocalDevelopment ? parsedUrl.href : undefined;
+    } catch {
+      return undefined;
+    }
+  })();
 
   const run = async () => {
     setError(null);
@@ -69,13 +83,13 @@ export default function Tools() {
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
         title="Free website tools"
-        description="Free backend-powered website tools from PrismWave Studio — meta tags, security headers, and site audit."
+        description="Free website diagnostics and Folio, the invoice workspace from PrismWave Studio."
         path="/tools"
       />
       <AiMetadata
-        map={["Tools introduction", "Tool runner", "Results", "Studio footer"]}
-        intent="Let visitors run free website diagnostics powered by PrismWave Studio APIs."
-        tags={["website tools", "SEO check", "security headers", "site audit"]}
+        map={["Tools introduction", "Folio invoice workspace", "Tool runner", "Results", "Studio footer"]}
+        intent="Let visitors open Folio, the PrismWave Studio invoice workspace, or run free website diagnostics."
+        tags={["website tools", "invoice generator", "Folio", "SEO check", "security headers", "site audit"]}
         extract={{
           title: "PrismWave Studio Tools",
           audience: "Founders and small businesses",
@@ -108,6 +122,33 @@ export default function Tools() {
         <p className="mt-4 text-ink-soft">
           Server-side diagnostics — not screenshots of a brochure. Paste a URL, get signals you can act on.
         </p>
+
+        <section className="mt-10 flex flex-col gap-5 rounded-2xl border border-ink-line bg-ink-2/40 p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-4">
+            <img src={folioMark} alt="" className="h-14 w-14 shrink-0 rounded-xl bg-white p-2" />
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">PrismWave product</p>
+              <h2 className="mt-1 font-display text-xl font-semibold">Folio — Invoice Generator</h2>
+              <p className="mt-2 max-w-xl text-sm text-ink-soft">
+                Create, manage, and export invoices for freelance and small-studio work.
+              </p>
+            </div>
+          </div>
+          {folioHref ? (
+            <a
+              href={folioHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-ink-line px-5 font-display text-sm font-semibold text-paper transition-colors hover:border-amber"
+            >
+              Open Folio <span className="ml-2" aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <span className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-full border border-ink-line px-5 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
+              Preview not configured
+            </span>
+          )}
+        </section>
 
         <div className="mt-10 flex flex-wrap gap-2">
           {(
