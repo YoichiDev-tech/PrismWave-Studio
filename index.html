@@ -1,200 +1,28 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
-    <!-- Inline fallback background: guarantees the page never flashes white
-         on first paint (e.g. slow connections) before the stylesheet loads,
-         matching the --color-ink token in src/index.css -->
-    <style>
-      html, body { background-color: #0a0e1a; }
-      html[data-theme="light"], html[data-theme="light"] body { background-color: #f3f4f1; }
-      @media (max-width: 640px) {
-        #root > header, #root > main, #root > footer { padding-left: 1rem; padding-right: 1rem; }
-      }
-    </style>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability. Get clear findings in seconds, then choose a fixed-scope fix or full rebuild with delivery timelines matched to project scope." />
-    <meta name="theme-color" content="#0A0E1A" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Theme bootstrap: runs before first paint so there is never a flash of the wrong
-         theme. Dark is the default; only a saved visitor choice switches to light.
-         Storage key + colours mirror src/lib/theme.ts — keep them in sync. -->
-    <script>
-      (function () {
-        var theme = "dark";
-        try {
-          var saved = localStorage.getItem("prismwave-theme");
-          if (saved === "light" || saved === "dark") theme = saved;
-        } catch (e) {}
-        document.documentElement.setAttribute("data-theme", theme);
-        if (theme === "light") {
-          var meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute("content", "#F3F4F1");
-        }
-      })();
-    </script>
+    <meta
+      name="description"
+      content="PrismWave aiuta le piccole imprese di installazione e manutenzione in Italia a gestire e seguire ogni richiesta cliente, senza perdere opportunità mentre sono al lavoro."
+    />
 
-    <!-- Open Graph -->
+    <meta name="theme-color" content="#101820" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="PrismWave Studio" />
-    <meta property="og:title" content="Free Website Audit &amp; Custom Web Development | PrismWave Studio" />
-    <meta property="og:description" content="PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability. Get clear findings in seconds, then choose a fixed-scope fix or full rebuild with delivery timelines matched to project scope." />
-    <meta property="og:image" content="/images/og-cover-prismwave.jpg" />
-    <meta property="og:url" content="https://prismwavestudio.com/" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:title" content="PrismWave — Non perdere più richieste clienti" />
+    <meta
+      property="og:description"
+      content="Un sistema semplice per raccogliere, organizzare e seguire le richieste dei clienti."
+    />
 
-    <!-- X Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Free Website Audit &amp; Custom Web Development | PrismWave Studio" />
-    <meta name="twitter:description" content="PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability. Get clear findings in seconds, then choose a fixed-scope fix or full rebuild with delivery timelines matched to project scope." />
-    <meta name="twitter:image" content="/images/og-cover-prismwave.jpg" />
-    <link rel="canonical" href="https://prismwavestudio.com/" />
-
-    <!-- Structured data: gives search engines and AI assistants an
-         unambiguous, machine-readable summary of who we are, what we do,
-         and the questions we already answer — separate from (and in
-         addition to) the in-page AiMetadata/AiIntent tagging used
-         throughout the app. Kept in sync with src/components/FAQ.tsx. -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "PrismWave Studio",
-      "url": "https://prismwavestudio.com/",
-      "description": "PrismWave Studio runs a free website audit that checks speed, mobile, SEO, and AI-readability in seconds. The studio designs and builds fast, modern, conversion-focused websites for small businesses with fixed-scope pricing and delivery timelines matched to project scope.",
-      "areaServed": "Worldwide",
-      "priceRange": "$$",
-      "makesOffer": [
-        {
-          "@type": "Offer",
-          "name": "Free Website Audit",
-          "description": "A free website audit that checks speed, mobile, SEO, and AI-readability in seconds. The audit provides clear, prioritized findings without obligation."
-        },
-        {
-          "@type": "Offer",
-          "name": "Fixed-Scope Website Fix",
-          "description": "Targeted fixes for existing sites based on audit findings, with clear scope and timeline."
-        },
-        {
-          "@type": "Offer",
-          "name": "Custom Website Build",
-          "description": "Design and development of a new website, e-commerce store, or web app from an early idea through launch with fixed-scope pricing and delivery timelines matched to project scope."
-        }
-      ],
-      "sameAs": []
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What does the free website audit check?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The free website audit checks four technical signals: page speed (server response time and HTML payload weight), mobile responsiveness (viewport meta tag and responsive breakpoints), SEO basics (HTTPS, meta descriptions, title tags, and Open Graph tags), and AI-readability (semantic landmarks, heading structure, structured data, and image alt text)." }
-        },
-        {
-          "@type": "Question",
-          "name": "What do the audit findings look like?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Audit findings include an overall score (0-100), individual category scores for speed, mobile, SEO, and AI-readability, and prioritized issues ranked by impact. Each finding is specific and actionable — you see what hurts most first, not a laundry list of minor problems." }
-        },
-        {
-          "@type": "Question",
-          "name": "Who is the free website audit for?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The free website audit is for small businesses that want fast, modern sites. It serves solo operators, African businesses going global, and sustainability ventures that need a site that does real work — not just one that looks good." }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the options after the audit?",
-          "acceptedAnswer": { "@type": "Answer", "text": "After the audit, you have two options: fix what's broken with targeted fixes based on audit findings, or rebuild properly with a full custom build. Both options use fixed-scope pricing; the delivery timeline is agreed in writing based on the scope." }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does a project take?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Timelines depend on the selected scope: the current estimates range from about 1 week for a landing page to 7 weeks for a SaaS/product starter. The written project summary confirms the timeline before work begins." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I own the site after it's built?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — you fully own the code, design, and all exported assets. Nothing is locked behind subscriptions or proprietary builders." }
-        },
-        {
-          "@type": "Question",
-          "name": "Why should I trust PrismWave with my website?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You can inspect the work before committing: the audit uses real signals from your site, pricing is visible upfront, and the portfolio shows live builds rather than vague promises. You keep ownership of the finished code, and every project starts with a clear scope and timeline." }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens if the project is not the right fit?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We start with a short conversation and a defined scope before any work begins. If the goals, budget, or timeline do not line up, I will say so and you can walk away without being pushed into a package." }
-        },
-        {
-          "@type": "Question",
-          "name": "What if I need changes after launch?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You can request additional updates anytime. Small fixes are quick; larger changes can be scoped as a mini-project." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer hosting or maintenance?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Hosting and domains are handled by providers like Vercel or Namecheap. We do offer ongoing maintenance, but you stay in full control." }
-        },
-        {
-          "@type": "Question",
-          "name": "What do you need from me to get started?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A short description of your business, your goals, any existing content, and examples of sites you like. That's enough to begin." }
-        },
-        {
-          "@type": "Question",
-          "name": "What if I don't have a logo or brand yet?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No problem — we can design a simple starter brand or work with neutral styling until you have a full identity." }
-        }
-      ]
-    }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <title>Free Website Audit &amp; Custom Web Development | PrismWave Studio</title>
-
-    <!-- Live chat (Crisp) — loaded here directly, in parallel with the app
-         bundle, instead of via a React useEffect. Waiting for React to
-         mount, hydrate, and run its effects before even starting to fetch
-         the Crisp script is what caused the bubble to appear several
-         seconds after the rest of the page. src/components/LiveChat.tsx
-         still runs on mount, but crisp-sdk-web detects this script already
-         loaded (window.$crisp.is) and skips re-injecting it — so this is
-         safe and doesn't double-load anything. -->
-    <link rel="preconnect" href="https://client.crisp.chat" />
-    <link rel="preconnect" href="https://settings.crisp.chat" crossorigin />
-    <script type="text/javascript">
-      (function () {
-        var websiteId = "%VITE_CRISP_WEBSITE_ID%";
-        // If Vite couldn't resolve the placeholder (env var missing at
-        // build time — e.g. local/preview builds), skip early-loading and
-        // let src/components/LiveChat.tsx load it the old way instead.
-        if (!websiteId || websiteId.charAt(0) === "%") return;
-        window.$crisp = [];
-        window.CRISP_WEBSITE_ID = websiteId;
-        var d = document;
-        var s = d.createElement("script");
-        s.src = "https://client.crisp.chat/l.js";
-        s.async = 1;
-        d.getElementsByTagName("head")[0].appendChild(s);
-      })();
-    </script>
+    <title>PrismWave — Gestione delle richieste clienti</title>
   </head>
+
   <body>
-    <div id="root">
-      <header aria-label="PrismWave Studio navigation">
-        <a href="/">PrismWave Studio</a>
-      </header>
-      <main>
-        <h1>See what's holding your website back. Then fix it — or rebuild it properly.</h1>
-        <p>Run a free audit and get clear findings in seconds. PrismWave Studio designs and builds fast, modern, conversion-focused websites for small businesses with fixed-scope pricing and delivery timelines matched to project scope.</p>
-      </main>
-      <footer>PrismWave Studio</footer>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

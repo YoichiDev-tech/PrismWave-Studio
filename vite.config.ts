@@ -1,21 +1,24 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  publicDir: 'public',
+  plugins: [react(), tailwindcss()],
+
   server: {
-    // `npm run dev` (plain Vite) does NOT run the /api serverless functions —
-    // those only execute under `vercel dev`. If you run `vercel dev --listen 3000`
-    // in one terminal and `vite` in another, this proxy forwards /api calls to it
-    // so audit/audit-lead/send work while iterating on the frontend.
-    // Prefer just running `vercel dev` alone when you need the API routes working.
+    host: "127.0.0.1",
+    port: 5173,
+
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-      },
-    },
+      "/api": {
+        target: "http://localhost:4000",
+        changeOrigin: true
+      }
+    }
   },
-})
+
+  build: {
+    outDir: "dist",
+    sourcemap: false
+  }
+});
