@@ -14,9 +14,9 @@ interface AuditFeedbackProps {
 
 export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProps) {
   const [open, setOpen] = useState(false);
-  const [rating, setValutazione] = useState(0);
+  const [rating, setRating] = useState(0);
   const [name, setName] = useState("");
-  const [role, setRuolo] = useState("");
+  const [role, setRole] = useState("");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(""); // honeypot
