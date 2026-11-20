@@ -14,7 +14,7 @@ export default function Roadmap() {
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
         title="Piano di sviluppo"
-        description="What PrismWave Studio is building next — clear, minimal, and focused."
+        description="Cosa sta sviluppando PrismWave Studio: una panoramica chiara, essenziale e mirata."
         path="/roadmap"
       />
 
