@@ -12,15 +12,15 @@ const STEPS = [
   },
   {
     title: "Accordo e acconto",
-    desc: "You receive a short agreement covering price, deposit, revisions, and ownership. Work starts only after deposit and signed terms.",
+    desc: "Ricevi un accordo sintetico che definisce prezzo, acconto, revisioni e proprietà del lavoro. Lo sviluppo inizia solo dopo la firma e il pagamento dell'acconto.",
   },
   {
     title: "Sviluppo e revisioni",
-    desc: "Fixed-scope build to the timeline agreed in writing. You get the included revision rounds. No surprise hours or scope creep.",
+    desc: "Realizziamo il progetto secondo l'ambito e le tempistiche concordati per iscritto. Sono incluse le revisioni previste, senza ore o attività aggiuntive a sorpresa.",
   },
   {
     title: "Pubblicazione e consegna",
-    desc: "Deploy, connect domain if needed, handover the complete code and assets. You own 100%. Optional support after that.",
+    desc: "Pubblichiamo il sito, colleghiamo il dominio se necessario e consegniamo codice e risorse complete. La proprietà è tua. L'assistenza successiva è facoltativa.",
   },
 ];
 
@@ -45,8 +45,8 @@ export default function Process() {
             Ambito definito. Accordi scritti. Nessuna sorpresa.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            Every project follows the same path: clear findings, a written
-            project summary, a simple agreement, then the build. You see the
+            Ogni progetto segue un percorso chiaro: risultati comprensibili, un riepilogo scritto
+            del progetto, un accordo semplice e poi lo sviluppo. Conosci
             exact scope and price before any work or deposit begins.
           </p>
         </Reveal>
@@ -79,7 +79,7 @@ export default function Process() {
             <p className="text-sm leading-relaxed text-ink-soft">
               <span className="font-semibold text-paper">Come funziona il pagamento:</span>{" "}
               35% deposit to start after the agreement is signed, 65% on delivery.
-              Scope is locked before work begins. Extra work outside the agreed
+              L'ambito viene definito prima dell'inizio. Le attività non comprese nell'accordo
               summary is quoted separately — never billed as surprise hours.
             </p>
           </div>
