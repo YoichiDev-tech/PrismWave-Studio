@@ -24,8 +24,8 @@ export default function ProjectCard({ project }: { project: Project }) {
         <h2 className="mt-1 font-display text-lg font-semibold text-paper">{project.title}</h2>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{project.description}</p>
         <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-ink-soft">
-          <span>Launched {project.launched}</span>
-          {project.relaunched && <span>· Relaunched {project.relaunched}</span>}
+          <span>Pubblicato il {project.launched}</span>
+          {project.relaunched && <span>· Ripubblicato il {project.relaunched}</span>}
           <span className="ml-auto text-paper/50 transition-transform group-hover:translate-x-0.5">→</span>
         </div>
       </div>
