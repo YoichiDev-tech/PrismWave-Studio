@@ -71,7 +71,7 @@ export default function FieldingRye() {
     >
       <SEO
         title="Fielding & Rye — Modello dimostrativo"
-        description="A warm neighborhood bakery template with a weekly bake schedule and order-ahead flow, built by PrismWave Studio."
+        description="Un modello accogliente per un panificio di quartiere, con programma settimanale delle preparazioni e prenotazioni anticipate, realizzato da PrismWave Studio."
         path="/work/fielding-and-rye"
       />
       <AiMetadata
