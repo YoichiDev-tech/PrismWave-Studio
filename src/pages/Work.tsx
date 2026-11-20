@@ -16,7 +16,7 @@ export default function Work() {
 				map={["Introduzione ai progetti", "Modelli selezionati", "Schede progetto", "Piè di pagina dello studio"]}
 				intent="Presentare i lavori web di PrismWave Studio e indirizzare i visitatori ai modelli interattivi e ai casi studio completi."
 				tags={["portfolio di web design", "modelli di siti web", "casi studio", "progetti PrismWave Studio"]}
-				extract={{ title: "PrismWave Studio Work", audience: "Fondatori e aziende che stanno valutando uno studio web", primaryActions: "Aprire un modello di progetto o un caso studio", projects: "Fielding & Rye, Nova Cloud, Bloom Market" }}
+				extract={{ title: "Progetti PrismWave Studio", audience: "Fondatori e aziende che stanno valutando uno studio web", primaryActions: "Aprire un modello di progetto o un caso studio", projects: "Fielding & Rye, Nova Cloud, Bloom Market" }}
 			/>
 			<header className="border-b border-ink-line">
 				<div className="mx-auto max-w-6xl px-6 py-6">
