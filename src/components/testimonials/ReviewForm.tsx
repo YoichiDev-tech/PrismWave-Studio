@@ -7,7 +7,7 @@ const field =
 export default function ReviewForm() {
   const [name, setName] = useState('');
   const [business, setBusiness] = useState('');
-  const [rating, setRating] = useState(0);
+  const [rating, setValutazione] = useState(0);
   const [message, setMessage] = useState('');
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // honeypot
@@ -17,7 +17,7 @@ export default function ReviewForm() {
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!rating) {
-      setError('Please choose a star rating.');
+      setError('Seleziona una valutazione in stelle.');
       setState('error');
       return;
     }
@@ -31,11 +31,11 @@ export default function ReviewForm() {
       });
       if (!r.ok) {
         const j = (await r.json().catch(() => ({}))) as { error?: string };
-        throw new Error(j.error || 'Something went wrong.');
+        throw new Error(j.error || 'Si è verificato un errore.');
       }
       setState('done');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong.');
+      setError(err instanceof Error ? err.message : 'Si è verificato un errore.');
       setState('error');
     }
   }
@@ -43,9 +43,9 @@ export default function ReviewForm() {
   if (state === 'done') {
     return (
       <div className="rounded-3xl border border-ink-line bg-ink-2/60 p-6">
-        <p className="font-display font-semibold text-paper">Thank you.</p>
+        <p className="font-display font-semibold text-paper">Grazie.</p>
         <p className="mt-1 text-ink-soft">
-          Your review was received. It is checked personally before anything is shown publicly.
+          Abbiamo ricevuto la tua recensione. Sarà verificata personalmente prima di un'eventuale pubblicazione.
         </p>
       </div>
     );
@@ -57,7 +57,7 @@ export default function ReviewForm() {
       className="space-y-4 rounded-3xl border border-ink-line bg-ink-2/60 p-6"
     >
       <label className="block text-sm text-ink-soft">
-        Your name
+        Il tuo nome
         <input
           className={field}
           value={name}
@@ -68,7 +68,7 @@ export default function ReviewForm() {
       </label>
 
       <label className="block text-sm text-ink-soft">
-        Business name
+        Nome dell'attività
         <input
           className={field}
           value={business}
@@ -79,14 +79,14 @@ export default function ReviewForm() {
       </label>
 
       <div className="text-sm text-ink-soft">
-        Rating
+        Valutazione
         <div className="mt-1">
-          <StarInput value={rating} onChange={setRating} />
+          <StarInput value={rating} onChange={setValutazione} />
         </div>
       </div>
 
       <label className="block text-sm text-ink-soft">
-        Your experience
+        La tua esperienza
         <textarea
           className={field}
           rows={4}
@@ -120,7 +120,7 @@ export default function ReviewForm() {
           required
         />
         <span>
-          I agree PrismWave Studio may publish this review after approval. Parts of it may be
+          Acconsento alla pubblicazione di questa recensione da parte di PrismWave Studio dopo l'approvazione. Alcune parti potranno essere
           shortened or shown without my name or business.
         </span>
       </label>
@@ -133,7 +133,7 @@ export default function ReviewForm() {
         className="rounded-full px-6 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98] disabled:opacity-50"
         style={{ background: 'linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)' }}
       >
-        {state === 'sending' ? 'Sending…' : 'Send my review'}
+        {state === 'sending' ? 'Invio in corso…' : 'Invia la recensione'}
       </button>
     </form>
   );
