@@ -13,15 +13,15 @@ const MINT = "#37E6C4";
 const BLUE = "#2AA9FF";
 
 const FEATURES = [
-  { tag: "monitor", title: "Real-time uptime", desc: "Second-by-second checks across every region you serve." },
-  { tag: "alert", title: "Smart alerting", desc: "Escalations that page the right person, not the whole team." },
-  { tag: "trace", title: "Root-cause traces", desc: "Jump from an incident straight to the request that caused it." },
+  { tag: "monitoraggio", title: "Disponibilità in tempo reale", desc: "Controlli continui in ogni area geografica in cui operi." },
+  { tag: "avvisi", title: "Avvisi intelligenti", desc: "Notifiche inoltrate alla persona giusta, senza allertare tutto il team." },
+  { tag: "tracciamento", title: "Analisi delle cause", desc: "Passa direttamente da un incidente alla richiesta che lo ha provocato." },
 ];
 
 const TIERS = [
-  { name: "Starter", price: "$0", blurb: "For side projects and early-stage products.", cta: "Start free" },
-  { name: "Team", price: "$49", blurb: "For teams that need on-call and history.", cta: "Start trial", featured: true },
-  { name: "Scale", price: "Custom", blurb: "For platforms with strict SLAs.", cta: "Talk to us" },
+  { name: "Starter", price: "$0", blurb: "Per progetti personali e prodotti nelle prime fasi.", cta: "Inizia gratis" },
+  { name: "Team", price: "$49", blurb: "Per i team che hanno bisogno di reperibilità e cronologia.", cta: "Avvia la prova", featured: true },
+  { name: "Scale", price: "Personalizzato", blurb: "Per piattaforme con accordi sui livelli di servizio rigorosi.", cta: "Contattaci" },
 ];
 
 const REGIONS = [
@@ -133,7 +133,7 @@ export default function NovaCloud() {
                 style={{ borderColor: LINE, fontFamily: MONO }}
               >
                 <span className="h-1.5 w-1.5 rounded-full" style={{ background: MINT }} />
-                status.novacloud.io — all systems green
+                status.novacloud.io — tutti i sistemi funzionano
               </p>
               <h1 id="nova-hero" className="mt-6 text-4xl font-semibold leading-[1.08] sm:text-5xl">
                 Una disponibilità che puoi <span style={{ color: MINT }}>dimostrare</span>, non solo promettere.
@@ -184,7 +184,7 @@ export default function NovaCloud() {
 ✓ edge.cdn              9ms  200
 
 uptime (30d)  99.98%
-p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
+latenza p95    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
               </pre>
 
               <div
@@ -252,7 +252,7 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
           style={{ borderColor: LINE }}
         >
           <AiIntent id="nova-features-intent">
-            Explain the core observability capabilities available to on-call engineering teams.
+            Spiegare le principali funzionalità di monitoraggio disponibili per i team tecnici reperibili.
           </AiIntent>
           <div className="mx-auto max-w-6xl px-6">
             <h2 id="nova-features" className="mt-3 text-3xl font-semibold">
@@ -293,7 +293,7 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
           style={{ borderColor: LINE, background: PANEL }}
         >
           <AiIntent id="nova-stats-intent">
-            Provide quantitative proof points for uptime, alert latency, and customer adoption.
+            Presentare indicatori quantitativi relativi alla disponibilità, alla latenza degli avvisi e all'adozione del servizio.
           </AiIntent>
           <h2 id="nova-stats" className="sr-only">
             Statistiche sulle prestazioni di Nova Cloud
@@ -324,11 +324,11 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
           style={{ borderColor: LINE }}
         >
           <AiIntent id="nova-pricing-intent">
-            Present transparent Nova Cloud tiers and guide teams toward starting a trial or contacting sales.
+            Presentare i piani di Nova Cloud e invitare i team ad avviare una prova o a contattare il reparto commerciale.
           </AiIntent>
           <div className="mx-auto max-w-6xl px-6">
             <h2 id="nova-pricing" className="text-3xl font-semibold">
-              Simple pricing, no surprise overages.
+              Prezzi semplici, senza costi aggiuntivi a sorpresa.
             </h2>
 
             <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -376,10 +376,10 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
                 {trialSent ? (
                   <div>
                     <p className="text-lg font-semibold" style={{ color: MINT }}>
-                      You&apos;re on the list for {selectedTier}.
+                      Sei nella lista per il piano {selectedTier}.
                     </p>
                     <p className="mt-2 text-sm text-white/60">
-                      Demo only — no email was sent. In a real build this would start the trial or open a calendar
+                      Solo dimostrazione: non è stata inviata alcuna email. In un prodotto reale, questa azione avvierebbe la prova o aprirebbe un calendario
                       link.
                     </p>
                     <button
@@ -391,14 +391,14 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
                       }}
                       className="mt-4 text-sm text-white/70 underline underline-offset-4 transition-colors hover:text-white"
                     >
-                      Close
+                      Chiudi
                     </button>
                   </div>
                 ) : (
                   <form onSubmit={handleTrial} className="flex flex-col gap-4 sm:flex-row sm:items-end">
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-white/90">
-                        Start {selectedTier} — enter work email
+                        Attiva {selectedTier} — inserisci l'email di lavoro
                       </p>
                       <p className="mt-1 text-xs text-white/45">Demo form. Nothing is stored or emailed.</p>
                       <input
@@ -416,7 +416,7 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
                       className="min-h-11 rounded-md px-6 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98]"
                       style={{ background: MINT, color: "#04211C" }}
                     >
-                      Continue
+                      Continua
                     </button>
                   </form>
                 )}
@@ -433,7 +433,7 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
         >
           <span>© {new Date().getFullYear()} nova_cloud</span>
           <Link to="/" className="underline underline-offset-4 transition-opacity hover:opacity-70">
-            Template preview by PrismWave Studio
+            Anteprima del modello a cura di PrismWave Studio
           </Link>
         </div>
       </footer>
