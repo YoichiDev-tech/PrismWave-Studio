@@ -11,9 +11,9 @@ function FieldingMock() {
           Dal 2019 — Fielding &amp; Rye
         </p>
         <h4 className="mt-2 text-2xl leading-none" style={{ fontFamily: "Georgia, serif" }}>
-          The Weekly
+          Il pane della settimana
           <br />
-          Loaf.
+          Pagnotta.
         </h4>
         <div className="mt-3 h-px w-full" style={{ background: "#C7401F", opacity: 0.4 }} />
         <div
@@ -22,7 +22,7 @@ function FieldingMock() {
         >
           <p className="col-span-2 border-r pr-3" style={{ borderColor: "rgba(43,36,22,0.15)" }}>
             Pane a lievitazione naturale, preparato ogni mattina e consegnato in cinque quartieri entro le nove. Prenota in anticipo
-            for weekend pickup.
+            per il ritiro nel fine settimana.
           </p>
           <div className="flex flex-col justify-between">
             <span
