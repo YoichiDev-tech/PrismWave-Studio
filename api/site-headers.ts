@@ -82,40 +82,40 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
         id: "https",
         label: "HTTPS",
         pass: isHttps,
-        detail: isHttps ? "Site is served over HTTPS." : "Site is not on HTTPS — browsers will warn visitors.",
+        detail: isHttps ? "Il sito utilizza HTTPS." : "Il sito non utilizza HTTPS: i browser potrebbero avvisare i visitatori.",
       },
       {
         id: "hsts",
-        label: "Strict-Transport-Security",
+        label: "Strict-Transport-Security (HSTS)",
         pass: Boolean(pick(h, "strict-transport-security")),
         detail: pick(h, "strict-transport-security")
           ? pick(h, "strict-transport-security")!
-          : "Missing HSTS — browsers may not force HTTPS on return visits.",
+          : "HSTS mancante: i browser potrebbero non forzare HTTPS nelle visite successive.",
       },
       {
         id: "xfo",
-        label: "X-Frame-Options / frame protection",
+        label: "X-Frame-Options / protezione dai frame",
         pass: Boolean(pick(h, "x-frame-options") || /frame-ancestors/i.test(pick(h, "content-security-policy") || "")),
         detail:
           pick(h, "x-frame-options") ||
           (pick(h, "content-security-policy")?.match(/frame-ancestors[^;]*/i)?.[0] ??
-            "Missing clickjacking protection (X-Frame-Options or CSP frame-ancestors)."),
+            "Protezione dal clickjacking mancante (X-Frame-Options o frame-ancestors nella CSP)."),
       },
       {
         id: "xcto",
         label: "X-Content-Type-Options",
         pass: (pick(h, "x-content-type-options") || "").toLowerCase().includes("nosniff"),
-        detail: pick(h, "x-content-type-options") || "Missing nosniff — browsers may MIME-sniff responses.",
+        detail: pick(h, "x-content-type-options") || "Direttiva nosniff mancante: i browser potrebbero interpretare autonomamente il tipo MIME delle risposte.",
       },
       {
         id: "referrer",
         label: "Referrer-Policy",
         pass: Boolean(pick(h, "referrer-policy")),
-        detail: pick(h, "referrer-policy") || "No Referrer-Policy — referrers may leak full URLs to third parties.",
+        detail: pick(h, "referrer-policy") || "Referrer-Policy assente: gli URL completi potrebbero essere comunicati a servizi di terze parti.",
       },
       {
         id: "csp",
-        label: "Content-Security-Policy",
+        label: "Content-Security-Policy (CSP)",
         pass: Boolean(pick(h, "content-security-policy")),
         detail: pick(h, "content-security-policy")
           ? "CSP present (review directives for your app)."
