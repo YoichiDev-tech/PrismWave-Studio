@@ -19,9 +19,9 @@ const FEATURES = [
 ];
 
 const TIERS = [
-  { name: "Starter", price: "$0", blurb: "Per progetti personali e prodotti nelle prime fasi.", cta: "Inizia gratis" },
-  { name: "Team", price: "$49", blurb: "Per i team che hanno bisogno di reperibilità e cronologia.", cta: "Avvia la prova", featured: true },
-  { name: "Scale", price: "Personalizzato", blurb: "Per piattaforme con accordi sui livelli di servizio rigorosi.", cta: "Contattaci" },
+  { name: "Base", price: "$0", blurb: "Per progetti personali e prodotti nelle prime fasi.", cta: "Inizia gratis" },
+  { name: "Squadra", price: "$49", blurb: "Per i team che hanno bisogno di reperibilità e cronologia.", cta: "Avvia la prova", featured: true },
+  { name: "Azienda", price: "Personalizzato", blurb: "Per piattaforme con accordi sui livelli di servizio rigorosi.", cta: "Contattaci" },
 ];
 
 const REGIONS = [
@@ -69,7 +69,7 @@ export default function NovaCloud() {
           title: "Nova Cloud",
           audience: "Team di sviluppo e piattaforma",
           primaryActions: "Avviare una prova gratuita o consultare le funzionalità",
-          pricing: "Base gratuita; Team $49; Scale personalizzato",
+          pricing: "Base gratuita; Squadra $49; Azienda personalizzato",
           proof: "99.98% average uptime across customers",
         }}
       />
@@ -101,7 +101,7 @@ export default function NovaCloud() {
           </ul>
           <button
             type="button"
-            onClick={() => openTrial("Team")}
+            onClick={() => openTrial("Squadra")}
             className="rounded-md px-4 py-2 text-[13px] font-medium transition-transform hover:scale-[1.03] active:scale-[0.98]"
             style={{ background: MINT, color: "#04211C" }}
           >
@@ -146,7 +146,7 @@ export default function NovaCloud() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <button
                   type="button"
-                  onClick={() => openTrial("Team")}
+                  onClick={() => openTrial("Squadra")}
                   className="rounded-md px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] active:scale-[0.98]"
                   style={{ background: MINT, color: "#04211C" }}
                 >
