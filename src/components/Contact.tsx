@@ -99,7 +99,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
       const contentType = res.headers.get("content-type") ?? "";
       if (!contentType.includes("application/json")) {
         setError(
-          "The contact service didn't respond with data — if you're running `npm run dev`, the /api routes only work under `vercel dev`."
+          "Il servizio di contatto non ha restituito dati. Se stai usando `npm run dev`, gli endpoint /api funzionano solo con `vercel dev`."
         );
         setStatus("idle");
         return;
@@ -108,7 +108,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
       const data = await res.json().catch(() => null);
 
       if (!res.ok || !data?.ok) {
-        setError(data?.error || "Failed to send message. Please try again.");
+        setError(data?.error || "Invio del messaggio non riuscito. Riprova.");
         setStatus("idle");
         return;
       }
@@ -116,7 +116,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
       setStatus("sent");
       setForm(EMPTY_FORM);
     } catch {
-      setError("Couldn't reach the server. Please check your connection.");
+      setError("Impossibile raggiungere il server. Controlla la connessione.");
       setStatus("idle");
     }
   };
@@ -132,17 +132,17 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
       <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
         <Reveal className="space-y-8">
           <div>
-            <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Get in touch</p>
+            <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Contattaci</p>
             <h2
               id="contact-title"
               className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-[2.5rem]"
             >
               {activeIntent === "audit"
-                ? "Let's take a look at what you've got."
-                : "Let's build your idea from scratch."}
+                ? "Analizziamo insieme il tuo sito."
+                : "Realizziamo la tua idea da zero."}
             </h2>
             <p className="mt-4 max-w-sm text-ink-soft">
-              Share your details and we'll reply within one business day with next steps — no obligation.
+              Lasciaci i tuoi recapiti: ti risponderemo entro un giorno lavorativo indicandoti i prossimi passi, senza impegno.
             </p>
           </div>
           <BookCall />
@@ -152,7 +152,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
           <div className="rounded-2xl border border-ink-line bg-ink-2/60 p-6 md:p-8">
             {status === "sent" ? (
               <div className="flex min-h-[320px] flex-col items-center justify-center text-center">
-                <h3 className="font-display text-xl font-semibold text-paper">Message sent</h3>
+                <h3 className="font-display text-xl font-semibold text-paper">Messaggio inviato</h3>
                 <p className="mt-2 text-sm text-ink-soft">We'll get back to you within one business day.</p>
                 <button
                   type="button"
