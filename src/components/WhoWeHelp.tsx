@@ -37,9 +37,9 @@ const accentClasses: Record<
 const segments: Segment[] = [
   {
     eyebrow: "Chi costruisce da solo",
-    title: "Founder indipendenti",
+    title: "Fondatori indipendenti",
     desc: "Stai sviluppando il prodotto e ti occupi anche di tutto il resto. Ti serve un sito credibile, capace di spiegare subito il valore di ciò che fai e trasformare le visite in conversazioni, senza aggiungere un altro strumento da gestire.",
-    proof: "A clear homepage and enquiry path so people can say yes without a long pitch.",
+    proof: "Una homepage chiara e un percorso di contatto semplice, senza lunghe presentazioni.",
     accent: "amber",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -57,7 +57,7 @@ const segments: Segment[] = [
     eyebrow: "Attività locali e di servizi",
     title: "Piccole e medie imprese",
     desc: "Artigiani, attività ricettive e servizi professionali: ti servono richieste e prenotazioni, non una semplice brochure. Realizziamo siti con ambito definito, veloci, ottimizzati per smartphone e semplici da usare.",
-    proof: "A site that gets found, gets contacted, and doesn't need weekly babysitting.",
+    proof: "Un sito facile da trovare e contattare, che non richiede continue attenzioni settimanali.",
     accent: "coral",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -80,7 +80,7 @@ const segments: Segment[] = [
     eyebrow: "Team orientati al prodotto",
     title: "SaaS e prodotti in fase iniziale",
     desc: "Ti serve un sito promozionale o un'interfaccia essenziale che comunichi chiaramente il valore del prodotto e il passo successivo. Un'interfaccia pulita, prezzi o accesso alla prova ben visibili e una base pronta a evolversi.",
-    proof: "A page that turns technical credibility into sign-ups or booked demos.",
+    proof: "Una pagina che trasforma la credibilità tecnica in iscrizioni o prenotazioni di demo.",
     accent: "violet",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -118,12 +118,10 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
             A chi ci rivolgiamo
           </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-paper md:text-5xl">
-            Founder indipendenti. PMI. Team SaaS.
+            Fondatori indipendenti. PMI. Team SaaS.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            Per tutti il percorso è lo stesso: analisi gratuita o breve confronto, ambito e prezzo definiti per iscritto
-            scope, clear price, and a delivery timeline matched to the project. A site that does real work —
-            not just one that looks finished.
+            Per tutti il percorso è lo stesso: analisi gratuita o breve confronto, ambito, prezzo e tempistiche di consegna definiti per iscritto. Un sito che svolge una funzione concreta, non soltanto un progetto dall'aspetto curato.
           </p>
         </Reveal>
 
