@@ -14,9 +14,9 @@ interface AuditFeedbackProps {
 
 export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProps) {
   const [open, setOpen] = useState(false);
-  const [rating, setRating] = useState(0);
+  const [rating, setValutazione] = useState(0);
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRuolo] = useState("");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(""); // honeypot
@@ -28,15 +28,15 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
     setError(null);
 
     if (rating < 1) {
-      setError("Pick a star rating.");
+      setError("Seleziona una valutazione in stelle.");
       return;
     }
     if (message.trim().length < 10) {
-      setError("One short sentence is enough — a bit longer than that, please.");
+      setError("Scrivi almeno una breve frase.");
       return;
     }
     if (!consent) {
-      setError("Tick the box if we may show this after review.");
+      setError("Seleziona la casella se possiamo pubblicare il commento dopo la revisione.");
       return;
     }
 
@@ -60,7 +60,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
       });
       if (!r.ok) {
         const j = (await r.json().catch(() => ({}))) as { error?: string };
-        throw new Error(j.error || "Could not send");
+        throw new Error(j.error || "Invio non riuscito");
       }
       trackAction("cta_click", {
         metadata: { label: "audit_feedback_sent", location: "audit-widget", rating },
@@ -68,16 +68,16 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
       setState("sent");
     } catch (err) {
       setState("error");
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      setError(err instanceof Error ? err.message : "Si è verificato un errore.");
     }
   };
 
   if (state === "sent") {
     return (
       <div className="mt-6 rounded-xl border border-ink-line bg-ink-2/50 p-4">
-        <p className="font-display text-sm font-semibold text-paper">Thanks — noted.</p>
+        <p className="font-display text-sm font-semibold text-paper">Grazie, abbiamo ricevuto il tuo commento.</p>
         <p className="mt-1 text-xs leading-relaxed text-ink-soft">
-          If you allowed publishing, it only goes live after a manual check. Nothing
+          Se hai autorizzato la pubblicazione, il commento sarà visibile solo dopo una verifica manuale. Nulla
           is posted automatically.
         </p>
       </div>
@@ -97,7 +97,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
           }}
           className="font-mono text-[11px] uppercase tracking-wide text-ink-soft underline underline-offset-4 transition-colors hover:text-amber"
         >
-          Was this audit useful? Leave optional feedback →
+          L'analisi ti è stata utile? Lascia un commento facoltativo →
         </button>
       </div>
     );
@@ -108,18 +108,18 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
       onSubmit={submit}
       className="mt-6 space-y-3 rounded-xl border border-ink-line bg-ink-2/50 p-4"
     >
-      <p className="font-display text-sm font-semibold text-paper">Quick feedback</p>
+      <p className="font-display text-sm font-semibold text-paper">Commento rapido</p>
       <p className="text-xs leading-relaxed text-ink-soft">
-        Optional. Helps other visitors and helps us improve the tool. Published only
+        Facoltativo. Aiuta altri visitatori e ci permette di migliorare lo strumento. Pubblicheremo il commento solo
         after personal review — never auto-posted.
       </p>
 
-      <div className="flex gap-1" role="group" aria-label="Rating">
+      <div className="flex gap-1" role="group" aria-label="Valutazione">
         {[1, 2, 3, 4, 5].map((n) => (
           <button
             key={n}
             type="button"
-            onClick={() => setRating(n)}
+            onClick={() => setValutazione(n)}
             className={`text-lg transition-colors ${
               rating >= n ? "text-amber" : "text-ink-soft/40"
             }`}
@@ -131,22 +131,22 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
       </div>
 
       <label className="block">
-        <span className="sr-only">Your first name</span>
+        <span className="sr-only">Il tuo nome</span>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="First name (optional)"
+          placeholder="Nome (facoltativo)"
           maxLength={80}
           className="min-h-11 w-full rounded-lg border border-ink-line bg-transparent px-3 text-sm text-paper placeholder:text-ink-soft/50 focus:border-amber"
         />
       </label>
 
       <label className="block">
-        <span className="sr-only">Role</span>
+        <span className="sr-only">Ruolo</span>
         <input
           value={role}
-          onChange={(e) => setRole(e.target.value)}
-          placeholder="Role — e.g. Developer (optional)"
+          onChange={(e) => setRuolo(e.target.value)}
+          placeholder="Ruolo — e.g. Developer (optional)"
           maxLength={120}
           className="min-h-11 w-full rounded-lg border border-ink-line bg-transparent px-3 text-sm text-paper placeholder:text-ink-soft/50 focus:border-amber"
         />
