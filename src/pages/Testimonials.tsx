@@ -14,27 +14,24 @@ export default function TestimonialsPage() {
   return (
     <div className="min-h-screen bg-[#0f0f11] text-white py-20 px-6">
       <AiMetadata
-        map={["Testimonials overview", "Customer feedback", "Feedback filters", "Project CTA"]}
-        intent="Share genuine, approved client feedback about PrismWave Studio when it becomes available."
-        tags={["testimonials", "client feedback", "social proof", "PrismWave Studio"]}
+        map={["Panoramica delle testimonianze", "Commenti dei clienti", "Filtri dei commenti", "Invito a un progetto"]}
+        intent="Condividere commenti autentici e approvati dei clienti di PrismWave Studio quando saranno disponibili."
+        tags={["testimonianze", "commenti dei clienti", "riprova sociale", "PrismWave Studio"]}
         extract={{
-          title: "PrismWave Studio — Client Feedback",
-          audience: "Prospective clients",
-          primaryActions: "Discuss a project with PrismWave Studio",
-          status: testimonials.length > 0 ? "Published client feedback" : "No published testimonials yet",
+          title: "PrismWave Studio — Commenti dei clienti",
+          audience: "Potenziali clienti",
+          primaryActions: "Discutere un progetto con PrismWave Studio",
+          status: testimonials.length > 0 ? "Commenti dei clienti pubblicati" : "Nessuna testimonianza pubblicata",
         }}
       />
 
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-semibold mb-4">
-          Honest work. Real feedback.
+          Lavoro autentico. Commenti reali.
         </h1>
 
         <p className="text-white/70 mb-10 max-w-3xl">
-          PrismWave Studio works on improving existing websites and building
-          digital experiences from the ground up. We publish client feedback
-          only when it is genuine and approved to share — never placeholder
-          reviews or invented results.
+          PrismWave Studio migliora siti web esistenti e realizza esperienze digitali da zero. Pubblichiamo i commenti dei clienti solo quando sono autentici e autorizzati: mai recensioni segnaposto o risultati inventati.
         </p>
 
         {testimonials.length > 0 ? (
@@ -50,7 +47,7 @@ export default function TestimonialsPage() {
                       : "border-white/20 text-white/70"
                   }`}
                 >
-                  {f.toUpperCase()}
+                  {(f === "all" ? "TUTTE" : f === "audit" ? "ANALISI" : f === "build" ? "SVILUPPO" : "GENERALI")}
                 </button>
               ))}
             </div>
@@ -79,12 +76,10 @@ export default function TestimonialsPage() {
         ) : (
           <div className="bg-white/5 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-white/10 max-w-3xl">
             <p className="text-lg font-medium mb-2">
-              This page will grow with real client projects.
+              Questa pagina crescerà con i progetti reali dei clienti.
             </p>
             <p className="text-white/65">
-              Until then, explore the work and concepts in the portfolio, or
-              tell us what you are planning to build. Portfolio concepts are
-              presented as concepts, not client engagements.
+              Nel frattempo, esplora i progetti e i concept del portfolio oppure raccontaci cosa vorresti realizzare. I concept del portfolio sono presentati come dimostrazioni, non come incarichi svolti per clienti.
             </p>
           </div>
         )}
@@ -93,7 +88,7 @@ export default function TestimonialsPage() {
           href="/#contact"
           className="inline-block mt-12 text-blue-400 hover:text-blue-300"
         >
-          Ready to start your project? →
+          Vuoi avviare il tuo progetto? →
         </a>
       </div>
     </div>
