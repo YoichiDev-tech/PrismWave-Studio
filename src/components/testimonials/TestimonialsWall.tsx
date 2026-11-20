@@ -38,7 +38,7 @@ export default function TestimonialsWall() {
           <Stars value={t.rating} />
           <blockquote className="mt-3 text-paper/90">“{t.text}”</blockquote>
           <figcaption className="mt-3 font-mono text-[12px] text-ink-soft">
-            {[t.name ?? 'Anonymous client', t.business].filter(Boolean).join(', ')}
+            {[t.name ?? 'Cliente anonimo', t.business].filter(Boolean).join(', ')}
           </figcaption>
         </figure>
       ))}
