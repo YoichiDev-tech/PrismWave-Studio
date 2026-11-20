@@ -3,20 +3,20 @@ import Section from "./Section";
 
 const CHECKS = [
   {
-    title: "Page Speed",
-    desc: "Server response time and HTML payload weight. Visitors expect under 1s; anything over 3s kills conversions.",
+    title: "Velocità di caricamento",
+    desc: "Tempo di risposta del server e dimensioni della pagina HTML. I visitatori si aspettano caricamenti rapidi: oltre 3 secondi le probabilità di abbandono aumentano.",
   },
   {
-    title: "Mobile Responsiveness",
-    desc: "Viewport meta tag and responsive breakpoints. Your site must render correctly on phones, not zoomed-out desktop layouts.",
+    title: "Adattamento ai dispositivi mobili",
+    desc: "Verifica del meta tag viewport e dei punti di interruzione responsive. Il sito deve essere leggibile e utilizzabile da smartphone, non una versione desktop rimpicciolita.",
   },
   {
-    title: "SEO Basics",
-    desc: "HTTPS security, meta descriptions, title tags, and Open Graph tags for social sharing previews.",
+    title: "Fondamenti SEO",
+    desc: "Sicurezza HTTPS, meta description, tag title e metadati Open Graph per le anteprime sui social.",
   },
   {
-    title: "AI Readability",
-    desc: "Semantic landmarks, heading structure, structured data (JSON-LD), and image alt text for AI crawlers and accessibility.",
+    title: "Leggibilità per i sistemi AI",
+    desc: "Struttura semantica, gerarchia dei titoli, dati strutturati (JSON-LD) e testi alternativi delle immagini, utili all'accessibilità e ai sistemi automatici.",
   },
 ];
 
@@ -31,12 +31,12 @@ export default function AuditDetails() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">What the audit checks</p>
+          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Cosa analizza la verifica</p>
           <h2 id="audit-details-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl">
-            Four technical signals that matter for your site.
+            Quattro aspetti tecnici importanti per il tuo sito.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            A free website audit analyzes your site against performance, mobile, SEO, and AI-readability standards. The audit checks response time, page weight, viewport configuration, semantic markup, and structured data to identify concrete problems.
+            L'analisi gratuita esamina prestazioni, adattamento ai dispositivi mobili, SEO e leggibilità per i sistemi AI. Controlla tempi di risposta, dimensioni della pagina, configurazione viewport, struttura semantica e dati strutturati per individuare problemi concreti.
           </p>
         </Reveal>
 
