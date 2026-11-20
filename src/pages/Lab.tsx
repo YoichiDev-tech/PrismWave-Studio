@@ -18,27 +18,27 @@ interface ShowcaseItem {
 const ITEMS: ShowcaseItem[] = [
   {
     id: "gradient-button",
-    title: "Gradient CTA Button",
-    description: "The primary action pattern used across every section on the live site.",
+    title: "Pulsante principale con sfumatura",
+    description: "Lo stile del pulsante principale utilizzato nelle sezioni del sito.",
     code: `<button
   className="rounded-full px-8 py-4 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
   style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
 >
-  Get a Free Audit
+  Richiedi un'analisi gratuita
 </button>`,
   },
   {
     id: "score-gauge",
-    title: "Radial Score Gauge",
-    description: "Powers the four live category scores in the AI-Ready Site Audit tool.",
+    title: "Indicatore circolare del punteggio",
+    description: "Visualizza i punteggi delle quattro categorie nello strumento di analisi del sito.",
     code: `<ScoreGauge label="Page Speed" score={87} />`,
   },
   {
     id: "reveal-on-scroll",
-    title: "Reveal on Scroll",
-    description: "Fade-up-on-scroll wrapper. One line to add to any section.",
+    title: "Comparsa durante lo scorrimento",
+    description: "Effetto di comparsa progressiva durante lo scorrimento, applicabile a qualsiasi sezione.",
     code: `<Reveal delay={1}>
-  <h2>Fades and lifts into view on scroll</h2>
+  <h2>Compare gradualmente durante lo scorrimento</h2>
 </Reveal>`,
   },
 ];
@@ -63,7 +63,7 @@ function CopyButton({ code }: { code: string }) {
       onClick={handleCopy}
       className="font-mono text-[11px] uppercase tracking-wide text-ink-soft hover:text-paper transition-colors"
     >
-      {copied ? "Copied!" : "Copy snippet"}
+      {copied ? "Copiato!" : "Copia il codice"}
     </button>
   );
 }
@@ -75,15 +75,15 @@ export default function Lab() {
   return (
     <div ai-tag="lab" data-ai="page" className="grain relative min-h-screen overflow-hidden bg-ink text-paper">
       <SEO
-        title="The Lab — Open Component Showcase"
+        title="Laboratorio — Componenti aperti"
         description="Copy-paste ready components and interaction patterns from the PrismWave Studio live site — open, free to use."
         path="/lab"
       />
       <AiMetadata
-        map={["Lab introduction", "Production component list", "Live previews", "Copyable snippets"]}
-        intent="Let visitors inspect, preview, and copy production UI components used by PrismWave Studio."
+        map={["Introduzione al laboratorio", "Elenco dei componenti", "Anteprime interattive", "Codice copiabile"]}
+        intent="Permettere ai visitatori di esaminare, provare e copiare i componenti dell'interfaccia utilizzati da PrismWave Studio."
         tags={["component library", "frontend patterns", "React components", "UI snippets", "web design lab"]}
-        extract={{ title: "PrismWave Studio Lab", audience: "Developers and designers", primaryActions: "Inspect a component, preview it, or copy its code", format: "Public component showcase" }}
+        extract={{ title: "Laboratorio PrismWave Studio", audience: "Sviluppatori e designer", primaryActions: "Esaminare un componente, provarlo o copiarne il codice", format: "Raccolta pubblica di componenti" }}
       />
       
       <div
@@ -111,7 +111,7 @@ export default function Lab() {
             rel="noopener noreferrer"
             className="font-mono text-[12px] uppercase tracking-wide text-ink-soft hover:text-paper"
           >
-            Follow the build &rarr;
+            Segui lo sviluppo &rarr;
           </a>
         </div>
       </header>
@@ -120,9 +120,9 @@ export default function Lab() {
         <section aria-labelledby="lab-hero" aria-describedby="lab-hero-intent" role="region" data-ai="hero">
           <AiIntent id="lab-hero-intent">Introduce the public component laboratory and explain what visitors can inspect.</AiIntent>
           <Reveal>
-          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">The Lab</p>
+          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Il laboratorio</p>
           <h1 id="lab-hero" className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            Production components, out in the open.
+            Componenti di produzione, a disposizione di tutti.
           </h1>
           <p className="mt-5 max-w-xl text-ink-soft">
             A running sample of what's actually shipped on this site — free to inspect, copy, and
@@ -142,7 +142,7 @@ export default function Lab() {
 
         <section aria-labelledby="lab-components" aria-describedby="lab-components-intent" role="region" data-ai="features">
           <AiIntent id="lab-components-intent">List production components with live previews and copyable implementation snippets.</AiIntent>
-          <h2 id="lab-components" className="sr-only">Production components</h2>
+          <h2 id="lab-components" className="sr-only">Componenti di produzione</h2>
           <div className="mt-16 grid gap-8" role="list">
           {ITEMS.map((item, index) => {
             const isOpen = openId === item.id;
@@ -173,7 +173,7 @@ export default function Lab() {
                         className="rounded-full px-8 py-4 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] hover:brightness-110"
                         style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
                       >
-                        Get a Free Audit
+                        Richiedi un'analisi gratuita
                       </button>
                     )}
 
@@ -183,7 +183,7 @@ export default function Lab() {
                       <div className="flex flex-col items-center gap-4">
                         <Reveal key={replayKey}>
                           <p className="font-display text-lg font-semibold text-paper">
-                            Fades and lifts into view ↑
+                            Compare gradualmente durante lo scorrimento ↑
                           </p>
                         </Reveal>
                         <button
