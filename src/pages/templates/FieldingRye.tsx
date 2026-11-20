@@ -313,7 +313,7 @@ export default function FieldingRye() {
                         onChange={(e) => setName(e.target.value)}
                         className="min-h-11 w-full rounded-sm border bg-transparent px-3"
                         style={{ borderColor: RULE }}
-                        placeholder="Alex"
+                        placeholder="Alessio"
                       />
                     </label>
                     <label className="block text-sm">
@@ -381,7 +381,7 @@ export default function FieldingRye() {
                 &ldquo;We wanted a bakery that felt like it had always been on this corner — even on day one.&rdquo;
               </blockquote>
               <p className="mt-4 text-sm" style={{ opacity: 0.65 }}>
-                — Founders, Fielding &amp; Rye
+                — I fondatori di Fielding &amp; Rye
               </p>
             </article>
           </div>
@@ -419,7 +419,7 @@ export default function FieldingRye() {
               <p className="mt-3 text-sm leading-relaxed">
                 412 Ashcombe Lane
                 <br />
-                Riverside District
+                Quartiere Riverside
               </p>
             </article>
             <article>
