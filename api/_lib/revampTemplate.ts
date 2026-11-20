@@ -124,10 +124,10 @@ ${sub ? `<p class="lead">${e(sub)}</p>` : ""}
 <div class="actions"><a class="btn" href="#contact">${e(primaryCta)}</a><a class="btn ghost" href="#services">${e(secondaryCta)}</a></div>
 </div>${heroVisual}</div></header>
 ${contactBits.length ? `<div class="contact"><div class="wrap">${contactBits.map((b) => `<span>${e(b)}</span>`).join("")}</div></div>` : ""}
-${cardsHtml ? `<section class="section" id="services"><div class="wrap"><h2>What ${e(c.siteName)} offers</h2><div class="cards">${cardsHtml}</div></div></section>` : ""}
+${cardsHtml ? `<section class="section" id="services"><div class="wrap"><h2>Cosa offre ${e(c.siteName)}</h2><div class="cards">${cardsHtml}</div></div></section>` : ""}
 ${galleryHtml}
 <section class="band" id="contact"><div class="wrap"><h2>${e(headline)}</h2><a class="btn" href="#contact">${e(primaryCta)}</a></div></section>
-<footer><div class="wrap">© ${e(c.siteName)} · Concept preview by PrismWave Studio</div></footer>
+<footer><div class="wrap">© ${e(c.siteName)} · Anteprima dimostrativa di PrismWave Studio</div></footer>
 </body>
 </html>`;
 }
