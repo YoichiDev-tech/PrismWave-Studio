@@ -15,8 +15,8 @@ export default function Changelog() {
   return (
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
-        title="Changelog"
-        description="What changed in PrismWave Studio — features, fixes, and improvements."
+        title="Registro degli aggiornamenti"
+        description="Novità di PrismWave Studio: funzionalità, correzioni e miglioramenti."
         path="/changelog"
       />
 
@@ -38,7 +38,7 @@ export default function Changelog() {
       </header>
 
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
-        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Changelog</p>
+        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Aggiornamenti</p>
         <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
           Cosa abbiamo realizzato.
         </h1>
