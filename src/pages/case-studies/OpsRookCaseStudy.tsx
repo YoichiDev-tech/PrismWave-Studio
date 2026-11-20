@@ -22,7 +22,7 @@ const demoUrl = "https://opsrook-vi.vercel.app";
 export default function OpsRookCaseStudy() {
   return (
     <div className="min-h-screen bg-ink text-paper">
-      <SEO title="OpsRook-VI — Caso studio sull'infrastruttura AI" description="How PrismWave Studio approached product positioning, lead qualification, and pilot-to-production friction for an AI infrastructure concept." path="/work/opsrook-vi/case-study" />
+      <SEO title="OpsRook-VI — Caso studio sull'infrastruttura AI" description="Come PrismWave Studio ha affrontato il posizionamento del prodotto, la qualificazione dei contatti e gli ostacoli nel passaggio dai progetti pilota alla produzione in un concept di infrastruttura AI." path="/work/opsrook-vi/case-study" />
       <AiMetadata map={["Caso studio OpsRook-VI", "Colli di bottiglia aziendali", "Strategia di prodotto", "Risultati simulati", "Demo interattiva del prodotto"]} intent="Mostrare come PrismWave Studio colleghi progettazione del prodotto, flussi operativi e priorità aziendali in un concept di infrastruttura AI." tags={["caso studio", "infrastruttura AI", "SaaS", "strategia di prodotto", "flusso di conversione", "PrismWave Studio"]} extract={{ title: "Caso studio OpsRook-VI", audience: "Fondatori SaaS, team tecnici e aziende in crescita", primaryActions: "Esplorare la demo del prodotto o discutere una sfida simile" }} />
       <header className="border-b border-ink-line">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-6">
