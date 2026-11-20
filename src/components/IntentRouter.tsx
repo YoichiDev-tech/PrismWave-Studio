@@ -7,7 +7,7 @@ export default function IntentRouter() {
   return (
     <div className="max-w-2xl mx-auto mt-10">
       <p className="font-mono text-xs uppercase tracking-widest text-ink-soft text-center mb-4">
-        Start here
+        Inizia da qui
       </p>
 
       <div className="grid sm:grid-cols-2 gap-4">
@@ -25,10 +25,10 @@ export default function IntentRouter() {
             I already have a site
           </p>
           <p className="font-inter text-sm text-ink-soft mt-1 leading-relaxed">
-            Find out if it still looks and performs like it should — free audit, no pitch attached.
+            Scopri se il tuo sito è ancora attuale e funziona come dovrebbe: analisi gratuita, senza impegno commerciale.
           </p>
           <span className="font-mono text-xs text-coral mt-4 inline-block group-hover:translate-x-1 transition-transform">
-            Run my free audit →
+            Avvia l'analisi gratuita →
           </span>
         </button>
 
@@ -46,10 +46,10 @@ export default function IntentRouter() {
             I have an idea, no site yet
           </p>
           <p className="font-inter text-sm text-ink-soft mt-1 leading-relaxed">
-            Barbershop, supermarket, a passion project — tell us what it is and what it needs to become.
+            Un negozio, un supermercato o un progetto personale: raccontaci di cosa si tratta e cosa vuoi realizzare.
           </p>
           <span className="font-mono text-xs text-violet mt-4 inline-block group-hover:translate-x-1 transition-transform">
-            Start my build →
+            Avvia il mio progetto →
           </span>
         </button>
       </div>
