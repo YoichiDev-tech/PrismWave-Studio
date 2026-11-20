@@ -43,7 +43,7 @@ export default async function handler(
   res: VercelLikeResponse
 ): Promise<void> {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed." });
+    return res.status(405).json({ error: "Metodo non consentito." });
   }
 
   if (
@@ -187,11 +187,11 @@ ${SITE_URL}
         const { error: ownerEmailError } = await resend.emails.send({
           from: FROM_EMAIL,
           to: TO_OWNER,
-          subject: `[PrismWave lead] Audit report requested — ${siteUrl} (${auditScore}/100)`,
-          text: `New audit lead
+          subject: `[PrismWave contatto] Report di analisi richiesto — ${siteUrl} (${auditScore}/100)`,
+          text: `Nuovo contatto per l'analisi
 
 Email: ${email}
-Site: ${siteUrl}
+Sito: ${siteUrl}
 Score: ${auditScore}/100
 
 Findings:
