@@ -70,20 +70,20 @@ export default function FieldingRye() {
       className="min-h-screen cursor-default"
     >
       <SEO
-        title="Fielding & Rye — Live Template"
+        title="Fielding & Rye — Modello dimostrativo"
         description="A warm neighborhood bakery template with a weekly bake schedule and order-ahead flow, built by PrismWave Studio."
         path="/work/fielding-and-rye"
       />
       <AiMetadata
-        map={["Bakery hero", "Weekly bake schedule", "Today's case", "Our story", "Hours and location", "Order ahead"]}
-        intent="Show a neighborhood bakery brand template and guide visitors toward ordering bread ahead."
+        map={["Presentazione del panificio", "Programma settimanale delle preparazioni", "Prodotti del giorno", "La nostra storia", "Orari e posizione", "Prenota in anticipo"]}
+        intent="Presentare il modello di un panificio di quartiere e guidare i visitatori verso la prenotazione anticipata del pane."
         tags={["bakery website", "restaurant website template", "local business", "sourdough bakery", "menu"]}
         extract={{
           title: "Fielding & Rye",
-          audience: "Neighborhood bakery customers",
-          primaryActions: "View the menu or order ahead",
+          audience: "Clienti di un panificio di quartiere",
+          primaryActions: "Consultare il menu o prenotare in anticipo",
           location: "412 Ashcombe Lane, Riverside District",
-          hours: "Tue-Fri 7am-3pm; Sat-Sun 8am-2pm",
+          hours: "Mar–ven 7:00–15:00; sab–dom 8:00–14:00",
         }}
       />
       <BackToStudioBadge tone="light" />
@@ -116,7 +116,7 @@ export default function FieldingRye() {
             className="rounded-full px-4 py-2 text-[12px] uppercase tracking-widest transition-transform hover:scale-[1.03] active:scale-[0.98]"
             style={{ background: INK, color: PAPER }}
           >
-            Order Ahead{totalQty > 0 ? ` (${totalQty})` : ""}
+            Prenota in anticipo{totalQty > 0 ? ` (${totalQty})` : ""}
           </a>
         </div>
       </header>
@@ -133,14 +133,14 @@ export default function FieldingRye() {
             Introduce Fielding and Rye and direct local customers toward the weekly bake and ordering ahead.
           </AiIntent>
           <p className="text-center text-[11px] uppercase tracking-[0.3em]" style={{ opacity: 0.6 }}>
-            Est. 2019 · Neighborhood Bakery · Baked Daily
+            Est. 2019 · Panificio di quartiere · Produzione quotidiana
           </p>
           <h1
             id="fielding-hero"
             className="mx-auto mt-5 max-w-3xl text-center text-5xl leading-[1.02] sm:text-6xl md:text-7xl"
             style={{ fontFamily: SERIF, fontWeight: 500 }}
           >
-            The weekly loaf, worth planning your Saturday around.
+            Il pane della settimana, per cui vale la pena organizzare il sabato.
           </h1>
 
           <div className="mt-3 border-t-2" style={{ borderColor: INK }} />
@@ -164,7 +164,7 @@ export default function FieldingRye() {
 
             <aside className="border-l pl-8" style={{ borderColor: RULE }}>
               <p className="text-[11px] uppercase tracking-[0.25em]" style={{ opacity: 0.55 }}>
-                This week&apos;s bake
+                Le preparazioni della settimana
               </p>
               <ul role="list" className="mt-4 space-y-4">
                 {SCHEDULE.map((row) => (
@@ -263,7 +263,7 @@ export default function FieldingRye() {
 
             <div id="order" className="mt-12 scroll-mt-24 rounded-sm border p-6 sm:p-8" style={{ borderColor: RULE }}>
               <h3 className="text-2xl" style={{ fontFamily: SERIF }}>
-                Order ahead
+                Prenota in anticipo
               </h3>
               <p className="mt-2 text-sm" style={{ opacity: 0.65 }}>
                 Demo flow only — nothing is sent. Shows how a real order-ahead experience can feel.
@@ -424,7 +424,7 @@ export default function FieldingRye() {
             </article>
             <article>
               <p className="text-[11px] uppercase tracking-[0.25em]" style={{ opacity: 0.55 }}>
-                Order ahead
+                Prenota in anticipo
               </p>
               <p className="mt-3 text-sm leading-relaxed">
                 hello@fieldingandrye.com
