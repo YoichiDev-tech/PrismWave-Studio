@@ -259,7 +259,7 @@ export default function AuditWidget({
       </p>
 
       <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-        Verifichiamo alcuni indicatori relativi a velocità, esperienza da smartphone, metadati della pagina e leggibilità per i sistemi AI. L'analisi richiede pochi secondi e non serve creare un account.
+        Verifichiamo alcuni indicatori relativi a velocità, esperienza da smartphone, metadati della pagina e leggibilità per i sistemi di IA. L'analisi richiede pochi secondi e non serve creare un account.
       </p>
 
       <form
