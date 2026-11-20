@@ -160,7 +160,7 @@ function scoreAiReadability(s: AuditSignals): AuditCategory {
     }
   }
 
-  return { key: "aiReadability", label: "Leggibilità per i sistemi AI", score: clamp(score), findings };
+  return { key: "aiReadability", label: "Leggibilità per i sistemi di IA", score: clamp(score), findings };
 }
 
 export function scoreAudit(signals: AuditSignals): AuditResult {
