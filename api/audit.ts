@@ -153,14 +153,14 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
   try {
     new URL(targetUrl);
   } catch {
-    res.status(400).json({ error: "That doesn't look like a valid URL." });
+    res.status(400).json({ error: "L'indirizzo web non sembra valido." });
     return;
   }
 
   try {
     await assertPublicHttpUrl(targetUrl);
   } catch {
-    res.status(400).json({ error: "That URL can't be audited." });
+    res.status(400).json({ error: "Non è possibile analizzare questo indirizzo web." });
     return;
   }
 
@@ -174,7 +174,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
     if (!response.ok) {
       clearTimeout(timeout);
-      res.status(502).json({ error: `That site responded with a ${response.status} error.` });
+      res.status(502).json({ error: `Il sito ha risposto con un errore ${response.status}.` });
       return;
     }
 
