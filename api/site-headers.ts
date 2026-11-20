@@ -24,24 +24,24 @@ function pick(headers: Headers, name: string): string | null {
 
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed." });
+    return res.status(405).json({ error: "Metodo non consentito." });
   }
 
   if (await isClientRateLimited(req.headers, { bucket: "site-headers", limit: 15, windowSeconds: 300 })) {
-    return res.status(429).json({ error: "Too many requests — try again in a few minutes." });
+    return res.status(429).json({ error: "Troppe richieste: riprova tra qualche minuto." });
   }
 
   const body = (req.body && typeof req.body === "object" ? req.body : {}) as Record<string, unknown>;
   const raw = typeof body.url === "string" ? body.url : "";
   if (!raw.trim()) {
-    return res.status(400).json({ error: "URL is required." });
+    return res.status(400).json({ error: "L'indirizzo del sito è obbligatorio." });
   }
 
   const target = normalizeUrl(raw);
   try {
     await assertPublicHttpUrl(target);
   } catch {
-    return res.status(400).json({ error: "Enter a valid public http(s) URL." });
+    return res.status(400).json({ error: "Inserisci un indirizzo web pubblico valido che utilizzi HTTP o HTTPS." });
   }
 
   try {
@@ -131,6 +131,6 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       checks,
     });
   } catch {
-    return res.status(502).json({ error: "Could not fetch that URL. Check it is public and try again." });
+    return res.status(502).json({ error: "Impossibile raggiungere l'indirizzo. Verifica che il sito sia pubblico e riprova." });
   }
 }
