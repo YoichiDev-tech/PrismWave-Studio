@@ -38,19 +38,19 @@ export default function AuditFindings() {
       <div className="relative mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-            What you get
+            Cosa ricevi
           </p>
 
           <h2
             id="audit-findings-title"
             className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl"
           >
-            Know what the scan found. Understand what to review.
+            Scopri cosa è emerso e quali aspetti approfondire.
           </h2>
 
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             We show the measured score, the signals detected, and the areas that
-            may deserve a closer look. The scan is a starting point, not a
+            meritano un'analisi più approfondita. La verifica è un punto di partenza, non una
             complete assessment of your website or its business performance.
           </p>
         </Reveal>
