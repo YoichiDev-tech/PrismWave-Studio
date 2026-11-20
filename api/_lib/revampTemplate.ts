@@ -34,8 +34,8 @@ export function renderTemplate(c: SiteContent): string {
 
   const headline = c.h1 || c.sections[0]?.heading || c.title || c.siteName;
   const sub = c.description || c.paragraphs[0] || c.sections[0]?.text || "";
-  const primaryCta = c.ctas[0] || "Get in touch";
-  const secondaryCta = c.ctas[1] || "See what we offer";
+  const primaryCta = c.ctas[0] || "Contattaci";
+  const secondaryCta = c.ctas[1] || "Scopri i nostri servizi";
 
   const navItems = c.navLinks.slice(0, 4);
   const cards = (c.sections.length ? c.sections : c.paragraphs.map((p) => ({ heading: "", text: p })))
@@ -44,7 +44,7 @@ export function renderTemplate(c: SiteContent): string {
   const [heroImage, ...gallery] = c.images;
   const galleryImages = gallery.slice(0, 3);
 
-  const contactBits = [c.phone && `Call ${c.phone}`, c.email].filter(Boolean) as string[];
+  const contactBits = [c.phone && `Chiama ${c.phone}`, c.email].filter(Boolean) as string[];
 
   const heroVisual = heroImage
     ? `<div class="visual"><img src="${e(heroImage)}" alt="" loading="eager"></div>`
