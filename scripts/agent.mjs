@@ -84,7 +84,9 @@ addTool("search_text", "Search literal text in repository text files, excluding 
       const content = await readFile(full,"utf8");
       if (content.includes("\0")) continue;
       content.split(/\r?\n/).forEach((line,index) => { if (line.includes(query) && matches.length < 100) matches.push({path:path.relative(ROOT,full).split(path.sep).join("/"),line:index+1,text:line.slice(0,300)}); });
-    } catch {}
+    } catch {
+      // Ignore unreadable files and files that cannot be decoded as UTF-8.
+    }
   }
   return matches;
 });
@@ -135,7 +137,7 @@ const system = [
 ].join("\n\n") + "\n\nROLE CHARTER:\n" + roleDoc;
 const messages=[{role:"user",content:task}];
 for(let round=0;round<MAX_TOOL_ROUNDS;round++){
-  const payload={model:process.env.AGENT_MODEL || registry.defaultModel,max_tokens:4096,system,messages,tools:tools.map(({handler,...schema})=>schema),tool_choice:{type:"auto"}};
+  const payload={model:process.env.AGENT_MODEL || registry.defaultModel,max_tokens:4096,system,messages,tools:tools.map(({handler,...schema})=>{ void handler; return schema; }),tool_choice:{type:"auto"}};
   const response=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01"},body:JSON.stringify(payload),signal:AbortSignal.timeout(90000)});
   const data=await response.json().catch(()=>({}));
   if(!response.ok) throw new Error(`Anthropic API ${response.status}: ${data.error?.message || "request failed"}`);
