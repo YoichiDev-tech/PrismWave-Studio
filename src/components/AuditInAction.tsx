@@ -13,19 +13,19 @@ import { trackAction } from "../lib/track";
   still looks real in both themes and never depends on missing assets.
 */
 
-const FLOW = ["Enter URL", "Scan", "Score", "Prioritized fixes", "15-min review"];
+const FLOW = ["Inserisci il sito", "Analisi", "Punteggio", "Interventi prioritari", "Revisione di 15 min"];
 
 const CATEGORIES = [
   { label: "Velocità", score: 42 },
   { label: "Dispositivi mobili", score: 61 },
   { label: "SEO", score: 55 },
-  { label: "AI-readability", score: 38 },
+  { label: "Leggibilità per i sistemi AI", score: 38 },
 ];
 
 const FINDINGS = [
   {
     impact: "Alta",
-    title: "Dispositivi mobili viewport missing",
+    title: "Dispositivi mobili: meta viewport mancante",
     detail:
       "Manca il meta tag viewport: sugli smartphone il sito appare come una pagina desktop rimpicciolita. Questo può scoraggiare le richieste di contatto.",
   },
@@ -76,20 +76,19 @@ function BeforeSiteMock() {
     <div className="bg-[#e8e4dc] text-[#1a1a1a]">
       <div className="border-b border-black/15 bg-[#1e3a5f] px-3 py-2">
         <p className="font-mono text-[10px] font-bold uppercase tracking-wide text-white/90">
-          Northside Electrical Ltd
+          Northside Impianti Elettrici
         </p>
-        <p className="mt-0.5 text-[9px] text-white/60">Est. 1998 · Call 0161 000 0000</p>
+        <p className="mt-0.5 text-[9px] text-white/60">Dal 1998 · Chiama 0161 000 0000</p>
       </div>
       <div className="space-y-2 p-3">
         <div className="border border-black/20 bg-[#f5f1e8] p-2">
-          <p className="text-[11px] font-bold leading-tight">Welcome to our website!!!</p>
+          <p className="text-[11px] font-bold leading-tight">Benvenuti nel nostro sito!!!</p>
           <p className="mt-1 text-[9px] leading-snug text-black/70">
-            We do electrics. Click the links below. Best prices in the area. Under construction —
-            more pages coming soon.
+            Ci occupiamo di impianti elettrici. Usa i collegamenti qui sotto. Prezzi competitivi nella zona. Sito in costruzione: presto nuove pagine.
           </p>
         </div>
         <div className="grid grid-cols-3 gap-1">
-          {["Home", "Services", "Contact"].map((label) => (
+          {["Home", "Servizi", "Contatti"].map((label) => (
             <div
               key={label}
               className="border border-black/25 bg-[#c5d4e8] px-1 py-1.5 text-center text-[9px] font-semibold text-[#1e3a5f]"
@@ -99,13 +98,13 @@ function BeforeSiteMock() {
           ))}
         </div>
         <ul className="space-y-1 border border-black/15 bg-white/70 p-2 text-[9px] leading-snug text-black/75">
-          <li>• Rewires — ask for quote</li>
-          <li>• Consumer units (fuse boards)</li>
-          <li>• Emergency callouts when available</li>
-          <li>• Email us from the contact page</li>
+          <li>• Rifacimento impianti — chiedi un preventivo</li>
+          <li>• Quadri elettrici e centralini</li>
+          <li>• Interventi urgenti, in base alla disponibilità</li>
+          <li>• Scrivici dalla pagina dei contatti</li>
         </ul>
         <p className="text-center text-[8px] text-black/45">
-          Best viewed in Internet Explorer · Last updated 2014
+          Visualizzazione consigliata con Internet Explorer · Ultimo aggiornamento: 2014
         </p>
       </div>
     </div>
@@ -122,24 +121,24 @@ function AfterSiteMock() {
           className="rounded-full px-2 py-0.5 text-[9px] font-semibold text-[#0a0e1a]"
           style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
         >
-          Call now
+          Chiama ora
         </span>
       </div>
       <div className="space-y-2.5 p-3">
         <div>
           <p className="font-display text-[13px] font-semibold leading-tight">
-            Fast, certified electrical work across Greater Manchester.
+            Interventi elettrici rapidi e certificati nell'area di Greater Manchester.
           </p>
           <p className="mt-1 text-[9px] leading-snug text-white/55">
-            EICR · rewires · consumer units · same-week slots where available.
+            Verifiche EICR · rifacimento impianti · quadri elettrici · appuntamenti nella stessa settimana, in base alla disponibilità.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-1.5">
           {[
-            { t: "Emergency", d: "Priority callouts" },
-            { t: "EICR", d: "Clear pass/fail report" },
-            { t: "Rewires", d: "Fixed-scope quote" },
-            { t: "Landlords", d: "Compliance ready" },
+            { t: "Emergenze", d: "Interventi prioritari" },
+            { t: "EICR", d: "Report chiaro con esito" },
+            { t: "Rifacimento impianti", d: "Preventivo ad ambito definito" },
+            { t: "Proprietari", d: "Documentazione di conformità" },
           ].map((card) => (
             <div key={card.t} className="rounded-md border border-white/10 bg-white/5 px-2 py-1.5">
               <p className="text-[10px] font-semibold">{card.t}</p>
@@ -148,14 +147,14 @@ function AfterSiteMock() {
           ))}
         </div>
         <div className="flex items-center justify-between rounded-md border border-white/10 bg-white/5 px-2 py-1.5">
-          <span className="text-[9px] text-white/60">Next available</span>
-          <span className="font-mono text-[9px] text-[#FFB84D]">Thu · AM</span>
+          <span className="text-[9px] text-white/60">Prossima disponibilità</span>
+          <span className="font-mono text-[9px] text-[#FFB84D]">Gio · Mattina</span>
         </div>
         <div
           className="rounded-full py-1.5 text-center text-[10px] font-semibold text-[#0a0e1a]"
           style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
         >
-          Request a callback
+          Richiedi di essere richiamato
         </div>
       </div>
     </div>
@@ -165,7 +164,7 @@ function AfterSiteMock() {
 export default function AuditInAction() {
   const goToAudit = () => {
     trackAction("cta_click", {
-      metadata: { label: "Run this on my site", location: "audit-in-action" },
+      metadata: { label: "Analizza il mio sito", location: "audit-in-action" },
     });
     const target = document.getElementById("audit-tool") ? "audit-tool" : "top";
     scrollToSection(target);
@@ -182,18 +181,16 @@ export default function AuditInAction() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-            Audit in action
+            L'analisi in pratica
           </p>
           <h2
             id="audit-in-action-title"
             className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl"
           >
-            See what a free audit actually returns.
+            Scopri cosa restituisce davvero un'analisi gratuita.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            Score, category breakdown, and prioritized issues — then a clear next
-            step. Representative example for a local service site. Run yours above
-            for live numbers.
+            Punteggio, dettaglio per categoria e problemi prioritari, seguiti da un passo successivo chiaro. Esempio rappresentativo di un'attività locale. Avvia la tua analisi qui sopra per ottenere dati reali.
           </p>
         </Reveal>
 
@@ -216,19 +213,19 @@ export default function AuditInAction() {
 
         <Reveal delay={2}>
           <div className="mt-10">
-            <ReportChrome label="prismwave-studio · sample audit report">
+            <ReportChrome label="prismwave-studio · esempio di report">
               <div className="flex items-center justify-between border-b border-ink-line px-4 py-2">
                 <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft">
-                  Sample URL · local trades homepage
+                  Indirizzo di esempio · homepage di un'attività locale
                 </span>
                 <span className="rounded-full border border-ink-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-ink-soft">
-                  Example
+                  Esempio
                 </span>
               </div>
 
               <div className="grid gap-8 p-5 md:grid-cols-[0.9fr_1.1fr] md:p-8">
                 <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-ink-line bg-ink-2/60 p-6">
-                  <ScoreGauge label="Overall" score={48} size={120} />
+                  <ScoreGauge label="Totale" score={48} size={120} />
                   <div className="w-full space-y-3">
                     {CATEGORIES.map((cat) => (
                       <div key={cat.label}>
@@ -252,7 +249,7 @@ export default function AuditInAction() {
 
                 <div className="flex flex-col">
                   <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-                    Prioritized findings
+                    Risultati prioritari
                   </p>
                   <ul className="mt-4 flex flex-1 flex-col gap-3">
                     {FINDINGS.map((item) => (
@@ -280,9 +277,7 @@ export default function AuditInAction() {
                   </ul>
 
                   <p className="mt-5 text-xs leading-relaxed text-ink-soft">
-                    After the live audit: a 15-minute review, then a written fixed-scope
-                    plan — Site Rescue fixes or a full rebuild — with a clear price
-                    before any deposit.
+                    Dopo l'analisi effettiva: una revisione di 15 minuti e un piano scritto con ambito definito — interventi di ripristino o riprogettazione completa — e un prezzo chiaro prima di qualsiasi acconto.
                   </p>
                 </div>
               </div>
@@ -293,18 +288,17 @@ export default function AuditInAction() {
         <Reveal delay={3}>
           <div className="mt-10">
             <p className="text-center font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-              What Site Rescue can look like
+              Come può apparire il rinnovamento di un sito
             </p>
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-soft">
-              Same vertical, two directions — outdated brochure site versus a clear
-              enquiry-led layout. Concept demo only.
+              Lo stesso settore, due soluzioni: un sito vetrina datato e un layout chiaro, progettato per ricevere richieste. Solo concept dimostrativo.
             </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
               <figure>
                 <div className="mb-2 flex items-center justify-between px-1">
                   <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft">
-                    Before · concept
+                    Prima · concept
                   </span>
                   <span className="font-mono text-[10px] text-coral">Score ~48</span>
                 </div>
@@ -320,7 +314,7 @@ export default function AuditInAction() {
                   <BeforeSiteMock />
                 </div>
                 <figcaption className="mt-2 px-1 text-xs leading-relaxed text-ink-soft">
-                  No clear offer, weak mobile layout, hard to contact.
+                  Offerta poco chiara, layout mobile debole e contatti difficili da trovare.
                 </figcaption>
               </figure>
 
@@ -334,9 +328,9 @@ export default function AuditInAction() {
               <figure>
                 <div className="mb-2 flex items-center justify-between px-1">
                   <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft">
-                    After · concept
+                    Dopo · concept
                   </span>
-                  <span className="font-mono text-[10px] text-amber">Enquiry-led</span>
+                  <span className="font-mono text-[10px] text-amber">Orientato alle richieste</span>
                 </div>
                 <div className="overflow-hidden rounded-xl border border-ink-line shadow-sm">
                   <div className="flex items-center gap-1.5 border-b border-ink-line bg-ink-2 px-3 py-2">
@@ -350,14 +344,13 @@ export default function AuditInAction() {
                   <AfterSiteMock />
                 </div>
                 <figcaption className="mt-2 px-1 text-xs leading-relaxed text-ink-soft">
-                  Clear offer, phone CTA, services visitors can act on.
+                  Offerta chiara, pulsante per chiamare e servizi su cui i visitatori possono agire.
                 </figcaption>
               </figure>
             </div>
 
             <p className="mt-4 text-center text-xs text-ink-soft">
-              Illustrative Site Rescue direction for a trades site — not a published
-              client case study. Real work is scoped only after your audit and review.
+              Esempio illustrativo di rinnovamento per un'attività artigiana: non è un caso studio di un cliente. Il lavoro effettivo viene definito solo dopo l'analisi e la revisione.
             </p>
           </div>
         </Reveal>
@@ -371,19 +364,19 @@ export default function AuditInAction() {
               background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)",
             }}
           >
-            Run this on my site
+            Analizza il mio sito
           </button>
           <button
             type="button"
             onClick={() => {
               trackAction("cta_click", {
-                metadata: { label: "Book 15-min review", location: "audit-in-action" },
+                metadata: { label: "Prenota una revisione di 15 minuti", location: "audit-in-action" },
               });
               scrollToSection("contact");
             }}
             className="rounded-full border border-ink-line px-8 py-3 font-display text-sm font-semibold text-paper transition-colors hover:border-amber active:scale-[0.98]"
           >
-            Book a 15-min review
+            Prenota una revisione di 15 minuti
           </button>
         </Reveal>
       </div>
