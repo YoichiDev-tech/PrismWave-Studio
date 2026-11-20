@@ -5,28 +5,22 @@ const CONTACT_EMAIL = "yoichi_dev@proton.me";
 export default function Privacy() {
   return (
     <LegalLayout
-      eyebrow="Data and privacy"
+      eyebrow="Dati e privacy"
       title="Informativa sulla privacy"
-      updated="October 11, 2026"
+      updated="11 ottobre 2026"
       path="/privacy"
       description="How PrismWave Studio collects, uses, stores, and protects personal information."
     >
       <p>
-        This Informativa sulla privacy explains how PrismWave Studio handles personal
-        information when you visit the website, use the free website audit,
-        request a report, or contact the studio. It must be read alongside
-        the actual services and tracking technologies enabled on the website.
+        La presente informativa descrive come PrismWave Studio tratta i dati personali quando visiti il sito, utilizzi l'analisi gratuita, richiedi un report o contatti lo studio. Deve essere letta insieme alle informazioni sui servizi e sulle tecnologie di tracciamento effettivamente attivi sul sito.
       </p>
 
-      <LegalSection title="Who is responsible for your data">
+      <LegalSection title="Chi è il titolare del trattamento">
         <p>
-          PrismWave Studio is an independent web design and development
-          studio operated by its owner. The owner's full legal name, business
-          address, operating jurisdiction, and registration details must be
-          published here where required by applicable law.
+          PrismWave Studio è uno studio indipendente che si occupa di progettazione e sviluppo web ed è gestito dal proprio titolare. Il nome o la denominazione legale completa del titolare, l'indirizzo dell'attività, la giurisdizione di riferimento e gli eventuali dati di registrazione devono essere inseriti qui quando richiesto dalla normativa applicabile. Queste informazioni devono essere verificate e completate prima della pubblicazione definitiva.
         </p>
         <p>
-          For privacy questions or requests, contact{" "}
+          Per domande o richieste relative alla privacy, puoi contattare{" "}
           <a
             className="text-amber underline underline-offset-4"
             href={`mailto:${CONTACT_EMAIL}`}
@@ -36,198 +30,129 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Information we may collect">
+      <LegalSection title="Dati che possiamo raccogliere">
         <p>
-          Depending on how you use the website, information may include:
+          A seconda di come utilizzi il sito, i dati trattati possono includere:
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            Contatti details you submit, such as your name, email address,
-            business name, website URL, and message.
+            I dati di contatto che invii, come nome, indirizzo email, nome dell'attività, indirizzo del sito web e messaggio.
           </li>
           <li>
-            Audit information, including the submitted website URL, generated
-            scores, findings, and report requests.
+            Le informazioni relative all'analisi, tra cui l'indirizzo del sito inviato, i punteggi generati, i risultati rilevati e le richieste di report.
           </li>
           <li>
-            Project details, service preferences, and correspondence you
-            choose to send us.
+            I dettagli del progetto, le preferenze sui servizi e le comunicazioni che scegli di inviarci.
           </li>
           <li>
-            Website interaction data, such as page views, audit events,
-            conversion events, referral information, campaign parameters,
-            and session identifiers, where these are enabled.
+            I dati relativi all'utilizzo del sito, come visualizzazioni di pagina, eventi legati alle analisi, eventi di conversione, informazioni sulla provenienza, parametri delle campagne e identificativi di sessione, quando tali strumenti sono attivi.
           </li>
           <li>
-            Technical information that may be processed by hosting,
-            security, email, or embedded third-party services, such as
-            browser and request information.
+            Le informazioni tecniche che possono essere trattate dai servizi di hosting, sicurezza, posta elettronica o da strumenti di terze parti integrati, come dati sul browser e sulle richieste.
           </li>
         </ul>
         <p>
-          Please do not submit sensitive personal information or information
-          about another person unless it is necessary and you are entitled
-          to provide it.
+          Non inviare dati personali appartenenti a categorie particolari né informazioni relative ad altre persone, salvo che sia necessario e tu abbia il diritto di comunicarle.
         </p>
       </LegalSection>
 
       <LegalSection title="Finalità e basi giuridiche del trattamento">
         <p>
-          We use information to operate and secure the website, run the
-          requested audit, send requested reports, answer enquiries, prepare
-          project proposals, deliver agreed services, prevent abuse, and
-          understand whether our services are useful.
+          Utilizziamo i dati per gestire e proteggere il sito, eseguire le analisi richieste, inviare i report, rispondere alle richieste, preparare proposte di progetto, fornire i servizi concordati, prevenire abusi e comprendere l'utilità dei nostri servizi.
         </p>
         <p>
-          Depending on the specific activity, processing may be necessary
-          to take steps at your request before entering a contract, perform
-          a contract, comply with a legal obligation, or pursue legitimate
-          interests such as maintaining site security and improving our
-          services. Where consent is legally required, we rely on consent
-          and provide a way to withdraw it.
+          A seconda dell'attività, il trattamento può essere necessario per dare seguito a una tua richiesta prima della conclusione di un contratto, eseguire un contratto, adempiere a un obbligo di legge oppure perseguire un legittimo interesse, come garantire la sicurezza del sito e migliorare i servizi. Quando la normativa richiede il consenso, il trattamento si basa sul consenso e viene indicata una modalità per revocarlo.
         </p>
         <p>
-          The final legal basis for each activity must match the actual
-          implementation. Optional analytics, advertising, or similar
-          tracking must not be described as consent-based unless valid
-          consent is obtained where required.
+          La base giuridica applicabile a ciascuna attività deve corrispondere al trattamento effettivamente svolto. Gli strumenti facoltativi di analisi, pubblicità o tracciamento non devono essere presentati come basati sul consenso se questo non viene validamente raccolto nei casi previsti.
         </p>
       </LegalSection>
 
       <LegalSection title="Dati inviati tramite l'analisi del sito">
         <p>
-          When you submit a URL, the audit tool processes that URL to
-          perform automated checks and generate findings. If you request
-          a report, the email address and report-related information you
-          submit may be stored and used to deliver the report and respond
-          to your request.
+          Quando invii un indirizzo web, lo strumento lo elabora per eseguire controlli automatici e generare risultati. Se richiedi un report, l'indirizzo email e le informazioni associate alla richiesta possono essere conservati e utilizzati per inviarti il report e rispondere alla tua richiesta.
         </p>
         <p>
-          Only submit URLs you are authorised to provide. The audit is
-          automated and may be incomplete or inaccurate. Do not submit
-          passwords, private URLs, or confidential material.
+          Invia esclusivamente indirizzi web che sei autorizzato a comunicare. L'analisi è automatizzata e può essere incompleta o imprecisa. Non inviare password, indirizzi privati o materiale riservato.
         </p>
       </LegalSection>
 
       <LegalSection title="Fornitori di servizi e destinatari">
         <p>
-          The website may use Vercel for hosting, Supabase for database
-          services, Resend for email delivery, Calendly for scheduling,
-          and Crisp for chat, depending on which integrations are enabled.
-          These services may process information needed to provide their
-          functions.
+          A seconda delle integrazioni effettivamente attive, il sito può utilizzare Vercel per l'hosting, Supabase per i servizi di database, Resend per l'invio delle email, Calendly per la gestione degli appuntamenti e Crisp per la chat. Questi fornitori possono trattare le informazioni necessarie a erogare i rispettivi servizi.
         </p>
         <p>
-          The published list must be checked against the integrations
-          actually active in production. Information may also be disclosed
-          where required by law or where necessary to protect the website,
-          its users, or our legal rights.
+          L'elenco dei fornitori deve essere verificato rispetto alle integrazioni realmente attive nell'ambiente di produzione. I dati possono inoltre essere comunicati quando richiesto dalla legge o quando necessario per proteggere il sito, i suoi utenti o i nostri diritti.
         </p>
       </LegalSection>
 
       <LegalSection title="Cookie e tecnologie analoghe">
         <p>
-          The website or its third-party integrations may use cookies,
-          local storage, session storage, or similar technologies. Their
-          actual names, purposes, providers, and lifetimes depend on the
-          deployed implementation.
+          Il sito o le integrazioni di terze parti possono utilizzare cookie, archiviazione locale, archiviazione di sessione o tecnologie analoghe. I nomi, le finalità, i fornitori e la durata effettivi dipendono dalla configurazione pubblicata.
         </p>
         <p>
-          Technologies that are strictly necessary for a service you
-          explicitly request may be treated differently from optional
-          analytics, advertising, or cross-site tracking technologies.
-          Where prior consent is legally required, optional technologies
-          must remain disabled until consent is given. You must be able
-          to refuse or withdraw consent as required by law.
+          Le tecnologie strettamente necessarie a fornire un servizio da te richiesto possono essere trattate diversamente dagli strumenti facoltativi di analisi, pubblicità o tracciamento tra siti. Quando la legge richiede un consenso preventivo, le tecnologie facoltative devono rimanere disattivate fino al rilascio del consenso. Devi poter rifiutare o revocare il consenso secondo quanto previsto dalla normativa.
         </p>
         <p>
-          This section is not a substitute for auditing the production
-          website. A cookie inventory and a consent mechanism should be
-          added if the technologies in use require them.
+          Questa sezione non sostituisce una verifica dei cookie e delle tecnologie effettivamente presenti sul sito pubblicato. Se necessario, dovranno essere aggiunti un inventario dei cookie e un meccanismo valido per raccogliere e gestire il consenso.
         </p>
       </LegalSection>
 
       <LegalSection title="Trasferimenti internazionali">
         <p>
-          Our service providers may process information in countries
-          outside your country of residence or outside the European
-          Economic Area. Where data protection law requires safeguards
-          for an international transfer, the applicable safeguards must
-          be in place and information about them made available.
+          I nostri fornitori possono trattare informazioni in Paesi diversi da quello in cui risiedi o al di fuori dello Spazio economico europeo. Quando la normativa sulla protezione dei dati richiede garanzie per un trasferimento internazionale, tali garanzie devono essere adottate e le relative informazioni rese disponibili.
         </p>
         <p>
-          The actual provider locations, transfer arrangements, and
-          safeguards must be verified against the services and account
-          configurations in use.
+          La sede effettiva dei fornitori, le modalità di trasferimento e le garanzie adottate devono essere verificate in base ai servizi e alle configurazioni degli account utilizzati.
         </p>
       </LegalSection>
 
       <LegalSection title="Periodo di conservazione">
         <p>
-          We keep personal information only for as long as reasonably
-          necessary for the purpose for which it was collected, including
-          responding to requests, providing services, maintaining required
-          business records, resolving disputes, and protecting the website.
+          Conserviamo i dati personali solo per il tempo ragionevolmente necessario alle finalità per cui sono stati raccolti, tra cui rispondere alle richieste, fornire i servizi, mantenere le registrazioni aziendali obbligatorie, gestire eventuali controversie e proteggere il sito.
         </p>
         <p>
-          The studio must define and apply retention periods for audit
-          records, interaction events, leads, email correspondence, and
-          technical logs. Data should be deleted or anonymised when it is
-          no longer needed, unless a legal obligation requires retention.
+          Lo studio deve definire e applicare tempi di conservazione per report di analisi, eventi di interazione, contatti commerciali, corrispondenza email e registri tecnici. I dati devono essere cancellati o anonimizzati quando non sono più necessari, salvo obblighi di legge che ne impongano la conservazione.
         </p>
       </LegalSection>
 
       <LegalSection title="I tuoi diritti in materia di privacy">
         <p>
-          Subject to applicable law, you may have the right to request
-          access to your personal information, correction, deletion,
-          restriction of processing, data portability, or to object to
-          certain processing. Where processing relies on consent, you
-          may withdraw consent without affecting processing that was
-          lawful before withdrawal.
+          Nei limiti previsti dalla normativa applicabile, puoi avere il diritto di chiedere l'accesso ai tuoi dati personali, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità oppure opporti a determinati trattamenti. Se il trattamento si basa sul consenso, puoi revocarlo senza pregiudicare la liceità del trattamento effettuato prima della revoca.
         </p>
         <p>
-          To make a request, email{" "}
+          Per esercitare i tuoi diritti, scrivi a{" "}
           <a
             className="text-amber underline underline-offset-4"
             href={`mailto:${CONTACT_EMAIL}`}
           >
             {CONTACT_EMAIL}
           </a>.
-          You may also have the right to complain to the data protection
-          authority competent for your circumstances.
+          Potresti inoltre avere il diritto di presentare un reclamo all'autorità di controllo competente.
         </p>
       </LegalSection>
 
       <LegalSection title="Sicurezza e servizi di terze parti">
         <p>
-          We use reasonable measures intended to protect information, but
-          no website or transmission method can be guaranteed completely
-          secure. External services and links are governed by their own
-          privacy notices and practices.
+          Adottiamo misure ragionevoli per proteggere le informazioni, ma nessun sito o metodo di trasmissione può essere garantito come completamente sicuro. I servizi e i collegamenti esterni sono disciplinati dalle rispettive informative e pratiche in materia di privacy.
         </p>
       </LegalSection>
 
       <LegalSection title="Minori">
         <p>
-          This website and its services are intended for people seeking
-          web design, development, audits, or related business services.
-          The studio does not knowingly seek to collect personal
-          information from children.
+          Questo sito e i relativi servizi sono destinati a persone interessate a servizi di progettazione e sviluppo web, analisi di siti o attività correlate. Lo studio non intende raccogliere consapevolmente dati personali di minori.
         </p>
       </LegalSection>
 
       <LegalSection title="Modifiche alla presente informativa">
         <p>
-          This notice may be updated when our services, data practices,
-          or legal obligations change. The date at the top indicates
-          when this page was last updated.
+          La presente informativa può essere aggiornata in caso di modifiche ai servizi, alle modalità di trattamento dei dati o agli obblighi di legge. La data indicata in alto segnala l'ultimo aggiornamento della pagina.
         </p>
       </LegalSection>
 
       <LegalSection title="Contatti">
         <p>
-          Privacy requests and questions:{" "}
+          Per richieste e domande relative alla privacy:{" "}
           <a
             className="text-amber underline underline-offset-4"
             href={`mailto:${CONTACT_EMAIL}`}
