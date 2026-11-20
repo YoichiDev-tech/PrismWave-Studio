@@ -201,7 +201,7 @@ export default function Revamp() {
         url: data.finalUrl,
         originalTitle: data.title || `${data.siteName} — esperienza attuale`,
         originalSubtitle:
-          data.description || "A real audit can reveal the highest-impact opportunities.",
+          data.description || "Un'analisi approfondita può individuare le opportunità con il maggiore impatto.",
         modernTitle: `Un'esperienza digitale più chiara per ${data.siteName}.`,
         modernSubtitle:
           "A concept built from your site's own content — a starting point for a focused redesign around your goals, audience and next action.",
@@ -264,10 +264,10 @@ export default function Revamp() {
       industry: "La tua attività",
       originalTitle: `${cleanHost} — esperienza attuale`,
       originalSubtitle:
-        "A real audit can reveal the highest-impact opportunities.",
+        "Un'analisi approfondita può individuare le opportunità con il maggiore impatto.",
       modernTitle: `Un'esperienza digitale più chiara per ${cleanHost}.`,
       modernSubtitle:
-        "A focused redesign concept based on your goals, audience, and next action.",
+        "Un concept di riprogettazione mirato, basato sui tuoi obiettivi, sul pubblico e sull'azione da compiere.",
       accent: "#3fae6b",
       beforeSrc: DEMO_SITES[0].beforeSrc,
       afterSrc: DEMO_SITES[0].afterSrc,
@@ -310,7 +310,7 @@ export default function Revamp() {
           message:
             (lead.note || `Vorrei valutare una riprogettazione completa per ${activeSite.name}.`) +
             `\n\n[Strumento di riprogettazione — anteprima: ${activeSite.url} (${
-              live ? `${live.generator === "ai" ? "AI" : "template"} concept` : "built-in sample"
+              live ? `${live.generator === "ai" ? "IA" : "modello"} concept` : "built-in sample"
             })]`,
           sessionId: getSessionIdForLead(),
           attribution: getAttribution(),
@@ -348,16 +348,16 @@ export default function Revamp() {
       <AiMetadata
         map={[
           "Strumento di riprogettazione",
-          "URL input",
+          "Inserimento indirizzo web",
           "Anteprima prima e dopo",
           "Raccolta dei contatti",
         ]}
         intent="Permettere ai visitatori di visualizzare un concept di riprogettazione moderna PrismWave per un sito esistente e richiederne la realizzazione completa."
         tags={[
-          "website redesign",
-          "interactive preview",
-          "website audit",
-          "conversion design",
+          "riprogettazione sito web",
+          "anteprima interattiva",
+          "analisi sito web",
+          "progettazione delle conversioni",
         ]}
         extract={{
           title: "Strumento di riprogettazione web immediata",
@@ -394,7 +394,7 @@ export default function Revamp() {
           </h1>
           <AiIntent id="revamp-intent">
             Permetti ai visitatori di inserire l'indirizzo di un sito e visualizzare una versione più chiara e moderna
-            conversion experience.
+            esperienza orientata alle conversioni.
           </AiIntent>
           <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
             Inserisci l'indirizzo di un sito esistente o prova un esempio. Creeremo un'anteprima visiva
@@ -416,7 +416,7 @@ export default function Revamp() {
                 type="text"
                 value={urlInput}
                 onChange={(event) => setUrlInput(event.target.value)}
-                placeholder="yourbusiness.com"
+                placeholder="tuaattivita.it"
                 className="h-12 w-full rounded-xl border border-ink-line bg-ink-2/70 pl-11 pr-4 text-sm text-paper outline-none transition-colors placeholder:text-ink-soft/60 focus:border-amber sm:text-base"
               />
             </label>
@@ -434,7 +434,7 @@ export default function Revamp() {
             </p>
           )}
           <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-ink-soft">
-            <span className="mr-1">Try a sample:</span>
+            <span className="mr-1">Prova un esempio:</span>
             {DEMO_SITES.map((site) => (
               <button
                 key={site.id}
@@ -455,7 +455,7 @@ export default function Revamp() {
           </div>
         </section>
 
-        <section className="mt-12" aria-label="Interactive redesign workspace">
+        <section className="mt-12" aria-label="Area di lavoro per la riprogettazione interattiva">
           <div className="mb-4 flex flex-col gap-4 rounded-xl border border-ink-line bg-ink-2/60 p-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-mono text-[10px] uppercase tracking-widest text-ink-soft">
               Trascina il divisore per confrontare
@@ -604,7 +604,7 @@ export default function Revamp() {
             <button
               type="button"
               onClick={handleCloseModal}
-              aria-label="Close request form"
+              aria-label="Chiudi il modulo di richiesta"
               className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-ink-soft hover:text-paper"
             >
               <Icon name="close" />
@@ -618,8 +618,7 @@ export default function Revamp() {
                   Richiesta ricevuta
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-                  I&apos;ll review your direction and reply within one business
-                  day.
+                  Esaminerò la tua richiesta e ti risponderò entro un giorno lavorativo.
                 </p>
               </div>
             ) : (
@@ -631,8 +630,7 @@ export default function Revamp() {
                   Trasformiamo questa proposta nel tuo sito reale.
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-                  Raccontaci da dove parti. Definiremo insieme ambito,
-                  price, and fit before any commitment.
+                  Raccontaci da dove parti. Definiremo insieme ambito, prezzo e soluzione più adatta, senza alcun impegno iniziale.
                 </p>
                 <form
                   onSubmit={submitLead}
