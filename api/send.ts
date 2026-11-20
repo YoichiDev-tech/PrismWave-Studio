@@ -18,13 +18,13 @@ interface VercelLikeResponse {
 
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed." });
+    return res.status(405).json({ error: "Metodo non consentito." });
   }
 
   // Tighter than audit-lead: this is the real contact form and every hit
   // sends an email to your inbox, so it's the endpoint most worth capping.
   if (await isClientRateLimited(req.headers, { bucket: "send", limit: 5, windowSeconds: 300 })) {
-    return res.status(429).json({ error: "Too many requests — try again in a few minutes." });
+    return res.status(429).json({ error: "Troppe richieste: riprova tra qualche minuto." });
   }
 
   const body = req.body || {};
@@ -40,11 +40,11 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
   const scopeEstimate = typeof body.scopeEstimate === "string" ? body.scopeEstimate : "";
 
   if (!name || !email || !message) {
-    return res.status(400).json({ error: "Name, email, and message are required." });
+    return res.status(400).json({ error: "Nome, email e messaggio sono obbligatori." });
   }
 
   if (!EMAIL_RE.test(email)) {
-    return res.status(400).json({ error: "Please enter a valid email address." });
+    return res.status(400).json({ error: "Inserisci un indirizzo email valido." });
   }
 
   // Safe Supabase attempt — won't crash execution if table or keys are missing
@@ -81,7 +81,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
 
     console.error("RESEND_API_KEY or CONTACT_FROM_EMAIL is missing; refusing to report a contact submission as delivered.");
     return res.status(503).json({
-      error: "The contact email service is not fully configured. Please email hello@prismwavestudio.com or book a free 15-minute call.",
+      error: "Il servizio email per i contatti non è configurato completamente. Scrivi a hello@prismwavestudio.com oppure prenota una chiamata gratuita di 15 minuti.",
     });
   }
 
@@ -92,18 +92,18 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: email,
-      subject: `New ${intent || "contact"} request from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}\nSite: ${siteUrl || "N/A"}\nIdea: ${idea || "N/A"}`,
+      subject: `Nuova richiesta (${intent || "contatto"}) da ${name}`,
+      text: `Nome: ${name}\nEmail: ${email}\nMessaggio: ${message}\nSito: ${siteUrl || "Non indicato"}\nIdea: ${idea || "Non indicata"}`,
     });
 
     if (emailError) {
       console.error("Resend delivery failed:", emailError);
-      return res.status(502).json({ error: "We couldn't deliver your message right now. Please try again shortly." });
+      return res.status(502).json({ error: "Non è stato possibile recapitare il messaggio. Riprova tra poco." });
     }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("Fatal send error:", err);
-    return res.status(502).json({ error: "We couldn't deliver your message right now. Please try again shortly." });
+    return res.status(502).json({ error: "Non è stato possibile recapitare il messaggio. Riprova tra poco." });
   }
 }
