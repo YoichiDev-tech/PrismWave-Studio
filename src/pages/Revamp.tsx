@@ -204,7 +204,7 @@ export default function Revamp() {
           data.description || "Un'analisi approfondita può individuare le opportunità con il maggiore impatto.",
         modernTitle: `Un'esperienza digitale più chiara per ${data.siteName}.`,
         modernSubtitle:
-          "A concept built from your site's own content — a starting point for a focused redesign around your goals, audience and next action.",
+          "Un progetto dimostrativo basato sui contenuti del tuo sito: un punto di partenza per una riprogettazione mirata ai tuoi obiettivi, al tuo pubblico e all'azione che vuoi ottenere.",
       });
 
       trackAction("revamp_preview_generated", {
@@ -267,7 +267,7 @@ export default function Revamp() {
         "Un'analisi approfondita può individuare le opportunità con il maggiore impatto.",
       modernTitle: `Un'esperienza digitale più chiara per ${cleanHost}.`,
       modernSubtitle:
-        "Un concept di riprogettazione mirato, basato sui tuoi obiettivi, sul pubblico e sull'azione da compiere.",
+        "Un progetto dimostrativo di riprogettazione mirata, basato sui tuoi obiettivi, sul pubblico e sull'azione da compiere.",
       accent: "#3fae6b",
       beforeSrc: DEMO_SITES[0].beforeSrc,
       afterSrc: DEMO_SITES[0].afterSrc,
@@ -352,7 +352,7 @@ export default function Revamp() {
           "Anteprima prima e dopo",
           "Raccolta dei contatti",
         ]}
-        intent="Permettere ai visitatori di visualizzare un concept di riprogettazione moderna PrismWave per un sito esistente e richiederne la realizzazione completa."
+        intent="Permettere ai visitatori di visualizzare un progetto dimostrativo di riprogettazione moderna PrismWave per un sito esistente e richiederne la realizzazione completa."
         tags={[
           "riprogettazione sito web",
           "anteprima interattiva",
@@ -489,7 +489,7 @@ export default function Revamp() {
               Anteprima di {activeSite.name}
               {live && (
                 <span className="ml-2 rounded border border-ink-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-amber">
-                  {live.generator === "ai" ? "Concept generato con IA" : "Progetto dimostrativo"}
+                  {live.generator === "ai" ? "Progetto dimostrativo generato con IA" : "Progetto dimostrativo"}
                 </span>
               )}
             </p>
