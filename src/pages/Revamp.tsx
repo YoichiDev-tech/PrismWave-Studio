@@ -92,7 +92,7 @@ function Icon({
   return (
     <svg
       viewBox="0 0 24 24"
-      classNome="h-4 w-4"
+      className="h-4 w-4"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
@@ -197,12 +197,12 @@ export default function Revamp() {
       setLive({ before, after: { type: "html", html: data.afterHtml }, generator: data.generator });
       setActiveSite({
         ...site,
-        name: data.siteNome,
+        name: data.siteName,
         url: data.finalUrl,
-        originalTitle: data.title || `${data.siteNome} — esperienza attuale`,
+        originalTitle: data.title || `${data.siteName} — esperienza attuale`,
         originalSubtitle:
           data.description || "A real audit can reveal the highest-impact opportunities.",
-        modernTitle: `Un'esperienza digitale più chiara per ${data.siteNome}.`,
+        modernTitle: `Un'esperienza digitale più chiara per ${data.siteName}.`,
         modernSubtitle:
           "A concept built from your site's own content — a starting point for a focused redesign around your goals, audience and next action.",
       });
@@ -309,7 +309,7 @@ export default function Revamp() {
           idea: "",
           message:
             (lead.note || `Vorrei valutare una riprogettazione completa per ${activeSite.name}.`) +
-            `\n\n[Revamp engine — previewed: ${activeSite.url} (${
+            `\n\n[Strumento di riprogettazione — anteprima: ${activeSite.url} (${
               live ? `${live.generator === "ai" ? "AI" : "template"} concept` : "built-in sample"
             })]`,
           sessionId: getSessionIdForLead(),
@@ -344,7 +344,7 @@ export default function Revamp() {
       : "max-w-4xl";
 
   return (
-    <div classNome="grain min-h-screen overflow-x-clip bg-ink text-paper">
+    <div className="grain min-h-screen overflow-x-clip bg-ink text-paper">
       <AiMetadata
         map={[
           "Strumento di riprogettazione",
@@ -365,51 +365,51 @@ export default function Revamp() {
           primaryActions: "Generare un'anteprima della riprogettazione o richiederne la realizzazione",
         }}
       />
-      <header classNome="sticky top-0 z-40 border-b border-ink-line bg-ink/90 backdrop-blur-md">
-        <div classNome="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-40 border-b border-ink-line bg-ink/90 backdrop-blur-md">
+        <div className="mx-auto flex min-h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <Link
             to="/"
-            classNome="font-display text-base font-semibold tracking-tight text-paper sm:text-lg"
+            className="font-display text-base font-semibold tracking-tight text-paper sm:text-lg"
           >
-            PrismWave <span classNome="text-gradient">Studio</span>
+            PrismWave <span className="text-gradient">Studio</span>
           </Link>
           <button
             type="button"
             onClick={openModal}
-            classNome="inline-flex min-h-11 items-center gap-2 rounded-full bg-amber px-4 py-2.5 font-display text-xs font-semibold text-ink transition-colors hover:bg-coral sm:text-sm"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-amber px-4 py-2.5 font-display text-xs font-semibold text-ink transition-colors hover:bg-coral sm:text-sm"
           >
             Richiedi la realizzazione completa <Icon name="arrow" />
           </button>
         </div>
       </header>
 
-      <main classNome="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
-        <section classNome="mx-auto max-w-3xl text-center">
-          <p classNome="mb-4 inline-flex items-center gap-2 rounded-full border border-ink-line bg-ink-2/60 px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-amber">
+      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
+        <section className="mx-auto max-w-3xl text-center">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-ink-line bg-ink-2/60 px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-amber">
             Riprogettazione web immediata
           </p>
-          <h1 classNome="font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             Scopri come potrebbe apparire il tuo sito{" "}
-            <span classNome="text-gradient">next version.</span>
+            <span className="text-gradient">next version.</span>
           </h1>
           <AiIntent id="revamp-intent">
             Permetti ai visitatori di inserire l'indirizzo di un sito e visualizzare una versione più chiara e moderna
             conversion experience.
           </AiIntent>
-          <p classNome="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
             Inserisci l'indirizzo di un sito esistente o prova un esempio. Creeremo un'anteprima visiva
             redesign direction so you can see what a faster, clearer website
             could feel like before discussing the build.
           </p>
         </section>
 
-        <section classNome="mx-auto mt-10 max-w-3xl">
+        <section className="mx-auto mt-10 max-w-3xl">
           <form
             onSubmit={handleAnalyze}
-            classNome="flex flex-col gap-3 sm:flex-row"
+            className="flex flex-col gap-3 sm:flex-row"
           >
-            <label classNome="relative flex min-h-12 flex-1 items-center">
-              <span classNome="pointer-events-none absolute left-4 text-ink-soft">
+            <label className="relative flex min-h-12 flex-1 items-center">
+              <span className="pointer-events-none absolute left-4 text-ink-soft">
                 <Icon name="globe" />
               </span>
               <input
@@ -417,24 +417,24 @@ export default function Revamp() {
                 value={urlInput}
                 onChange={(event) => setUrlInput(event.target.value)}
                 placeholder="yourbusiness.com"
-                classNome="h-12 w-full rounded-xl border border-ink-line bg-ink-2/70 pl-11 pr-4 text-sm text-paper outline-none transition-colors placeholder:text-ink-soft/60 focus:border-amber sm:text-base"
+                className="h-12 w-full rounded-xl border border-ink-line bg-ink-2/70 pl-11 pr-4 text-sm text-paper outline-none transition-colors placeholder:text-ink-soft/60 focus:border-amber sm:text-base"
               />
             </label>
             <button
               type="submit"
               disabled={isAnalyzing || !urlInput.trim()}
-              classNome="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber px-6 font-display text-sm font-semibold text-ink transition-colors hover:bg-coral disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber px-6 font-display text-sm font-semibold text-ink transition-colors hover:bg-coral disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isAnalyzing ? "Preparazione dell'anteprima..." : "Genera un'anteprima moderna"}
             </button>
           </form>
           {previewError && (
-            <p role="alert" classNome="mt-3 text-center font-mono text-xs text-coral">
+            <p role="alert" className="mt-3 text-center font-mono text-xs text-coral">
               {previewError}
             </p>
           )}
-          <div classNome="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-ink-soft">
-            <span classNome="mr-1">Try a sample:</span>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-ink-soft">
+            <span className="mr-1">Try a sample:</span>
             {DEMO_SITES.map((site) => (
               <button
                 key={site.id}
@@ -443,7 +443,7 @@ export default function Revamp() {
                   setUrlInput(site.url);
                   analyze(site);
                 }}
-                classNome={`min-h-11 rounded-lg border px-3 py-2 transition-colors ${
+                className={`min-h-11 rounded-lg border px-3 py-2 transition-colors ${
                   activeSite.id === site.id
                     ? "border-amber bg-amber/10 text-paper"
                     : "border-ink-line hover:border-amber hover:text-paper"
@@ -455,12 +455,12 @@ export default function Revamp() {
           </div>
         </section>
 
-        <section classNome="mt-12" aria-label="Interactive redesign workspace">
-          <div classNome="mb-4 flex flex-col gap-4 rounded-xl border border-ink-line bg-ink-2/60 p-3 sm:flex-row sm:items-center sm:justify-between">
-            <p classNome="font-mono text-[10px] uppercase tracking-widest text-ink-soft">
+        <section className="mt-12" aria-label="Interactive redesign workspace">
+          <div className="mb-4 flex flex-col gap-4 rounded-xl border border-ink-line bg-ink-2/60 p-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-ink-soft">
               Trascina il divisore per confrontare
             </p>
-            <div classNome="flex items-center gap-1 self-start rounded-lg border border-ink-line bg-ink p-1 sm:self-auto">
+            <div className="flex items-center gap-1 self-start rounded-lg border border-ink-line bg-ink p-1 sm:self-auto">
               {(["desktop", "tablet", "mobile"] as const).map((size) => (
                 <button
                   key={size}
@@ -468,7 +468,7 @@ export default function Revamp() {
                   onClick={() => setViewport(size)}
                   aria-pressed={viewport === size}
                   aria-label={`${size} viewport`}
-                  classNome={`flex min-h-11 min-w-11 items-center justify-center rounded-md transition-colors ${
+                  className={`flex min-h-11 min-w-11 items-center justify-center rounded-md transition-colors ${
                     viewport === size
                       ? "bg-ink-2 text-amber"
                       : "text-ink-soft hover:text-paper"
@@ -486,11 +486,11 @@ export default function Revamp() {
                 </button>
               ))}
             </div>
-            <p classNome="hidden text-xs text-ink-soft lg:block">
-              <span classNome="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400" />
+            <p className="hidden text-xs text-ink-soft lg:block">
+              <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400" />
               Anteprima di {activeSite.name}
               {live && (
-                <span classNome="ml-2 rounded border border-ink-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-amber">
+                <span className="ml-2 rounded border border-ink-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-amber">
                   {live.generator === "ai" ? "Concept generato con AI" : "Concept"}
                 </span>
               )}
@@ -498,13 +498,13 @@ export default function Revamp() {
           </div>
 
           <div
-            classNome={`relative mx-auto overflow-hidden rounded-2xl border border-ink-line bg-ink-2 shadow-2xl transition-[max-width] duration-300 ${viewportClass}`}
+            className={`relative mx-auto overflow-hidden rounded-2xl border border-ink-line bg-ink-2 shadow-2xl transition-[max-width] duration-300 ${viewportClass}`}
           >
             {isAnalyzing && (
-              <div classNome="absolute inset-0 z-20 flex min-h-[480px] flex-col items-center justify-center bg-ink/95 p-6 text-center backdrop-blur-sm">
-                <div classNome="h-1.5 w-56 overflow-hidden rounded-full bg-ink-line">
+              <div className="absolute inset-0 z-20 flex min-h-[480px] flex-col items-center justify-center bg-ink/95 p-6 text-center backdrop-blur-sm">
+                <div className="h-1.5 w-56 overflow-hidden rounded-full bg-ink-line">
                   <div
-                    classNome="h-full rounded-full bg-amber transition-[width] duration-300"
+                    className="h-full rounded-full bg-amber transition-[width] duration-300"
                     style={{
                       width: `${
                         ((analysisStep + 1) / ANALYSIS_STEPS.length) * 100
@@ -512,15 +512,15 @@ export default function Revamp() {
                     }}
                   />
                 </div>
-                <h2 classNome="mt-5 font-display text-xl font-semibold">
+                <h2 className="mt-5 font-display text-xl font-semibold">
                   Creazione dell'anteprima
                 </h2>
-                <p classNome="mt-2 font-mono text-xs text-amber">
+                <p className="mt-2 font-mono text-xs text-amber">
                   {ANALYSIS_STEPS[analysisStep]}
                 </p>
               </div>
             )}
-            <div classNome="min-h-[520px] p-4 sm:p-6">
+            <div className="min-h-[520px] p-4 sm:p-6">
               <BeforeAfterSlider
                 before={live?.before ?? { type: "image", src: activeSite.beforeSrc }}
                 after={live?.after ?? { type: "image", src: activeSite.afterSrc }}
@@ -530,37 +530,37 @@ export default function Revamp() {
                 aspectClass={VIEWPORT_ASPECT[viewport]}
               />
               {live && (
-                <p classNome="mt-3 text-center text-[11px] leading-relaxed text-ink-soft">
+                <p className="mt-3 text-center text-[11px] leading-relaxed text-ink-soft">
                   Concept generated from {activeSite.name}&apos;s public page content — not a final
                   design. Images, copy and layout are refined in a real build.
                 </p>
               )}
-              <div classNome="mt-6 grid gap-6 sm:grid-cols-2">
+              <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 <div>
-                  <p classNome="font-mono text-[10px] uppercase tracking-widest text-[#a89f92]">
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-[#a89f92]">
                     Versione originale
                   </p>
-                  <h2 classNome="mt-2 font-display text-xl font-semibold leading-tight">
+                  <h2 className="mt-2 font-display text-xl font-semibold leading-tight">
                     {activeSite.originalTitle}
                   </h2>
-                  <p classNome="mt-2 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                     {activeSite.originalSubtitle}
                   </p>
                 </div>
                 <div>
-                  <p classNome="font-mono text-[10px] uppercase tracking-widest text-amber">
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-amber">
                     Versione riprogettata
                   </p>
-                  <h2 classNome="mt-2 font-display text-xl font-semibold leading-tight">
+                  <h2 className="mt-2 font-display text-xl font-semibold leading-tight">
                     {activeSite.modernTitle}
                   </h2>
-                  <p classNome="mt-2 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                     {activeSite.modernSubtitle}
                   </p>
                   <button
                     type="button"
                     onClick={openModal}
-                    classNome="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-amber px-5 py-3 font-display text-sm font-semibold text-ink transition-colors hover:bg-coral"
+                    className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-amber px-5 py-3 font-display text-sm font-semibold text-ink transition-colors hover:bg-coral"
                   >
                     Concorda il prossimo passo <Icon name="arrow" />
                   </button>
@@ -570,28 +570,28 @@ export default function Revamp() {
           </div>
         </section>
 
-        <section classNome="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-3">
-          <div classNome="rounded-xl border border-ink-line bg-ink-2/60 p-5">
-            <p classNome="font-mono text-[10px] uppercase tracking-widest text-amber">
+        <section className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-3">
+          <div className="rounded-xl border border-ink-line bg-ink-2/60 p-5">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-amber">
               01 / Analisi
             </p>
-            <p classNome="mt-3 text-sm leading-relaxed text-ink-soft">
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               Partiamo dal sito esistente, senza ricominciare necessariamente da zero.
             </p>
           </div>
-          <div classNome="rounded-xl border border-ink-line bg-ink-2/60 p-5">
-            <p classNome="font-mono text-[10px] uppercase tracking-widest text-coral">
+          <div className="rounded-xl border border-ink-line bg-ink-2/60 p-5">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-coral">
               02 / Chiarezza
             </p>
-            <p classNome="mt-3 text-sm leading-relaxed text-ink-soft">
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               Rendiamo chiari il valore del servizio e il passo successivo per il visitatore giusto.
             </p>
           </div>
-          <div classNome="rounded-xl border border-ink-line bg-ink-2/60 p-5">
-            <p classNome="font-mono text-[10px] uppercase tracking-widest text-violet">
+          <div className="rounded-xl border border-ink-line bg-ink-2/60 p-5">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-violet">
               03 / Sviluppo
             </p>
-            <p classNome="mt-3 text-sm leading-relaxed text-ink-soft">
+            <p className="mt-3 text-sm leading-relaxed text-ink-soft">
               Trasformiamo la direzione scelta in un progetto con ambito definito e piena proprietà del risultato.
             </p>
           </div>
@@ -599,46 +599,46 @@ export default function Revamp() {
       </main>
 
       {modalOpen && (
-        <div classNome="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-4 backdrop-blur-sm">
-          <div classNome="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl border border-ink-line bg-ink-2 p-6 shadow-2xl sm:p-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 p-4 backdrop-blur-sm">
+          <div className="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-2xl border border-ink-line bg-ink-2 p-6 shadow-2xl sm:p-8">
             <button
               type="button"
               onClick={handleCloseModal}
               aria-label="Close request form"
-              classNome="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-ink-soft hover:text-paper"
+              className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-ink-soft hover:text-paper"
             >
               <Icon name="close" />
             </button>
             {submitted ? (
-              <div classNome="py-12 text-center">
-                <div classNome="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-amber text-amber">
+              <div className="py-12 text-center">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-amber text-amber">
                   ✓
                 </div>
-                <h2 classNome="mt-5 font-display text-2xl font-semibold">
+                <h2 className="mt-5 font-display text-2xl font-semibold">
                   Richiesta ricevuta
                 </h2>
-                <p classNome="mt-3 text-sm leading-relaxed text-ink-soft">
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                   I&apos;ll review your direction and reply within one business
                   day.
                 </p>
               </div>
             ) : (
               <>
-                <p classNome="font-mono text-[11px] uppercase tracking-widest text-amber">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-amber">
                   Realizzazione completa
                 </p>
-                <h2 classNome="mt-3 pr-8 font-display text-2xl font-semibold">
+                <h2 className="mt-3 pr-8 font-display text-2xl font-semibold">
                   Trasformiamo questa proposta nel tuo sito reale.
                 </h2>
-                <p classNome="mt-3 text-sm leading-relaxed text-ink-soft">
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                   Raccontaci da dove parti. Definiremo insieme ambito,
                   price, and fit before any commitment.
                 </p>
                 <form
                   onSubmit={submitLead}
-                  classNome="mt-6 grid gap-4"
+                  className="mt-6 grid gap-4"
                 >
-                  <label classNome="grid gap-2 text-xs text-ink-soft">
+                  <label className="grid gap-2 text-xs text-ink-soft">
                     Nome
                     <input
                       required
@@ -646,10 +646,10 @@ export default function Revamp() {
                       onChange={(event) =>
                         setLead({ ...lead, name: event.target.value })
                       }
-                      classNome="min-h-11 rounded-lg border border-ink-line bg-ink px-3 text-sm text-paper outline-none focus:border-amber"
+                      className="min-h-11 rounded-lg border border-ink-line bg-ink px-3 text-sm text-paper outline-none focus:border-amber"
                     />
                   </label>
-                  <label classNome="grid gap-2 text-xs text-ink-soft">
+                  <label className="grid gap-2 text-xs text-ink-soft">
                     Email
                     <input
                       required
@@ -658,10 +658,10 @@ export default function Revamp() {
                       onChange={(event) =>
                         setLead({ ...lead, email: event.target.value })
                       }
-                      classNome="min-h-11 rounded-lg border border-ink-line bg-ink px-3 text-sm text-paper outline-none focus:border-amber"
+                      className="min-h-11 rounded-lg border border-ink-line bg-ink px-3 text-sm text-paper outline-none focus:border-amber"
                     />
                   </label>
-                  <label classNome="grid gap-2 text-xs text-ink-soft">
+                  <label className="grid gap-2 text-xs text-ink-soft">
                     Nome dell'attività
                     <input
                       required
@@ -669,10 +669,10 @@ export default function Revamp() {
                       onChange={(event) =>
                         setLead({ ...lead, business: event.target.value })
                       }
-                      classNome="min-h-11 rounded-lg border border-ink-line bg-ink px-3 text-sm text-paper outline-none focus:border-amber"
+                      className="min-h-11 rounded-lg border border-ink-line bg-ink px-3 text-sm text-paper outline-none focus:border-amber"
                     />
                   </label>
-                  <label classNome="grid gap-2 text-xs text-ink-soft">
+                  <label className="grid gap-2 text-xs text-ink-soft">
                     Note
                     <textarea
                       rows={3}
@@ -680,16 +680,16 @@ export default function Revamp() {
                       onChange={(event) =>
                         setLead({ ...lead, note: event.target.value })
                       }
-                      classNome="resize-y rounded-lg border border-ink-line bg-ink px-3 py-3 text-sm text-paper outline-none focus:border-amber"
+                      className="resize-y rounded-lg border border-ink-line bg-ink px-3 py-3 text-sm text-paper outline-none focus:border-amber"
                     />
                   </label>
                   {error && (
-                    <p classNome="font-mono text-xs text-coral">{error}</p>
+                    <p className="font-mono text-xs text-coral">{error}</p>
                   )}
                   <button
                     type="submit"
                     disabled={sending}
-                    classNome="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-amber px-5 py-3 font-display text-sm font-semibold text-ink disabled:opacity-60"
+                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-amber px-5 py-3 font-display text-sm font-semibold text-ink disabled:opacity-60"
                   >
                     {sending ? "Invio in corso..." : "Richiedi la realizzazione completa"}
                     <Icon name="arrow" />
