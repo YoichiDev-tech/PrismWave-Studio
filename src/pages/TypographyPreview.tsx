@@ -5,7 +5,7 @@ export default function TypographyPreview() {
         <div className="p-12 space-y-12">
             <AiMetadata
                 map={["Gerarchia dei titoli", "Testo principale", "Testo didascalico", "Etichette"]}
-                intent="Preview the typography hierarchy used across PrismWave Studio."
+                intent="Mostrare la gerarchia tipografica utilizzata in PrismWave Studio."
                 tags={["typography", "design system", "font scale", "UI foundations"]}
                 extract={{ title: "Anteprima tipografica", audience: "Designer e sviluppatori", primaryActions: "Esaminare gli stili di titoli e testi", format: "Esempio visivo di tipografia" }}
             />
