@@ -310,7 +310,7 @@ export default function Revamp() {
           message:
             (lead.note || `Vorrei valutare una riprogettazione completa per ${activeSite.name}.`) +
             `\n\n[Strumento di riprogettazione — anteprima: ${activeSite.url} (${
-              live ? `${live.generator === "ai" ? "IA" : "modello"} concept` : "built-in sample"
+              live ? `${live.generator === "ai" ? "IA" : "modello"} dimostrativo` : "esempio integrato"
             })]`,
           sessionId: getSessionIdForLead(),
           attribution: getAttribution(),
@@ -390,16 +390,14 @@ export default function Revamp() {
           </p>
           <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
             Scopri come potrebbe apparire il tuo sito{" "}
-            <span className="text-gradient">next version.</span>
+            <span className="text-gradient">una nuova versione.</span>
           </h1>
           <AiIntent id="revamp-intent">
             Permetti ai visitatori di inserire l'indirizzo di un sito e visualizzare una versione più chiara e moderna
             esperienza orientata alle conversioni.
           </AiIntent>
           <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
-            Inserisci l'indirizzo di un sito esistente o prova un esempio. Creeremo un'anteprima visiva
-            redesign direction so you can see what a faster, clearer website
-            could feel like before discussing the build.
+            Inserisci l'indirizzo di un sito esistente o prova un esempio. Creeremo un'anteprima visiva per mostrarti come potrebbe essere un sito più veloce e chiaro, prima di parlare della sua realizzazione.
           </p>
         </section>
 
@@ -467,7 +465,7 @@ export default function Revamp() {
                   type="button"
                   onClick={() => setViewport(size)}
                   aria-pressed={viewport === size}
-                  aria-label={`${size} viewport`}
+                  aria-label={`Visualizzazione ${size === "desktop" ? "desktop" : size === "tablet" ? "tablet" : "mobile"}`}
                   className={`flex min-h-11 min-w-11 items-center justify-center rounded-md transition-colors ${
                     viewport === size
                       ? "bg-ink-2 text-amber"
@@ -491,7 +489,7 @@ export default function Revamp() {
               Anteprima di {activeSite.name}
               {live && (
                 <span className="ml-2 rounded border border-ink-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-amber">
-                  {live.generator === "ai" ? "Concept generato con AI" : "Concept"}
+                  {live.generator === "ai" ? "Concept generato con IA" : "Concept"}
                 </span>
               )}
             </p>
