@@ -27,9 +27,7 @@ export default function PackageSuggestion({
       </p>
 
       <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-        I can review the findings with you and help determine whether targeted
-        improvements or a broader project would make sense. I confirm scope,
-        price, and timeline before any work begins.
+        Posso esaminare i risultati insieme a te e aiutarti a capire se siano sufficienti interventi mirati o se sia preferibile un progetto più ampio. Prima di iniziare, confermo ambito, prezzo e tempistiche.
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
