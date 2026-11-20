@@ -7,15 +7,15 @@ import BrandReel from "./BrandReel";
 const PROMISES = [
   { label: "Tempo di risposta", value: "1 giorno lavorativo" },
   { label: "Proprietà del codice", value: "Interamente tuo" },
-  { label: "Built with", value: "React & TypeScript" },
+  { label: "Realizzato con", value: "React & TypeScript" },
   { label: "Pricing", value: "Prezzo definito, senza sorprese" },
 ];
 
 const STANDARDS = [
-  { title: "Fast loading", desc: "Lean code and optimized assets." },
-  { title: "Mobile-first", desc: "Designed for the phone in your customer's hand." },
-  { title: "SEO-friendly", desc: "Semantic markup and clean structure." },
-  { title: "Tailored", desc: "No shared templates — every layout starts from your brand." },
+  { title: "Caricamento rapido", desc: "Codice essenziale e risorse ottimizzate." },
+  { title: "Progettato prima per i dispositivi mobili", desc: "Pensato per lo smartphone che i tuoi clienti usano ogni giorno." },
+  { title: "Ottimizzato per i motori di ricerca", desc: "Struttura semantica e codice ordinato." },
+  { title: "Su misura", desc: "Nessun modello preconfezionato: ogni progetto parte dalla tua identità." },
 ];
 
 export default function About() {
@@ -47,7 +47,7 @@ export default function About() {
               Dall'ospitalità alla creazione di esperienze digitali.
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-ink-soft">
-              We're PrismWave Studio — a small studio with roots in hospitality and service businesses. Years of working directly with
+              Siamo PrismWave Studio, uno studio indipendente con radici nel settore dell'ospitalità e dei servizi. L'esperienza maturata a stretto contatto con
               customers taught us how small businesses actually operate, and what a website has to do for them.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
@@ -55,7 +55,7 @@ export default function About() {
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
               So every project is built for clarity and real-world use: no bloated features, no confusing dashboards, no agency-style
-              upsells. You're not hiring "just a coder."
+              e proposte aggiuntive. Non stai scegliendo semplicemente qualcuno che scrive codice.
             </p>
 
             <ul className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
