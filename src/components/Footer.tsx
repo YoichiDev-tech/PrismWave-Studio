@@ -92,7 +92,7 @@ export default function Footer() {
 
           <div className="flex flex-wrap gap-10 sm:gap-16">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Menu</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Navigazione</p>
               <ul className="mt-4 space-y-2.5">
                 {MENU.map((link) => (
                   <li key={link.href}>
@@ -104,7 +104,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Studio</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Lo studio</p>
               <ul className="mt-4 space-y-2.5">
                 {STUDIO.map((link) => (
                   <li key={link.href}>
@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-ink-line pt-6">
-          <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Note legali e normative</p>
+          <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Informazioni legali</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-paper/70">
             <Link to="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-paper">
               Termini di utilizzo
