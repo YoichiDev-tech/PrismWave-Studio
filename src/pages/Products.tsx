@@ -17,18 +17,18 @@ export default function Products() {
   return (
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
-        title="Products"
-        description="Discover tools and digital products built by PrismWave Studio."
+        title="Prodotti"
+        description="Scopri strumenti e prodotti digitali realizzati da PrismWave Studio."
         path="/products"
       />
       <AiMetadata
-        map={["Products introduction", "Product grid", "Studio footer"]}
-        intent="Show PrismWave Studio products and invite visitors to explore a product or start an audit."
+        map={["Introduzione ai prodotti", "Griglia dei prodotti", "Piè di pagina dello studio"]}
+        intent="Mostrare i prodotti di PrismWave Studio e invitare i visitatori a esplorarli o ad avviare un'analisi."
          tags={["products", "tools", "directory", "PrismWave"]}
         extract={{
           title: "PrismWave Studio Products",
-          audience: "Founders, indie makers, and small businesses",
-          primaryActions: "Open a product or run a free audit",
+          audience: "Fondatori, sviluppatori indipendenti e piccole imprese",
+          primaryActions: "Aprire un prodotto o avviare un'analisi gratuita",
         }}
       />
 
@@ -38,29 +38,29 @@ export default function Products() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← Back to studio
+            ← Torna allo studio
           </Link>
         </div>
       </header>
 
       <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Products</p>
+        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Prodotti</p>
         <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Tools and digital products built by the studio.
+          Strumenti e prodotti digitali realizzati dallo studio.
         </h1>
         <p className="mt-4 max-w-xl text-ink-soft">
-          Discover useful tools, curated directories, and launchable digital products.
+          Scopri strumenti utili, directory selezionate e prodotti digitali pronti per il lancio.
         </p>
 
         {tagFilter && (
           <p className="mt-6 text-sm text-ink-soft">
-            Filtering by tag: <span className="text-paper">{tagFilter}</span>
+            Filtro per etichetta: <span className="text-paper">{tagFilter}</span>
           </p>
         )}
 
         {filtered.length === 0 ? (
           <p className="mt-12 text-ink-soft">
-            No products match this filter. Try removing the tag or browsing all products.
+            Nessun prodotto corrisponde a questo filtro. Rimuovi l'etichetta oppure visualizza tutti i prodotti.
           </p>
         ) : (
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
