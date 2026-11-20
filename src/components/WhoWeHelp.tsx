@@ -38,7 +38,7 @@ const segments: Segment[] = [
   {
     eyebrow: "Chi costruisce da solo",
     title: "Founder indipendenti",
-    desc: "You're shipping the product and wearing every other hat. You need a site that looks credible, explains what you do in one screen, and turns visitors into conversations — without another tool to maintain.",
+    desc: "Stai sviluppando il prodotto e ti occupi anche di tutto il resto. Ti serve un sito credibile, capace di spiegare subito il valore di ciò che fai e trasformare le visite in conversazioni, senza aggiungere un altro strumento da gestire.",
     proof: "A clear homepage and enquiry path so people can say yes without a long pitch.",
     accent: "amber",
     icon: (
@@ -56,7 +56,7 @@ const segments: Segment[] = [
   {
     eyebrow: "Attività locali e di servizi",
     title: "Piccole e medie imprese",
-    desc: "Trades, hospitality, professional services — you need enquiries and bookings, not a brochure. We build fixed-scope sites that load fast, work on phones, and make it easy for customers to contact you.",
+    desc: "Artigiani, attività ricettive e servizi professionali: ti servono richieste e prenotazioni, non una semplice brochure. Realizziamo siti con ambito definito, veloci, ottimizzati per smartphone e semplici da usare.",
     proof: "A site that gets found, gets contacted, and doesn't need weekly babysitting.",
     accent: "coral",
     icon: (
@@ -79,7 +79,7 @@ const segments: Segment[] = [
   {
     eyebrow: "Team orientati al prodotto",
     title: "SaaS e prodotti in fase iniziale",
-    desc: "You need a marketing site or lightweight product surface that makes the value obvious and the next step obvious. Clean UI, clear pricing or trial path, built so you can iterate without starting from scratch.",
+    desc: "Ti serve un sito promozionale o un'interfaccia essenziale che comunichi chiaramente il valore del prodotto e il passo successivo. Un'interfaccia pulita, prezzi o accesso alla prova ben visibili e una base pronta a evolversi.",
     proof: "A page that turns technical credibility into sign-ups or booked demos.",
     accent: "violet",
     icon: (
@@ -121,7 +121,7 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
             Founder indipendenti. PMI. Team SaaS.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            Same path for all of them: free audit or short review, written fixed
+            Per tutti il percorso è lo stesso: analisi gratuita o breve confronto, ambito e prezzo definiti per iscritto
             scope, clear price, and a delivery timeline matched to the project. A site that does real work —
             not just one that looks finished.
           </p>
