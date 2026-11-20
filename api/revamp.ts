@@ -39,13 +39,13 @@ function normalizeUrl(raw: string): string {
 
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed." });
+    res.status(405).json({ error: "Metodo non consentito." });
     return;
   }
 
   // Each call can cost real money (model tokens), so cap it per visitor...
   if (await isClientRateLimited(req.headers, { bucket: "revamp", limit: 6, windowSeconds: 600 })) {
-    res.status(429).json({ error: "You've generated a few previews already — please try again in a few minutes." });
+    res.status(429).json({ error: "Hai già generato alcune anteprime. Riprova tra qualche minuto." });
     return;
   }
 
@@ -55,7 +55,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
       ? ((body as Record<string, unknown>).url as string)
       : "";
   if (!rawUrl.trim() || rawUrl.length > 300) {
-    res.status(400).json({ error: "Please enter a website address." });
+    res.status(400).json({ error: "Inserisci l'indirizzo di un sito web." });
     return;
   }
 
@@ -64,7 +64,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     new URL(targetUrl);
     await assertPublicHttpUrl(targetUrl);
   } catch {
-    res.status(400).json({ error: "That address can't be previewed. Check it and try again." });
+    res.status(400).json({ error: "Non è possibile generare un'anteprima per questo indirizzo. Controllalo e riprova." });
     return;
   }
 
@@ -78,12 +78,12 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     finalUrl = fetched.finalUrl;
 
     if (!fetched.response.ok) {
-      res.status(502).json({ error: `That site responded with a ${fetched.response.status} error.` });
+      res.status(502).json({ error: `Il sito ha risposto con un errore ${fetched.response.status}.` });
       return;
     }
     const contentType = fetched.response.headers.get("content-type") ?? "";
     if (contentType && !/html|xml/i.test(contentType)) {
-      res.status(422).json({ error: "That address didn't return a web page." });
+      res.status(422).json({ error: "L'indirizzo non ha restituito una pagina web." });
       return;
     }
     html = await readTextCapped(fetched.response, MAX_HTML_BYTES);
@@ -92,8 +92,8 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     console.error("Revamp fetch failed:", err);
     res.status(aborted ? 504 : 502).json({
       error: aborted
-        ? "That site took too long to respond."
-        : "Couldn't reach that site — check the address and try again.",
+        ? "Il sito ha impiegato troppo tempo per rispondere."
+        : "Impossibile raggiungere il sito: controlla l'indirizzo e riprova.",
     });
     return;
   } finally {
@@ -101,7 +101,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
   }
 
   if (!/<html|<body|<head/i.test(html)) {
-    res.status(422).json({ error: "That address didn't return a readable web page." });
+    res.status(422).json({ error: "L'indirizzo non ha restituito una pagina web leggibile." });
     return;
   }
 
