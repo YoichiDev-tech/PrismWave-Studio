@@ -123,7 +123,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
             className={`text-lg transition-colors ${
               rating >= n ? "text-amber" : "text-ink-soft/40"
             }`}
-            aria-label={`${n} star${n > 1 ? "s" : ""}`}
+            aria-label={`${n} stelle`} 
           >
             ★
           </button>
