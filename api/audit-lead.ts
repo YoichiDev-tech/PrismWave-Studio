@@ -55,7 +55,7 @@ export default async function handler(
   ) {
     return res
       .status(429)
-      .json({ error: "Too many requests. Try again in a few minutes." });
+      .json({ error: "Troppe richieste. Riprova tra qualche minuto." });
   }
 
   const body = req.body || {};
@@ -71,19 +71,19 @@ export default async function handler(
   if (!email || !siteUrl) {
     return res
       .status(400)
-      .json({ error: "Email and website URL are required." });
+      .json({ error: "Email e indirizzo del sito sono obbligatori." });
   }
 
   if (!EMAIL_RE.test(email)) {
     return res
       .status(400)
-      .json({ error: "Please enter a valid email address." });
+      .json({ error: "Inserisci un indirizzo email valido." });
   }
 
   if (!isValidHttpUrl(siteUrl)) {
     return res
       .status(400)
-      .json({ error: "Please provide a valid HTTP or HTTPS website URL." });
+      .json({ error: "Inserisci un indirizzo web valido che utilizzi HTTP o HTTPS." });
   }
 
   const resendApiKey = process.env.RESEND_API_KEY;
@@ -99,7 +99,7 @@ export default async function handler(
 
     return res.status(503).json({
       error:
-        "The audit email service is temporarily unavailable. Please try again shortly.",
+        "Il servizio email per l'analisi non è temporaneamente disponibile. Riprova tra poco.",
     });
   }
 
@@ -143,22 +143,22 @@ export default async function handler(
       ? auditFindings
           .map((finding, index) => `${index + 1}. ${finding}`)
           .join("\n")
-      : "This automated pass did not flag any findings in the checks it ran.";
+      : "I controlli automatici eseguiti non hanno rilevato criticità.";
 
   const visitorText = `Thanks for running the free website audit on ${siteUrl}.
 
-Overall score: ${auditScore}/100
+Punteggio complessivo: ${auditScore}/100
 
-What the scan detected:
+Risultati rilevati dall'analisi:
 ${findingsBlock}
 
-What this means
-These findings describe the signals detected by the automated checks. They can help identify areas worth reviewing, but they do not establish the full impact on conversions, revenue, search visibility, or AI recommendations.
+Cosa significano questi risultati
+Questi risultati descrivono gli elementi individuati dai controlli automatici. Possono aiutare a riconoscere gli aspetti da approfondire, ma non determinano l'impatto complessivo su conversioni, ricavi, visibilità sui motori di ricerca o raccomandazioni dei sistemi AI.
 
-The scan is not a complete manual review. Some checks use limited signals, and the results should be considered in context before making changes.
+L'analisi non equivale a una revisione manuale completa. Alcuni controlli utilizzano segnali limitati e i risultati devono essere valutati nel loro contesto prima di apportare modifiche.
 
-Want a human review?
-Reply to this email to discuss a free 15-minute review. We can walk through the findings with you and help determine what is worth investigating first. If paid work makes sense, we will explain the proposed scope, price, and timeline before anything begins. There is no obligation.
+Vuoi una valutazione da parte di una persona?
+Rispondi a questa email per concordare una revisione gratuita di 15 minuti. Possiamo esaminare insieme i risultati e individuare le priorità. Se sarà opportuno svolgere un lavoro a pagamento, ti illustreremo ambito, prezzo e tempistiche prima di iniziare. Senza alcun obbligo.
 
 PrismWave Studio
 ${SITE_URL}
@@ -169,7 +169,7 @@ ${SITE_URL}
       from: FROM_EMAIL,
       to: email,
       ...(TO_OWNER ? { replyTo: TO_OWNER } : {}),
-      subject: `Your website audit — ${auditScore}/100`,
+      subject: `Analisi del tuo sito — ${auditScore}/100`,
       text: visitorText,
     });
 
@@ -178,7 +178,7 @@ ${SITE_URL}
 
       return res.status(502).json({
         error:
-          "We couldn't send your audit report. Please try again shortly.",
+          "Non è stato possibile inviare il report di analisi. Riprova tra poco.",
       });
     }
 
