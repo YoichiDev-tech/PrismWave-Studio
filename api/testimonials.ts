@@ -29,7 +29,7 @@ const BLOCK =
   /\b(kill\s*yourself|kys|nazi|rape|slur)\b/i;
 
 export default async function handler(req: Req, res: Res) {
-  if (!URL_ || !KEY) return res.status(500).json({ error: "Server not configured" });
+  if (!URL_ || !KEY) return res.status(500).json({ error: "Server non configurato" });
 
   if (req.method === "GET") {
     const r = await sb(
@@ -37,7 +37,7 @@ export default async function handler(req: Req, res: Res) {
         "&status=eq.approved&publish_consent=eq.true" +
         "&order=featured.desc,approved_at.desc&limit=50"
     );
-    if (!r.ok) return res.status(502).json({ error: "Could not load reviews" });
+    if (!r.ok) return res.status(502).json({ error: "Impossibile caricare le recensioni" });
     const rows = (await r.json()) as Array<{
       id: string;
       name: string;
@@ -72,7 +72,7 @@ export default async function handler(req: Req, res: Res) {
         unknown
       >;
     } catch {
-      return res.status(400).json({ error: "Invalid request" });
+      return res.status(400).json({ error: "Richiesta non valida" });
     }
 
     // Honeypot — bots fill this, humans never see it
@@ -95,13 +95,13 @@ export default async function handler(req: Req, res: Res) {
         : null;
 
     if (message.length < 10) {
-      return res.status(400).json({ error: "Please write at least a short sentence." });
+      return res.status(400).json({ error: "Scrivi almeno una breve frase." });
     }
     if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
-      return res.status(400).json({ error: "Please choose a rating from 1 to 5." });
+      return res.status(400).json({ error: "Seleziona una valutazione da 1 a 5." });
     }
     if (b.consent !== true) {
-      return res.status(400).json({ error: "Consent to publish is required." });
+      return res.status(400).json({ error: "È necessario autorizzare la pubblicazione." });
     }
     if (BLOCK.test(message) || BLOCK.test(name)) {
       // Soft reject — do not tip off abusers
@@ -130,11 +130,11 @@ export default async function handler(req: Req, res: Res) {
     if (!r.ok) {
       const errText = await r.text().catch(() => "");
       console.error("testimonials insert failed", r.status, errText);
-      return res.status(502).json({ error: "Could not save your feedback." });
+      return res.status(502).json({ error: "Impossibile salvare il tuo commento." });
     }
     return res.status(201).json({ ok: true });
   }
 
   res.setHeader("Allow", "GET, POST");
-  return res.status(405).json({ error: "Method not allowed" });
+  return res.status(405).json({ error: "Metodo non consentito" });
 }
