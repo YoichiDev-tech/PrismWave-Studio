@@ -122,7 +122,7 @@ export default function Home() {
           "FAQ",
           "Contatti e prenotazioni",
         ]}
-        intent="Help a small-business owner run a free site audit, understand the findings, and start a fixed-scope website fix or rebuild with PrismWave Studio."
+        intent="Aiutare il titolare di una piccola impresa a eseguire un'analisi gratuita del sito, comprenderne i risultati e avviare un intervento o una riprogettazione con ambito definito insieme a PrismWave Studio."
         tags={[
           "web design studio",
           "website audit",
