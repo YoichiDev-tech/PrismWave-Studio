@@ -76,7 +76,7 @@ export default function Lab() {
     <div ai-tag="lab" data-ai="page" className="grain relative min-h-screen overflow-hidden bg-ink text-paper">
       <SEO
         title="Laboratorio — Componenti aperti"
-        description="Copy-paste ready components and interaction patterns from the PrismWave Studio live site — open, free to use."
+        description="Componenti e modelli di interazione del sito PrismWave Studio, pronti da copiare e utilizzare gratuitamente."
         path="/lab"
       />
       <AiMetadata
