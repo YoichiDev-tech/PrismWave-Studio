@@ -12,36 +12,36 @@ export interface ChangelogEntry {
 export const CHANGELOG: ChangelogEntry[] = [
   {
     date: "2026-09-25",
-    title: "Projects system + launch history",
+    title: "Sistema dei progetti e cronologia dei lanci",
     description:
-      "Public /projects grid, project detail pages, /history timeline, and shared static data ready for a future Supabase backend.",
+      "Griglia pubblica dei progetti, schede di dettaglio, cronologia dei lanci e dati condivisi pronti per una futura integrazione con Supabase.",
     tag: "feature",
   },
   {
     date: "2026-09-24",
-    title: "Automated audit report email",
+    title: "Invio automatico del report di analisi via email",
     description:
-      "Full report + 15-min review invite sent automatically; owner lead notification on every request.",
+      "Invio automatico del report completo e invito a una revisione di 15 minuti; notifica al titolare per ogni richiesta.",
     tag: "feature",
   },
   {
     date: "2026-09-24",
-    title: "Mobile scroll fix",
+    title: "Correzione dello scorrimento su dispositivi mobili",
     description:
       "Replaced overflow-x-hidden on Hero with overflow-x-clip; root overflow-x clip for iOS first-gesture stickiness.",
     tag: "fix",
   },
   {
     date: "2026-09-24",
-    title: "Homepage conversion cleanup",
+    title: "Ottimizzazione della homepage per le conversioni",
     description:
-      "Removed non-essential sections; kept audit, work, pricing, process, about, FAQ, contact.",
+      "Rimosse le sezioni non essenziali; mantenute analisi, progetti, prezzi, processo, presentazione, domande frequenti e contatti.",
     tag: "improvement",
   },
   {
     date: "2026-09-23",
-    title: "Interactive concept templates",
-    description: "Fielding & Rye order flow and Nova Cloud trial/region interactions.",
+    title: "Modelli dimostrativi interattivi",
+    description: "Flusso di prenotazione di Fielding & Rye e interazioni relative alla prova e alle aree geografiche di Nova Cloud.",
     tag: "feature",
   },
 ];
