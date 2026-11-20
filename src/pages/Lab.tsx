@@ -31,7 +31,7 @@ const ITEMS: ShowcaseItem[] = [
     id: "score-gauge",
     title: "Indicatore circolare del punteggio",
     description: "Visualizza i punteggi delle quattro categorie nello strumento di analisi del sito.",
-    code: `<ScoreGauge label="Page Speed" score={87} />`,
+    code: `<ScoreGauge label="Velocità di caricamento" score={87} />`,
   },
   {
     id: "reveal-on-scroll",
@@ -118,15 +118,14 @@ export default function Lab() {
 
       <main className="relative mx-auto max-w-5xl px-6 py-20" role="main" data-ai="main-content">
         <section aria-labelledby="lab-hero" aria-describedby="lab-hero-intent" role="region" data-ai="hero">
-          <AiIntent id="lab-hero-intent">Introduce the public component laboratory and explain what visitors can inspect.</AiIntent>
+          <AiIntent id="lab-hero-intent">Presentare il laboratorio pubblico di componenti e spiegare cosa possono esaminare i visitatori.</AiIntent>
           <Reveal>
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Il laboratorio</p>
           <h1 id="lab-hero" className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
             Componenti di produzione, a disposizione di tutti.
           </h1>
           <p className="mt-5 max-w-xl text-ink-soft">
-            A running sample of what's actually shipped on this site — free to inspect, copy, and
-            modifica. Ogni elemento è accompagnato da una breve spiegazione su{" "}
+            Una raccolta di componenti effettivamente utilizzati su questo sito, liberamente consultabili e copiabili. Ogni elemento è accompagnato da una breve spiegazione su 
             <a
               href={THREADS_URL}
               target="_blank"
@@ -135,13 +134,13 @@ export default function Lab() {
             >
               Threads
             </a>{" "}
-            when it's built.
+            quando viene realizzato.
           </p>
           </Reveal>
         </section>
 
         <section aria-labelledby="lab-components" aria-describedby="lab-components-intent" role="region" data-ai="features">
-          <AiIntent id="lab-components-intent">List production components with live previews and copyable implementation snippets.</AiIntent>
+          <AiIntent id="lab-components-intent">Elencare i componenti utilizzati in produzione, con anteprime interattive e frammenti di codice copiabili.</AiIntent>
           <h2 id="lab-components" className="sr-only">Componenti di produzione</h2>
           <div className="mt-16 grid gap-8" role="list">
           {ITEMS.map((item, index) => {
@@ -177,7 +176,7 @@ export default function Lab() {
                       </button>
                     )}
 
-                    {item.id === "score-gauge" && <ScoreGauge label="Page Speed" score={87} />}
+                    {item.id === "score-gauge" && <ScoreGauge label="Velocità di caricamento" score={87} />}
 
                     {item.id === "reveal-on-scroll" && (
                       <div className="flex flex-col items-center gap-4">
