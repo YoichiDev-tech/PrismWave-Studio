@@ -12,12 +12,12 @@ export default function Projects() {
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
         title="Progetti dimostrativi"
-        description="Progetti dimostrativi from PrismWave Studio — speculative builds that show the quality a paying client receives. Not client work."
+        description="Progetti dimostrativi di PrismWave Studio: esempi che mostrano la qualità del lavoro. Non sono progetti realizzati per clienti."
         path="/projects"
       />
       <AiMetadata
-        map={["Projects introduction", "Project grid", "Studio footer"]}
-        intent="Show PrismWave Studio concept demos and invite visitors to open a demo or start an audit."
+        map={["Introduzione ai progetti", "Griglia dei progetti", "Piè di pagina dello studio"]}
+        intent="Mostrare i progetti dimostrativi di PrismWave Studio e invitare i visitatori a esplorarli o ad avviare un'analisi."
         tags={[
           "portfolio",
           "concept demos",
@@ -26,8 +26,8 @@ export default function Projects() {
         ]}
         extract={{
           title: "PrismWave Studio Concept Demos",
-          audience: "Founders and small businesses",
-          primaryActions: "Open a demo or run a free audit",
+          audience: "Fondatori e piccole imprese",
+          primaryActions: "Aprire una demo o avviare un'analisi gratuita",
         }}
       />
 
@@ -53,11 +53,11 @@ export default function Projects() {
           Progetti dimostrativi
         </p>
         <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Progetti dimostrativi you can open and explore.
+          Progetti dimostrativi da esplorare e consultare.
         </h1>
         <p className="mt-4 max-w-xl text-ink-soft">
-          These are speculative builds that show the standard a paying client
-          receives — different industries, one level of craft. Not client work.
+          Questi progetti dimostrativi mostrano lo standard qualitativo previsto per un cliente:
+          settori diversi, la stessa cura. Non si tratta di lavori commissionati da clienti.
         </p>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
