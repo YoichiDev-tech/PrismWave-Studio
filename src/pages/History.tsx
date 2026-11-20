@@ -17,7 +17,7 @@ export default function History() {
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
         title="Cronologia dei rilasci"
-        description="PrismWave Studio launch timeline — projects, relaunches, and studio milestones."
+        description="Cronologia di PrismWave Studio: progetti, rilanci e traguardi dello studio."
         path="/history"
       />
 
@@ -33,7 +33,7 @@ export default function History() {
             to="/projects"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-amber"
           >
-            Progettos →
+            Progetti →
           </Link>
         </div>
       </header>
@@ -41,7 +41,7 @@ export default function History() {
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
         <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Cronologia dei rilasci</p>
         <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Tutti i rilasci, in ordine.
+          Tutti i rilasci, in ordine cronologico.
         </h1>
         <p className="mt-4 text-ink-soft">
           Una cronologia pubblica di progetti, riprogettazioni e traguardi dello studio.
