@@ -27,7 +27,7 @@ function scoreSpeed(s: AuditSignals): AuditCategory {
   else {
     score += 6;
     findings.push(
-      `The server response took ${(s.responseTimeMs / 1000).toFixed(1)} seconds in this check. This result may vary between visits.`
+      `Il server ha impiegato ${(s.responseTimeMs / 1000).toFixed(1)} secondi per rispondere durante questo controllo. Il risultato può variare tra una visita e l'altra.`
     );
   }
 
@@ -37,11 +37,11 @@ function scoreSpeed(s: AuditSignals): AuditCategory {
   else {
     score += 6;
     findings.push(
-      `The HTML response was ${s.pageWeightKb} KB. This measurement does not include every resource the browser may load.`
+      `La risposta HTML aveva una dimensione di ${s.pageWeightKb} KB. Questa misurazione non include tutte le risorse che il browser potrebbe caricare.`
     );
   }
 
-  return { key: "speed", label: "Page Speed", score: clamp(score), findings };
+  return { key: "speed", label: "Velocità di caricamento", score: clamp(score), findings };
 }
 
 function scoreModernism(s: AuditSignals): AuditCategory {
@@ -52,7 +52,7 @@ function scoreModernism(s: AuditSignals): AuditCategory {
     score += 25;
   } else {
     findings.push(
-      "This page did not use HTTPS in the checked URL. HTTPS helps protect connections and is a standard expectation for websites."
+      "L'indirizzo verificato non utilizza HTTPS. HTTPS contribuisce a proteggere le connessioni ed è uno standard atteso per i siti web."
     );
   }
 
@@ -60,7 +60,7 @@ function scoreModernism(s: AuditSignals): AuditCategory {
     score += 25;
   } else {
     findings.push(
-      "No meta description was detected. Search engines may generate their own result snippets instead."
+      "Non è stata rilevata una meta description. I motori di ricerca potrebbero generare autonomamente gli estratti mostrati nei risultati."
     );
   }
 
@@ -69,21 +69,21 @@ function scoreModernism(s: AuditSignals): AuditCategory {
   } else if (s.titleLength > 0) {
     score += 10;
     findings.push(
-      `The page title contains ${s.titleLength} characters. Its suitability depends on the page content and how it appears in search results.`
+      `Il titolo della pagina contiene ${s.titleLength} caratteri. La sua adeguatezza dipende dal contenuto e da come viene visualizzato nei risultati di ricerca.`
     );
   } else {
-    findings.push("No page title text was detected in the checked HTML.");
+    findings.push("Nel codice HTML verificato non è stato rilevato alcun titolo di pagina.");
   }
 
   if (s.hasOpenGraph) {
     score += 25;
   } else {
     findings.push(
-      "No Open Graph metadata was detected. Some platforms may have less information available when generating a shared-link preview."
+      "Non sono stati rilevati metadati Open Graph. Alcune piattaforme potrebbero disporre di meno informazioni per generare l'anteprima del collegamento condiviso."
     );
   }
 
-  return { key: "modernism", label: "UI/UX Modernism", score: clamp(score), findings };
+  return { key: "modernism", label: "Modernità dell'interfaccia", score: clamp(score), findings };
 }
 
 function scoreMobile(s: AuditSignals): AuditCategory {
@@ -94,7 +94,7 @@ function scoreMobile(s: AuditSignals): AuditCategory {
     score += 70;
   } else {
     findings.push(
-      "No viewport meta tag was detected. This can affect how the page is initially scaled on mobile devices."
+      "Non è stato rilevato il meta tag viewport. Questo può influire sulla scala iniziale della pagina sui dispositivi mobili."
     );
   }
 
@@ -103,13 +103,13 @@ function scoreMobile(s: AuditSignals): AuditCategory {
   } else {
     score += 8;
     findings.push(
-      "No responsive breakpoints were detected in the inline styles checked. External stylesheets were not fully evaluated, so this alone does not establish that the site is not responsive."
+      "Nei fogli di stile incorporati verificati non sono stati rilevati punti di interruzione responsive. I fogli di stile esterni non sono stati analizzati completamente: questo dato, da solo, non dimostra che il sito non sia adattivo."
     );
   }
 
   score += 10;
 
-  return { key: "mobile", label: "Mobile Responsiveness", score: clamp(score), findings };
+  return { key: "mobile", label: "Adattamento ai dispositivi mobili", score: clamp(score), findings };
 }
 
 function scoreAiReadability(s: AuditSignals): AuditCategory {
@@ -120,7 +120,7 @@ function scoreAiReadability(s: AuditSignals): AuditCategory {
     score += 25;
   } else {
     findings.push(
-      "Common semantic landmarks such as header, main, or footer were not detected by this check. These elements can help communicate page structure to assistive technology and automated parsers."
+      "Questo controllo non ha rilevato elementi semantici comuni come header, main o footer. Questi elementi aiutano le tecnologie assistive e i sistemi automatici a comprendere la struttura della pagina."
     );
   }
 
@@ -128,12 +128,12 @@ function scoreAiReadability(s: AuditSignals): AuditCategory {
     score += 25;
   } else if (s.h1Count === 0) {
     findings.push(
-      "No H1 heading was detected. A clear main heading can help visitors and automated systems understand the page topic."
+      "Non è stato rilevato alcun titolo H1. Un titolo principale chiaro aiuta visitatori e sistemi automatici a comprendere l'argomento della pagina."
     );
   } else {
     score += 10;
     findings.push(
-      `${s.h1Count} H1 headings were detected. Multiple H1 headings are not automatically an error, but the page's heading hierarchy may be worth reviewing.`
+      `Sono stati rilevati ${s.h1Count} titoli H1. La presenza di più titoli H1 non costituisce automaticamente un errore, ma può essere utile verificare la gerarchia dei titoli.`
     );
   }
 
@@ -141,7 +141,7 @@ function scoreAiReadability(s: AuditSignals): AuditCategory {
     score += 25;
   } else {
     findings.push(
-      "No structured data was detected by this check. Structured data can describe eligible content to supported search engines and other systems."
+      "Questo controllo non ha rilevato dati strutturati. I dati strutturati possono descrivere contenuti idonei ai motori di ricerca e ad altri sistemi compatibili."
     );
   }
 
@@ -155,12 +155,12 @@ function scoreAiReadability(s: AuditSignals): AuditCategory {
 
     if (s.imagesMissingAlt > 0) {
       findings.push(
-        `${s.imagesMissingAlt} of ${s.imageCount} checked images were missing alt text. Whether alt text is needed depends on each image's purpose.`
+        `${s.imagesMissingAlt} immagini su ${s.imageCount} verificate non contengono un testo alternativo. La necessità del testo alternativo dipende dalla funzione di ciascuna immagine.`
       );
     }
   }
 
-  return { key: "aiReadability", label: "AI Readability", score: clamp(score), findings };
+  return { key: "aiReadability", label: "Leggibilità per i sistemi AI", score: clamp(score), findings };
 }
 
 export function scoreAudit(signals: AuditSignals): AuditResult {
