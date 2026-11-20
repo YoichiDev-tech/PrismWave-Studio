@@ -66,7 +66,7 @@ const addTool = (name, description, input_schema, handler) => {
 addTool("list_files", "List repository files. Excludes dependencies, build output, Git metadata and environment files.", {type:"object",properties:{path:{type:"string",description:"Optional relative directory, default repository root"}},additionalProperties:false}, async ({path:dir}) => {
   const base = dir ? safePath(dir) : ROOT;
   if (!existsSync(base) || !statSync(base).isDirectory()) throw new Error("Directory not found.");
-  return walk(base).map((p) => path.relative(ROOT, p).split(path.sep).join("/")).slice(0,500);
+  return walk(base).slice(0,500);
 });
 addTool("read_file", "Read a text file in the repository. Secret-like and environment files are blocked.", {type:"object",properties:{path:{type:"string"}},required:["path"],additionalProperties:false}, async ({path:rel}) => {
   const file = safePath(rel);
@@ -79,7 +79,7 @@ addTool("search_text", "Search literal text in repository text files, excluding 
   const matches = [];
   for (const rel of walk(base)) {
     if (matches.length >= 100) break;
-    const full = path.join(base, rel);
+    const full = path.join(ROOT, rel);
     try {
       const content = await readFile(full,"utf8");
       if (content.includes("\0")) continue;
