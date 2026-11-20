@@ -1,6 +1,6 @@
 export function Stars({ value }: { value: number }) {
   return (
-    <div className="flex gap-0.5" role="img" aria-label={`${value} out of 5 stars`}>
+    <div className="flex gap-0.5" role="img" aria-label={`${value} stelle su 5`}>
       {[1, 2, 3, 4, 5].map((n) => (
         <span
           key={n}
@@ -22,7 +22,7 @@ export function StarInput({
   onChange: (n: number) => void;
 }) {
   return (
-    <div role="radiogroup" aria-label="Your rating" className="flex gap-1">
+    <div role="radiogroup" aria-label="La tua valutazione" className="flex gap-1">
       {[1, 2, 3, 4, 5].map((n) => (
         <button
           key={n}
