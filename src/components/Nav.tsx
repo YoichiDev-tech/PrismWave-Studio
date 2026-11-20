@@ -2,7 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { Intent } from "../pages/Home";
 import { trackAction } from "../lib/track";
-import TemaToggle from "./TemaToggle";
+import ThemeToggle from "./ThemeToggle";
 
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
   { label: "Progetti", href: "/projects" },
@@ -119,7 +119,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
         </ul>
 
         <div className="hidden items-center gap-3 md:flex">
-          <TemaToggle />
+          <ThemeToggle />
           <a
             href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
             onClick={() => {
@@ -145,7 +145,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
 
         {/* Phones ≥400px: toggle in the bar. Smaller phones get it inside the menu instead */}
         <div className="mr-1 hidden min-[400px]:max-md:flex">
-          <TemaToggle />
+          <ThemeToggle />
         </div>
 
         <button
@@ -216,7 +216,7 @@ export default function Nav({ onSelectIntent }: NavProps) {
           </a>
           <div className="mt-4 hidden items-center justify-between border-t border-ink-line pt-4 max-[399px]:flex">
             <span className="font-mono text-sm uppercase tracking-wide text-ink-soft">Tema</span>
-            <TemaToggle />
+            <ThemeToggle />
           </div>
         </div>
       )}
