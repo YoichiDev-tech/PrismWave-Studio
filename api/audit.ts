@@ -133,12 +133,12 @@ async function fetchFollowingRedirects(
 
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed." });
+    res.status(405).json({ error: "Metodo non consentito." });
     return;
   }
 
   if (await isClientRateLimited(req.headers, { bucket: "audit", limit: 10, windowSeconds: 60 })) {
-    res.status(429).json({ error: "Too many audit requests — try again in a minute." });
+    res.status(429).json({ error: "Troppe richieste di analisi: riprova tra un minuto." });
     return;
   }
 
@@ -202,8 +202,8 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     console.error("Audit fetch failed:", err);
     res.status(aborted ? 504 : 502).json({
       error: aborted
-        ? "That site took too long to respond."
-        : "Couldn't reach that site — check the URL and try again.",
+        ? "Il sito ha impiegato troppo tempo per rispondere."
+        : "Impossibile raggiungere il sito: controlla l'indirizzo e riprova.",
     });
   }
 }
