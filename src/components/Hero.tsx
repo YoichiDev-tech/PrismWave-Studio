@@ -130,7 +130,7 @@ export default function Hero({
               onClick={() =>
                 trackAction("cta_click", {
                   metadata: {
-                    label: "See our work",
+                    label: "Scopri i nostri progetti",
                     location: "hero",
                   },
                 })
