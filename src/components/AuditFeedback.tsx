@@ -77,8 +77,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
       <div className="mt-6 rounded-xl border border-ink-line bg-ink-2/50 p-4">
         <p className="font-display text-sm font-semibold text-paper">Grazie, abbiamo ricevuto il tuo commento.</p>
         <p className="mt-1 text-xs leading-relaxed text-ink-soft">
-          Se hai autorizzato la pubblicazione, il commento sarà visibile solo dopo una verifica manuale. Nulla
-          is posted automatically.
+          Se hai autorizzato la pubblicazione, il commento sarà visibile solo dopo una verifica manuale. Nulla viene pubblicato automaticamente.
         </p>
       </div>
     );
@@ -111,7 +110,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
       <p className="font-display text-sm font-semibold text-paper">Commento rapido</p>
       <p className="text-xs leading-relaxed text-ink-soft">
         Facoltativo. Aiuta altri visitatori e ci permette di migliorare lo strumento. Pubblicheremo il commento solo
-        after personal review — never auto-posted.
+        dopo una revisione personale: non viene mai pubblicato automaticamente.
       </p>
 
       <div className="flex gap-1" role="group" aria-label="Valutazione">
@@ -153,7 +152,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
       </label>
 
       <label className="block">
-        <span className="sr-only">Feedback</span>
+        <span className="sr-only">Commento</span>
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
