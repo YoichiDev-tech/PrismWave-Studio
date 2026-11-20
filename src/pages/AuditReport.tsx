@@ -92,13 +92,13 @@ export default function AuditReport() {
       <SEO
         title={
           report
-            ? `Site audit — ${report.finalUrl} scored ${report.overall}/100`
-            : "Site audit report"
+            ? `Analisi del sito — ${report.finalUrl}: punteggio ${report.overall}/100`
+            : "Report di analisi del sito"
         }
         description={
           report
-            ? `Automated audit of ${report.finalUrl}: ${report.overall}/100 on speed, mobile, design and AI-readability.`
-            : "A shared PrismWave Studio site audit report."
+            ? `Analisi automatizzata di ${report.finalUrl}: ${report.overall}/100 per velocità, dispositivi mobili, design e leggibilità per i sistemi AI.`
+            : "Report di analisi del sito condiviso da PrismWave Studio."
         }
         path={id ? `/audit/${id}` : "/audit"}
         noIndex
@@ -118,22 +118,22 @@ export default function AuditReport() {
       <main className="mx-auto max-w-2xl px-6 py-16 md:py-20">
         {status === "loading" && (
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-            Loading report…
+            Caricamento del report…
           </p>
         )}
 
         {(!id || status === "not-found") && (
           <div>
             <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-              Not found
+              Non trovato
             </p>
 
             <h1 className="mt-3 font-display text-2xl font-semibold text-paper">
-              This report doesn't exist, or the link is incorrect.
+              Questo report non esiste oppure il collegamento non è corretto.
             </h1>
 
             <p className="mt-4 text-sm text-ink-soft">
-              Reports are created by running a website through the free audit
+              I report vengono generati analizzando un sito con lo strumento gratuito
               tool.
             </p>
 
@@ -145,21 +145,21 @@ export default function AuditReport() {
                   "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)",
               }}
             >
-              Run your own free audit
+              Analizza gratuitamente il tuo sito
             </Link>
           </div>
         )}
 
         {status === "error" && (
           <p className="font-mono text-[12px] uppercase tracking-widest text-coral">
-            Couldn't load that report right now. Please try again shortly.
+            Impossibile caricare il report in questo momento. Riprova tra poco.
           </p>
         )}
 
         {status === "ready" && report && (
           <>
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-              Site audit
+              Analisi del sito
             </p>
 
             <h1 className="mt-3 break-all font-display text-2xl font-semibold text-paper md:text-3xl">
@@ -168,14 +168,14 @@ export default function AuditReport() {
 
             <div className="mt-8 text-center">
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-                Overall score
+                Punteggio complessivo
               </p>
 
               <p className="font-display text-6xl font-semibold text-paper">
                 {report.overall}
               </p>
 
-              <p className="mt-1 text-xs text-ink-soft">out of 100</p>
+              <p className="mt-1 text-xs text-ink-soft">su 100</p>
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-5">
@@ -191,7 +191,7 @@ export default function AuditReport() {
 
             <div className="mt-10 border-t border-ink-line pt-6">
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-                What the scan detected
+                Risultati rilevati dall'analisi
               </p>
 
               {allFindings.length > 0 ? (
