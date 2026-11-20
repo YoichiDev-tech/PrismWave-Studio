@@ -4,9 +4,9 @@ import SEO from "../components/SEO";
 import { getChangelogNewestFirst } from "../data/changelog";
 
 const TAG_LABEL: Record<string, string> = {
-  feature: "Feature",
-  fix: "Fix",
-  improvement: "Improvement",
+  feature: "Funzionalità",
+  fix: "Correzione",
+  improvement: "Miglioramento",
 };
 
 export default function Changelog() {
@@ -26,7 +26,7 @@ export default function Changelog() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← Back to studio
+            ← Torna allo studio
           </Link>
           <Link
             to="/roadmap"
@@ -40,10 +40,10 @@ export default function Changelog() {
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
         <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Changelog</p>
         <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          What we shipped.
+          Cosa abbiamo realizzato.
         </h1>
         <p className="mt-4 text-ink-soft">
-          Public feed of improvements. No marketing fluff — just what changed.
+          Elenco pubblico degli aggiornamenti. Senza slogan: solo ciò che è cambiato.
         </p>
 
         <ol className="mt-12 space-y-10">

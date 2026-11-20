@@ -5,18 +5,18 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import type { Intent } from './Home';
 
-interface ReviewsProps {
+interface RecensioniProps {
   onSelectIntent?: (intent: Intent) => void;
 }
 
-export default function Reviews({ onSelectIntent }: ReviewsProps) {
+export default function Recensioni({ onSelectIntent }: RecensioniProps) {
   const setIntent = onSelectIntent ?? (() => {});
 
   return (
     <div className="grain min-h-screen bg-ink">
       <SEO
-        title="Client reviews | PrismWave Studio"
-        description="Reviews from PrismWave Studio clients, and a way to leave your own. Every review is read and approved by hand."
+        title="Recensioni | PrismWave Studio"
+        description="Recensioni dei clienti di PrismWave Studio e possibilità di inviare la tua. Ogni recensione viene letta e approvata manualmente."
         path="/reviews"
       />
 
@@ -27,10 +27,10 @@ export default function Reviews({ onSelectIntent }: ReviewsProps) {
           <span className="relative flex h-1.5 w-1.5">
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber" />
           </span>
-          Reviews
+          Recensioni
         </p>
         <h1 className="font-display text-3xl font-semibold tracking-tight text-paper sm:text-4xl">
-          Worked with us? Tell us how it went.
+          Hai lavorato con noi? Raccontaci com'è andata.
         </h1>
         <p className="mt-3 text-ink-soft">
           Every review is read and approved by hand before it appears here. Nothing is published
@@ -43,7 +43,7 @@ export default function Reviews({ onSelectIntent }: ReviewsProps) {
 
         <div className="mt-12">
           <h2 className="mb-4 font-display text-xl font-semibold text-paper">
-            Leave a review
+            Lascia una recensione
           </h2>
           <ReviewForm />
         </div>

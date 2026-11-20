@@ -4,9 +4,9 @@ import SEO from "../components/SEO";
 import { getLaunchesNewestFirst } from "../data/launches";
 
 const TYPE_LABEL: Record<string, string> = {
-  milestone: "Milestone",
-  project: "Project",
-  relaunch: "Relaunch",
+  milestone: "Traguardo",
+  project: "Progetto",
+  relaunch: "Rilancio",
   internal: "Studio",
 };
 
@@ -16,7 +16,7 @@ export default function History() {
   return (
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
-        title="Launch History"
+        title="Cronologia dei rilasci"
         description="PrismWave Studio launch timeline — projects, relaunches, and studio milestones."
         path="/history"
       />
@@ -27,24 +27,24 @@ export default function History() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← Back to studio
+            ← Torna allo studio
           </Link>
           <Link
             to="/projects"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-amber"
           >
-            Projects →
+            Progettos →
           </Link>
         </div>
       </header>
 
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
-        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Launch history</p>
+        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Cronologia dei rilasci</p>
         <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Every launch, in order.
+          Tutti i rilasci, in ordine.
         </h1>
         <p className="mt-4 text-ink-soft">
-          A public timeline of projects, redesigns, and studio milestones.
+          Una cronologia pubblica di progetti, riprogettazioni e traguardi dello studio.
         </p>
 
         <ol className="mt-12 space-y-8">

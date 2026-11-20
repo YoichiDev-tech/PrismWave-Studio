@@ -4,9 +4,9 @@ import SEO from "../components/SEO";
 import { ROADMAP, type RoadmapStatus } from "../data/roadmap";
 
 const COLUMNS: { status: RoadmapStatus; label: string; blurb: string }[] = [
-  { status: "now", label: "Now", blurb: "In progress" },
-  { status: "next", label: "Next", blurb: "Coming up" },
-  { status: "later", label: "Later", blurb: "On the horizon" },
+  { status: "now", label: "In corso", blurb: "In lavorazione" },
+  { status: "next", label: "Prossimamente", blurb: "In programma" },
+  { status: "later", label: "Più avanti", blurb: "In prospettiva" },
 ];
 
 export default function Roadmap() {
@@ -24,13 +24,13 @@ export default function Roadmap() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← Back to studio
+            ← Torna allo studio
           </Link>
           <Link
             to="/changelog"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-amber"
           >
-            Changelog →
+            Novità →
           </Link>
         </div>
       </header>
@@ -38,10 +38,10 @@ export default function Roadmap() {
       <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Roadmap</p>
         <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          What we are building next.
+          A cosa stiamo lavorando.
         </h1>
         <p className="mt-4 max-w-xl text-ink-soft">
-          A clear view of studio improvements — so you always know where the product is headed.
+          Una panoramica degli sviluppi dello studio, per sapere sempre in quale direzione stiamo andando.
         </p>
 
         <div className="mt-14 grid gap-8 md:grid-cols-3">
