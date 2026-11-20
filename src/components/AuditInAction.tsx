@@ -16,36 +16,36 @@ import { trackAction } from "../lib/track";
 const FLOW = ["Enter URL", "Scan", "Score", "Prioritized fixes", "15-min review"];
 
 const CATEGORIES = [
-  { label: "Speed", score: 42 },
-  { label: "Mobile", score: 61 },
+  { label: "Velocità", score: 42 },
+  { label: "Dispositivi mobili", score: 61 },
   { label: "SEO", score: 55 },
   { label: "AI-readability", score: 38 },
 ];
 
 const FINDINGS = [
   {
-    impact: "High",
-    title: "Mobile viewport missing",
+    impact: "Alta",
+    title: "Dispositivi mobili viewport missing",
     detail:
-      "No viewport meta tag — phones render a zoomed-out desktop layout. Enquiries drop here first.",
+      "Manca il meta tag viewport: sugli smartphone il sito appare come una pagina desktop rimpicciolita. Questo può scoraggiare le richieste di contatto.",
   },
   {
-    impact: "High",
-    title: "Slow first response",
+    impact: "Alta",
+    title: "Prima risposta lenta",
     detail:
-      "Server TTFB over 1.8s on the homepage. Most visitors decide in under three seconds.",
+      "Il TTFB della homepage supera 1,8 secondi. Molti visitatori decidono se restare in meno di tre secondi.",
   },
   {
-    impact: "Medium",
-    title: "Thin metadata for search and AI",
+    impact: "Media",
+    title: "Metadati insufficienti per ricerca e sistemi AI",
     detail:
-      "Title and description are generic; no structured data. Harder to rank and harder for AI to cite.",
+      "Titolo e descrizione sono generici e mancano dati strutturati. Questo può rendere più difficile comparire nei risultati e nelle risposte dei sistemi AI.",
   },
 ];
 
 function impactClass(impact: string): string {
-  if (impact === "High") return "border-coral/40 text-coral";
-  if (impact === "Medium") return "border-amber/40 text-amber";
+  if (impact === "Alta") return "border-coral/40 text-coral";
+  if (impact === "Media") return "border-amber/40 text-amber";
   return "border-ink-line text-ink-soft";
 }
 
