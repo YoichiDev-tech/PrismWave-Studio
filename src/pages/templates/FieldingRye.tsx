@@ -102,12 +102,12 @@ export default function FieldingRye() {
             </li>
             <li>
               <a href="#story" className="transition-opacity hover:opacity-100" style={{ opacity: 0.7 }}>
-                Story
+                Storia
               </a>
             </li>
             <li>
               <a href="#visit" className="transition-opacity hover:opacity-100" style={{ opacity: 0.7 }}>
-                Visit
+                Dove siamo
               </a>
             </li>
           </ul>
@@ -130,7 +130,7 @@ export default function FieldingRye() {
           className="mx-auto max-w-5xl px-6 pb-16 pt-14"
         >
           <AiIntent id="fielding-hero-intent">
-            Introduce Fielding and Rye and direct local customers toward the weekly bake and ordering ahead.
+            Presentare Fielding & Rye e invitare i clienti della zona a consultare le preparazioni settimanali e prenotare in anticipo.
           </AiIntent>
           <p className="text-center text-[11px] uppercase tracking-[0.3em]" style={{ opacity: 0.6 }}>
             Est. 2019 · Panificio di quartiere · Produzione quotidiana
