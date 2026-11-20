@@ -5,8 +5,8 @@ const CONTACT_EMAIL = "yoichi_dev@proton.me";
 export default function Regulatory() {
   return (
     <LegalLayout
-      eyebrow="Transparency"
-      title="Business Information"
+      eyebrow="Trasparenza"
+      title="Informazioni sull'attività"
       updated="October 11, 2026"
       path="/regulatory"
       description="Business contact information, service scope, and transparency information for PrismWave Studio."
@@ -17,16 +17,16 @@ export default function Regulatory() {
         of Use.
       </p>
 
-      <LegalSection title="Business identity and contact">
+      <LegalSection title="Identità e contatti dell'attività">
         <p>
-          Trading name: PrismWave Studio.
+          Nome commerciale: PrismWave Studio.
         </p>
         <p>
           Business activity: website strategy, design, development,
           automated website audits, and related digital services.
         </p>
         <p>
-          Contact email:{" "}
+          Contatti email:{" "}
           <a
             className="text-amber underline underline-offset-4"
             href={`mailto:${CONTACT_EMAIL}`}
@@ -43,7 +43,7 @@ export default function Regulatory() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Services and commercial agreements">
+      <LegalSection title="Servizi e accordi commerciali">
         <p>
           PrismWave Studio provides digital services. The precise scope,
           price, delivery schedule, payment terms, revisions, and
@@ -56,7 +56,7 @@ export default function Regulatory() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Automated audit limitations">
+      <LegalSection title="Limiti dell'analisi automatizzata">
         <p>
           The free website audit uses automated checks and publicly
           accessible website information where available. Results can
@@ -70,7 +70,7 @@ export default function Regulatory() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Accessibility and technical standards">
+      <LegalSection title="Accessibilità e standard tecnici">
         <p>
           The studio aims to consider responsive layouts, semantic
           structure, keyboard usability, and performance when delivering
@@ -80,7 +80,7 @@ export default function Regulatory() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Third-party services">
+      <LegalSection title="Servizi di terze parti">
         <p>
           The website may rely on hosting, database, email, scheduling,
           analytics, or chat providers. Each provider operates under its
@@ -89,7 +89,7 @@ export default function Regulatory() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Applicable laws and mandatory rights">
+      <LegalSection title="Normativa applicabile e diritti inderogabili">
         <p>
           The applicable law and any required consumer, tax, business
           registration, online-service, or dispute-resolution disclosures
@@ -103,7 +103,7 @@ export default function Regulatory() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Contact">
+      <LegalSection title="Contatti">
         <p>
           For business or service questions, contact{" "}
           <a

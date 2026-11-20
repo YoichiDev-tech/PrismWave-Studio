@@ -71,12 +71,12 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
     const message = form.message.trim() || form.idea.trim();
 
     if (!form.name.trim() || !form.email.trim() || !message) {
-      setError("Name, email, and a short message are required.");
+      setError("Nome, email e un breve messaggio sono obbligatori.");
       return;
     }
 
     if (!EMAIL_RE.test(form.email.trim())) {
-      setError("Please enter a valid email address.");
+      setError("Inserisci un indirizzo email valido.");
       return;
     }
 
@@ -261,7 +261,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                   disabled={status === "sending"}
                   className="min-h-12 rounded-full bg-amber px-7 font-display text-sm font-semibold text-ink disabled:opacity-60"
                 >
-                  {status === "sending" ? "Sending…" : "Send message"}
+                  {status === "sending" ? "Invio in corso…" : "Invia il messaggio"}
                 </button>
               </form>
             )}

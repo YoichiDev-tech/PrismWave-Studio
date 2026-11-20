@@ -5,21 +5,21 @@ const CONTACT_EMAIL = "yoichi_dev@proton.me";
 export default function Terms() {
   return (
     <LegalLayout
-      eyebrow="Studio terms"
-      title="Terms of Use"
+      eyebrow="Termini dello studio"
+      title="Termini di utilizzo"
       updated="October 11, 2026"
       path="/terms"
       description="Terms for using the PrismWave Studio website, free audit tools, and web design and development services."
     >
       <p>
-        These Terms of Use apply to your access to the PrismWave Studio
+        These Termini di utilizzo apply to your access to the PrismWave Studio
         website and its tools. By using the website, you agree to comply
         with these terms and applicable law. Mandatory rights under
         applicable consumer or other laws are not excluded or limited
         by these terms.
       </p>
 
-      <LegalSection title="About the services">
+      <LegalSection title="I servizi">
         <p>
           PrismWave Studio offers website strategy, design, development,
           automated website audits, and related digital services. The
@@ -32,7 +32,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Paid projects and payment">
+      <LegalSection title="Progetti a pagamento e pagamenti">
         <p>
           Before a paid project begins, the studio and client should agree
           in writing on the scope, deliverables, price, timeline, payment
@@ -51,7 +51,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Free website audit">
+      <LegalSection title="Analisi gratuita del sito">
         <p>
           The free audit provides automated, directional checks based on
           the submitted URL and the content or signals accessible to the
@@ -71,7 +71,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Your responsibilities when using the audit">
+      <LegalSection title="Responsabilità nell'utilizzo dell'analisi">
         <p>
           You must be authorised to submit the URL and must not use the
           audit to interfere with another service, bypass access controls,
@@ -84,7 +84,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Intellectual property and deliverables">
+      <LegalSection title="Proprietà intellettuale e materiali consegnati">
         <p>
           The website, its branding, original content, and studio tools
           belong to the studio or their respective rights holders, except
@@ -106,7 +106,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Third-party services">
+      <LegalSection title="Servizi di terze parti">
         <p>
           The website may link to or integrate with services operated by
           third parties. Those services have their own terms, privacy
@@ -116,7 +116,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Availability and changes">
+      <LegalSection title="Disponibilità e modifiche">
         <p>
           We may update, suspend, or discontinue parts of the website or
           free tools as the studio develops. We aim to keep the website
@@ -125,7 +125,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Liability">
+      <LegalSection title="Responsabilità">
         <p>
           To the extent permitted by applicable law, the studio is not
           responsible for losses caused by reliance on incomplete
@@ -140,7 +140,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Changes to these terms">
+      <LegalSection title="Modifiche ai presenti termini">
         <p>
           These terms may be updated as the website, services, or legal
           requirements change. The date at the top indicates when this
@@ -149,7 +149,7 @@ export default function Terms() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Contact">
+      <LegalSection title="Contatti">
         <p>
           Questions about these terms can be sent to{" "}
           <a

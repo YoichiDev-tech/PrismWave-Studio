@@ -24,14 +24,14 @@ export default function LegalLayout({ eyebrow, title, updated, path, description
             PrismWave
           </Link>
           <Link to="/" className="font-mono text-[11px] uppercase tracking-wide text-ink-soft transition-colors hover:text-paper">
-            Back to studio
+            Torna allo studio
           </Link>
         </div>
       </header>
       <main className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <p className="font-mono text-[12px] uppercase tracking-widest text-amber">{eyebrow}</p>
         <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">{title}</h1>
-        <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-ink-soft">Last updated: {updated}</p>
+        <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-ink-soft">Ultimo aggiornamento: {updated}</p>
         <div className="legal-copy mt-12 space-y-10 text-sm leading-7 text-ink-soft">{children}</div>
       </main>
       <Footer />
