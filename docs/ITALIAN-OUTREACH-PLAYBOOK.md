@@ -21,3 +21,10 @@ Un progetto piccolo, pagato e a perimetro fisso, con un flusso, utenti, funzioni
 
 ## Prove da raccogliere
 Documentare processo iniziale, test concordati, risultati misurabili, feedback del cliente e autorizzazione separata per nome, logo, citazioni, immagini e case study. Non inventare metriche o testimonianze.
+
+## Riferimenti ufficiali da verificare con il consulente
+
+- [Garante Privacy — Provvedimento 20 ottobre 2026](https://www.garanteprivacy.it/web/guest/home/docweb/-/docweb-display/docweb/10313574): ribadisce che gli indirizzi pubblicati online non sono liberamente riutilizzabili per finalità promozionali e che il legittimo interesse non sostituisce il requisito previsto dall'art. 130 per l'email marketing.
+- [Garante Privacy — Provvedimento 3 settembre 2026](https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10310279): richiama il previo consenso per email promozionali e la limitata eccezione del cosiddetto soft spam verso clienti esistenti, alle condizioni di legge.
+
+Queste note sono una sintesi operativa, non un parere legale. Verificare sempre la versione vigente delle norme e il caso concreto prima di avviare una campagna.
