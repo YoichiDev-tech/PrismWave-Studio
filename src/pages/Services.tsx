@@ -78,7 +78,7 @@ export default function Services({ onSelectIntent }: ServicesProps) {
             <span className="relative flex h-1.5 w-1.5">
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber" />
             </span>
-            Services
+            Servizi
           </p>
           <h1 className="font-display text-[clamp(2rem,6vw,3.25rem)] font-semibold leading-[1.1] tracking-tight text-paper">
             Il tuo sito lavora quanto te?
