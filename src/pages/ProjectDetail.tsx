@@ -52,7 +52,7 @@ export default function ProjectDetail() {
           </Link>
           {project.status === "concept" && (
             <span className="rounded-full border border-ink-line px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-              Concept
+              Progetto dimostrativo
             </span>
           )}
         </div>
