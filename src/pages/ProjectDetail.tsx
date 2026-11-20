@@ -33,7 +33,7 @@ export default function ProjectDetail() {
       />
       <AiMetadata
         map={["Panoramica del progetto", "Date di pubblicazione", "Etichette", "Collegamento al modello interattivo"]}
-        intent={`Present the ${project.title} project and guide visitors to the live template or a free audit.`}
+        intent={`Presentare il progetto ${project.title} e indirizzare i visitatori al modello interattivo o a un'analisi gratuita.`}
         tags={project.tags}
         extract={{
           title: project.title,
