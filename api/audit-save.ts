@@ -70,18 +70,18 @@ function generateId(): string {
 
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed." });
+    res.status(405).json({ error: "Metodo non consentito." });
     return;
   }
 
   if (await isClientRateLimited(req.headers, { bucket: "audit-save", limit: 20, windowSeconds: 60 })) {
-    res.status(429).json({ error: "Too many requests — try again in a minute." });
+    res.status(429).json({ error: "Troppe richieste: riprova tra un minuto." });
     return;
   }
 
   const payload = req.body;
   if (!isPayload(payload)) {
-    res.status(400).json({ error: "Missing or invalid audit data." });
+    res.status(400).json({ error: "Dati dell'analisi mancanti o non validi." });
     return;
   }
 
@@ -107,6 +107,6 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     res.status(200).json({ ok: true, id });
   } catch (err) {
     console.error("Audit save failed:", err);
-    res.status(500).json({ error: "Couldn't save a shareable link right now." });
+    res.status(500).json({ error: "Impossibile salvare il collegamento condivisibile in questo momento." });
   }
 }
