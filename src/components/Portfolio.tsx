@@ -238,12 +238,10 @@ export default function Portfolio({ variant = "page" }: PortfolioProps) {
             Progetti dimostrativi
           </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            Qualità concreta per diversi settori. No paid clients yet.
+            Qualità concreta per diversi settori. Non sono ancora lavori commissionati da clienti.
           </h2>
           <p className="mt-4 text-paper/60">
-            These are speculative builds that show the standard a paying client
-            receives — different industries, one level of craft. Not client
-            work. Click a card to open the full demo.
+            Questi progetti dimostrativi mostrano lo standard qualitativo previsto per un cliente: settori diversi, la stessa cura. Non sono lavori commissionati. Seleziona una scheda per aprire la demo completa.
           </p>
         </Reveal>
 
