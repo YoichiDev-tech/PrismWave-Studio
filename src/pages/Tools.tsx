@@ -73,13 +73,13 @@ export default function Tools() {
         path="/tools"
       />
       <AiMetadata
-        map={["Tools introduction", "Tool runner", "Results", "Studio footer"]}
-        intent="Let visitors run free website diagnostics powered by PrismWave Studio APIs."
-        tags={["website tools", "SEO check", "security headers", "site audit"]}
+        map={["Introduzione agli strumenti", "Esecuzione dei controlli", "Risultati", "Piè di pagina dello studio"]}
+        intent="Permettere ai visitatori di eseguire diagnosi gratuite dei siti web tramite gli strumenti di PrismWave Studio."
+        tags={["strumenti per siti web", "controllo SEO", "intestazioni di sicurezza", "analisi del sito"]}
         extract={{
-          title: "PrismWave Studio Tools",
-          audience: "Founders and small businesses",
-          primaryActions: "Run a tool or free full audit",
+          title: "Strumenti PrismWave Studio",
+          audience: "Fondatori e piccole imprese",
+          primaryActions: "Eseguire un controllo o un'analisi completa gratuita",
         }}
       />
 
@@ -174,12 +174,12 @@ export default function Tools() {
             <dl className="mt-4 space-y-3 text-sm">
               {(
                 [
-                  ["Title", meta.title],
-                  ["Description", meta.description],
-                  ["OG title", meta.ogTitle],
-                  ["OG description", meta.ogDescription],
-                  ["OG image", meta.ogImage],
-                  ["Canonical", meta.canonical],
+                  ["Titolo", meta.title],
+                  ["Descrizione", meta.description],
+                  ["Titolo Open Graph", meta.ogTitle],
+                  ["Descrizione Open Graph", meta.ogDescription],
+                  ["Immagine Open Graph", meta.ogImage],
+                  ["URL canonico", meta.canonical],
                 ] as const
               ).map(([label, value]) => (
                 <div key={label} className="border-b border-ink-line pb-3">
@@ -189,8 +189,8 @@ export default function Tools() {
               ))}
             </dl>
             <ul className="mt-4 space-y-1 font-mono text-[12px] text-ink-soft">
-              <li>{meta.hasViewport ? "✓" : "✗"} Viewport meta</li>
-              <li>{meta.hasTwitterCard ? "✓" : "✗"} Twitter card</li>
+              <li>{meta.hasViewport ? "✓" : "✗"} Meta viewport</li>
+              <li>{meta.hasTwitterCard ? "✓" : "✗"} Scheda Twitter</li>
             </ul>
           </div>
         )}
@@ -223,7 +223,7 @@ export default function Tools() {
             to="/#audit-tool"
             className="mt-5 inline-flex min-h-11 items-center justify-center rounded-full border border-ink-line px-6 font-display text-sm font-semibold text-paper transition-colors hover:border-amber"
           >
-            Run full free audit →
+            Avvia l'analisi completa gratuita →
           </Link>
         </div>
       </main>
