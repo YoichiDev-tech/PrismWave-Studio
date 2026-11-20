@@ -183,7 +183,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
         />
         <span>
           Puoi pubblicare questo commento sul sito PrismWave dopo una revisione manuale (posso restare
-          anonymous).
+          in forma anonima).
         </span>
       </label>
 
