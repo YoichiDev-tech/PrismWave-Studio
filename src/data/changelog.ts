@@ -28,7 +28,7 @@ export const CHANGELOG: ChangelogEntry[] = [
     date: "2026-09-24",
     title: "Correzione dello scorrimento su dispositivi mobili",
     description:
-      "Replaced overflow-x-hidden on Hero with overflow-x-clip; root overflow-x clip for iOS first-gesture stickiness.",
+      "Sostituito overflow-x-hidden con overflow-x-clip nella sezione principale e applicato il ritaglio orizzontale alla pagina per correggere lo scorrimento iniziale su iOS.",
     tag: "fix",
   },
   {
