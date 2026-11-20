@@ -34,10 +34,10 @@ export default function ProductCard({ product }: Props) {
 
       <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-ink-soft">
         {product.status === "live"
-          ? "Live"
+          ? "Disponibile"
           : product.status === "beta"
-          ? "Beta"
-          : "Concept"}
+          ? "Versione beta"
+          : "Concept dimostrativo"}
       </p>
     </Link>
   );
