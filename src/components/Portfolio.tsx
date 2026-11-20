@@ -134,7 +134,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       to={project.path}
-      aria-label={`View the ${project.name} concept demo`}
+      aria-label={`Visualizza il concept dimostrativo di ${project.name}`}
       className="group relative block h-full rounded-2xl border border-ink-line bg-ink-2/60 p-4 transition-transform hover:scale-[1.02] hover:border-amber hover:bg-ink-2"
     >
       {/* Explicit: these are demos, not paid client work */}
