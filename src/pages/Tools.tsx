@@ -69,7 +69,7 @@ export default function Tools() {
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
         title="Strumenti gratuiti per siti web"
-        description="Free backend-powered website tools from PrismWave Studio — meta tags, security headers, and site audit."
+        description="Strumenti gratuiti di PrismWave Studio per analizzare metadati, intestazioni di sicurezza e siti web."
         path="/tools"
       />
       <AiMetadata
