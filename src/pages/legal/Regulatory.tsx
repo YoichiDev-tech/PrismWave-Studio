@@ -7,14 +7,12 @@ export default function Regulatory() {
     <LegalLayout
       eyebrow="Trasparenza"
       title="Informazioni sull'attività"
-      updated="October 11, 2026"
+      updated="11 ottobre 2026"
       path="/regulatory"
       description="Informazioni di contatto, ambito dei servizi e trasparenza per PrismWave Studio."
     >
       <p>
-        This page provides business and service information for PrismWave
-        Studio. It should be read alongside the Privacy Notice and Terms
-        of Use.
+        Questa pagina contiene informazioni sull'attività e sui servizi di PrismWave Studio. Deve essere letta insieme all'Informativa sulla privacy e ai Termini di utilizzo.
       </p>
 
       <LegalSection title="Identità e contatti dell'attività">
@@ -22,8 +20,7 @@ export default function Regulatory() {
           Nome commerciale: PrismWave Studio.
         </p>
         <p>
-          Business activity: website strategy, design, development,
-          automated website audits, and related digital services.
+          Attività: strategia, progettazione e sviluppo di siti web, analisi automatizzate e servizi digitali correlati.
         </p>
         <p>
           Contatti email:{" "}
@@ -35,77 +32,52 @@ export default function Regulatory() {
           </a>.
         </p>
         <p>
-          The operator's full legal name, business address, operating
-          jurisdiction, registration number, and tax or VAT details must
-          be added where required by the laws applicable to the business.
-          These details must be verified by the owner before this page
-          is treated as complete.
+          Il nome o la denominazione legale completa del titolare, l'indirizzo dell'attività, la giurisdizione di riferimento, il numero di registrazione e i dati fiscali o IVA devono essere inseriti quando richiesto dalla normativa applicabile. Il titolare deve verificare e completare queste informazioni prima che la pagina possa considerarsi definitiva.
         </p>
       </LegalSection>
 
       <LegalSection title="Servizi e accordi commerciali">
         <p>
-          PrismWave Studio provides digital services. The precise scope,
-          price, delivery schedule, payment terms, revisions, and
-          responsibilities for paid work are confirmed in a written
-          project agreement.
+          PrismWave Studio offre servizi digitali. L'ambito preciso, il prezzo, le tempistiche di consegna, le condizioni di pagamento, le revisioni e le responsabilità relative ai lavori a pagamento vengono confermati in un accordo di progetto scritto.
         </p>
         <p>
-          Website copy, examples, estimates, and starting prices are
-          not a binding offer unless explicitly stated in writing.
+          I testi del sito, gli esempi, le stime e i prezzi di partenza non costituiscono un'offerta vincolante, salvo indicazione esplicita per iscritto.
         </p>
       </LegalSection>
 
       <LegalSection title="Limiti dell'analisi automatizzata">
         <p>
-          The free website audit uses automated checks and publicly
-          accessible website information where available. Results can
-          be incomplete, and a positive or negative result is not a
-          guarantee of security, accessibility compliance, search
-          performance, legal compliance, or business outcomes.
+          L'analisi gratuita del sito utilizza controlli automatizzati e, quando disponibili, informazioni accessibili pubblicamente. I risultati possono essere incompleti e non costituiscono una garanzia di sicurezza, conformità in materia di accessibilità, prestazioni sui motori di ricerca, conformità legale o risultati commerciali.
         </p>
         <p>
-          The audit is not a substitute for a professional assessment
-          where one is required.
+          L'analisi non sostituisce una valutazione professionale quando questa è necessaria.
         </p>
       </LegalSection>
 
       <LegalSection title="Accessibilità e standard tecnici">
         <p>
-          The studio aims to consider responsive layouts, semantic
-          structure, keyboard usability, and performance when delivering
-          work. A particular legal or technical standard is not certified
-          unless that specific assessment and scope are expressly agreed
-          in writing.
+          Nella realizzazione dei progetti, lo studio si impegna a considerare layout adattivi, struttura semantica, usabilità da tastiera e prestazioni. Nessuno specifico standard legale o tecnico è certificato, salvo che la relativa verifica e il relativo ambito siano espressamente concordati per iscritto.
         </p>
       </LegalSection>
 
       <LegalSection title="Servizi di terze parti">
         <p>
-          The website may rely on hosting, database, email, scheduling,
-          analytics, or chat providers. Each provider operates under its
-          own terms and privacy practices. The studio's Privacy Notice
-          should identify the providers actually enabled in production.
+          Il sito può utilizzare fornitori di hosting, database, posta elettronica, gestione appuntamenti, analisi o chat. Ogni fornitore opera secondo le proprie condizioni e pratiche in materia di privacy. L'Informativa sulla privacy dello studio deve identificare i fornitori effettivamente attivi nell'ambiente di produzione.
         </p>
       </LegalSection>
 
       <LegalSection title="Normativa applicabile e diritti inderogabili">
         <p>
-          The applicable law and any required consumer, tax, business
-          registration, online-service, or dispute-resolution disclosures
-          depend on the operator's actual establishment, the services
-          offered, and the customers served. No governing country is
-          stated here until it has been verified.
+          La legge applicabile e le informazioni eventualmente richieste in materia di tutela dei consumatori, fiscalità, registrazione dell'attività, servizi online o risoluzione delle controversie dipendono dalla sede effettiva del titolare, dai servizi offerti e dai clienti serviti. Non viene indicato alcun Paese come giurisdizione applicabile finché tale informazione non sarà verificata.
         </p>
         <p>
-          Nothing on this page removes mandatory rights that apply under
-          applicable law.
+          Nessuna informazione contenuta in questa pagina elimina i diritti inderogabili riconosciuti dalla normativa applicabile.
         </p>
       </LegalSection>
 
       <LegalSection title="Contatti">
         <p>
-          For business or service questions, contact{" "}
+          Per domande sull'attività o sui servizi, contatta{" "}
           <a
             className="text-amber underline underline-offset-4"
             href={`mailto:${CONTACT_EMAIL}`}
