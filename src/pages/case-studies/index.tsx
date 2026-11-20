@@ -4,9 +4,9 @@ import SEO from "../../components/SEO";
 import { Link } from "react-router-dom";
 
 const caseStudies = [
-  { title: "OpsRook-VI", category: "Infrastruttura AI · Strategia di prodotto", description: "Un concept di prodotto e flussi operativi che collega qualificazione dei contatti, preparazione dei progetti pilota e gestione della capacità.", to: "/work/opsrook-vi/case-study" },
+  { title: "OpsRook-VI", category: "Infrastruttura di IA · Strategia di prodotto", description: "Un progetto dimostrativo di prodotto e flussi operativi che collega qualificazione dei contatti, preparazione dei progetti pilota e gestione della capacità.", to: "/work/opsrook-vi/case-study" },
   { title: "Bloom Market", category: "Commercio al dettaglio · Gestione intelligente delle scorte", description: "Monitoraggio delle scorte, previsione degli sprechi e riordino automatico per piccoli rivenditori.", to: "/work/bloom-market/case-study" },
-  { title: "Appointment Workflow", category: "Concept · Modernizzazione operativa", description: "Un concept per semplificare le prenotazioni e ridurre la gestione manuale degli appuntamenti.", to: "/work/appointment-workflows/concept" },
+  { title: "Appointment Workflow", category: "Progetto dimostrativo · Modernizzazione operativa", description: "Un progetto dimostrativo per semplificare le prenotazioni e ridurre la gestione manuale degli appuntamenti.", to: "/work/appointment-workflows/concept" },
 ];
 
 export default function CaseStudiesIndex() {
