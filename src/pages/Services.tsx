@@ -65,7 +65,7 @@ export default function Services({ onSelectIntent }: ServicesProps) {
   return (
     <div className="grain min-h-screen bg-ink">
       <SEO
-        title="Website audits, modernization & business systems | PrismWave Studio"
+        title="Analisi, modernizzazione e sistemi aziendali | PrismWave Studio"
         description="Find out if your site looks and performs like it is 2026, or get the website you always wanted built. Free audit, fixed-price builds, custom business systems."
         path="/services"
       />
@@ -81,36 +81,36 @@ export default function Services({ onSelectIntent }: ServicesProps) {
             Services
           </p>
           <h1 className="font-display text-[clamp(2rem,6vw,3.25rem)] font-semibold leading-[1.1] tracking-tight text-paper">
-            Does your website still work as hard as you do?
+            Il tuo sito lavora quanto te?
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
-            Visitors decide in seconds. A slow or dated site loses them before you ever get a
-            message. Either we find out what is holding yours back, or we build the one you
-            have been putting off.
+            I visitatori decidono in pochi secondi. Un sito lento o datato li perde prima ancora che tu riceva un
+            messaggio. Possiamo individuare cosa limita il tuo sito oppure realizzare quello che
+            rimandi da tempo.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="rounded-3xl border border-ink-line bg-ink-2/60 p-6">
               <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-amber">
-                I already have a site
+                Ho già un sito
               </p>
               <p className="mt-2 text-ink-soft">
-                Is it up to today's standards, or does it look and feel old? Get a free, honest check.
+                Rispetta gli standard attuali o appare ormai datato? Richiedi una verifica gratuita e trasparente.
               </p>
               <div className="mt-5">
-                <Cta to={LINKS.audit} primary>Get my free audit</Cta>
+                <Cta to={LINKS.audit} primary>Richiedi un'analisi gratuita</Cta>
               </div>
             </div>
             <div className="rounded-3xl border border-ink-line bg-ink-2/60 p-6">
               <p className="font-mono text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
-                I have an idea, no site yet
+                Ho un'idea, ma non ancora un sito
               </p>
               <p className="mt-2 text-ink-soft">
-                A barber shop, a store, a startup, a ranking site. Tell us what you picture and
-                we tell you how we would build it.
+                Un negozio, un'attività, una startup o un sito di classifiche: raccontaci cosa hai in mente e
+                ti spiegheremo come potremmo realizzarlo.
               </p>
               <div className="mt-5">
-                <Cta to={LINKS.contact}>Tell us my idea</Cta>
+                <Cta to={LINKS.contact}>Raccontaci la tua idea</Cta>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Services({ onSelectIntent }: ServicesProps) {
 
         <section className="mx-auto max-w-6xl px-6 py-16">
           <h2 className="font-display text-2xl font-semibold text-paper sm:text-3xl">
-            Signs your site is showing its age
+            I segnali che indicano che il tuo sito è datato
           </h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {OLD_SITE_SIGNS.map((s) => (
@@ -132,13 +132,13 @@ export default function Services({ onSelectIntent }: ServicesProps) {
             ))}
           </ul>
           <p className="mt-4 text-sm text-ink-soft">
-            Recognise two or more? The free audit shows what to fix first.
+            Riconosci almeno due di questi segnali? L'analisi gratuita ti mostra da dove iniziare.
           </p>
         </section>
 
         <section id="tiers" className="mx-auto max-w-6xl px-6 py-16">
           <h2 className="font-display text-2xl font-semibold text-paper sm:text-3xl">
-            Three ways we help
+            Tre modi in cui possiamo aiutarti
           </h2>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {TIERS.map((t) => (
@@ -154,7 +154,7 @@ export default function Services({ onSelectIntent }: ServicesProps) {
                 <p className="mt-2 text-sm text-ink-soft">{t.forWho}</p>
 
                 <h4 className="mt-5 font-mono text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
-                  What we look at
+                  Cosa analizziamo
                 </h4>
                 <ul className="mt-2 space-y-1.5 text-sm text-ink-soft">
                   {t.scope.map((s) => (
@@ -166,7 +166,7 @@ export default function Services({ onSelectIntent }: ServicesProps) {
                 </ul>
 
                 <h4 className="mt-5 font-mono text-[11px] font-semibold uppercase tracking-widest text-ink-soft">
-                  You receive
+                  Cosa ricevi
                 </h4>
                 <ul className="mt-2 space-y-1.5 text-sm text-ink-soft">
                   {t.deliverables.map((d) => (
@@ -189,13 +189,13 @@ export default function Services({ onSelectIntent }: ServicesProps) {
 
         <section className="mx-auto max-w-6xl px-6 py-16">
           <h2 className="font-display text-2xl font-semibold text-paper sm:text-3xl">
-            How it works
+            Come funziona
           </h2>
           <ol className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
-              ['1. Baseline', 'We measure your current speed, mobile experience and metadata before touching anything.'],
-              ['2. Fix', 'We solve the biggest bottleneck first, in a fixed, agreed scope.'],
-              ['3. Prove', 'We re-test and show you the before and after, so the result is checkable.'],
+              ['1. Baseline', 'Misuriamo velocità, esperienza da smartphone e metadati prima di intervenire.'],
+              ['2. Fix', 'Risolviamo prima il problema principale, con un ambito definito e concordato.'],
+              ['3. Prove', 'Ripetiamo i controlli e ti mostriamo il prima e il dopo, così puoi verificare il risultato.'],
             ].map(([h, p]) => (
               <li key={h} className="rounded-2xl border border-ink-line bg-ink-2/40 p-5">
                 <p className="font-display font-semibold text-amber">{h}</p>
@@ -209,14 +209,14 @@ export default function Services({ onSelectIntent }: ServicesProps) {
 
         <section className="mx-auto max-w-6xl px-6 pb-24 pt-8 text-center">
           <h2 className="font-display text-2xl font-semibold text-paper sm:text-3xl">
-            Ready to know where you stand?
+            Vuoi sapere a che punto sei?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-ink-soft">
-            Send us your site, or your idea. We reply with what we would do first.
+            Inviaci il tuo sito o raccontaci la tua idea. Ti risponderemo indicando da dove inizieremmo.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Cta to={LINKS.audit} primary>Get my free audit</Cta>
-            <Cta to={LINKS.contact}>Start my project</Cta>
+            <Cta to={LINKS.audit} primary>Richiedi un'analisi gratuita</Cta>
+            <Cta to={LINKS.contact}>Avvia il mio progetto</Cta>
           </div>
         </section>
       </main>
