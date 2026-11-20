@@ -24,14 +24,14 @@ function WorkflowPreview() {
         <div className="flex rounded-lg border border-ink-line p-1" role="tablist" aria-label="Stato del flusso">
           {(["before", "after"] as const).map((option) => (
             <button
-              key={option}
+              key={option === "before" ? "Prima" : "Dopo"}
               type="button"
               role="tab"
               aria-selected={view === option}
               onClick={() => setView(option)}
               className={`min-h-11 rounded-md px-4 font-mono text-[11px] uppercase tracking-wide transition-colors ${view === option ? "bg-amber text-ink" : "text-ink-soft hover:text-paper"}`}
             >
-              {option}
+              {option === "before" ? "Prima" : "Dopo"}
             </button>
           ))}
         </div>
@@ -59,7 +59,7 @@ function WorkflowPreview() {
           </div>
           <div className="mt-5 grid grid-cols-2 gap-3">
             <div className="rounded-lg bg-ink-2 p-4"><p className="font-mono text-[10px] text-ink-soft">Prossima disponibilità</p><p className="mt-2 font-display text-xl">Oggi, 16:30</p></div>
-            <div className="rounded-lg bg-ink-2 p-4"><p className="font-mono text-[10px] text-ink-soft">Promemoria</p><p className="mt-2 font-display text-xl">{view === "after" ? "On" : "Off"}</p></div>
+            <div className="rounded-lg bg-ink-2 p-4"><p className="font-mono text-[10px] text-ink-soft">Promemoria</p><p className="mt-2 font-display text-xl">{view === "after" ? "Attivo" : "Disattivato"}</p></div>
           </div>
           <button type="button" className="mt-4 min-h-11 w-full rounded-full bg-amber px-5 py-3 font-display text-sm font-semibold text-ink">{view === "after" ? "Prenota un appuntamento" : "Contatta l'attività"}</button>
         </div>
@@ -73,7 +73,7 @@ export default function AppointmentWorkflowConcept() {
     <div className="min-h-screen bg-ink text-paper">
       <SEO
         title="Modernizzazione dei flussi di prenotazione — Progetto dimostrativo"
-        description="A clearly labeled concept for reducing booking friction and no-shows for appointment-based businesses, illustrative rather than a measured client result."
+        description="Un concept chiaramente identificato per ridurre gli ostacoli alle prenotazioni e le assenze agli appuntamenti, a scopo illustrativo e non come risultato misurato su un cliente."
         path="/work/appointment-workflows/concept"
       />
       <AiMetadata
