@@ -26,13 +26,13 @@ function getId(req: VercelLikeRequest): string | null {
 
 export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
   if (req.method !== "GET") {
-    res.status(405).json({ error: "Method not allowed." });
+    res.status(405).json({ error: "Metodo non consentito." });
     return;
   }
 
   const id = getId(req);
   if (!id) {
-    res.status(400).json({ error: "Missing or invalid report id." });
+    res.status(400).json({ error: "Identificativo del report mancante o non valido." });
     return;
   }
 
@@ -48,7 +48,7 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     if (error) throw error;
 
     if (!data) {
-      res.status(404).json({ error: "Report not found." });
+      res.status(404).json({ error: "Report non trovato." });
       return;
     }
 
@@ -64,6 +64,6 @@ export default async function handler(req: VercelLikeRequest, res: VercelLikeRes
     });
   } catch (err) {
     console.error("Audit report fetch failed:", err);
-    res.status(500).json({ error: "Couldn't load that report right now." });
+    res.status(500).json({ error: "Impossibile caricare il report in questo momento." });
   }
 }
