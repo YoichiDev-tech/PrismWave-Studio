@@ -114,7 +114,7 @@ export default async function handler(
       email,
       site_url: siteUrl,
       intent: "audit",
-      message: `Requested the full audit findings for ${siteUrl}.`,
+      message: `Richiesto il report completo dell'analisi per ${siteUrl}.`,
       audit_score: auditScore,
       audit_findings: auditFindings,
       status: "new",
@@ -127,7 +127,7 @@ export default async function handler(
     if (process.env.NODE_ENV === "production") {
       return res.status(503).json({
         error:
-          "We couldn't save your audit request just now. Please try again shortly.",
+          "Non è stato possibile salvare la richiesta di analisi. Riprova tra poco.",
       });
     }
   }
@@ -135,7 +135,7 @@ export default async function handler(
   if (!resend) {
     return res
       .status(200)
-      .json({ ok: true, note: "Development only. No email was sent." });
+      .json({ ok: true, note: "Solo ambiente di sviluppo. Non è stata inviata alcuna email." });
   }
 
   const findingsBlock =
@@ -192,13 +192,13 @@ ${SITE_URL}
 
 Email: ${email}
 Sito: ${siteUrl}
-Score: ${auditScore}/100
+Punteggio: ${auditScore}/100
 
-Findings:
+Risultati:
 ${findingsBlock}
 
-The visitor received the automated report and an invitation to request a free 15-minute review.
-You can follow up personally by replying to the visitor.
+Il visitatore ha ricevuto il report automatico e un invito a richiedere una revisione gratuita di 15 minuti.
+Puoi ricontattare direttamente il visitatore rispondendo alla sua email.
 `,
         });
 
@@ -216,7 +216,7 @@ You can follow up personally by replying to the visitor.
 
     return res.status(500).json({
       error:
-        "We couldn't deliver your audit report right now. Please try again shortly.",
+        "Non è stato possibile recapitare il report di analisi. Riprova tra poco.",
     });
   }
 }
