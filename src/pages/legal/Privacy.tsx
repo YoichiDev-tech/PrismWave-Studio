@@ -9,7 +9,7 @@ export default function Privacy() {
       title="Informativa sulla privacy"
       updated="11 ottobre 2026"
       path="/privacy"
-      description="How PrismWave Studio collects, uses, stores, and protects personal information."
+      description="Come PrismWave Studio raccoglie, utilizza, conserva e protegge i dati personali."
     >
       <p>
         La presente informativa descrive come PrismWave Studio tratta i dati personali quando visiti il sito, utilizzi l'analisi gratuita, richiedi un report o contatti lo studio. Deve essere letta insieme alle informazioni sui servizi e sulle tecnologie di tracciamento effettivamente attivi sul sito.
