@@ -1,16 +1,16 @@
 import { Search, FileText, Hammer, CheckCircle2, Rocket } from "lucide-react";
 
 const audit_path = [
-  { icon: Search, label: "Free Audit", desc: "Send your site. We check it against today's speed, mobile, and conversion standards." },
-  { icon: FileText, label: "Findings + Fix Plan", desc: "You get a plain-language breakdown of what's outdated and what it's costing you." },
-  { icon: Hammer, label: "You Decide", desc: "Fix it yourself with the report, or have us do it. No pressure either way." },
+  { icon: Search, label: "Analisi gratuita", desc: "Inviaci il tuo sito: verifichiamo velocità, usabilità da smartphone e capacità di generare contatti." },
+  { icon: FileText, label: "Risultati e piano di intervento", desc: "Ricevi una spiegazione chiara di ciò che non è aggiornato e dei problemi che potrebbe causare." },
+  { icon: Hammer, label: "Decidi tu", desc: "Puoi intervenire in autonomia seguendo il report oppure affidare il lavoro a noi. Senza pressioni." },
 ];
 
 const build_path = [
-  { icon: FileText, label: "Tell Us the Idea", desc: "Barbershop, supermarket, anime ranking site — whatever it is, we scope it with you." },
-  { icon: Hammer, label: "Prototype First", desc: "We build a real, working preview before any money changes hands." },
-  { icon: CheckCircle2, label: "Review + Refine", desc: "You react, we adjust. No surprise revisions." },
-  { icon: Rocket, label: "Launch", desc: "Live on your domain, handed off clean." },
+  { icon: FileText, label: "Raccontaci la tua idea", desc: "Che si tratti di un negozio, un supermercato o un progetto personale, definiamo insieme cosa serve." },
+  { icon: Hammer, label: "Prima il prototipo", desc: "Realizziamo un'anteprima funzionante prima di qualsiasi pagamento." },
+  { icon: CheckCircle2, label: "Revisione e perfezionamento", desc: "Tu valuti, noi apportiamo le modifiche concordate. Nessuna revisione a sorpresa." },
+  { icon: Rocket, label: "Pubblicazione", desc: "Il sito viene pubblicato sul tuo dominio e consegnato completo." },
 ];
 
 function PathColumn({ title, steps, accent }: { title: string; steps: typeof audit_path; accent: string }) {
@@ -44,12 +44,12 @@ function PathColumn({ title, steps, accent }: { title: string; steps: typeof aud
 export default function HowItWorks() {
   return (
     <section className="py-20 px-6 max-w-5xl mx-auto">
-      <p className="font-mono text-xs uppercase tracking-widest text-amber mb-2">How it works</p>
-      <h2 className="font-display text-3xl font-bold text-ink mb-12">Two starting points. One outcome.</h2>
+      <p className="font-mono text-xs uppercase tracking-widest text-amber mb-2">Come funziona</p>
+      <h2 className="font-display text-3xl font-bold text-ink mb-12">Due punti di partenza, un unico obiettivo.</h2>
 
       <div className="flex flex-col md:flex-row md:items-start gap-12 md:gap-16">
-        <PathColumn title="Have a site that feels outdated?" steps={audit_path} accent="text-coral" />
-        <PathColumn title="Have an idea, no site yet?" steps={build_path} accent="text-violet" />
+        <PathColumn title="Hai un sito che sembra superato?" steps={audit_path} accent="text-coral" />
+        <PathColumn title="Hai un'idea ma non ancora un sito?" steps={build_path} accent="text-violet" />
       </div>
     </section>
   );
