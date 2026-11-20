@@ -14,17 +14,17 @@ const RULE = "rgba(43,36,22,0.16)";
 const RUST = "#C7401F";
 
 const SCHEDULE = [
-  { day: "Tue — Wed", item: "Country sourdough, seeded rye" },
-  { day: "Thursday", item: "Walnut levain, olive fougasse" },
-  { day: "Fri — Sat", item: "Full case: sourdough, rye, viennoiserie" },
-  { day: "Sunday", item: "Weekend loaves, cinnamon buns" },
+  { day: "Mar — Mer", item: "Pane rustico a lievitazione naturale, segale ai semi" },
+  { day: "Giovedì", item: "Pane alle noci con lievito madre, focaccia alle olive" },
+  { day: "Ven — Sab", item: "Vetrina completa: pane a lievitazione naturale, segale e viennoiserie" },
+  { day: "Domenica", item: "Pane del fine settimana, girelle alla cannella" },
 ];
 
 const MENU = [
-  { no: "01", name: "Country Sourdough", desc: "72-hour ferment, crackling crust, open crumb.", price: 9 },
-  { no: "02", name: "Seeded Rye", desc: "Dark rye, toasted sunflower and flax.", price: 10 },
-  { no: "03", name: "Walnut Levain", desc: "Whole walnuts folded through a mild levain.", price: 11 },
-  { no: "04", name: "Olive Fougasse", desc: "Rosemary, kalamata olives, flaky sea salt.", price: 8 },
+  { no: "01", name: "Pane rustico a lievitazione naturale", desc: "Fermentazione di 72 ore, crosta croccante e mollica alveolata.", price: 9 },
+  { no: "02", name: "Pane di segale ai semi", desc: "Segale scura, semi di girasole tostati e lino.", price: 10 },
+  { no: "03", name: "Pane alle noci", desc: "Noci intere incorporate in un impasto a lievito madre delicato.", price: 11 },
+  { no: "04", name: "Fougasse alle olive", desc: "Rosmarino, olive Kalamata e sale marino in fiocchi.", price: 8 },
 ];
 
 type Cart = Record<string, number>;
@@ -82,7 +82,7 @@ export default function FieldingRye() {
           title: "Fielding & Rye",
           audience: "Clienti di un panificio di quartiere",
           primaryActions: "Consultare il menu o prenotare in anticipo",
-          location: "412 Ashcombe Lane, Riverside District",
+          location: "412 Ashcombe Lane, quartiere Riverside",
           hours: "Mar–ven 7:00–15:00; sab–dom 8:00–14:00",
         }}
       />
@@ -133,7 +133,7 @@ export default function FieldingRye() {
             Presentare Fielding & Rye e invitare i clienti della zona a consultare le preparazioni settimanali e prenotare in anticipo.
           </AiIntent>
           <p className="text-center text-[11px] uppercase tracking-[0.3em]" style={{ opacity: 0.6 }}>
-            Est. 2019 · Panificio di quartiere · Produzione quotidiana
+            Dal 2019 · Panificio di quartiere · Produzione quotidiana
           </p>
           <h1
             id="fielding-hero"
@@ -155,9 +155,9 @@ export default function FieldingRye() {
                 <span className="mr-1 float-left text-5xl leading-[0.8]" style={{ fontFamily: SERIF }}>
                   E
                 </span>
-                very loaf at Fielding &amp; Rye starts the night before — a long, cold ferment that does most of
+                Ogni pagnotta di Fielding &amp; Rye inizia la sera prima: una lunga fermentazione a freddo che sviluppa gran parte del suo sapore.
                 the work while the neighborhood sleeps. We mill what we can locally, keep the ingredient list
-                short, and sell out most Saturdays by eleven. If you want a particular loaf, order ahead; if
+                Le quantità sono limitate e il sabato spesso esauriscono entro le undici. Se desideri una pagnotta specifica, prenotala in anticipo; altrimenti
                 you&apos;re passing by, the case rarely goes empty before noon.
               </p>
             </article>
@@ -180,7 +180,7 @@ export default function FieldingRye() {
                 href="#menu"
                 className="mt-6 inline-block text-sm underline underline-offset-4 transition-opacity hover:opacity-70"
               >
-                See full menu &rarr;
+                Consulta il menu completo &rarr;
               </a>
             </aside>
           </div>
@@ -196,12 +196,12 @@ export default function FieldingRye() {
           style={{ borderColor: RULE }}
         >
           <AiIntent id="fielding-menu-intent">
-            Present the current bakery case with item descriptions and prices for ordering ahead.
+            Presentare i prodotti disponibili oggi, con descrizioni e prezzi per la prenotazione anticipata.
           </AiIntent>
           <div className="mx-auto max-w-5xl px-6">
             <div className="flex items-baseline justify-between">
               <h2 id="fielding-menu" className="text-3xl" style={{ fontFamily: SERIF }}>
-                Today&apos;s Case
+                I prodotti di oggi
               </h2>
               <p className="text-[11px] uppercase tracking-widest" style={{ opacity: 0.55 }}>
                 04 items
@@ -266,16 +266,16 @@ export default function FieldingRye() {
                 Prenota in anticipo
               </h3>
               <p className="mt-2 text-sm" style={{ opacity: 0.65 }}>
-                Demo flow only — nothing is sent. Shows how a real order-ahead experience can feel.
+                Solo dimostrazione: non viene inviato alcun ordine. Mostra come potrebbe funzionare una vera esperienza di prenotazione anticipata.
               </p>
 
               {submitted ? (
                 <div className="mt-6 rounded-sm border p-5" style={{ borderColor: RUST, background: "rgba(199,64,31,0.06)" }}>
                   <p className="text-lg" style={{ fontFamily: SERIF }}>
-                    Thanks, {name.trim()}. Your order is noted.
+                    Grazie, {name.trim()}. Il tuo ordine è stato registrato.
                   </p>
                   <p className="mt-2 text-sm" style={{ opacity: 0.75 }}>
-                    {totalQty} item{totalQty === 1 ? "" : "s"} · ${totalPrice} · pickup {pickup}
+                    {totalQty} articol{totalQty === 1 ? "o" : "i"} · ${totalPrice} · ritiro {pickup}
                   </p>
                   <button
                     type="button"
@@ -287,7 +287,7 @@ export default function FieldingRye() {
                     }}
                     className="mt-4 text-sm underline underline-offset-4 transition-opacity hover:opacity-70"
                   >
-                    Place another order
+                    Effettua un altro ordine
                   </button>
                 </div>
               ) : (
@@ -305,7 +305,7 @@ export default function FieldingRye() {
                   <div className="grid gap-4 sm:grid-cols-2">
                     <label className="block text-sm">
                       <span className="mb-1.5 block text-[11px] uppercase tracking-widest" style={{ opacity: 0.55 }}>
-                        Your name
+                        Il tuo nome
                       </span>
                       <input
                         required
@@ -318,7 +318,7 @@ export default function FieldingRye() {
                     </label>
                     <label className="block text-sm">
                       <span className="mb-1.5 block text-[11px] uppercase tracking-widest" style={{ opacity: 0.55 }}>
-                        Pickup window
+                        Orario di ritiro
                       </span>
                       <select
                         value={pickup}
@@ -335,14 +335,14 @@ export default function FieldingRye() {
                   </div>
                   <label className="block text-sm">
                     <span className="mb-1.5 block text-[11px] uppercase tracking-widest" style={{ opacity: 0.55 }}>
-                      Note (optional)
+                      Note (facoltative)
                     </span>
                     <input
                       value={note}
                       onChange={(e) => setNote(e.target.value)}
                       className="min-h-11 w-full rounded-sm border bg-transparent px-3"
                       style={{ borderColor: RULE }}
-                      placeholder="Sliced, please"
+                      placeholder="Per favore, affettato"
                     />
                   </label>
                   <button
@@ -351,7 +351,7 @@ export default function FieldingRye() {
                     className="rounded-full px-6 py-3 text-[12px] uppercase tracking-widest transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40"
                     style={{ background: INK, color: PAPER }}
                   >
-                    {totalQty === 0 ? "Add loaves above" : `Confirm order · $${totalPrice}`}
+                    {totalQty === 0 ? "Aggiungi il pane qui sopra" : `Conferma l'ordine · $${totalPrice}`}
                   </button>
                 </form>
               )}
@@ -375,7 +375,7 @@ export default function FieldingRye() {
             </div>
             <article className="flex flex-col justify-center">
               <p className="text-[11px] uppercase tracking-[0.25em]" style={{ opacity: 0.55 }}>
-                Our story
+                La nostra storia
               </p>
               <blockquote id="fielding-story" className="mt-4 text-2xl leading-snug" style={{ fontFamily: SERIF }}>
                 &ldquo;We wanted a bakery that felt like it had always been on this corner — even on day one.&rdquo;
@@ -397,24 +397,24 @@ export default function FieldingRye() {
           style={{ borderColor: RULE }}
         >
           <AiIntent id="fielding-visit-intent">
-            Provide hours, location, and contact information for visiting or ordering ahead.
+            Fornire orari, posizione e informazioni di contatto per visitare il panificio o prenotare in anticipo.
           </AiIntent>
           <div className="mx-auto grid max-w-5xl gap-10 px-6 sm:grid-cols-3">
             <article>
               <p id="fielding-visit" className="text-[11px] uppercase tracking-[0.25em]" style={{ opacity: 0.55 }}>
-                Hours
+                Orari
               </p>
               <p className="mt-3 text-sm leading-relaxed">
-                Tue-Fri 7am-3pm
+                Mar–ven 7:00–15:00
                 <br />
-                Sat-Sun 8am-2pm
+                Sab–dom 8:00–14:00
                 <br />
-                Closed Mondays
+                Chiuso il lunedì
               </p>
             </article>
             <article>
               <p className="text-[11px] uppercase tracking-[0.25em]" style={{ opacity: 0.55 }}>
-                Find us
+                Dove siamo
               </p>
               <p className="mt-3 text-sm leading-relaxed">
                 412 Ashcombe Lane
@@ -443,7 +443,7 @@ export default function FieldingRye() {
         >
           <span>© {new Date().getFullYear()} Fielding &amp; Rye</span>
           <Link to="/" className="underline underline-offset-4 transition-opacity hover:opacity-70">
-            Template preview by PrismWave Studio
+            Anteprima del modello a cura di PrismWave Studio
           </Link>
         </div>
       </footer>
