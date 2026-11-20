@@ -46,7 +46,7 @@ export default function FAQ() {
     <Section
       id="faq"
       ai="faq"
-      intent="Answer common questions about the studio, process, pricing, and project fit."
+      intent="Rispondere alle domande più comuni sullo studio, sul processo di lavoro, sui prezzi e sull'idoneità dei progetti."
       labelledBy="faq-title"
       className="border-t border-ink-line bg-ink-2 py-16 md:py-24"
     >
