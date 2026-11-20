@@ -32,8 +32,8 @@ export default function OpsRookCaseStudy() {
       </header>
       <main className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <section className="max-w-4xl" aria-labelledby="opsrook-title">
-          <AiIntent id="opsrook-hero-intent">Presentare OpsRook-VI come progetto dimostrativo di prodotto per infrastrutture AI e spiegare il problema aziendale alla base del progetto.</AiIntent>
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-amber">Infrastruttura AI · Strategia di prodotto · Progettazione dei flussi</p>
+          <AiIntent id="opsrook-hero-intent">Presentare OpsRook-VI come progetto dimostrativo di prodotto per infrastrutture di IA e spiegare il problema aziendale alla base del progetto.</AiIntent>
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-amber">Infrastruttura di IA · Strategia di prodotto · Progettazione dei flussi</p>
           <h1 id="opsrook-title" className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">Trasforma le capacità tecniche in crescita commerciale.</h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-paper/65">OpsRook-VI affronta una sfida di crescita comune per i team SaaS con solide competenze tecniche: arrivano richieste qualificate, ma i contatti si bloccano durante la valutazione e i progetti pilota più promettenti impiegano troppo tempo per arrivare in produzione.</p>
           <div className="mt-8 flex flex-wrap gap-3">
