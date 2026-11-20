@@ -7,10 +7,10 @@ export default function ReviewPopup({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-[#0f0f11] border border-white/10 p-8 rounded-xl w-full max-w-md text-white">
-        <h2 className="text-2xl font-semibold mb-4">Leave a Review</h2>
+        <h2 className="text-2xl font-semibold mb-4">Lascia una recensione</h2>
 
         <p className="text-white/70 mb-4">
-          How was your experience with PrismWave?
+          Com'è stata la tua esperienza con PrismWave?
         </p>
 
         <div className="flex gap-2 mb-4">
@@ -30,7 +30,7 @@ export default function ReviewPopup({ onClose }: { onClose: () => void }) {
         <textarea
           className="w-full p-3 rounded bg-white/10 border border-white/20 text-white mb-4"
           rows={4}
-          placeholder="Tell us what you think..."
+          placeholder="Raccontaci la tua esperienza..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
@@ -40,7 +40,7 @@ export default function ReviewPopup({ onClose }: { onClose: () => void }) {
             onClick={onClose}
             className="text-white/60 hover:text-white"
           >
-            Maybe later
+            Magari più tardi
           </button>
 
           <button
@@ -50,7 +50,7 @@ export default function ReviewPopup({ onClose }: { onClose: () => void }) {
             }}
             className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white"
           >
-            Submit Review
+            Invia la recensione
           </button>
         </div>
       </div>
