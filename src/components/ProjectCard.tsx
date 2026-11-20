@@ -14,7 +14,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
         {project.status === "concept" && (
           <span className="absolute right-3 top-3 z-10 rounded-full border border-ink-line bg-ink/80 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-paper/70 backdrop-blur-sm">
-            Concept
+            Progetto dimostrativo
           </span>
         )}
       </div>
