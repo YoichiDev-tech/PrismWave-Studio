@@ -65,7 +65,7 @@ export default function BrandReel({ className = "" }: BrandReelProps) {
         </div>
 
         <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-          Signal — always live
+          Segnale — sempre attivo
         </p>
       </div>
 
