@@ -27,7 +27,7 @@ export const LAUNCHES: LaunchEvent[] = [
   {
     id: "fielding-launch",
     date: "2026-08-12",
-    title: "Pubblicato il concept Fielding & Rye",
+    title: "Pubblicato il progetto dimostrativo Fielding & Rye",
     description: "Modello per un panificio con stile editoriale e flusso interattivo di prenotazione anticipata.",
     type: "project",
     href: "/projects/fielding-and-rye",
@@ -35,7 +35,7 @@ export const LAUNCHES: LaunchEvent[] = [
   {
     id: "nova-launch",
     date: "2026-08-20",
-    title: "Pubblicato il concept Nova Cloud",
+    title: "Pubblicato il progetto dimostrativo Nova Cloud",
     description: "Sito per un prodotto SaaS di monitoraggio, con raccolta delle richieste di prova e interfaccia con metriche in tempo reale.",
     type: "project",
     href: "/projects/nova-cloud",
@@ -43,7 +43,7 @@ export const LAUNCHES: LaunchEvent[] = [
   {
     id: "bloom-launch",
     date: "2026-09-01",
-    title: "Pubblicato il concept Bloom Market",
+    title: "Pubblicato il progetto dimostrativo Bloom Market",
     description: "Pagina di presentazione per una boutique e relativo caso studio.",
     type: "project",
     href: "/projects/bloom-market",
