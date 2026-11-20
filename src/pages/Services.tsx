@@ -66,7 +66,7 @@ export default function Services({ onSelectIntent }: ServicesProps) {
     <div className="grain min-h-screen bg-ink">
       <SEO
         title="Analisi, modernizzazione e sistemi aziendali | PrismWave Studio"
-        description="Find out if your site looks and performs like it is 2026, or get the website you always wanted built. Free audit, fixed-price builds, custom business systems."
+        description="Scopri se il tuo sito è al passo con gli standard attuali o realizza il sito che desideri. Analisi gratuita, progetti a prezzo definito e sistemi aziendali su misura."
         path="/services"
       />
 
