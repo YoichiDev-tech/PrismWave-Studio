@@ -15,8 +15,7 @@ export default function LiveChat() {
       return;
     }
 
-    Crisp.configure(CRISP_WEBSITE_ID);
-    Crisp.setLocale("it");
+    Crisp.configure(CRISP_WEBSITE_ID, { locale: "it" });
 
     Crisp.chat.show();
 
