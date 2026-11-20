@@ -30,7 +30,7 @@ export const TIERS: Tier[] = [
       'Core Web Vitals e velocità di caricamento',
       'Titoli, descrizioni, anteprime social e metadati strutturati',
       'Layout e leggibilità su dispositivi mobili',
-      'Accessibilità e leggibilità per motori di ricerca e sistemi AI',
+      'Accessibilità e leggibilità per motori di ricerca e sistemi di IA',
     ],
     deliverables: [
       'Punteggi iniziali che puoi verificare autonomamente',
