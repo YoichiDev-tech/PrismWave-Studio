@@ -153,19 +153,19 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
             {status === "sent" ? (
               <div className="flex min-h-[320px] flex-col items-center justify-center text-center">
                 <h3 className="font-display text-xl font-semibold text-paper">Messaggio inviato</h3>
-                <p className="mt-2 text-sm text-ink-soft">We'll get back to you within one business day.</p>
+                <p className="mt-2 text-sm text-ink-soft">Ti risponderemo entro un giorno lavorativo.</p>
                 <button
                   type="button"
                   onClick={() => setStatus("idle")}
                   className="mt-6 font-mono text-[12px] uppercase text-amber underline"
                 >
-                  Send another message
+                  Invia un altro messaggio
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="grid gap-5">
                 <div className="grid gap-2">
-                  <span className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">I want to</span>
+                  <span className="font-mono text-[11px] uppercase tracking-wide text-ink-soft">Vorrei</span>
                   <div className="grid gap-2 sm:grid-cols-2">
                     <button
                       type="button"
@@ -176,7 +176,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                           : "border-ink-line text-ink-soft"
                       }`}
                     >
-                      Improve an existing site
+                      Migliorare un sito esistente
                     </button>
                     <button
                       type="button"
@@ -187,14 +187,14 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                           : "border-ink-line text-ink-soft"
                       }`}
                     >
-                      Build something new
+                      Realizzare qualcosa di nuovo
                     </button>
                   </div>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <label className="flex flex-col gap-2">
-                    <span className="font-mono text-[11px] uppercase text-ink-soft">Name</span>
+                    <span className="font-mono text-[11px] uppercase text-ink-soft">Nome</span>
                     <input
                       type="text"
                       autoComplete="name"
@@ -217,7 +217,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
 
                 {activeIntent === "audit" ? (
                   <label className="flex flex-col gap-2">
-                    <span className="font-mono text-[11px] uppercase text-ink-soft">Current website URL</span>
+                    <span className="font-mono text-[11px] uppercase text-ink-soft">Indirizzo del sito attuale</span>
                     <input
                       type="text"
                       value={form.siteUrl}
@@ -227,7 +227,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                   </label>
                 ) : (
                   <label className="flex flex-col gap-2">
-                    <span className="font-mono text-[11px] uppercase text-ink-soft">What are you dreaming up?</span>
+                    <span className="font-mono text-[11px] uppercase text-ink-soft">Che cosa vorresti realizzare?</span>
                     <input
                       type="text"
                       value={form.idea}
@@ -238,13 +238,13 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
                 )}
 
                 <label className="flex flex-col gap-2">
-                  <span className="font-mono text-[11px] uppercase text-ink-soft">Message</span>
+                  <span className="font-mono text-[11px] uppercase text-ink-soft">Messaggio</span>
                   <textarea
                     value={form.message}
                     onChange={update("message")}
                     rows={4}
                     placeholder={
-                      activeIntent === "build" ? "Optional if you filled in the idea above" : undefined
+                      activeIntent === "build" ? "Facoltativo se hai già descritto la tua idea qui sopra" : undefined
                     }
                     className="resize-none rounded-lg border border-ink-line bg-transparent px-4 py-3 text-paper"
                   />
