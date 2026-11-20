@@ -25,22 +25,22 @@ export default function ProofSection() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="rounded-3xl border border-ink-line bg-ink-2/60 p-6 sm:p-10">
             <p className="font-mono text-[11px] uppercase tracking-widest text-amber">
-              Founding clients
+              Clienti fondatori
             </p>
             <h2 className="mt-2 font-display text-2xl font-semibold text-paper sm:text-3xl">
-              Proof you can verify, not numbers we made up
+              Risultati verificabili, non numeri inventati
             </h2>
             <p className="mt-3 max-w-2xl text-ink-soft">
               We are building our first public case studies right now. We audit your site, fix
               one real bottleneck for free, and measure it before and after. In return you give
-              an honest review and let us publish the result. Nothing appears here until it is real.
+              una valutazione sincera e autorizzare la pubblicazione dei risultati. Qui non apparirà nulla finché non sarà reale.
             </p>
             <a
               href={LINKS.audit}
               className="mt-6 inline-block rounded-full px-6 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98]"
               style={{ background: 'linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)' }}
             >
-              Claim a founding audit
+              Richiedi un'analisi iniziale
             </a>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function ProofSection() {
     <section id="proof" className="grain bg-ink py-20">
       <div className="mx-auto max-w-6xl px-6">
         <h2 className="font-display text-2xl font-semibold text-paper sm:text-3xl">
-          Results, measured
+          Risultati misurati
         </h2>
         <div className="mt-8 space-y-10">
           {CASE_STUDIES.map((c) => (
@@ -71,7 +71,7 @@ export default function ProofSection() {
                 ))}
               </div>
               <p className="mt-3 font-mono text-[11px] text-ink-soft">
-                Measured with: {c.measuredWith}
+                Misurato con: {c.measuredWith}
               </p>
               {c.quote && (
                 <blockquote className="mt-5 border-l-2 border-amber pl-4 text-paper/90">
@@ -86,7 +86,7 @@ export default function ProofSection() {
                 to={`/case-studies/${c.slug}`}
                 className="mt-5 inline-block font-display text-sm font-semibold text-amber transition-colors hover:text-paper"
               >
-                Read the full case study →
+                Leggi il caso studio completo →
               </Link>
             </article>
           ))}
