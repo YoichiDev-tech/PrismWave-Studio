@@ -9,7 +9,7 @@ export default function Work() {
 		<div className="min-h-screen bg-ink text-paper">
 			<SEO
 				title="Progetti e modelli"
-				description="Live, clickable portfolio templates from PrismWave Studio — Bloom Market, Fielding & Rye, and Nova Cloud — plus case studies behind each build."
+				description="Modelli interattivi del portfolio PrismWave Studio — Bloom Market, Fielding & Rye e Nova Cloud — e casi studio dei relativi progetti."
 				path="/work"
 			/>
 			<AiMetadata
