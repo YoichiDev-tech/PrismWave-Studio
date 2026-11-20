@@ -7,7 +7,7 @@ const field =
 export default function ReviewForm() {
   const [name, setName] = useState('');
   const [business, setBusiness] = useState('');
-  const [rating, setValutazione] = useState(0);
+  const [rating, setRating] = useState(0);
   const [message, setMessage] = useState('');
   const [consent, setConsent] = useState(false);
   const [website, setWebsite] = useState(''); // honeypot
@@ -81,7 +81,7 @@ export default function ReviewForm() {
       <div className="text-sm text-ink-soft">
         Valutazione
         <div className="mt-1">
-          <StarInput value={rating} onChange={setValutazione} />
+          <StarInput value={rating} onChange={setRating} />
         </div>
       </div>
 
@@ -121,7 +121,7 @@ export default function ReviewForm() {
         />
         <span>
           Acconsento alla pubblicazione di questa recensione da parte di PrismWave Studio dopo l'approvazione. Alcune parti potranno essere
-          shortened or shown without my name or business.
+          abbreviate o pubblicate senza il mio nome o quello della mia attività.
         </span>
       </label>
 
