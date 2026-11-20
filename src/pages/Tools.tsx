@@ -103,10 +103,10 @@ export default function Tools() {
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
         <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Strumenti dello studio</p>
         <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Controlli gratuiti eseguiti su infrastruttura reale.
+          Controlli gratuiti eseguiti su un'infrastruttura reale.
         </h1>
         <p className="mt-4 text-ink-soft">
-          Diagnostica lato server, non semplici schermate. Inserisci un URL e ricevi indicazioni concrete.
+          Diagnostica eseguita lato server, non semplici schermate dimostrative. Inserisci l'indirizzo di un sito e ricevi indicazioni concrete.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-2">
@@ -146,7 +146,7 @@ export default function Tools() {
               type="url"
               inputMode="url"
               autoComplete="url"
-              placeholder="https://yoursite.com"
+              placeholder="https://iltuosito.it"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               onKeyDown={(e) => {
@@ -199,7 +199,7 @@ export default function Tools() {
           <div className="mt-8 space-y-4 rounded-2xl border border-ink-line bg-ink/60 p-6">
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Risultati — header</p>
             <p className="text-sm text-ink-soft">
-              {headers.finalUrl} · HTTP {headers.status} · {headers.isHttps ? "HTTPS" : "Non HTTPS"}
+              {headers.finalUrl} · HTTP {headers.status} · {headers.isHttps ? "HTTPS" : "Senza HTTPS"}
             </p>
             <ul className="mt-4 space-y-3">
               {headers.checks.map((c) => (
