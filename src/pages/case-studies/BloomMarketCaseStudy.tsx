@@ -14,11 +14,11 @@ const YELLOW = "#FFD23F";
 const MINT = "#8FD3C0";
 
 const PALETTE = [
-  { name: "Cream", hex: CREAM, use: "Base background" },
-  { name: "Plum", hex: PLUM, use: "Text & primary buttons" },
-  { name: "Pink", hex: PINK, use: "Accent shapes & CTAs" },
-  { name: "Yellow", hex: YELLOW, use: "Highlights & tags" },
-  { name: "Mint", hex: MINT, use: "Secondary accent" },
+  { name: "Crema", hex: CREAM, use: "Sfondo principale" },
+  { name: "Prugna", hex: PLUM, use: "Testi e pulsanti principali" },
+  { name: "Rosa", hex: PINK, use: "Elementi decorativi e inviti all'azione" },
+  { name: "Giallo", hex: YELLOW, use: "Evidenziazioni ed etichette" },
+  { name: "Menta", hex: MINT, use: "Colore secondario" },
 ];
 
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
@@ -67,21 +67,21 @@ function TypeSpecimen() {
     <div
       className="mt-8 overflow-hidden rounded-2xl border border-ink-line"
       role="region"
-      aria-label="Typography specimen"
+      aria-label="Tipografia specimen"
     >
       <div className="space-y-5 p-8" style={{ background: CREAM, color: PLUM }}>
         <p className="text-4xl font-bold leading-none" style={{ fontFamily: ROUND }}>
-          Fresh blooms, weekly.
+          Fiori freschi, ogni settimana.
         </p>
         <p className="text-lg font-semibold" style={{ fontFamily: ROUND }}>
-          This week's favorites
+          I preferiti della settimana
         </p>
         <p
           className="max-w-md text-sm"
           style={{ opacity: 0.75, fontFamily: "'Inter', sans-serif" }}
         >
-          Hand-tied bouquets and easy-care plants, dropped off on your porch
-          every week — set in Fredoka for headlines and Inter for body copy.
+          Bouquet realizzati a mano e piante facili da curare, consegnati a casa tua
+          ogni settimana. Per i titoli utilizziamo Fredoka, mentre per i testi utilizziamo Inter.
         </p>
       </div>
       <div className="flex flex-wrap gap-4 bg-ink-2/60 px-8 py-4 font-mono text-[11px] uppercase tracking-wide text-paper/50">
@@ -102,7 +102,7 @@ function LayoutDiagram() {
       <div className="grid gap-3">
         <div className="flex items-center justify-between rounded-lg border border-dashed border-paper/20 px-4 py-3">
           <span className="font-mono text-[10px] uppercase tracking-wide text-paper/40">
-            Nav
+            Navigazione
           </span>
           <span className="h-2 w-16 rounded-full bg-paper/15" />
         </div>
@@ -128,7 +128,7 @@ function LayoutDiagram() {
         </div>
       </div>
       <p className="mt-4 font-mono text-[10px] uppercase tracking-widest text-paper/40">
-        Asymmetrical grid, rounded organic shapes, generous whitespace
+        Griglia asimmetrica, forme organiche arrotondate e ampi spazi vuoti
       </p>
     </div>
   );
@@ -142,9 +142,9 @@ function InteractionDemo() {
       aria-label="Interaction demo cards"
     >
       {[
-        { label: "Sunday Bouquet", price: "$38", bg: PINK },
-        { label: "Citrus & Herb Jar", price: "$22", bg: YELLOW },
-        { label: "Dried Bloom Bundle", price: "$28", bg: MINT },
+        { label: "Bouquet della domenica", price: "$38", bg: PINK },
+        { label: "Vaso agli agrumi e alle erbe", price: "$22", bg: YELLOW },
+        { label: "Composizione di fiori essiccati", price: "$28", bg: MINT },
       ].map((p) => (
         <div
           key={p.label}
@@ -171,7 +171,7 @@ function InteractionDemo() {
         </div>
       ))}
       <p className="col-span-full font-mono text-[10px] uppercase tracking-widest text-paper/40">
-        Hover a card — gentle lift and scale, no motion overload
+        Passa il cursore su una scheda: un leggero sollevamento e ingrandimento, senza animazioni eccessive
       </p>
     </div>
   );
@@ -204,16 +204,16 @@ function LiveHeroPreview() {
             className="inline-block rounded-full px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wide"
             style={{ background: PLUM, color: CREAM, fontFamily: ROUND }}
           >
-            New drop every Friday
+            Nuova selezione ogni venerdì
           </p>
           <h3
             className="mt-5 max-w-sm text-3xl font-bold leading-[0.98] sm:text-4xl"
             style={{ fontFamily: ROUND }}
           >
-            Fresh blooms, no green thumb required.
+            Fiori freschi, senza bisogno del pollice verde.
           </h3>
           <p className="mt-4 max-w-xs text-sm" style={{ opacity: 0.75 }}>
-            Hand-tied bouquets and easy-care plants, dropped off on your
+            Bouquet realizzati a mano e piante facili da curare, consegnati a casa tua
             porch every week.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -221,13 +221,13 @@ function LiveHeroPreview() {
               className="rounded-full px-5 py-2.5 text-xs font-bold"
               style={{ background: PINK, color: PLUM, fontFamily: ROUND }}
             >
-              Shop the drop
+              Acquista la selezione
             </span>
             <span
               className="rounded-full border-2 px-5 py-2.5 text-xs font-bold"
               style={{ borderColor: PLUM, fontFamily: ROUND }}
             >
-              Start a subscription
+              Attiva un abbonamento
             </span>
           </div>
         </div>
@@ -238,7 +238,7 @@ function LiveHeroPreview() {
           to="/work/bloom-market#top"
           className="underline underline-offset-4 hover:text-paper/70"
         >
-          View the real hero &rarr;
+          Visualizza la sezione principale reale &rarr;
         </Link>
       </div>
     </div>
@@ -249,15 +249,15 @@ export default function BloomMarketCaseStudy() {
   return (
     <div ai-tag="case-study" data-ai="page" className="bg-ink cursor-default">
       <SEO
-        title="Bloom Market — Case Study"
+        title="Bloom Market — Caso studio"
         description="Design system and product concept behind Bloom Market, a bright storefront template for weekly flower delivery businesses."
         path="/work/bloom-market/case-study"
       />
       <AiMetadata
-        map={["Case study hero", "Final product preview", "Project overview", "Color palette", "Typography", "Layout system", "Interaction design", "Final call to action"]}
+        map={["Presentazione del caso studio", "Anteprima del prodotto finale", "Panoramica del progetto", "Palette colori", "Tipografia", "Sistema di layout", "Progettazione delle interazioni", "Invito finale all'azione"]}
         intent="Explain the design decisions behind the Bloom Market ecommerce template and show how the visual system supports flower subscriptions."
-        tags={["case study", "ecommerce design", "flower brand", "visual identity", "Bloom Market"]}
-        extract={{ title: "Bloom Market case study", audience: "Retail founders and design teams", primaryActions: "Review the design system and view the live template", outcome: "A bright storefront concept for weekly flower delivery" }}
+        tags={["caso studio", "design e-commerce", "marchio floreale", "identità visiva", "Bloom Market"]}
+        extract={{ title: "Caso studio Bloom Market", audience: "Fondatori di attività commerciali e team di design", primaryActions: "Esaminare il sistema di design e visualizzare il modello interattivo", outcome: "Un concept luminoso per un negozio con consegna settimanale di fiori" }}
       />
       <header data-ai="navigation" className="border-b border-ink-line">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-6">
@@ -265,13 +265,13 @@ export default function BloomMarketCaseStudy() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            &larr; Back to studio
+            &larr; Torna allo studio
           </Link>
           <Link
             to="/work/bloom-market"
             className="rounded-full border border-ink-line px-4 py-2 font-mono text-[11px] uppercase tracking-wide text-paper/70 transition-colors hover:border-amber hover:text-paper"
           >
-            View live template
+            Visualizza il modello interattivo
           </Link>
         </div>
       </header>
@@ -286,10 +286,10 @@ export default function BloomMarketCaseStudy() {
 
             {/* Hero */}
             <section aria-labelledby="case-study-hero" aria-describedby="bloom-hero-intent" role="region" data-ai="hero">
-              <AiIntent id="bloom-hero-intent">Introduce the Bloom Market case study and preview its visual direction.</AiIntent>
+              <AiIntent id="bloom-hero-intent">Presentare il caso studio Bloom Market e mostrare la sua direzione visiva.</AiIntent>
               <Reveal>
                 <p className="font-mono text-[12px] uppercase tracking-widest text-paper/50">
-                  Case Study
+                  Caso studio
                 </p>
                 <h1
                   id="case-study-hero"
@@ -298,9 +298,7 @@ export default function BloomMarketCaseStudy() {
                   Bloom Market
                 </h1>
                 <p className="mt-6 max-w-2xl text-paper/70 leading-relaxed">
-                  A deeper look at how the Bloom Market landing page was designed —
-                  exploring palette, type, layout, and the playful visual language
-                  behind the final template.
+                  Uno sguardo più approfondito alla progettazione della pagina Bloom Market, dalla palette alla tipografia e al layout, fino al linguaggio visivo giocoso del modello finale.
                 </p>
                 <LiveHeroPreview />
               </Reveal>
@@ -308,7 +306,7 @@ export default function BloomMarketCaseStudy() {
 
             {/* Final Mock */}
             <section aria-labelledby="case-study-final-mock" aria-describedby="bloom-mock-intent" role="region" data-ai="product-preview">
-              <AiIntent id="bloom-mock-intent">Show the final Bloom Market storefront concept as a product preview.</AiIntent>
+              <AiIntent id="bloom-mock-intent">Mostrare il concept finale del negozio Bloom Market come anteprima del prodotto.</AiIntent>
               <Reveal delay={1} className="mt-12">
                 <BrowserChrome bg="#FFE8D6">
                   <BloomMock />
@@ -316,44 +314,36 @@ export default function BloomMarketCaseStudy() {
               </Reveal>
             </section>
 
-            {/* Overview */}
+            {/* Panoramica */}
             <section aria-labelledby="case-study-overview" aria-describedby="bloom-overview-intent" role="region" data-ai="overview">
-              <AiIntent id="bloom-overview-intent">Explain the brief, audience, and visual goals for Bloom Market.</AiIntent>
+              <AiIntent id="bloom-overview-intent">Spiegare il brief, il pubblico di riferimento e gli obiettivi visivi di Bloom Market.</AiIntent>
               <Reveal delay={1} className="mt-20">
-                <SectionHeading eyebrow="01 — Brief" title="Overview" />
+                <SectionHeading eyebrow="01 — Brief" title="Panoramica" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
-                  Bloom Market is a boutique flower and gift shop with a
-                  maximalist, expressive identity. The goal was to create a
-                  landing page that feels alive — oversized type, organic shapes,
-                  and a palette built around warmth and celebration.
+                  Bloom Market è un negozio boutique di fiori e articoli da regalo, con un'identità espressiva e ricca di elementi visivi. L'obiettivo era creare una pagina di presentazione vivace, con caratteri tipografici ampi, forme organiche e una palette che trasmettesse calore e festa.
                 </p>
               </Reveal>
             </section>
 
             {/* Palette */}
             <section aria-labelledby="case-study-palette" aria-describedby="bloom-palette-intent" role="region" data-ai="palette">
-              <AiIntent id="bloom-palette-intent">Document the colors chosen to balance warmth, richness, and approachability.</AiIntent>
+              <AiIntent id="bloom-palette-intent">Documentare i colori scelti per bilanciare calore, ricchezza visiva e accessibilità.</AiIntent>
               <Reveal delay={2} className="mt-16">
-                <SectionHeading eyebrow="02 — Palette" title="Color Palette" />
+                <SectionHeading eyebrow="02 — Palette" title="Palette dei colori" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
-                  The palette mixes soft peach tones with deep berry accents. This
-                  creates a balance between approachability and richness — perfect
-                  for a boutique brand.
+                  La palette combina delicate tonalità pesca con accenti color frutti di bosco. Il risultato bilancia accoglienza e ricchezza visiva, una scelta adatta a un marchio boutique.
                 </p>
                 <PaletteSwatches />
               </Reveal>
             </section>
 
-            {/* Typography */}
+            {/* Tipografia */}
             <section aria-labelledby="case-study-type" aria-describedby="bloom-type-intent" role="region" data-ai="typography">
-              <AiIntent id="bloom-type-intent">Document the display and body typography system used by the template.</AiIntent>
+              <AiIntent id="bloom-type-intent">Documentare il sistema tipografico utilizzato per titoli e testi del modello.</AiIntent>
               <Reveal delay={1} className="mt-16">
-                <SectionHeading eyebrow="03 — Type" title="Typography" />
+                <SectionHeading eyebrow="03 — Tipografia" title="Tipografia" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
-                  The type system uses a bold, rounded display font for headlines
-                  and a clean sans-serif for supporting text. This contrast
-                  reinforces the playful personality of the brand while keeping
-                  the content readable.
+                  Il sistema tipografico utilizza un carattere marcato e arrotondato per i titoli e un sans serif pulito per i testi di supporto. Questo contrasto rafforza la personalità giocosa del marchio mantenendo i contenuti leggibili.
                 </p>
                 <TypeSpecimen />
               </Reveal>
@@ -361,13 +351,11 @@ export default function BloomMarketCaseStudy() {
 
             {/* Layout */}
             <section aria-labelledby="case-study-layout" aria-describedby="bloom-layout-intent" role="region" data-ai="layout">
-              <AiIntent id="bloom-layout-intent">Explain the asymmetrical layout and organic composition system.</AiIntent>
+              <AiIntent id="bloom-layout-intent">Spiegare il layout asimmetrico e il sistema di composizione organica.</AiIntent>
               <Reveal delay={2} className="mt-16">
-                <SectionHeading eyebrow="04 — Composition" title="Layout & Composition" />
+                <SectionHeading eyebrow="04 — Composizione" title="Layout e composizione" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
-                  The layout uses large spacing, asymmetrical blocks, and curved
-                  shapes to create a sense of movement. Each section feels like a
-                  "moment" rather than a rigid grid.
+                  Il layout utilizza ampi spazi, blocchi asimmetrici e forme curve per creare un senso di movimento. Ogni sezione diventa un momento visivo, anziché una griglia rigida.
                 </p>
                 <LayoutDiagram />
               </Reveal>
@@ -375,14 +363,11 @@ export default function BloomMarketCaseStudy() {
 
             {/* Interaction */}
             <section aria-labelledby="case-study-interaction" aria-describedby="bloom-interaction-intent" role="region" data-ai="interaction">
-              <AiIntent id="bloom-interaction-intent">Demonstrate the restrained motion and hover behavior used in the interface.</AiIntent>
+              <AiIntent id="bloom-interaction-intent">Mostrare le animazioni misurate e gli effetti al passaggio del cursore utilizzati nell'interfaccia.</AiIntent>
               <Reveal delay={1} className="mt-16">
-                <SectionHeading eyebrow="05 — Motion" title="Interaction & Motion" />
+                <SectionHeading eyebrow="05 — Movimento" title="Interazioni e movimento" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
-                  Hover effects are subtle but expressive — gentle scaling and
-                  soft shadows that bring the interface to life without
-                  overwhelming the user. These micro-interactions reinforce the
-                  playful personality of the brand.
+                  Gli effetti al passaggio del cursore sono discreti ma espressivi: piccoli ingrandimenti e ombre leggere danno vita all'interfaccia senza distrarre l'utente. Queste micro-interazioni rafforzano la personalità giocosa del marchio.
                 </p>
                 <InteractionDemo />
               </Reveal>
@@ -390,7 +375,7 @@ export default function BloomMarketCaseStudy() {
 
             {/* Closing CTA */}
             <section aria-labelledby="case-study-cta" aria-describedby="bloom-cta-intent" role="region" data-ai="cta">
-              <AiIntent id="bloom-cta-intent">Invite visitors to start a similarly considered website project.</AiIntent>
+              <AiIntent id="bloom-cta-intent">Invitare i visitatori ad avviare un progetto web curato con la stessa attenzione.</AiIntent>
               <Reveal
                 delay={2}
                 className="mt-24 rounded-3xl border border-ink-line bg-ink-2/60 px-8 py-12 text-center"
@@ -399,11 +384,10 @@ export default function BloomMarketCaseStudy() {
                   id="case-study-cta"
                   className="font-display text-2xl font-semibold text-paper md:text-3xl"
                 >
-                  Want something built with this much care?
+                  Vuoi realizzare un progetto con la stessa cura?
                 </h2>
                 <p className="mx-auto mt-3 max-w-md text-paper/60">
-                  Whether you're starting from an idea or fixing what's already
-                  there, we'll bring the same attention to detail to your project.
+                  Che tu voglia partire da un'idea o migliorare un sito esistente, porteremo la stessa attenzione ai dettagli nel tuo progetto.
                 </p>
                 <div className="mt-8 flex flex-wrap justify-center gap-4">
                   <Link
@@ -414,7 +398,7 @@ export default function BloomMarketCaseStudy() {
                         "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)",
                     }}
                   >
-                    Start a project
+                    Avvia un progetto
                     <span className="transition-transform group-hover:translate-x-1">
                       &rarr;
                     </span>
@@ -423,7 +407,7 @@ export default function BloomMarketCaseStudy() {
                     to="/"
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-line px-7 py-3.5 font-display text-sm font-semibold text-paper transition-colors hover:border-amber hover:text-amber"
                   >
-                    See more work
+                    Scopri altri progetti
                   </Link>
                 </div>
               </Reveal>
