@@ -8,7 +8,7 @@ const PROMISES = [
   { label: "Tempo di risposta", value: "1 giorno lavorativo" },
   { label: "Proprietà del codice", value: "Interamente tuo" },
   { label: "Realizzato con", value: "React & TypeScript" },
-  { label: "Pricing", value: "Prezzo definito, senza sorprese" },
+  { label: "Prezzi", value: "Prezzo definito, senza sorprese" },
 ];
 
 const STANDARDS = [
@@ -48,14 +48,13 @@ export default function About() {
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-ink-soft">
               Siamo PrismWave Studio, uno studio indipendente con radici nel settore dell'ospitalità e dei servizi. L'esperienza maturata a stretto contatto con
-              customers taught us how small businesses actually operate, and what a website has to do for them.
+              i clienti ci ha insegnato come funzionano davvero le piccole imprese e quale ruolo debba avere un sito web per supportarle.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
               PrismWave Studio progetta e sviluppa siti web moderni e veloci per le piccole imprese, con l'obiettivo di trasformare le visite in contatti. Offriamo analisi gratuite, prezzi definiti e tempistiche concordate in anticipo.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
-              So every project is built for clarity and real-world use: no bloated features, no confusing dashboards, no agency-style
-              e proposte aggiuntive. Non stai scegliendo semplicemente qualcuno che scrive codice.
+              Per questo ogni progetto è pensato per essere chiaro e utile nella pratica: niente funzionalità superflue, pannelli di controllo complicati o proposte aggiuntive tipiche delle grandi agenzie. Non stai scegliendo semplicemente qualcuno che scrive codice.
             </p>
 
             <ul className="mt-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
