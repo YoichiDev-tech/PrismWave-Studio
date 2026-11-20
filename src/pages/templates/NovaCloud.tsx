@@ -32,7 +32,7 @@ const REGIONS = [
 
 export default function NovaCloud() {
   const [activeRegion, setActiveRegion] = useState("US-East");
-  const [selectedTier, setSelectedTier] = useState("Team");
+  const [selectedTier, setSelectedTier] = useState("Squadra");
   const [email, setEmail] = useState("");
   const [trialOpen, setTrialOpen] = useState(false);
   const [trialSent, setTrialSent] = useState(false);
@@ -70,7 +70,7 @@ export default function NovaCloud() {
           audience: "Team di sviluppo e piattaforma",
           primaryActions: "Avviare una prova gratuita o consultare le funzionalità",
           pricing: "Base gratuita; Squadra $49; Azienda personalizzato",
-          proof: "99.98% average uptime across customers",
+          proof: "Disponibilità media del servizio del 99,98%",
         }}
       />
       <BackToStudioBadge tone="dark" />
@@ -172,7 +172,7 @@ export default function NovaCloud() {
                 <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
                 <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
                 <span className="ml-3 text-[11px] text-white/40" style={{ fontFamily: MONO }}>
-                  terminal — nova status
+                  terminale — stato nova
                 </span>
               </div>
 
@@ -183,7 +183,7 @@ export default function NovaCloud() {
 ✓ worker.payments      91ms  200
 ✓ edge.cdn              9ms  200
 
-uptime (30d)  99.98%
+disponibilità (30 giorni)  99.98%
 latenza p95    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
               </pre>
 
@@ -379,8 +379,7 @@ latenza p95    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
                       Sei nella lista per il piano {selectedTier}.
                     </p>
                     <p className="mt-2 text-sm text-white/60">
-                      Solo dimostrazione: non è stata inviata alcuna email. In un prodotto reale, questa azione avvierebbe la prova o aprirebbe un calendario
-                      link.
+                      Solo dimostrazione: non è stata inviata alcuna email. In un prodotto reale, questa azione avvierebbe la prova o aprirebbe un calendario.
                     </p>
                     <button
                       type="button"
@@ -400,13 +399,13 @@ latenza p95    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
                       <p className="text-sm font-semibold text-white/90">
                         Attiva {selectedTier} — inserisci l'email di lavoro
                       </p>
-                      <p className="mt-1 text-xs text-white/45">Demo form. Nothing is stored or emailed.</p>
+                      <p className="mt-1 text-xs text-white/45">Modulo dimostrativo. I dati non vengono salvati né inviati via email.</p>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@company.com"
+                        placeholder="tu@azienda.it"
                         className="mt-3 min-h-11 w-full rounded-md border bg-transparent px-3 text-sm text-white placeholder:text-white/35"
                         style={{ borderColor: LINE }}
                       />
