@@ -5,8 +5,8 @@ import Footer from "../../components/Footer";
 import SEO from "../../components/SEO";
 
 const outcomes = [
-  { value: "23 hours → 11 min", label: "Tempo mediano di risposta ai contatti", detail: "Qualificazione più chiara e responsabilità definite per ogni richiesta." },
-  { value: "21 days → 6 days", label: "Ciclo di distribuzione del progetto pilota", detail: "Verifiche ripetibili di preparazione e visibilità condivisa sulla capacità." },
+  { value: "23 ore → 11 min", label: "Tempo mediano di risposta ai contatti", detail: "Qualificazione più chiara e responsabilità definite per ogni richiesta." },
+  { value: "21 giorni → 6 giorni", label: "Ciclo di distribuzione del progetto pilota", detail: "Verifiche ripetibili di preparazione e visibilità condivisa sulla capacità." },
   { value: "32% → 47%", label: "Conversione da progetto pilota a contratto", detail: "Meno ostacoli tra convalida tecnica e attività successive." },
   { value: "$42k → $65k", label: "Ricavi ricorrenti mensili", detail: "Risultato simulato derivante da un maggior numero di progetti pilota qualificati portati in produzione." },
 ];
