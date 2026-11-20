@@ -47,7 +47,7 @@ export default function Process() {
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Ogni progetto segue un percorso chiaro: risultati comprensibili, un riepilogo scritto
             del progetto, un accordo semplice e poi lo sviluppo. Conosci
-            exact scope and price before any work or deposit begins.
+            ambito e prezzo esatti prima dell'inizio di qualsiasi lavoro o del pagamento di un acconto.
           </p>
         </Reveal>
 
@@ -78,9 +78,9 @@ export default function Process() {
           <div className="mx-auto max-w-3xl rounded-2xl border border-ink-line bg-ink/60 px-6 py-5 text-center">
             <p className="text-sm leading-relaxed text-ink-soft">
               <span className="font-semibold text-paper">Come funziona il pagamento:</span>{" "}
-              35% deposit to start after the agreement is signed, 65% on delivery.
+              Acconto del 35% dopo la firma dell'accordo e saldo del 65% alla consegna.
               L'ambito viene definito prima dell'inizio. Le attività non comprese nell'accordo
-              summary is quoted separately — never billed as surprise hours.
+              Le attività non comprese nell'accordo vengono preventivate separatamente, senza ore aggiuntive a sorpresa.
             </p>
           </div>
         </Reveal>
