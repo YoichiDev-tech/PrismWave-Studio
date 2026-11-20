@@ -9,7 +9,7 @@ export default function Terms() {
       title="Termini di utilizzo"
       updated="11 ottobre 2026"
       path="/terms"
-      description="Terms for using the PrismWave Studio website, free audit tools, and web design and development services."
+      description="Condizioni per l'utilizzo del sito PrismWave Studio, degli strumenti di analisi gratuiti e dei servizi di progettazione e sviluppo web."
     >
       <p>
         Le presenti condizioni disciplinano l'accesso al sito PrismWave Studio e ai relativi strumenti. Utilizzando il sito, accetti di rispettare queste condizioni e la normativa applicabile. I diritti inderogabili riconosciuti dalla normativa a tutela dei consumatori o da altre disposizioni di legge non sono esclusi né limitati.
