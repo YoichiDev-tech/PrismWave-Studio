@@ -19,11 +19,11 @@ export default function PackageSuggestion({
   return (
     <div className="mt-6 rounded-xl border border-ink-line p-4 text-left">
       <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-        Worth a closer look
+        Da approfondire
       </p>
 
       <p className="mt-2 font-display text-base font-semibold text-paper">
-        The score is a starting point, not a project estimate.
+        Il punteggio è un punto di partenza, non un preventivo di progetto.
       </p>
 
       <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
@@ -35,10 +35,10 @@ export default function PackageSuggestion({
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
         <button
           type="button"
-          onClick={() => onSelect("Audit findings review")}
+          onClick={() => onSelect("Revisione dei risultati dell'analisi")}
           className="font-display text-sm font-semibold text-paper underline underline-offset-4 hover:text-amber"
         >
-          Discuss these findings &rarr;
+          Parliamo dei risultati &rarr;
         </button>
 
         <button
@@ -46,7 +46,7 @@ export default function PackageSuggestion({
           onClick={() => scrollToSection("pricing")}
           className="font-mono text-[11px] uppercase tracking-wide text-ink-soft underline underline-offset-4 hover:text-amber"
         >
-          See available services
+          Scopri i servizi disponibili
         </button>
       </div>
     </div>
