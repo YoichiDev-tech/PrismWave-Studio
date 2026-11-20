@@ -29,7 +29,7 @@ export default function Process() {
     <Section
       id="process"
       ai="process"
-      intent="Show the clear fixed-scope path from first contact through written agreement, build, and handover."
+      intent="Mostrare il percorso con ambito definito, dal primo contatto all'accordo scritto, allo sviluppo e alla consegna."
       labelledBy="process-title"
       className="border-y border-ink-line bg-ink-2 py-16 md:py-20"
     >
