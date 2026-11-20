@@ -27,10 +27,10 @@ export const PROJECTS: Project[] = [
     livePath: "/work/fielding-and-rye",
     launched: "2026-08-12",
     relaunched: null,
-    tags: ["Attività locale", "Stile editoriale", "Prenotazione anticipata", "Concept"],
+    tags: ["Attività locale", "Stile editoriale", "Prenotazione anticipata", "Progetto dimostrativo"],
     status: "concept",
     pricingNote:
-      "I concept mostrano direzione e qualità del lavoro. Il tuo progetto avrà ambito e prezzo definiti dopo un breve confronto, senza costi a sorpresa.",
+      "I progetti dimostrativi mostrano la direzione e la qualità del lavoro. Il tuo progetto avrà ambito e prezzo definiti dopo un breve confronto, senza costi a sorpresa.",
   },
   {
     slug: "nova-cloud",
@@ -43,10 +43,10 @@ export const PROJECTS: Project[] = [
     livePath: "/work/nova-cloud",
     launched: "2026-08-20",
     relaunched: null,
-    tags: ["SaaS", "Interfaccia scura", "Prezzi", "Concept"],
+    tags: ["SaaS", "Interfaccia scura", "Prezzi", "Progetto dimostrativo"],
     status: "concept",
     pricingNote:
-      "I concept mostrano direzione e qualità del lavoro. Il tuo progetto avrà ambito e prezzo definiti dopo un breve confronto, senza costi a sorpresa.",
+      "I progetti dimostrativi mostrano la direzione e la qualità del lavoro. Il tuo progetto avrà ambito e prezzo definiti dopo un breve confronto, senza costi a sorpresa.",
   },
   {
     slug: "bloom-market",
@@ -59,10 +59,10 @@ export const PROJECTS: Project[] = [
     livePath: "/work/bloom-market",
     launched: "2026-09-01",
     relaunched: null,
-    tags: ["Vendita al dettaglio", "Pagina di presentazione", "Marchio", "Concept"],
+    tags: ["Vendita al dettaglio", "Pagina di presentazione", "Marchio", "Progetto dimostrativo"],
     status: "concept",
     pricingNote:
-      "I concept mostrano direzione e qualità del lavoro. Il tuo progetto avrà ambito e prezzo definiti dopo un breve confronto, senza costi a sorpresa.",
+      "I progetti dimostrativi mostrano la direzione e la qualità del lavoro. Il tuo progetto avrà ambito e prezzo definiti dopo un breve confronto, senza costi a sorpresa.",
   },
 ];
 
