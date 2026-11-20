@@ -16,7 +16,7 @@ export default function Screenshot({ src, label }: ScreenshotProps) {
       <figure className="mt-8">
         <div className="flex aspect-video items-center justify-center rounded-lg border border-dashed border-paper/20 bg-ink-2/40 text-center">
           <p className="max-w-xs px-6 font-mono text-[11px] uppercase tracking-wide text-paper/40">
-            {label || "Screenshot"} — image not available
+            {label || "Immagine"} — immagine non disponibile
           </p>
         </div>
       </figure>
@@ -27,7 +27,7 @@ export default function Screenshot({ src, label }: ScreenshotProps) {
     <figure className="mt-8">
       <img
         src={src}
-        alt={label || "Screenshot"}
+        alt={label || "Immagine"}
         loading="lazy"
         onError={() => setFailed(true)}
         className="w-full rounded-lg border border-paper/10 shadow-lg"
