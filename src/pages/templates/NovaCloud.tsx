@@ -58,7 +58,7 @@ export default function NovaCloud() {
     >
       <SEO
         title="Nova Cloud — Modello dimostrativo"
-        description="An observability SaaS landing page template with pricing tiers and a free-trial flow, built by PrismWave Studio."
+        description="Un modello di pagina per un servizio SaaS di monitoraggio, con piani tariffari e procedura di prova gratuita, realizzato da PrismWave Studio."
         path="/work/nova-cloud"
       />
       <AiMetadata
