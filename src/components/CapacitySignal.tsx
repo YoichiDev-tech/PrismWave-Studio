@@ -18,8 +18,8 @@ export default function CapacitySignal() {
         aria-live="polite"
       >
         {isFree
-          ? "Open for new website projects this month"
-          : `Currently taking on ${SLOTS_TAKEN} client build${SLOTS_TAKEN === 1 ? "" : "s"}`}
+          ? "Disponibilità per nuovi progetti web questo mese"
+          : `Attualmente stiamo seguendo ${SLOTS_TAKEN} progetti cliente`}
       </span>
     </div>
   );
