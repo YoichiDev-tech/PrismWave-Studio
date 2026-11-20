@@ -8,20 +8,20 @@ export default function Work() {
 	return (
 		<div className="min-h-screen bg-ink text-paper">
 			<SEO
-				title="Work & Templates"
+				title="Progetti e modelli"
 				description="Live, clickable portfolio templates from PrismWave Studio — Bloom Market, Fielding & Rye, and Nova Cloud — plus case studies behind each build."
 				path="/work"
 			/>
 			<AiMetadata
-				map={["Work introduction", "Selected templates", "Project cards", "Studio footer"]}
-				intent="Showcase PrismWave Studio website work and direct visitors to complete portfolio templates and case studies."
-				tags={["web design portfolio", "website templates", "case studies", "PrismWave Studio work"]}
-				extract={{ title: "PrismWave Studio Work", audience: "Founders and businesses evaluating a website studio", primaryActions: "Open a project template or case study", projects: "Fielding & Rye, Nova Cloud, Bloom Market" }}
+				map={["Introduzione ai progetti", "Modelli selezionati", "Schede progetto", "Piè di pagina dello studio"]}
+				intent="Presentare i lavori web di PrismWave Studio e indirizzare i visitatori ai modelli interattivi e ai casi studio completi."
+				tags={["portfolio di web design", "modelli di siti web", "casi studio", "progetti PrismWave Studio"]}
+				extract={{ title: "PrismWave Studio Work", audience: "Fondatori e aziende che stanno valutando uno studio web", primaryActions: "Aprire un modello di progetto o un caso studio", projects: "Fielding & Rye, Nova Cloud, Bloom Market" }}
 			/>
 			<header className="border-b border-ink-line">
 				<div className="mx-auto max-w-6xl px-6 py-6">
 					<Link to="/" className="font-mono text-[12px] uppercase tracking-wide text-paper/60 hover:text-paper">
-						&larr; Back to studio
+						&larr; Torna allo studio
 					</Link>
 				</div>
 			</header>
