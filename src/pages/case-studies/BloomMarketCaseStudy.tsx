@@ -250,7 +250,7 @@ export default function BloomMarketCaseStudy() {
     <div ai-tag="case-study" data-ai="page" className="bg-ink cursor-default">
       <SEO
         title="Bloom Market — Caso studio"
-        description="Sistema di design e concept di prodotto alla base di Bloom Market, un modello luminoso per attività che consegnano fiori ogni settimana."
+        description="Sistema di design e progetto dimostrativo di prodotto alla base di Bloom Market, un modello luminoso per attività che consegnano fiori ogni settimana."
         path="/work/bloom-market/case-study"
       />
       <AiMetadata
