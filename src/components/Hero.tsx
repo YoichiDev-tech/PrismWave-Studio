@@ -28,7 +28,7 @@ export default function Hero({
     <Section
       id="top"
       ai="hero"
-      intent="Lead with a free website audit, then offer fixed-scope website improvements or rebuilds."
+      intent="Presentare un'analisi gratuita del sito e successivamente offrire miglioramenti o riprogettazioni con ambito definito."
       labelledBy="hero-title"
       className="grain relative overflow-x-clip bg-ink pb-10 pt-20 md:pb-14 md:pt-24"
     >
