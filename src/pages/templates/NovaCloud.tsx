@@ -57,19 +57,19 @@ export default function NovaCloud() {
       className="min-h-screen cursor-default"
     >
       <SEO
-        title="Nova Cloud — Live Template"
+        title="Nova Cloud — Modello dimostrativo"
         description="An observability SaaS landing page template with pricing tiers and a free-trial flow, built by PrismWave Studio."
         path="/work/nova-cloud"
       />
       <AiMetadata
-        map={["Uptime hero", "Product features", "Performance statistics", "Pricing tiers"]}
-        intent="Present an observability SaaS template and move technical teams toward starting a free trial."
-        tags={["SaaS landing page", "observability", "uptime monitoring", "developer tools", "status monitoring"]}
+        map={["Presentazione della disponibilità", "Funzionalità del prodotto", "Statistiche sulle prestazioni", "Piani tariffari"]}
+        intent="Presentare un modello SaaS per il monitoraggio e invitare i team tecnici ad avviare una prova gratuita."
+        tags={["Pagina SaaS", "osservabilità", "monitoraggio della disponibilità", "strumenti per sviluppatori", "monitoraggio dello stato"]}
         extract={{
           title: "Nova Cloud",
-          audience: "Engineering and platform teams",
-          primaryActions: "Start a free trial or review features",
-          pricing: "Starter free; Team $49; Scale custom",
+          audience: "Team di sviluppo e piattaforma",
+          primaryActions: "Avviare una prova gratuita o consultare le funzionalità",
+          pricing: "Base gratuita; Team $49; Scale personalizzato",
           proof: "99.98% average uptime across customers",
         }}
       />
@@ -97,7 +97,7 @@ export default function NovaCloud() {
                 Docs
               </a>
             </li>
-            <li className="text-white/35">Changelog</li>
+            <li className="text-white/35">Aggiornamenti</li>
           </ul>
           <button
             type="button"
@@ -105,7 +105,7 @@ export default function NovaCloud() {
             className="rounded-md px-4 py-2 text-[13px] font-medium transition-transform hover:scale-[1.03] active:scale-[0.98]"
             style={{ background: MINT, color: "#04211C" }}
           >
-            Start free trial
+            Avvia la prova gratuita
           </button>
         </div>
       </header>
@@ -136,10 +136,10 @@ export default function NovaCloud() {
                 status.novacloud.io — all systems green
               </p>
               <h1 id="nova-hero" className="mt-6 text-4xl font-semibold leading-[1.08] sm:text-5xl">
-                Uptime you can <span style={{ color: MINT }}>prove</span>, not just promise.
+                Una disponibilità che puoi <span style={{ color: MINT }}>dimostrare</span>, non solo promettere.
               </h1>
               <p className="mt-5 max-w-md text-white/60">
-                Nova Cloud watches every endpoint, traces every failure to its root cause, and pages the right
+                Nova Cloud monitora ogni endpoint, individua la causa degli errori e avvisa la persona giusta
                 engineer before your customers notice.
               </p>
 
@@ -150,14 +150,14 @@ export default function NovaCloud() {
                   className="rounded-md px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] active:scale-[0.98]"
                   style={{ background: MINT, color: "#04211C" }}
                 >
-                  Start free trial
+                  Avvia la prova gratuita
                 </button>
                 <a
                   href="#features"
                   className="rounded-md border px-5 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-white/30 hover:text-white"
                   style={{ borderColor: LINE }}
                 >
-                  View product
+                  Scopri il prodotto
                 </a>
               </div>
             </div>
