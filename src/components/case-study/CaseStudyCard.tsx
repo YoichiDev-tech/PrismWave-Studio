@@ -31,7 +31,7 @@ export function CaseStudyCard({ title, category, description, to, image }: CaseS
       <p className="mt-3 text-sm leading-relaxed text-paper/65">{description}</p>
 
       <div className="mt-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-wide text-paper/40 transition-colors duration-300 group-hover:text-amber">
-        View case study
+        Leggi il caso studio
         <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
           &rarr;
         </span>
