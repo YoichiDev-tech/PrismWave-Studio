@@ -31,7 +31,7 @@ export default function BookCall() {
           type="button"
           onClick={() => {
             setOpen(true);
-            trackAction("cta_click", { metadata: { label: "Book a free 15-min call", location: "contact" } });
+            trackAction("cta_click", { metadata: { label: "Prenota una chiamata gratuita di 15 minuti", location: "contact" } });
           }}
           className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full border border-amber px-6 font-display text-sm font-semibold text-amber transition-colors hover:bg-amber hover:text-ink"
         >
