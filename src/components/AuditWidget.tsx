@@ -42,7 +42,7 @@ export default function AuditWidget({
     event.preventDefault();
 
     if (!url.trim()) {
-      setError("Enter a site URL to analyze.");
+      setError("Inserisci l'indirizzo del sito da analizzare.");
       setStatus("error");
       return;
     }
@@ -71,7 +71,7 @@ export default function AuditWidget({
 
       if (!contentType.includes("application/json")) {
         setError(
-          "The audit service didn't respond with data. If you're running npm run dev, the /api routes require vercel dev."
+          "Il servizio di analisi non ha restituito dati. Se stai usando npm run dev, le route /api richiedono vercel dev."
         );
         setStatus("error");
         return;
@@ -84,7 +84,7 @@ export default function AuditWidget({
       } = await response.json().catch(() => ({}));
 
       if (!response.ok || !data.ok || !data.signals) {
-        setError(data.error ?? "Something went wrong analyzing that site.");
+        setError(data.error ?? "Si è verificato un errore durante l'analisi del sito.");
         setStatus("error");
         return;
       }
@@ -131,7 +131,7 @@ export default function AuditWidget({
         });
     } catch {
       setError(
-        "Couldn't reach the audit service. Check your connection and try again."
+        "Impossibile raggiungere il servizio di analisi. Controlla la connessione e riprova."
       );
       setStatus("error");
     }
@@ -170,7 +170,7 @@ export default function AuditWidget({
 
       if (!contentType.includes("application/json")) {
         setError(
-          "The report service didn't respond with data. If you're running npm run dev, the /api routes require vercel dev."
+          "Il servizio del report non ha restituito dati. Se stai usando npm run dev, le route /api richiedono vercel dev."
         );
         setLeadStatus("error");
         return;
@@ -180,7 +180,7 @@ export default function AuditWidget({
         await response.json().catch(() => ({}));
 
       if (!response.ok || !data.ok) {
-        setError(data.error ?? "We couldn't send the report. Please try again.");
+        setError(data.error ?? "Non è stato possibile inviare il report. Riprova.");
         setLeadStatus("error");
         return;
       }
@@ -196,7 +196,7 @@ export default function AuditWidget({
       });
     } catch {
       setError(
-        "Couldn't reach the report service. Check your connection and try again."
+        "Impossibile raggiungere il servizio del report. Controlla la connessione e riprova."
       );
       setLeadStatus("error");
     }
@@ -207,7 +207,7 @@ export default function AuditWidget({
 
     trackAction("cta_click", {
       metadata: {
-        label: "Discuss audit findings",
+        label: "Parliamo dei risultati dell'analisi",
         location: "audit_result",
         overallScore: result.overall,
       },
@@ -235,7 +235,7 @@ export default function AuditWidget({
 
     trackAction("cta_click", {
       metadata: {
-        label: "Discuss audit findings",
+        label: "Parliamo dei risultati dell'analisi",
         location: "audit_result",
         plan: planLabel,
         overallScore: result.overall,
@@ -255,7 +255,7 @@ export default function AuditWidget({
   return (
     <div>
       <p className="font-display text-xl font-semibold leading-snug text-paper">
-        How does your site score?
+        Che punteggio ottiene il tuo sito?
       </p>
 
       <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
@@ -270,7 +270,7 @@ export default function AuditWidget({
         noValidate
       >
         <label htmlFor="audit-url" className="sr-only">
-          Your website address
+          Indirizzo del tuo sito web
         </label>
 
         <input

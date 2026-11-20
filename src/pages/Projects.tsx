@@ -11,8 +11,8 @@ export default function Projects() {
   return (
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
-        title="Concept demos"
-        description="Concept demos from PrismWave Studio — speculative builds that show the quality a paying client receives. Not client work."
+        title="Progetti dimostrativi"
+        description="Progetti dimostrativi from PrismWave Studio — speculative builds that show the quality a paying client receives. Not client work."
         path="/projects"
       />
       <AiMetadata
@@ -37,23 +37,23 @@ export default function Projects() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← Back to studio
+            ← Torna allo studio
           </Link>
           <Link
             to="/history"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-amber"
           >
-            Launch history →
+            Cronologia dei rilasci →
           </Link>
         </div>
       </header>
 
       <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-          Concept demos
+          Progetti dimostrativi
         </p>
         <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Concept demos you can open and explore.
+          Progetti dimostrativi you can open and explore.
         </h1>
         <p className="mt-4 max-w-xl text-ink-soft">
           These are speculative builds that show the standard a paying client

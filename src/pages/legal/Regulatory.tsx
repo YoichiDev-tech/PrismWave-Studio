@@ -9,7 +9,7 @@ export default function Regulatory() {
       title="Informazioni sull'attività"
       updated="October 11, 2026"
       path="/regulatory"
-      description="Business contact information, service scope, and transparency information for PrismWave Studio."
+      description="Informazioni di contatto, ambito dei servizi e trasparenza per PrismWave Studio."
     >
       <p>
         This page provides business and service information for PrismWave

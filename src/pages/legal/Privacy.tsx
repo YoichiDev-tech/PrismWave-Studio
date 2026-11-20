@@ -6,13 +6,13 @@ export default function Privacy() {
   return (
     <LegalLayout
       eyebrow="Data and privacy"
-      title="Privacy Notice"
+      title="Informativa sulla privacy"
       updated="October 11, 2026"
       path="/privacy"
       description="How PrismWave Studio collects, uses, stores, and protects personal information."
     >
       <p>
-        This Privacy Notice explains how PrismWave Studio handles personal
+        This Informativa sulla privacy explains how PrismWave Studio handles personal
         information when you visit the website, use the free website audit,
         request a report, or contact the studio. It must be read alongside
         the actual services and tracking technologies enabled on the website.
@@ -42,7 +42,7 @@ export default function Privacy() {
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            Contact details you submit, such as your name, email address,
+            Contatti details you submit, such as your name, email address,
             business name, website URL, and message.
           </li>
           <li>
@@ -71,7 +71,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Why we use information and our legal bases">
+      <LegalSection title="Finalità e basi giuridiche del trattamento">
         <p>
           We use information to operate and secure the website, run the
           requested audit, send requested reports, answer enquiries, prepare
@@ -94,7 +94,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Website audit submissions">
+      <LegalSection title="Dati inviati tramite l'analisi del sito">
         <p>
           When you submit a URL, the audit tool processes that URL to
           perform automated checks and generate findings. If you request
@@ -109,7 +109,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Service providers and recipients">
+      <LegalSection title="Fornitori di servizi e destinatari">
         <p>
           The website may use Vercel for hosting, Supabase for database
           services, Resend for email delivery, Calendly for scheduling,
@@ -125,7 +125,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Cookies and similar technologies">
+      <LegalSection title="Cookie e tecnologie analoghe">
         <p>
           The website or its third-party integrations may use cookies,
           local storage, session storage, or similar technologies. Their
@@ -147,7 +147,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="International transfers">
+      <LegalSection title="Trasferimenti internazionali">
         <p>
           Our service providers may process information in countries
           outside your country of residence or outside the European
@@ -162,7 +162,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="How long we retain information">
+      <LegalSection title="Periodo di conservazione">
         <p>
           We keep personal information only for as long as reasonably
           necessary for the purpose for which it was collected, including
@@ -177,7 +177,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Your privacy rights">
+      <LegalSection title="I tuoi diritti in materia di privacy">
         <p>
           Subject to applicable law, you may have the right to request
           access to your personal information, correction, deletion,
@@ -199,7 +199,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Security and third-party services">
+      <LegalSection title="Sicurezza e servizi di terze parti">
         <p>
           We use reasonable measures intended to protect information, but
           no website or transmission method can be guaranteed completely
@@ -208,7 +208,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Children">
+      <LegalSection title="Minori">
         <p>
           This website and its services are intended for people seeking
           web design, development, audits, or related business services.
@@ -217,7 +217,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Changes to this notice">
+      <LegalSection title="Modifiche alla presente informativa">
         <p>
           This notice may be updated when our services, data practices,
           or legal obligations change. The date at the top indicates
@@ -225,7 +225,7 @@ export default function Privacy() {
         </p>
       </LegalSection>
 
-      <LegalSection title="Contact">
+      <LegalSection title="Contatti">
         <p>
           Privacy requests and questions:{" "}
           <a

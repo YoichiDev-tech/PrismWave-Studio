@@ -25,7 +25,7 @@ function FooterCTA() {
   return (
     <section className="grain bg-ink py-24 text-center">
       <h2 className="font-display text-3xl font-semibold text-paper">
-        Not sure where to start?
+        Non sai da dove iniziare?
       </h2>
       <p className="mt-2 text-ink-soft">
         Run a free audit in seconds — see the problems, then decide if a fix or full rebuild makes sense.
@@ -39,19 +39,19 @@ function FooterCTA() {
           className="rounded-full px-8 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98]"
           style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
         >
-          Get a Free Audit
+          Richiedi un'analisi gratuita
         </button>
         <button
           type="button"
           onClick={() => scrollToSection("contact")}
           className="rounded-full border border-ink-line px-8 py-3 font-display text-sm font-semibold text-paper transition-colors hover:border-amber active:scale-[0.98]"
         >
-          Book a 15-min call
+          Prenota una chiamata di 15 minuti
         </button>
       </div>
 
       <p className="mt-6 text-sm text-ink-soft">
-        After the audit, you choose: <span className="text-paper">fix what&apos;s broken</span> with targeted fixes or <span className="text-paper">rebuild properly</span> with a full custom build. Both use fixed-scope pricing and a delivery timeline agreed before work begins.
+        Dopo l'analisi, scegli tu: <span className="text-paper">fix what&apos;s broken</span> with targeted fixes or <span className="text-paper">realizzare un nuovo sito</span> with a full custom build. Both use fixed-scope pricing and a delivery timeline agreed before work begins.
       </p>
     </section>
   );
@@ -102,8 +102,8 @@ export default function Home() {
   return (
     <div ai-tag="home" data-ai="page" className="grain bg-ink min-h-screen">
       <SEO
-        title="Free Website Audit & Custom Web Development | PrismWave Studio"
-        description="PrismWave Studio offers a free website audit covering speed, mobile, SEO, and AI-readability. Get clear findings, then choose a fixed-scope fix or custom rebuild with a written price and timeline."
+        title="Analisi gratuita del sito e sviluppo web su misura | PrismWave Studio"
+        description="PrismWave Studio offre un'analisi gratuita di velocità, esperienza mobile, SEO e leggibilità per i sistemi AI. Ricevi risultati chiari e scegli interventi mirati o un nuovo sito, con prezzo e tempistiche definiti per iscritto."
         path="/"
       />
 

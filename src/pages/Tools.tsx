@@ -40,7 +40,7 @@ export default function Tools() {
     setHeaders(null);
     const trimmed = url.trim();
     if (!trimmed) {
-      setError("Enter a website URL.");
+      setError("Inserisci l'indirizzo di un sito web.");
       return;
     }
     setLoading(true);
@@ -53,13 +53,13 @@ export default function Tools() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(typeof data.error === "string" ? data.error : "Request failed.");
+        setError(typeof data.error === "string" ? data.error : "Richiesta non riuscita.");
         return;
       }
       if (active === "meta") setMeta(data as MetaResult);
       else setHeaders(data as HeadersResult);
     } catch {
-      setError("Network error. Try again.");
+      setError("Errore di rete. Riprova.");
     } finally {
       setLoading(false);
     }
@@ -68,7 +68,7 @@ export default function Tools() {
   return (
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
-        title="Free website tools"
+        title="Strumenti gratuiti per siti web"
         description="Free backend-powered website tools from PrismWave Studio — meta tags, security headers, and site audit."
         path="/tools"
       />
@@ -89,31 +89,31 @@ export default function Tools() {
             to="/"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← Back to studio
+            ← Torna allo studio
           </Link>
           <Link
             to="/#audit-tool"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-amber"
           >
-            Full site audit →
+            Analisi completa del sito →
           </Link>
         </div>
       </header>
 
       <main className="mx-auto max-w-3xl px-6 py-16 md:py-20">
-        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Studio tools</p>
+        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Strumenti dello studio</p>
         <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
-          Free checks that run on real infrastructure.
+          Controlli gratuiti eseguiti su infrastruttura reale.
         </h1>
         <p className="mt-4 text-ink-soft">
-          Server-side diagnostics — not screenshots of a brochure. Paste a URL, get signals you can act on.
+          Diagnostica lato server, non semplici schermate. Inserisci un URL e ricevi indicazioni concrete.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-2">
           {(
             [
-              { id: "meta" as const, label: "Meta & Open Graph" },
-              { id: "headers" as const, label: "Security headers" },
+              { id: "meta" as const, label: "Meta tag e Open Graph" },
+              { id: "headers" as const, label: "Header di sicurezza" },
             ] as const
           ).map((t) => (
             <button
@@ -138,7 +138,7 @@ export default function Tools() {
 
         <div className="mt-8 rounded-2xl border border-ink-line bg-ink-2/40 p-6">
           <label htmlFor="tool-url" className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-            Website URL
+            Indirizzo del sito web
           </label>
           <div className="mt-3 flex flex-col gap-3 sm:flex-row">
             <input
@@ -161,7 +161,7 @@ export default function Tools() {
               className="inline-flex min-h-12 items-center justify-center rounded-full px-7 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.02] disabled:opacity-60"
               style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
             >
-              {loading ? "Running…" : "Run check"}
+              {loading ? "Analisi in corso…" : "Avvia controllo"}
             </button>
           </div>
           {error && <p className="mt-3 text-sm text-coral">{error}</p>}
@@ -169,7 +169,7 @@ export default function Tools() {
 
         {meta && (
           <div className="mt-8 space-y-4 rounded-2xl border border-ink-line bg-ink/60 p-6">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Results — meta</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Risultati — meta tag</p>
             <p className="text-sm text-ink-soft">Resolved: {meta.finalUrl}</p>
             <dl className="mt-4 space-y-3 text-sm">
               {(
@@ -197,9 +197,9 @@ export default function Tools() {
 
         {headers && (
           <div className="mt-8 space-y-4 rounded-2xl border border-ink-line bg-ink/60 p-6">
-            <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Results — headers</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Risultati — header</p>
             <p className="text-sm text-ink-soft">
-              {headers.finalUrl} · HTTP {headers.status} · {headers.isHttps ? "HTTPS" : "Not HTTPS"}
+              {headers.finalUrl} · HTTP {headers.status} · {headers.isHttps ? "HTTPS" : "Non HTTPS"}
             </p>
             <ul className="mt-4 space-y-3">
               {headers.checks.map((c) => (
