@@ -11,7 +11,9 @@
     "start": "node dist-server/index.js",
     "typecheck": "tsc -b --pretty",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "agent": "node scripts/agent.mjs",
+    "agents:list": "node scripts/agent.mjs --list"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.2",
