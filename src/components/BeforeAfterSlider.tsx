@@ -15,7 +15,7 @@ interface Size {
   h: number;
 }
 
-const BROKEN_MESSAGE = "This preview couldn't be loaded — try generating it again.";
+const BROKEN_MESSAGE = "Non è stato possibile caricare l'anteprima. Prova a generarla di nuovo.";
 
 function HtmlFrame({ html, title, virtualWidth, size }: { html: string; title: string; virtualWidth: number; size: Size }) {
   if (!size.w || !size.h) return null;
@@ -81,8 +81,8 @@ function PreviewLayer({
 export function BeforeAfterSlider({
   before,
   after,
-  beforeLabel = "BEFORE",
-  afterLabel = "AFTER",
+  beforeLabel = "PRIMA",
+  afterLabel = "DOPO",
   virtualWidth = 1280,
   aspectClass = "aspect-[16/9]",
 }: BeforeAfterSliderProps) {
@@ -147,7 +147,7 @@ export function BeforeAfterSlider({
       ref={containerRef}
       role="slider"
       tabIndex={0}
-      aria-label="Before and after comparison slider"
+      aria-label="Controllo per confrontare prima e dopo"
       aria-valuenow={Math.round(position)}
       aria-valuemin={0}
       aria-valuemax={100}
