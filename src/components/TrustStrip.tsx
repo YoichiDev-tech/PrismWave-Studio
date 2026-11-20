@@ -18,7 +18,7 @@ const ITEMS = [
 ];
 
 /*
- Honest process trust signals — no mock testimonials
+ Elementi di fiducia basati su un processo trasparente, senza testimonianze inventate
  */
 export default function TrustStrip() {
   return (
