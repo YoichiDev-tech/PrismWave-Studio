@@ -11,9 +11,13 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
 
   {
-    files: ["**/*.cjs"],
+    files: ["**/*.{cjs,mjs}"],
     languageOptions: {
-      globals: globals.node
+      globals: {
+        ...globals.node,
+        fetch: "readonly",
+        AbortSignal: "readonly"
+      }
     }
   },
 
