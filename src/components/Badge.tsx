@@ -56,7 +56,7 @@ export function PickThisTemplateBadge({ tone = "dark" }: TemplateChromeProps) {
           : "linear-gradient(100deg, #3A1220 0%, #7A2E4D 100%)",
       }}
     >
-      This is our style &rarr;
+      Questo è il nostro stile &rarr;
     </Link>
   );
 }
