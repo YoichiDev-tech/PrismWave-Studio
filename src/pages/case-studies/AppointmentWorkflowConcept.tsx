@@ -72,15 +72,15 @@ export default function AppointmentWorkflowConcept() {
   return (
     <div className="min-h-screen bg-ink text-paper">
       <SEO
-        title="Modernizzazione dei flussi di prenotazione — Concept"
+        title="Modernizzazione dei flussi di prenotazione — Progetto dimostrativo"
         description="A clearly labeled concept for reducing booking friction and no-shows for appointment-based businesses, illustrative rather than a measured client result."
         path="/work/appointment-workflows/concept"
       />
       <AiMetadata
         map={["Caso studio dimostrativo", "Sfida aziendale", "Strategia tecnica", "Obiettivi indicativi", "Anteprima del flusso"]}
-        intent="Mostrare come PrismWave potrebbe modernizzare la gestione degli appuntamenti per un'attività locale, specificando chiaramente che si tratta di un concept e non di un risultato ottenuto per un cliente."
+        intent="Mostrare come PrismWave potrebbe modernizzare la gestione degli appuntamenti per un'attività locale, specificando chiaramente che si tratta di un progetto dimostrativo e non di un risultato ottenuto per un cliente."
         tags={["caso studio dimostrativo", "gestione appuntamenti", "riprogettazione sito", "React", "Supabase"]}
-        extract={{ title: "Modernizzazione dei flussi di prenotazione", audience: "Piccole imprese che lavorano su appuntamento", primaryActions: "Esaminare il concept del flusso o avviare un'analisi gratuita" }}
+        extract={{ title: "Modernizzazione dei flussi di prenotazione", audience: "Piccole imprese che lavorano su appuntamento", primaryActions: "Esaminare il progetto dimostrativo del flusso o avviare un'analisi gratuita" }}
       />
       <header className="border-b border-ink-line">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
