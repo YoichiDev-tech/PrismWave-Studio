@@ -33,8 +33,8 @@ export default function Recensioni({ onSelectIntent }: RecensioniProps) {
           Hai lavorato con noi? Raccontaci com'è andata.
         </h1>
         <p className="mt-3 text-ink-soft">
-          Every review is read and approved by hand before it appears here. Nothing is published
-          without your consent and our check.
+          Ogni recensione viene letta e approvata manualmente prima di essere mostrata. Non pubblichiamo nulla
+          senza il tuo consenso e la nostra verifica.
         </p>
 
         <div className="mt-10">
