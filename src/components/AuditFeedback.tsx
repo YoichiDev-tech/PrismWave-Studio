@@ -46,7 +46,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: name.trim() || "Anonymous",
+          name: name.trim() || "Anonimo",
           business: role.trim(),
           rating,
           message: message.trim(),
@@ -119,7 +119,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
           <button
             key={n}
             type="button"
-            onClick={() => setValutazione(n)}
+            onClick={() => setRating(n)}
             className={`text-lg transition-colors ${
               rating >= n ? "text-amber" : "text-ink-soft/40"
             }`}
@@ -145,8 +145,8 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
         <span className="sr-only">Ruolo</span>
         <input
           value={role}
-          onChange={(e) => setRuolo(e.target.value)}
-          placeholder="Ruolo — e.g. Developer (optional)"
+          onChange={(e) => setRole(e.target.value)}
+          placeholder="Ruolo, ad esempio sviluppatore (facoltativo)"
           maxLength={120}
           className="min-h-11 w-full rounded-lg border border-ink-line bg-transparent px-3 text-sm text-paper placeholder:text-ink-soft/50 focus:border-amber"
         />
@@ -157,7 +157,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="One sentence on whether the findings were clear or useful…"
+          placeholder="In una frase, racconta se i risultati sono stati chiari o utili…"
           rows={3}
           maxLength={600}
           required
@@ -182,7 +182,7 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
           onChange={(e) => setConsent(e.target.checked)}
         />
         <span>
-          You may show this on the PrismWave site after manual approval (I can stay
+          Puoi pubblicare questo commento sul sito PrismWave dopo una revisione manuale (posso restare
           anonymous).
         </span>
       </label>
@@ -196,14 +196,14 @@ export default function AuditFeedback({ auditScore, siteUrl }: AuditFeedbackProp
           className="rounded-full px-5 py-2.5 font-display text-sm font-semibold text-ink disabled:opacity-60"
           style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
         >
-          {state === "sending" ? "Sending…" : "Send feedback"}
+          {state === "sending" ? "Invio in corso…" : "Invia il commento"}
         </button>
         <button
           type="button"
           onClick={() => setOpen(false)}
           className="font-mono text-[11px] uppercase tracking-wide text-ink-soft hover:text-paper"
         >
-          Not now
+          Non ora
         </button>
       </div>
     </form>
