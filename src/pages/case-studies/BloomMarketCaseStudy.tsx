@@ -250,12 +250,12 @@ export default function BloomMarketCaseStudy() {
     <div ai-tag="case-study" data-ai="page" className="bg-ink cursor-default">
       <SEO
         title="Bloom Market — Caso studio"
-        description="Design system and product concept behind Bloom Market, a bright storefront template for weekly flower delivery businesses."
+        description="Sistema di design e concept di prodotto alla base di Bloom Market, un modello luminoso per attività che consegnano fiori ogni settimana."
         path="/work/bloom-market/case-study"
       />
       <AiMetadata
         map={["Presentazione del caso studio", "Anteprima del prodotto finale", "Panoramica del progetto", "Palette colori", "Tipografia", "Sistema di layout", "Progettazione delle interazioni", "Invito finale all'azione"]}
-        intent="Explain the design decisions behind the Bloom Market ecommerce template and show how the visual system supports flower subscriptions."
+        intent="Spiegare le scelte di design del modello e-commerce Bloom Market e mostrare come il sistema visivo supporti gli abbonamenti floreali."
         tags={["caso studio", "design e-commerce", "marchio floreale", "identità visiva", "Bloom Market"]}
         extract={{ title: "Caso studio Bloom Market", audience: "Fondatori di attività commerciali e team di design", primaryActions: "Esaminare il sistema di design e visualizzare il modello interattivo", outcome: "Un concept luminoso per un negozio con consegna settimanale di fiori" }}
       />
@@ -318,7 +318,7 @@ export default function BloomMarketCaseStudy() {
             <section aria-labelledby="case-study-overview" aria-describedby="bloom-overview-intent" role="region" data-ai="overview">
               <AiIntent id="bloom-overview-intent">Spiegare il brief, il pubblico di riferimento e gli obiettivi visivi di Bloom Market.</AiIntent>
               <Reveal delay={1} className="mt-20">
-                <SectionHeading eyebrow="01 — Brief" title="Panoramica" />
+                <SectionHeading eyebrow="01 — Incarico" title="Panoramica" />
                 <p className="mt-4 max-w-2xl text-paper/70 leading-relaxed">
                   Bloom Market è un negozio boutique di fiori e articoli da regalo, con un'identità espressiva e ricca di elementi visivi. L'obiettivo era creare una pagina di presentazione vivace, con caratteri tipografici ampi, forme organiche e una palette che trasmettesse calore e festa.
                 </p>
