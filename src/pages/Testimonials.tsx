@@ -67,7 +67,7 @@ export default function TestimonialsPage() {
                     {t.company && <span> — {t.company}</span>}
                   </p>
                   <span className="text-xs mt-2 inline-block px-2 py-1 bg-white/10 rounded">
-                    {t.intent.toUpperCase()}
+                    {t.intent === "audit" ? "ANALISI" : t.intent === "build" ? "SVILUPPO" : "GENERALE"}
                   </span>
                 </div>
               ))}
