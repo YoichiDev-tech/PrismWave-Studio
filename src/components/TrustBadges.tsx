@@ -1,17 +1,17 @@
 const badges = [
-  { name: "React", detail: "component-driven build" },
-  { name: "TypeScript", detail: "type-safe, fewer runtime bugs" },
-  { name: "Vite", detail: "fast, modern tooling" },
-  { name: "Tailwind CSS", detail: "consistent design system" },
-  { name: "Vercel", detail: "production-grade hosting" },
-  { name: "Supabase", detail: "real backend, not just a template" },
+  { name: "React", detail: "sviluppo a componenti" },
+  { name: "TypeScript", detail: "tipizzazione sicura e meno errori" },
+  { name: "Vite", detail: "strumenti moderni e veloci" },
+  { name: "Tailwind CSS", detail: "sistema di design coerente" },
+  { name: "Vercel", detail: "hosting adatto alla produzione" },
+  { name: "Supabase", detail: "backend reale, non un semplice modello" },
 ];
 
 export default function TrustBadges() {
   return (
     <div className="py-10 px-6 max-w-5xl mx-auto">
       <p className="font-mono text-xs uppercase tracking-widest text-ink-soft text-center mb-6">
-        Built with the same tools production teams use
+        Realizzato con strumenti usati anche nei progetti professionali
       </p>
 
       <div className="flex flex-wrap justify-center gap-3">
