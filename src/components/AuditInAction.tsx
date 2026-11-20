@@ -19,7 +19,7 @@ const CATEGORIES = [
   { label: "Velocità", score: 42 },
   { label: "Dispositivi mobili", score: 61 },
   { label: "SEO", score: 55 },
-  { label: "Leggibilità per i sistemi AI", score: 38 },
+  { label: "Leggibilità per i sistemi di IA", score: 38 },
 ];
 
 const FINDINGS = [
@@ -37,9 +37,9 @@ const FINDINGS = [
   },
   {
     impact: "Media",
-    title: "Metadati insufficienti per ricerca e sistemi AI",
+    title: "Metadati insufficienti per ricerca e sistemi di IA",
     detail:
-      "Titolo e descrizione sono generici e mancano dati strutturati. Questo può rendere più difficile comparire nei risultati e nelle risposte dei sistemi AI.",
+      "Titolo e descrizione sono generici e mancano dati strutturati. Questo può rendere più difficile comparire nei risultati e nelle risposte dei sistemi di IA.",
   },
 ];
 
@@ -291,14 +291,14 @@ export default function AuditInAction() {
               Come può apparire il rinnovamento di un sito
             </p>
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-ink-soft">
-              Lo stesso settore, due soluzioni: un sito vetrina datato e un layout chiaro, progettato per ricevere richieste. Solo concept dimostrativo.
+              Lo stesso settore, due soluzioni: un sito vetrina datato e un layout chiaro, progettato per ricevere richieste. Solo progetto dimostrativo.
             </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
               <figure>
                 <div className="mb-2 flex items-center justify-between px-1">
                   <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft">
-                    Prima · concept
+                    Prima · progetto dimostrativo
                   </span>
                   <span className="font-mono text-[10px] text-coral">Score ~48</span>
                 </div>
@@ -322,13 +322,13 @@ export default function AuditInAction() {
                 <span className="font-mono text-[11px] uppercase tracking-widest text-amber">
                   Site Rescue
                 </span>
-                <span className="mt-1 block font-mono text-[10px] text-ink-soft">concept</span>
+                <span className="mt-1 block font-mono text-[10px] text-ink-soft">progetto dimostrativo</span>
               </div>
 
               <figure>
                 <div className="mb-2 flex items-center justify-between px-1">
                   <span className="font-mono text-[10px] uppercase tracking-wide text-ink-soft">
-                    Dopo · concept
+                    Dopo · progetto dimostrativo
                   </span>
                   <span className="font-mono text-[10px] text-amber">Orientato alle richieste</span>
                 </div>
