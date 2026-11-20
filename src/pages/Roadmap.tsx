@@ -13,7 +13,7 @@ export default function Roadmap() {
   return (
     <div className="grain min-h-screen bg-ink text-paper">
       <SEO
-        title="Roadmap"
+        title="Piano di sviluppo"
         description="What PrismWave Studio is building next — clear, minimal, and focused."
         path="/roadmap"
       />
@@ -36,7 +36,7 @@ export default function Roadmap() {
       </header>
 
       <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Roadmap</p>
+        <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Piano di sviluppo</p>
         <h1 className="mt-3 max-w-2xl font-display text-3xl font-semibold tracking-tight md:text-4xl">
           A cosa stiamo lavorando.
         </h1>
