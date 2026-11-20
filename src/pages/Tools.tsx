@@ -113,7 +113,7 @@ export default function Tools() {
           {(
             [
               { id: "meta" as const, label: "Meta tag e Open Graph" },
-              { id: "headers" as const, label: "Header di sicurezza" },
+              { id: "headers" as const, label: "Intestazioni di sicurezza" },
             ] as const
           ).map((t) => (
             <button
