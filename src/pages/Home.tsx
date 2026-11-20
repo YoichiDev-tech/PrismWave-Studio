@@ -28,7 +28,7 @@ function FooterCTA() {
         Non sai da dove iniziare?
       </h2>
       <p className="mt-2 text-ink-soft">
-        Run a free audit in seconds — see the problems, then decide if a fix or full rebuild makes sense.
+        Esegui un'analisi gratuita in pochi secondi, scopri i problemi e decidi se intervenire con correzioni mirate o realizzare un nuovo sito.
         No obligation either way.
       </p>
 
@@ -51,7 +51,7 @@ function FooterCTA() {
       </div>
 
       <p className="mt-6 text-sm text-ink-soft">
-        Dopo l'analisi, scegli tu: <span className="text-paper">fix what&apos;s broken</span> with targeted fixes or <span className="text-paper">realizzare un nuovo sito</span> with a full custom build. Both use fixed-scope pricing and a delivery timeline agreed before work begins.
+        Dopo l'analisi, scegli tu: <span className="text-paper">correggere ciò che non funziona</span> con interventi mirati oppure <span className="text-paper">realizzare un nuovo sito</span> con un progetto completo su misura. In entrambi i casi, prezzo e tempi vengono concordati prima di iniziare.
       </p>
     </section>
   );
