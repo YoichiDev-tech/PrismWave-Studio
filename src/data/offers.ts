@@ -35,7 +35,7 @@ export const PLANS: Plan[] = [
     includes: [
       "Design adattivo, progettato prima per smartphone",
       "SEO di base e modulo di contatto",
-      "Up to 2 revision rounds",
+      "Fino a 2 cicli di revisione",
     ],
     excludes: "Non sono inclusi testi, progettazione del logo, hosting e dominio.",
   },
@@ -51,7 +51,7 @@ export const PLANS: Plan[] = [
       "Applicazione degli interventi prioritari emersi dall'analisi",
       "Interfaccia moderna e prestazioni su dispositivi mobili",
       "Percorso di contatto e richiesta ottimizzato",
-      "Up to 2 revision rounds",
+      "Fino a 2 cicli di revisione",
     ],
     excludes:
       "Non sono inclusi il completo rinnovamento del marchio, la redazione continuativa dei contenuti e l'hosting.",
@@ -63,12 +63,12 @@ export const PLANS: Plan[] = [
     weeks: 5,
     intent: "build",
     blurb:
-      "3-6 page site ready to take enquiries — for trades, hospitality and local services.",
+      "Sito da 3 a 6 pagine, pronto a ricevere richieste, per artigiani, attività ricettive e servizi locali.",
     includes: [
       "Navigazione e layout adattivo",
       "Modulo di contatto e integrazione email",
       "Pagine principali definite nel riepilogo",
-      "Up to 3 revision rounds",
+      "Fino a 3 cicli di revisione",
     ],
     excludes:
       "Non sono inclusi progettazione del logo, fotografia, hosting e dominio.",
@@ -84,7 +84,7 @@ export const PLANS: Plan[] = [
     includes: [
       "Interfaccia su misura e flussi utente principali",
       "Backend di base secondo l'ambito concordato",
-      "Up to 2 revision rounds",
+      "Fino a 2 cicli di revisione",
     ],
     excludes:
       "Non sono inclusi costi ricorrenti di hosting, servizi SaaS di terze parti e nuove funzionalità successive al lancio.",
@@ -101,7 +101,7 @@ export const PLANS: Plan[] = [
       "Layout orientato alla fiducia",
       "Sviluppo adattivo, progettato prima per smartphone",
       "Percorso di contatto o lista d'attesa",
-      "Up to 2 revision rounds",
+      "Fino a 2 cicli di revisione",
     ],
     excludes:
       "Non sono incluse verifiche di conformità, redazione di testi legali e integrazioni di pagamento, salvo accordo separato.",
@@ -116,6 +116,6 @@ export const ADDONS: Addon[] = [
 
 export function formatWeeks(weeks: number): string {
   return weeks === 1
-    ? "1 week"
+    ? "1 settimana"
     : `${weeks % 1 === 0 ? weeks : weeks.toFixed(1)} settimane`;
 }
