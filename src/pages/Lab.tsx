@@ -125,7 +125,7 @@ export default function Lab() {
             Componenti di produzione, a disposizione di tutti.
           </h1>
           <p className="mt-5 max-w-xl text-ink-soft">
-            Una raccolta di componenti effettivamente utilizzati su questo sito, liberamente consultabili e copiabili. Ogni elemento è accompagnato da una breve spiegazione su 
+            Una raccolta di componenti effettivamente utilizzati su questo sito, liberamente consultabili e copiabili. Ogni nuovo componente viene presentato anche su 
             <a
               href={THREADS_URL}
               target="_blank"
@@ -134,7 +134,7 @@ export default function Lab() {
             >
               Threads
             </a>{" "}
-            quando viene realizzato.
+            con una breve spiegazione.
           </p>
           </Reveal>
         </section>
