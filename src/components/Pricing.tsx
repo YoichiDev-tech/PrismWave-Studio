@@ -39,9 +39,9 @@ export default function Pricing({ onRequestScope }: PricingProps) {
     const addonLines = selectedAddons.length ? `\nServizi aggiuntivi:\n${selectedAddons.map((a) => `- ${a.label}`).join("\n")}` : "";
     const summary = [
       `I'm interested in a fixed-scope project:`,
-      `Core scope: ${plan.label} (est. $${minPrice.toLocaleString()}-$${maxPrice.toLocaleString()}, ~${formatWeeks(totalWeeks)}).${addonLines}`,
+      `Ambito principale: ${plan.label} (stima $${minPrice.toLocaleString()}-$${maxPrice.toLocaleString()}, circa ${formatWeeks(totalWeeks)}).${addonLines}`,
       "",
-      "Tell me more about timeline and next steps.",
+      "Vorrei maggiori informazioni su tempistiche e prossimi passi.",
     ].join("\n");
 
     trackAction("cta_click", {
@@ -73,12 +73,12 @@ export default function Pricing({ onRequestScope }: PricingProps) {
           </h2>
           <p className="mt-4 text-ink-soft">Nessuna proposta vaga o costo nascosto: ogni progetto viene definito in anticipo.</p>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            Fixed-scope pricing means you see the estimate before any work begins. Projects are defined with clear deliverables, timelines, and costs — no surprise add-ons or billable hours.
+            Con un prezzo ad ambito definito conosci la stima prima dell'inizio dei lavori. Ogni progetto specifica risultati, tempistiche e costi, senza extra a sorpresa né ore fatturate in modo imprevisto.
           </p>
         </Reveal>
 
         <Reveal delay={1} className="mt-10">
-          <div role="radiogroup" aria-label="Choose a plan" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div role="radiogroup" aria-label="Scegli un pacchetto" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {PLANS.map((p) => {
               const active = p.id === planId;
               return (
@@ -104,7 +104,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
                     </span>
                   </span>
                   <span className="mt-1 font-mono text-[13px] text-ink-soft">
-                    From <span className="font-semibold text-paper">${p.price.toLocaleString()}</span> · ~{formatWeeks(p.weeks)}
+                    A partire da <span className="font-semibold text-paper">${p.price.toLocaleString()}</span> · ~{formatWeeks(p.weeks)}
                   </span>
                   <span className="mt-3 text-sm text-paper/80">{p.blurb}</span>
                   <ul className="mt-3 space-y-1.5 text-[13px] text-ink-soft">
@@ -151,7 +151,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
               <p className="mt-1 font-display text-4xl font-semibold text-paper">
                 ${minPrice.toLocaleString()}-${maxPrice.toLocaleString()}
               </p>
-              <p className="mt-1 font-mono text-[13px] text-ink-soft">~{formatWeeks(totalWeeks)} turnaround</p>
+              <p className="mt-1 font-mono text-[13px] text-ink-soft">~{formatWeeks(totalWeeks)} per la consegna</p>
             </div>
 
             <div className="flex w-full flex-col items-center gap-3 md:w-auto md:items-end">
