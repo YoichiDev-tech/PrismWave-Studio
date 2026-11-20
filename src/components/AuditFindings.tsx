@@ -3,20 +3,20 @@ import Section from "./Section";
 
 const FINDING_TYPES = [
   {
-    type: "Score breakdown",
-    desc: "We show the overall score and individual scores for speed, mobile readiness, page metadata, and AI readability.",
+    type: "Dettaglio dei punteggi",
+    desc: "Mostriamo il punteggio complessivo e quelli delle singole categorie: velocità, esperienza da smartphone, metadati della pagina e leggibilità per i sistemi AI.",
   },
   {
-    type: "Observed findings",
-    desc: "We show the signals detected during the scan and explain what they may mean, without presenting assumptions as proven business problems.",
+    type: "Elementi rilevati",
+    desc: "Mostriamo gli elementi rilevati durante l'analisi e spieghiamo cosa potrebbero indicare, senza presentare ipotesi come problemi aziendali dimostrati.",
   },
   {
-    type: "Business context",
-    desc: "We explain why a finding may deserve attention. A scan alone cannot determine its full impact on conversions, search visibility, or revenue.",
+    type: "Contesto aziendale",
+    desc: "Spieghiamo perché un risultato potrebbe meritare attenzione. Una scansione, da sola, non può determinare l'impatto completo su conversioni, visibilità nei motori di ricerca o ricavi.",
   },
   {
-    type: "Optional human review",
-    desc: "We offer a free review so we can discuss which findings matter most and whether any work is worth doing.",
+    type: "Revisione facoltativa",
+    desc: "Offriamo una revisione gratuita per discutere quali risultati siano più importanti e se sia opportuno intervenire.",
   },
 ];
 
@@ -49,9 +49,7 @@ export default function AuditFindings() {
           </h2>
 
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            We show the measured score, the signals detected, and the areas that
-            meritano un'analisi più approfondita. La verifica è un punto di partenza, non una
-            complete assessment of your website or its business performance.
+            Mostriamo il punteggio misurato, gli elementi rilevati e gli aspetti che meritano un approfondimento. L'analisi è un punto di partenza, non una valutazione completa del sito o delle sue prestazioni commerciali.
           </p>
         </Reveal>
 
