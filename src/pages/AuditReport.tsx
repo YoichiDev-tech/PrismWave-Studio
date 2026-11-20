@@ -211,29 +211,29 @@ export default function AuditReport() {
                 </ul>
               ) : (
                 <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-                  This scan did not flag any findings in the checks it ran.
-                  That does not guarantee that the website has no issues.
+                  I controlli automatici eseguiti non hanno rilevato criticità.
+                  Questo non garantisce che il sito sia privo di problemi.
                 </p>
               )}
             </div>
 
             <div className="mt-8 border-t border-ink-line pt-6">
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-                What this report cannot tell you
+                Cosa non può dirti questo report
               </p>
 
               <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                 I generated this report from automated checks. It is not a full
                 manual review and cannot establish the exact effect of these
                 findings on conversions, revenue, search visibility, or AI
-                recommendations. Some checks use limited signals, so findings
+                raccomandazioni. Alcuni controlli utilizzano indicatori limitati, quindi i risultati
                 should be reviewed in context before making changes.
               </p>
             </div>
 
             <div className="mt-10 border-t border-ink-line pt-8">
               <p className="font-display text-lg font-semibold text-paper">
-                Want help deciding what matters first?
+                Vuoi aiuto per capire da dove iniziare?
               </p>
 
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">
@@ -248,7 +248,7 @@ export default function AuditReport() {
             </div>
 
             <p className="mt-8 text-xs text-ink-soft">
-              Run on {new Date(report.createdAt).toLocaleDateString()}. This is
+              Eseguita il {new Date(report.createdAt).toLocaleDateString()}. Questa è
               an automated check, not a complete manual review.
             </p>
           </>
