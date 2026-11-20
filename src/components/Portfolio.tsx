@@ -184,7 +184,7 @@ export default function Portfolio({ variant = "page" }: PortfolioProps) {
       <Section
         id="work"
         ai="portfolio"
-        intent="Show concept demos that demonstrate the quality PrismWave ships for different verticals."
+        intent="Mostrare concept dimostrativi che presentano la qualità dei progetti PrismWave in diversi settori."
         labelledBy="work-title"
         className="bg-ink py-16 text-paper md:py-24"
       >
