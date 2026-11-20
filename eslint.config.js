@@ -11,6 +11,13 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
 
   {
+    files: ["**/*.cjs"],
+    languageOptions: {
+      globals: globals.node
+    }
+  },
+
+  {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       globals: {

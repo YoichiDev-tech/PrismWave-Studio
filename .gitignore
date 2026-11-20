@@ -17,3 +17,39 @@ Thumbs.db
 .idea/
 
 *.tsbuildinfo
+
+# PRISMWAVE STUDIO — PRIVATE INTERNAL SYSTEM
+
+# internal roles and responsibilities
+/roles/
+/team/
+/organisation/
+/organization/
+
+# internal operating rules and instructions
+/rules/
+/instructions/
+/prompts/
+/system-prompts/
+
+# AI agents and orchestration
+/agents/
+/agent-config/
+/agent-instructions/
+
+# internal company operations
+/internal/
+/private/
+/company-system/
+/operating-system/
+/operations-private/
+
+# internal business strategy
+/strategy-private/
+/business-plans/
+/internal-docs/
+
+# private planning and management documents
+*.internal.md
+*.private.md
+*.confidential.md
