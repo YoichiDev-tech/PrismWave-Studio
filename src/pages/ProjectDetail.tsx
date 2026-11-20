@@ -13,10 +13,10 @@ export default function ProjectDetail() {
     return (
       <div className="grain flex min-h-screen flex-col bg-ink text-paper">
         <div className="mx-auto flex max-w-6xl flex-1 flex-col px-6 py-20">
-          <h1 className="font-display text-3xl font-semibold">Project not found</h1>
-          <p className="mt-3 text-ink-soft">That slug does not match any published project.</p>
+          <h1 className="font-display text-3xl font-semibold">Progetto non trovato</h1>
+          <p className="mt-3 text-ink-soft">L'identificativo non corrisponde ad alcun progetto pubblicato.</p>
           <Link to="/projects" className="mt-8 font-mono text-sm text-amber underline underline-offset-4">
-            ← All projects
+            ← Tutti i progetti
           </Link>
         </div>
         <Footer />
@@ -32,13 +32,13 @@ export default function ProjectDetail() {
         path={`/projects/${project.slug}`}
       />
       <AiMetadata
-        map={["Project overview", "Launch dates", "Tags", "Live template link"]}
+        map={["Panoramica del progetto", "Date di pubblicazione", "Etichette", "Collegamento al modello interattivo"]}
         intent={`Present the ${project.title} project and guide visitors to the live template or a free audit.`}
         tags={project.tags}
         extract={{
           title: project.title,
-          audience: "Founders evaluating PrismWave Studio",
-          primaryActions: "Open live template or start a project",
+          audience: "Fondatori che stanno valutando PrismWave Studio",
+          primaryActions: "Aprire il modello interattivo o avviare un progetto",
         }}
       />
 
@@ -48,7 +48,7 @@ export default function ProjectDetail() {
             to="/projects"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← All projects
+            ← Tutti i progetti
           </Link>
           {project.status === "concept" && (
             <span className="rounded-full border border-ink-line px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-ink-soft">
@@ -73,19 +73,19 @@ export default function ProjectDetail() {
         </div>
 
         <section className="mt-14 max-w-2xl">
-          <h2 className="font-display text-xl font-semibold">Overview</h2>
+          <h2 className="font-display text-xl font-semibold">Panoramica</h2>
           <p className="mt-3 leading-relaxed text-ink-soft">{project.overview}</p>
         </section>
 
         {project.pricingNote && (
           <section className="mt-10 max-w-2xl rounded-2xl border border-ink-line bg-ink-2/50 p-6">
-            <h2 className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Pricing</h2>
+            <h2 className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Prezzi</h2>
             <p className="mt-2 text-sm leading-relaxed text-paper/80">{project.pricingNote}</p>
           </section>
         )}
 
         <section className="mt-10">
-          <h2 className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Tags</h2>
+          <h2 className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Etichette</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
@@ -99,9 +99,9 @@ export default function ProjectDetail() {
         </section>
 
         <section className="mt-14 border-t border-ink-line pt-10">
-          <h2 className="font-display text-xl font-semibold">Next step</h2>
+          <h2 className="font-display text-xl font-semibold">Prossimo passo</h2>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">
-            Like this direction? Start with a free audit or tell us about your project — we will
+            Ti piace questa direzione? Inizia con un'analisi gratuita o raccontaci il tuo progetto: 
             reply with clear, fixed-scope options.
           </p>
         </section>
@@ -113,14 +113,14 @@ export default function ProjectDetail() {
               className="inline-flex min-h-12 items-center justify-center rounded-full px-7 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.02]"
               style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
             >
-              Open live template →
+              Apri il modello interattivo →
             </Link>
           )}
           <Link
             to="/#audit-tool"
             className="inline-flex min-h-12 items-center justify-center rounded-full border border-ink-line px-7 font-display text-sm font-semibold text-paper transition-colors hover:border-amber"
           >
-            Get a free audit
+            Richiedi un'analisi gratuita
           </Link>
         </div>
       </main>
