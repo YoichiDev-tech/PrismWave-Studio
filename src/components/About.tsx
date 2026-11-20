@@ -23,7 +23,7 @@ export default function About() {
     <Section
       id="about"
       ai="about"
-      intent="Explain who is behind PrismWave Studio and why founders can rely on it."
+      intent="Presentare chi c'è dietro PrismWave Studio e spiegare perché fondatori e imprese possono affidarsi allo studio."
       labelledBy="about-title"
       className="grain relative overflow-hidden bg-ink py-16 md:py-24"
     >
