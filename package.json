@@ -7,9 +7,9 @@
     "dev": "concurrently -k \"npm:dev:server\" \"npm:dev:web\"",
     "dev:web": "vite",
     "dev:server": "tsx watch server/index.ts",
-    "build": "tsc -b && vite build",
-    "start": "node dist-server/index.js",
-    "typecheck": "tsc -b --pretty",
+    "build": "tsc -b && tsc -p tsconfig.server.json && vite build",
+    "start": "node dist-server/server/index.js",
+    "typecheck": "tsc -b --pretty && tsc -p tsconfig.server.json --noEmit",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -42,4 +42,4 @@
     "typescript-eslint": "^8.19.1",
     "vite": "^6.0.7"
   }
-}
+}\n

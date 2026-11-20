@@ -237,3 +237,13 @@
 :root[data-theme="light"] .hover\:bg-coral:hover {
   background-color: #ff7a59;
 }
+/* Italian SMB request-workflow demo — restrained depth, not a heavy WebGL scene. */
+.request-scene { perspective: 1200px; isolation: isolate; }
+.request-board { transform: rotateY(-7deg) rotateX(3deg); transform-style: preserve-3d; transition: transform 500ms cubic-bezier(.2,.7,.2,1), box-shadow 500ms ease; }
+.request-scene:hover .request-board { transform: rotateY(-2deg) rotateX(1deg) translateY(-3px); }
+.request-orbit { position: absolute; z-index: -1; left: 50%; top: 50%; border: 1px solid rgba(255,184,77,.16); border-radius: 9999px; transform: translate(-50%,-50%) rotate(-18deg); pointer-events: none; }
+.request-orbit-one { width: 115%; height: 78%; }
+.request-orbit-two { width: 132%; height: 95%; border-color: rgba(108,99,255,.15); transform: translate(-50%,-50%) rotate(22deg); }
+.request-float-card { animation: request-float 5s ease-in-out infinite; }
+@keyframes request-float { 0%,100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-9px) rotate(0deg); } }
+@media (prefers-reduced-motion: reduce) { .request-board { transform: none; transition: none; } .request-float-card { animation: none; } }
