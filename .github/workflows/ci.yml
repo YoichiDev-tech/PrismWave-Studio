@@ -1,11 +1,10 @@
-
 name: Verify PrismWave Studio
 
 on:
   pull_request:
     branches: [main]
   push:
-    branches: [main]
+    branches: [main, "launch/**"]
 
 permissions:
   contents: read
@@ -16,23 +15,13 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
-        run: pnpm build
-
+      - name: Install dependencies and refresh npm lockfile
+        run: npm install --no-audit --no-fund
+      - name: Typecheck and build
+        run: npm run build
       - name: Lint
-        run: pnpm lint
+        run: npm run lint

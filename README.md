@@ -1,212 +1,78 @@
-# Title
+# PrismWave Studio
 
-PrismWave Studio
+PrismWave Studio is an independent digital studio focused on practical digital workflows for Italian small businesses.
 
-## Screenshot
+## Initial market focus
 
-![alt text](image-2.png)
+**Installation and maintenance businesses in Italy.**
 
-## Description
+The initial customer problem we are exploring: enquiries arrive through calls, WhatsApp, email and other channels, while the business needs a clearer way to collect, organise and follow up each request.
 
-A fully custom, modern studio website built with React, TypeScript, Tailwind CSS and Vite.
-Designed to show new/small/medium-sized business owners what a fast, handcrafted site looks and feels like.
+The proposed service is a **custom-scoped request-management workflow**, not a pre-existing off-the-shelf SaaS product. We begin with discovery, confirm the real process, then agree a small and testable scope.
 
-## Project Purpose
+## What the current website demonstrates
 
-This project serves as the official PrismWave Studio website. It showcases real sections,
-real UX, real templates, and a real studio flow — giving prospects a clear sense of how I build,
-how I communicate, and what working together looks like.
+- Italian-language landing page focused on the initial business segment.
+- Interactive concept UI showing a possible request list and statuses.
+- Contact form for businesses that want to discuss their workflow.
+- Express API for validating and storing submitted enquiries in PostgreSQL.
+- Optional internal email notification through Resend.
 
-Beyond the marketing site itself, it's now also a working demo of what the studio can build:
-a live audit tool, an instant pricing configurator, and an open component library — not just
-copy describing the service, but the service running in the browser.
+**Important:** The request dashboard is a concept demonstration using fictional sample data. It is not a deployed customer system, does not connect to a real business inbox, and must not be represented as a completed client project.
 
-## Tech Stack
+## Current technology
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- react-helmet-async (per-route SEO and social share tags)
-- Supabase (live — interaction tracking; testimonials engine still planned)
-- Vercel Serverless Functions
-- Resend (transactional email)
+- React 19, TypeScript, Vite
+- Tailwind CSS 4
+- Express 5
+- PostgreSQL (pg)
+- Zod request validation
+- Helmet security headers
+- Resend HTTP API for internal enquiry notifications
 
-## Current Status
+## Local development
 
-- Fully functional demo — builds and lints clean
-- All sections implemented: Hero, Services, Process, Pricing, Sprint Configurator,
-  Portfolio, Why Choose Us, FAQ, About, Contact, Footer
-- 3 portfolio templates are live, clickable routes (`/work/...`), each a
-  full standalone landing page
-- Contact form is wired to a real backend via Resend (`/api/send`) — actually
-  sends, not simulated
-- AI-Ready Site Audit tool is live (`/api/audit`) — fetches a visitor's site
-  server-side and scores it for real, no fake numbers
-- Sprint Configurator hands its output straight into the Contact form, pre-filled
-- The Lab (`/lab`) — a small open component showcase, copy-paste ready
-- Legal pages live: Terms of Use, Privacy Notice, and Regulatory Information
-  (`/terms`, `/privacy`, `/regulatory`) — Regulatory still carries a placeholder
-  for the studio's formal business registration details, to be filled in once
-  registered
-- Every route now ships its own SEO metadata — title, meta description,
-  canonical URL, and Open Graph/Twitter tags — instead of one shared set
-  copied across every page
-- No real client testimonials, case studies, or production assets yet —
-  content is illustrative, and clearly labeled as such where numbers are shown
-- Fixed a layout bug where the Crisp chat integration was letting the whole
-  page drag sideways to reveal the chat icon — page is locked to vertical
-  scroll only now
-- Every visit and every meaningful action (contact submit, audit run, chat
-  opened/messaged) now gets logged to Supabase via `/api/track` — feeds a
-  separate private ops dashboard, not visible anywhere on this site
-- Every completed audit now saves to Supabase and gets a shareable
-  `/audit/:id` link — built for cold outreach ("I audited your site,
-  here's the report"), not just for visitors who run it themselves
+Requirements: Node.js 22+, PostgreSQL, and (for email testing) a Resend account with a verified sender domain.
 
-## Live Features
+1. Copy .env.example to .env.
+2. Configure DATABASE_URL, IP_HASH_SALT, and Resend variables.
+3. Run server/schema.sql against the PostgreSQL database.
+4. Run npm install to install dependencies and synchronise the npm lockfile.
+5. Run npm run dev.
+6. Open the Vite URL shown in the terminal (normally http://localhost:5173).
+7. Check http://localhost:4000/api/health.
 
-- AI-Ready Site Audit — instant, real heuristic scoring of any URL
-  (speed, UI/UX modernism, mobile responsiveness, AI readability)
-- Shareable audit reports — every completed audit gets a public
-  `/audit/:id` link (score, category breakdown, top findings), backed
-  by a new `audits` table, no PII stored
-- Architecture & MVP Sprint Configurator — toggle-based scope + instant
-  price/timeline estimate, feeds straight into Contact
-- The Lab — public, copyable component snippets with live previews
-- Crisp live chat fully integrated and mobile-synced
-- Real-time visitor tracking via Crisp
-- Custom branded chatbox with welcome message
-- Working contact form (Resend) with confirmation state
-- Interaction tracking (pageviews + key actions) piped server-side into
-  Supabase, no client-side keys involved — powers a separate private
-  ops dashboard
-- Structured lead records include contact intent, audit context, scope
-  estimates, session attribution, and follow-up status
-- Per-page SEO and social share metadata — each route serves its own
-  title, description, canonical link, and OG/Twitter card
-- Fully responsive across mobile, tablet, and desktop
-- Production deployment on Vercel
+See docs/TECHNICAL-SETUP.md.
 
-## End-Project Considerations
+## Environment variables
 
-- Buy `prismwavestudio.com` and set up `hello@` on it
-- Verify in Search Console and add public analytics before driving traffic to it
-- Revisit copy once there's a first real client project to reference
+See .env.example. All database credentials and email API keys are server-side secrets. Never commit .env, expose database credentials through a VITE_ variable, or place secrets in browser code.
 
-## Sales pipeline setup
+For a separate frontend/API deployment:
+- Set VITE_API_BASE_URL to the public API origin at frontend build time.
+- Set ALLOWED_ORIGINS on the API to the exact frontend origin.
+- Configure PostgreSQL and Resend variables on the API host.
 
-Run `supabase/schema.sql` in the same Supabase project used by the Studio
-serverless functions and Ops dashboard. Studio requires `SUPABASE_URL`,
-`SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and
-`CONTACT_FROM_EMAIL` as server-side variables. `CONTACT_FROM_EMAIL` must use a sender
-address verified in Resend; do not rely on the Resend test sender for production enquiries.
-Ops should use the same `SUPABASE_URL` and database,
-with its own authenticated operator allowlist and server-side service role
-key. Never expose the service role key with a `VITE_` prefix.
+## Italian market launch material
 
-## Changelog
+- docs/LAUNCH-CHECKLIST.md
+- docs/ITALIAN-OUTREACH-PLAYBOOK.md
+- docs/SALES-KIT-ITALIA.md
+- docs/TECHNICAL-SETUP.md
+- company/README.md
 
-### 28/09/2026
-- Added shareable audit reports: every completed audit now saves to a new
-  `audits` table (score, category breakdown, audited URL — no PII, no
-  email) and gets a public `/audit/:id` link
-- `AuditWidget` shows a "Copy shareable report link" button once the save
-  completes — async, fire-and-forget, never gates or blocks the score
-  that's already on screen
-- New route `/audit/:id` (`AuditReport.tsx`) renders the saved score,
-  category gauges, and findings for anyone with the link, ending in a
-  Book a Call CTA
-- New endpoints: `/api/audit-save` (POST, persists a client-scored
-  result) and `/api/audit-report` (GET, public read by id)
-- Known gap, not new: OG/social preview tags are still client-side only
-  (`react-helmet-async`), so a `/audit/:id` link pasted into Slack/X/
-  WhatsApp won't show a custom preview card yet — see Next Steps
+## Proof and honesty policy
 
-### 08/08/2026
-- Updated spacing, layout, and UI polish across all sections
-- Improved scroll behavior and button interactions
-- Enhanced typography and visual hierarchy
-- Cleaned component structure and removed unused code
-- Verified Tailwind v4 configuration and build stability
+PrismWave does not invent client logos, testimonials, case studies, certifications, performance metrics, or delivery history. Concept demonstrations are labelled as such. Client names, logos, quotations, screenshots and results may only be published with permission.
 
-### 10/08/2026
+Services are offered only after technical feasibility, scope, support obligations, security and cost have been reviewed. The initial pilot must be agreed in writing before work starts.
 
-#### stack
-- Crisp chat integration
-- Calendly scheduling
-- Supabase
+## Launch status
 
-#### current status
-- Crisp chat integration added
-- Calendly booking flow added
-- Planned testimonials
-- Fully responsive
+This branch is a launch candidate and must pass its build, lint, typecheck, database, email, responsive, accessibility and security smoke tests before production release. Business identity and legal pages contain details that the owner must complete and have professionally reviewed before commercial launch.
 
-#### live features
-- Pricing section added
-- FAQ section answering common questions
-- About section
+The production branch is not changed by this work. Merge and deployment require the CEO's explicit approval.
 
-### 15/08/2026
-- Full code review pass
-- Fixed unconditional ReviewPopup rendering
-- Removed placeholder testimonial content ahead of the real engine
-- Added missing OG tags for social sharing
-- Hover/animation polish across static sections
-- Added social links (Threads, Instagram, GitHub) to Footer
+## Company
 
-### 16/08/2026
-- Added AI-Ready Site Audit tool: real server-side fetch + honest heuristic
-  scoring (speed, UI/UX modernism, mobile, AI readability), no fabricated data
-- Added Architecture & MVP Sprint Configurator: toggle scope, instant
-  price/timeline estimate, hands off straight into Contact pre-filled
-- Added The Lab (`/lab`): open, copyable component showcase
-- Extended Contact to accept a pre-filled hand-off from either new tool
-- Added Lab link to Nav (desktop + mobile)
-
-### 17/08/2026
-- Added new hero screenshot (/public/images/bloom/hero.png) sourced from the Bloom Market template
-- Integrated the hero screenshot into the Bloom Market case study hero section using the `<Screenshot />` component
-- Ensured layout consistency with existing case study visual sections
-- Resolved Git branch sync issues caused by empty feature branches
-- Re‑applied missing case study changes and committed them to a new feature branch
-- Successfully pushed the corrected branch and opened the PR for Issue #5
-
-### 23/08/2026
-- Fixed the horizontal-scroll bug introduced by the Crisp chat integration
-  (`overflow-x: hidden` was quietly letting the page get dragged sideways
-  on touch/trackpad — swapped for `overflow-x: clip`, which removes the
-  scrollable region instead of just hiding its scrollbar)
-- Wired up Crisp's `onChatOpened` / `onMessageSent` events instead of just
-  configuring the widget and walking away
-- Built the interaction tracking pipeline: `interaction_events` table in
-  Supabase, `/api/track` (server-side write, service-role key never
-  touches the client), `src/lib/track.ts` + `usePageTracking` on the
-  client side
-- Tracking now fires on: every route change, contact form submit, audit
-  run + audit completed, chat opened, chat message sent
-- Kicked off `prismwave-ops` — a fully separate, unlinked project (own
-  repo, own Vercel deployment, own Supabase project) that reads this
-  tracking data and shows three report windows (morning/evening/night)
-  plus an AI-drafted outreach approval queue. Nothing about it lives in
-  this repo on purpose — see that project's own README for why
-
-### 12/09/2026
-- Added per-route SEO via `react-helmet-async` and a shared `<SEO />`
-  component: every page now ships its own title, meta description, and
-  canonical URL, fixing a bug where the canonical tag pointed every route
-  at the homepage instead of itself
-- Added `lastmod` dates to `sitemap.xml` and included the previously
-  missing Appointment Workflow concept URL
-- Clarified illustrative concept metrics and added a closing
-  "no fabricated testimonial" section to the relevant concept page
-- Added payment clarity to Pricing: deposit split, accepted payment
-  methods, currency, and how work beyond included revisions is handled
-- Added TODO markers on the Regulatory page for real business
-  registration details, ready to fill in once the studio is formally
-  registered in Italy
-
-## Author
-
-Yoichi dev
+The CEO / Founder retains final authority over strategy, positioning, service promises, pricing, budgets, contracts, hiring, material risk acceptance and production release. The COO coordinates operations; the CTO coordinates technical delivery. See the company governance documentation.

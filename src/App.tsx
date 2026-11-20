@@ -1,70 +1,27 @@
 import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import BackToTop from "./components/BackToTop";
-import LiveChat from "./components/LiveChat";
-import usePageTracking from "./hooks/usePageTracking";
 
-const Home = lazy(() => import("./pages/Home"));
-const FieldingRye = lazy(() => import("./pages/templates/FieldingRye"));
-const NovaCloud = lazy(() => import("./pages/templates/NovaCloud"));
-const BloomMarket = lazy(() => import("./pages/templates/BloomMarket"));
-const BloomMarketCaseStudy = lazy(() => import("./pages/case-studies/BloomMarketCaseStudy"));
-const AppointmentWorkflowConcept = lazy(() => import("./pages/case-studies/AppointmentWorkflowConcept"));
-const OpsRookCaseStudy = lazy(() => import("./pages/case-studies/OpsRookCaseStudy"));
-const CaseStudiesIndex = lazy(() => import("./pages/case-studies/index"));
-const TypographyPreview = lazy(() => import("./pages/TypographyPreview"));
-const Projects = lazy(() => import("./pages/Projects"));
-const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
-const History = lazy(() => import("./pages/History"));
-const Changelog = lazy(() => import("./pages/Changelog"));
-const Roadmap = lazy(() => import("./pages/Roadmap"));
+const ItalianHome = lazy(() => import("./pages/ItalianHome"));
 const Terms = lazy(() => import("./pages/legal/Terms"));
 const Privacy = lazy(() => import("./pages/legal/Privacy"));
 const Regulatory = lazy(() => import("./pages/legal/Regulatory"));
-const Revamp = lazy(() => import("./pages/Revamp"));
-const Tools = lazy(() => import("./pages/Tools"));
-const AuditReport = lazy(() => import("./pages/AuditReport"));
-const Reviews = lazy(() => import("./pages/Reviews"));
 
 function RouteFallback() {
-  return <div className="min-h-screen bg-ink" aria-hidden="true" />;
+  return <div className="min-h-screen bg-[#0a0e1a]" aria-hidden="true" />;
 }
 
 export default function App() {
-  usePageTracking();
-
   return (
     <>
       <ScrollToTop />
-      <BackToTop />
-      <LiveChat />
       <Suspense fallback={<RouteFallback />}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/work/fielding-and-rye" element={<FieldingRye />} />
-          <Route path="/work/nova-cloud" element={<NovaCloud />} />
-          <Route path="/work/bloom-market" element={<BloomMarket />} />
-          <Route path="/work" element={<Navigate to="/projects" replace />} />
-          <Route path="/work/bloom-market/case-study" element={<BloomMarketCaseStudy />} />
-          <Route path="/work/appointment-workflows/concept" element={<AppointmentWorkflowConcept />} />
-          <Route path="/work/opsrook-vi/case-study" element={<OpsRookCaseStudy />} />
-          <Route path="/case-studies" element={<CaseStudiesIndex />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
-          <Route path="/tools" element={<Tools />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/audit/:id" element={<AuditReport />} />
-          <Route path="/products" element={<Navigate to="/tools" replace />} />
-          <Route path="/products/:slug" element={<Navigate to="/tools" replace />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/changelog" element={<Changelog />} />
-          <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/typography-preview" element={<TypographyPreview />} />
-          <Route path="/revamp" element={<Revamp />} />
-          <Route path="/terms" element={<Terms />} />
+          <Route path="/" element={<ItalianHome />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/regulatory" element={<Regulatory />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </>
