@@ -210,3 +210,7 @@ key. Never expose the service role key with a `VITE_` prefix.
 ## Author
 
 Yoichi dev
+## Company operating system
+
+PrismWave's internal role charters, responsibilities, always-on rules, reporting lines, and decision governance are documented in [`company/README.md`](company/README.md). The CEO retains final decision authority; see the [decision rights matrix](company/governance/DECISION-RIGHTS.md) and [operating rhythm](company/governance/OPERATING-RHYTHM.md).
+
