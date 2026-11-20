@@ -215,9 +215,9 @@ export default function Tools() {
         )}
 
         <div className="mt-12 rounded-2xl border border-ink-line p-6">
-          <h2 className="font-display text-lg font-semibold">Need the full picture?</h2>
+          <h2 className="font-display text-lg font-semibold">Vuoi un quadro completo?</h2>
           <p className="mt-2 text-sm text-ink-soft">
-            The free site audit combines speed, structure, SEO signals, and a short report to your inbox.
+            L'analisi gratuita del sito combina velocità, struttura e segnali SEO, inviandoti un breve report via email.
           </p>
           <Link
             to="/#audit-tool"
