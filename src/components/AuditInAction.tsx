@@ -174,7 +174,7 @@ export default function AuditInAction() {
     <Section
       id="audit-in-action"
       ai="audit-in-action"
-      intent="Show a concrete sample audit report so visitors understand the free audit output before running their own site."
+      intent="Mostrare un esempio concreto di report affinché i visitatori comprendano i risultati dell'analisi gratuita prima di eseguire quella del proprio sito."
       labelledBy="audit-in-action-title"
       className="border-y border-ink-line bg-ink-2 py-14 md:py-20"
     >
