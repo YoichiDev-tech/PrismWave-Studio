@@ -134,7 +134,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       to={project.path}
-      aria-label={`Visualizza il concept dimostrativo di ${project.name}`}
+      aria-label={`Visualizza il progetto dimostrativo di ${project.name}`}
       className="group relative block h-full rounded-2xl border border-ink-line bg-ink-2/60 p-4 transition-transform hover:scale-[1.02] hover:border-amber hover:bg-ink-2"
     >
       {/* Explicit: these are demos, not paid client work */}
@@ -184,7 +184,7 @@ export default function Portfolio({ variant = "page" }: PortfolioProps) {
       <Section
         id="work"
         ai="portfolio"
-        intent="Mostrare concept dimostrativi che presentano la qualità dei progetti PrismWave in diversi settori."
+        intent="Mostrare progetti dimostrativi che presentano la qualità dei lavori PrismWave in diversi settori."
         labelledBy="work-title"
         className="bg-ink py-16 text-paper md:py-24"
       >
