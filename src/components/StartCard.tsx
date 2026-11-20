@@ -13,8 +13,8 @@ interface StartCardProps {
 const IDEA_EXAMPLES = ["A barber shop booking site", "A neighborhood supermarket site", "My startup's first site"];
 
 const TABS: { id: Intent; label: string }[] = [
-  { id: "audit", label: "I have a site" },
-  { id: "build", label: "I have an idea" },
+  { id: "audit", label: "Ho già un sito" },
+  { id: "build", label: "Ho un'idea" },
 ];
 
 // The hero's single conversion surface. Two visitor types, two low-friction
@@ -35,7 +35,7 @@ export default function StartCard({ onSelectIntent, onRequestFullTeardown, onSta
 
   const handleIdeaSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    trackAction("cta_click", { intent: "build", metadata: { label: "Start my project", location: "hero-card" } });
+    trackAction("cta_click", { intent: "build", metadata: { label: "Avvia il mio progetto", location: "hero-card" } });
     onStartIdea(idea.trim());
   };
 
@@ -49,7 +49,7 @@ export default function StartCard({ onSelectIntent, onRequestFullTeardown, onSta
       {/* Tab list with sliding pill indicator */}
       <div
         role="tablist"
-        aria-label="Choose where to start"
+        aria-label="Scegli da dove iniziare"
         className="relative grid grid-cols-2 gap-1 rounded-full border border-ink-line p-1"
       >
         {/* Sliding background pill */}
@@ -92,20 +92,20 @@ export default function StartCard({ onSelectIntent, onRequestFullTeardown, onSta
             </div>
           ) : (
             <div role="tabpanel" id="start-panel-build" aria-labelledby="start-tab-build">
-              <p className="font-display text-xl font-semibold leading-snug text-paper">What do you want to build?</p>
+              <p className="font-display text-xl font-semibold leading-snug text-paper">Che cosa vuoi realizzare?</p>
               <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-                One line is enough. We reply within one business day — no obligation.
+                Basta una frase. Ti risponderemo entro un giorno lavorativo, senza impegno.
               </p>
               <form onSubmit={handleIdeaSubmit} className="mt-4 flex flex-col gap-2.5 sm:flex-row">
                 <label htmlFor="idea-input" className="sr-only">
-                  Describe your idea
+                  Descrivi la tua idea
                 </label>
                 <input
                   id="idea-input"
                   type="text"
                   value={idea}
                   onChange={(e) => setIdea(e.target.value)}
-                  placeholder="e.g. a cafe shop site"
+                  placeholder="es. il sito di un bar"
                   className="min-h-12 min-w-0 flex-1 rounded-lg border border-ink-line bg-transparent px-4 text-paper placeholder:text-ink-soft/60 transition-colors focus:border-amber"
                 />
                 <button
@@ -113,7 +113,7 @@ export default function StartCard({ onSelectIntent, onRequestFullTeardown, onSta
                   className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.02] active:scale-[0.98]"
                   style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
                 >
-                  Start my project
+                  Avvia il mio progetto
                   <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
                 </button>
               </form>

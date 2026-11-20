@@ -36,7 +36,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
   };
 
   const handleRequestScope = () => {
-    const addonLines = selectedAddons.length ? `\nAdd-ons:\n${selectedAddons.map((a) => `- ${a.label}`).join("\n")}` : "";
+    const addonLines = selectedAddons.length ? `\nServizi aggiuntivi:\n${selectedAddons.map((a) => `- ${a.label}`).join("\n")}` : "";
     const summary = [
       `I'm interested in a fixed-scope project:`,
       `Core scope: ${plan.label} (est. $${minPrice.toLocaleString()}-$${maxPrice.toLocaleString()}, ~${formatWeeks(totalWeeks)}).${addonLines}`,
@@ -45,7 +45,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
     ].join("\n");
 
     trackAction("cta_click", {
-      metadata: { label: "Get this scoped", location: "pricing", plan: plan.id, estimateMin: minPrice },
+      metadata: { label: "Richiedi un preventivo dettagliato", location: "pricing", plan: plan.id, estimateMin: minPrice },
     });
 
     onRequestScope(summary, plan.intent as Intent);
@@ -67,11 +67,11 @@ export default function Pricing({ onRequestScope }: PricingProps) {
 
       <div className="relative mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Transparent &amp; fixed-scope</p>
+          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Prezzi trasparenti e ambito definito</p>
           <h2 id="pricing-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl">
-            Pick a starting point. See the number instantly.
+            Scegli da dove iniziare. Vedi subito il costo.
           </h2>
-          <p className="mt-4 text-ink-soft">No vague proposals, no hidden fees — every project is scoped upfront.</p>
+          <p className="mt-4 text-ink-soft">Nessuna proposta vaga o costo nascosto: ogni progetto viene definito in anticipo.</p>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Fixed-scope pricing means you see the estimate before any work begins. Projects are defined with clear deliverables, timelines, and costs — no surprise add-ons or billable hours.
           </p>
@@ -123,7 +123,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-2">
-            <span className="mr-1 font-mono text-[11px] uppercase tracking-wide text-ink-soft">Add-ons</span>
+            <span className="mr-1 font-mono text-[11px] uppercase tracking-wide text-ink-soft">Servizi aggiuntivi</span>
             {ADDONS.map((addon) => {
               const checked = addonIds.has(addon.id);
               return (
@@ -147,7 +147,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
         <Reveal delay={2} className="mt-8">
           <div className="flex flex-col items-center gap-6 rounded-2xl border border-ink-line bg-ink-2 p-6 text-center md:flex-row md:justify-between md:p-8 md:text-left">
             <div aria-live="polite">
-              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Estimated investment</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Investimento stimato</p>
               <p className="mt-1 font-display text-4xl font-semibold text-paper">
                 ${minPrice.toLocaleString()}-${maxPrice.toLocaleString()}
               </p>
@@ -161,7 +161,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
                 className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full px-8 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] md:w-auto"
                 style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
               >
-                Get this scoped
+                Richiedi un preventivo dettagliato
                 <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
               </button>
               <a
@@ -173,7 +173,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
                 }
                 className="font-mono text-[12px] uppercase tracking-wide text-ink-soft underline underline-offset-4 transition-colors hover:text-paper"
               >
-                Not sure? Book a free 15-min call
+                Hai dubbi? Prenota una chiamata gratuita di 15 minuti
               </a>
             </div>
           </div>

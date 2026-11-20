@@ -23,8 +23,8 @@ export default function BookCall() {
 
   return (
     <div className="rounded-2xl border border-ink-line bg-ink-2/60 p-5">
-      <p className="font-display text-base font-semibold text-paper">Prefer talking to typing?</p>
-      <p className="mt-1 text-sm text-ink-soft">A free 15-minute call. No pressure, no commitments.</p>
+      <p className="font-display text-base font-semibold text-paper">Preferisci parlare invece di scrivere?</p>
+      <p className="mt-1 text-sm text-ink-soft">Una chiamata gratuita di 15 minuti, senza pressioni né impegno.</p>
 
       {!open ? (
         <button
@@ -35,13 +35,13 @@ export default function BookCall() {
           }}
           className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full border border-amber px-6 font-display text-sm font-semibold text-amber transition-colors hover:bg-amber hover:text-ink"
         >
-          Pick a time
+          Scegli un orario
         </button>
       ) : (
         <div className="mt-4">
           <iframe
             src={CALENDLY_EMBED_URL}
-            title="Book a free 15-minute call"
+            title="Prenota una chiamata gratuita di 15 minuti"
             className="h-[640px] w-full rounded-xl border border-ink-line"
           />
           <a
@@ -50,7 +50,7 @@ export default function BookCall() {
             rel="noopener noreferrer"
             className="mt-3 inline-block font-mono text-[12px] uppercase tracking-wide text-ink-soft underline underline-offset-4 hover:text-paper"
           >
-            Open in a new tab
+            Apri in una nuova scheda
           </a>
         </div>
       )}

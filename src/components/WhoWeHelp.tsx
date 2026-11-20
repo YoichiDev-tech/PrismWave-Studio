@@ -36,8 +36,8 @@ const accentClasses: Record<
 
 const segments: Segment[] = [
   {
-    eyebrow: "Building alone",
-    title: "Solo founders",
+    eyebrow: "Chi costruisce da solo",
+    title: "Founder indipendenti",
     desc: "You're shipping the product and wearing every other hat. You need a site that looks credible, explains what you do in one screen, and turns visitors into conversations — without another tool to maintain.",
     proof: "A clear homepage and enquiry path so people can say yes without a long pitch.",
     accent: "amber",
@@ -54,8 +54,8 @@ const segments: Segment[] = [
     ),
   },
   {
-    eyebrow: "Local & service businesses",
-    title: "Small & medium businesses",
+    eyebrow: "Attività locali e di servizi",
+    title: "Piccole e medie imprese",
     desc: "Trades, hospitality, professional services — you need enquiries and bookings, not a brochure. We build fixed-scope sites that load fast, work on phones, and make it easy for customers to contact you.",
     proof: "A site that gets found, gets contacted, and doesn't need weekly babysitting.",
     accent: "coral",
@@ -77,8 +77,8 @@ const segments: Segment[] = [
     ),
   },
   {
-    eyebrow: "Product-led teams",
-    title: "SaaS & early products",
+    eyebrow: "Team orientati al prodotto",
+    title: "SaaS e prodotti in fase iniziale",
     desc: "You need a marketing site or lightweight product surface that makes the value obvious and the next step obvious. Clean UI, clear pricing or trial path, built so you can iterate without starting from scratch.",
     proof: "A page that turns technical credibility into sign-ups or booked demos.",
     accent: "violet",
@@ -115,10 +115,10 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="max-w-xl">
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-            Who this is for
+            A chi ci rivolgiamo
           </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-paper md:text-5xl">
-            Solo founders. SMBs. SaaS teams.
+            Founder indipendenti. PMI. Team SaaS.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Same path for all of them: free audit or short review, written fixed
@@ -177,7 +177,7 @@ export default function WhoWeHelp({ onSelectAudience }: WhoWeHelpProps) {
                       onClick={() => onSelectAudience?.(segment.title)}
                       className={`mt-auto flex items-center gap-2 pt-6 text-left font-mono text-[12px] uppercase tracking-widest text-paper transition-colors duration-300 ${accent.text}`}
                     >
-                      Start with this
+                      Inizia da qui
                       <span
                         aria-hidden="true"
                         className="transition-transform duration-300 group-hover:translate-x-1"
