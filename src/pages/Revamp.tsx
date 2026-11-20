@@ -531,8 +531,8 @@ export default function Revamp() {
               />
               {live && (
                 <p className="mt-3 text-center text-[11px] leading-relaxed text-ink-soft">
-                  Concept generated from {activeSite.name}&apos;s public page content — not a final
-                  design. Images, copy and layout are refined in a real build.
+                  Concept generato dai contenuti pubblici della pagina di {activeSite.name}: non è un progetto definitivo.
+                  Immagini, testi e layout vengono perfezionati durante lo sviluppo reale.
                 </p>
               )}
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
