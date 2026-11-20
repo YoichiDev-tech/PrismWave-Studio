@@ -103,7 +103,7 @@ export default function Home() {
     <div ai-tag="home" data-ai="page" className="grain bg-ink min-h-screen">
       <SEO
         title="Analisi gratuita del sito e sviluppo web su misura | PrismWave Studio"
-        description="PrismWave Studio offre un'analisi gratuita di velocità, esperienza mobile, SEO e leggibilità per i sistemi AI. Ricevi risultati chiari e scegli interventi mirati o un nuovo sito, con prezzo e tempistiche definiti per iscritto."
+        description="PrismWave Studio offre un'analisi gratuita di velocità, esperienza mobile, SEO e leggibilità per i sistemi di IA. Ricevi risultati chiari e scegli interventi mirati o un nuovo sito, con prezzo e tempistiche definiti per iscritto."
         path="/"
       />
 
