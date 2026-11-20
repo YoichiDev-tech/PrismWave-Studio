@@ -224,7 +224,7 @@ export default function AuditWidget({
       siteUrl: signals.finalUrl,
       score: result.overall,
       findings: [
-        "Requested a human review of the audit findings",
+        "Richiesta una revisione dei risultati dell'analisi da parte di una persona",
         ...reportFindings,
       ],
     });
@@ -246,7 +246,7 @@ export default function AuditWidget({
       siteUrl: signals.finalUrl,
       score: result.overall,
       findings: [
-        `Interested in discussing: ${planLabel}`,
+        `Interessato a discutere: ${planLabel}`,
         ...reportFindings,
       ],
     });
@@ -259,9 +259,7 @@ export default function AuditWidget({
       </p>
 
       <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-        We check selected signals related to speed, mobile readiness, page
-        metadata, and AI readability. The scan takes seconds and needs no
-        account.
+        Verifichiamo alcuni indicatori relativi a velocità, esperienza da smartphone, metadati della pagina e leggibilità per i sistemi AI. L'analisi richiede pochi secondi e non serve creare un account.
       </p>
 
       <form
@@ -279,7 +277,7 @@ export default function AuditWidget({
           inputMode="url"
           value={url}
           onChange={(event) => setUrl(event.target.value)}
-          placeholder="yourbusiness.com"
+          placeholder="tuazienda.it"
           autoComplete="url"
           className="min-h-12 min-w-0 flex-1 rounded-lg border border-ink-line bg-transparent px-4 text-paper placeholder:text-ink-soft/60 transition-colors focus:border-amber"
         />
@@ -292,7 +290,7 @@ export default function AuditWidget({
             background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)",
           }}
         >
-          {status === "loading" ? "Analyzing…" : "Analyze my site"}
+          {status === "loading" ? "Analisi in corso…" : "Analizza il mio sito"}
         </button>
       </form>
 
@@ -303,7 +301,7 @@ export default function AuditWidget({
 
         {status === "loading" && (
           <p className="mt-4 font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-            Fetching page, checking structure, measuring response time…
+            Caricamento della pagina, verifica della struttura e misurazione dei tempi di risposta…
           </p>
         )}
       </div>
@@ -312,7 +310,7 @@ export default function AuditWidget({
         <div className="mt-6 border-t border-ink-line pt-6">
           <div className="text-center">
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-              Overall score
+              Punteggio complessivo
             </p>
 
             <p className="font-display text-5xl font-semibold text-paper">
@@ -320,7 +318,7 @@ export default function AuditWidget({
             </p>
 
             <p className="mt-1 break-all text-xs text-ink-soft">
-              Results for <span className="text-paper">{signals.finalUrl}</span>
+              Risultati per <span className="text-paper">{signals.finalUrl}</span>
             </p>
 
             {reportId && (
@@ -346,8 +344,8 @@ export default function AuditWidget({
                 className="mt-3 font-mono text-[11px] uppercase tracking-wide text-ink-soft underline underline-offset-4 hover:text-amber"
               >
                 {copyStatus === "copied"
-                  ? "Link copied"
-                  : "Copy shareable report link"}
+                  ? "Collegamento copiato"
+                  : "Copia il collegamento al report"}
               </button>
             )}
           </div>
@@ -366,7 +364,7 @@ export default function AuditWidget({
           {previewFindings.length > 0 && leadStatus !== "captured" && (
             <div className="mt-6 border-t border-ink-line pt-5">
               <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-                Findings detected
+                Risultati rilevati
               </p>
 
               <ul className="mt-3 space-y-2">
@@ -390,7 +388,7 @@ export default function AuditWidget({
             <>
               <div className="mt-6 border-t border-ink-line pt-5">
                 <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-                  Full findings
+                  Tutti i risultati
                 </p>
 
                 <ul className="mt-3 space-y-2">
@@ -409,15 +407,13 @@ export default function AuditWidget({
 
                   {reportFindings.length === 0 && (
                     <li className="text-sm text-ink-soft">
-                      This scan did not flag any findings in the checks it ran.
+                      I controlli automatici eseguiti non hanno rilevato criticità.
                     </li>
                   )}
                 </ul>
 
                 <p className="mt-4 text-xs leading-relaxed text-ink-soft">
-                  These findings describe what the automated checks detected.
-                  They do not establish the full business impact or determine
-                  which changes your website needs.
+                  Questi risultati descrivono ciò che è stato rilevato dai controlli automatici. Non determinano l'impatto complessivo sull'attività né stabiliscono da soli quali modifiche siano necessarie per il tuo sito.
                 </p>
               </div>
 
@@ -428,8 +424,7 @@ export default function AuditWidget({
 
               <div className="mt-6 flex flex-col items-center gap-3 text-center">
                 <p className="text-sm text-ink-soft">
-                  I can review these findings with you and help identify what
-                  is worth investigating first.
+                  Posso esaminare questi risultati insieme a te e aiutarti a individuare gli aspetti da approfondire per primi.
                 </p>
 
                 <button
@@ -441,14 +436,14 @@ export default function AuditWidget({
                       "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)",
                   }}
                 >
-                  Get a free 15-min review
+                  Richiedi una revisione gratuita di 15 minuti
                   <span className="transition-transform group-hover:translate-x-1">
                     &rarr;
                   </span>
                 </button>
 
                 <p className="text-xs text-ink-soft">
-                  No obligation. I aim to reply within one business day.
+                  Senza impegno. Ti risponderò entro un giorno lavorativo.
                 </p>
               </div>
             </>
@@ -464,18 +459,16 @@ export default function AuditWidget({
                 className="mt-6 border-t border-ink-line pt-5"
               >
                 <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">
-                  Email me the full findings
+                  Inviami tutti i risultati via email
                 </p>
 
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                  I will send the detected findings and explain what the
-                  automated scan can and cannot tell you. No newsletter or
-                  email sequence.
+                  Ti invierò i risultati rilevati e ti spiegherò cosa può e non può indicare l'analisi automatizzata. Non riceverai newsletter né sequenze di email.
                 </p>
 
                 <div className="mt-4 flex flex-col gap-2.5">
                   <label htmlFor="audit-email" className="sr-only">
-                    Your email address
+                    Il tuo indirizzo email
                   </label>
 
                   <input
@@ -484,7 +477,7 @@ export default function AuditWidget({
                     required
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-                    placeholder="you@business.com"
+                    placeholder="tu@azienda.it"
                     autoComplete="email"
                     className="min-h-12 rounded-lg border border-ink-line bg-transparent px-4 text-paper placeholder:text-ink-soft/60 transition-colors focus:border-amber"
                   />
@@ -499,8 +492,8 @@ export default function AuditWidget({
                     }}
                   >
                     {leadStatus === "sending"
-                      ? "Sending report…"
-                      : "Email me the full findings"}
+                      ? "Invio del report in corso…"
+                      : "Inviami tutti i risultati via email"}
                   </button>
                 </div>
 
