@@ -489,7 +489,7 @@ export default function Revamp() {
               Anteprima di {activeSite.name}
               {live && (
                 <span className="ml-2 rounded border border-ink-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wide text-amber">
-                  {live.generator === "ai" ? "Concept generato con IA" : "Concept"}
+                  {live.generator === "ai" ? "Concept generato con IA" : "Progetto dimostrativo"}
                 </span>
               )}
             </p>
@@ -523,13 +523,13 @@ export default function Revamp() {
                 before={live?.before ?? { type: "image", src: activeSite.beforeSrc }}
                 after={live?.after ?? { type: "image", src: activeSite.afterSrc }}
                 beforeLabel={live ? "PRIMA (sito attuale)" : `PRIMA (${activeSite.industry})`}
-                afterLabel={live ? "DOPO (concept PrismWave)" : "DOPO (riprogettazione PrismWave)"}
+                afterLabel={live ? "DOPO (progetto dimostrativo PrismWave)" : "DOPO (riprogettazione PrismWave)"}
                 virtualWidth={VIEWPORT_WIDTH[viewport]}
                 aspectClass={VIEWPORT_ASPECT[viewport]}
               />
               {live && (
                 <p className="mt-3 text-center text-[11px] leading-relaxed text-ink-soft">
-                  Concept generato dai contenuti pubblici della pagina di {activeSite.name}: non è un progetto definitivo.
+                  Progetto dimostrativo generato dai contenuti pubblici della pagina di {activeSite.name}: non è un progetto definitivo.
                   Immagini, testi e layout vengono perfezionati durante lo sviluppo reale.
                 </p>
               )}
