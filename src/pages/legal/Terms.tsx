@@ -7,151 +7,98 @@ export default function Terms() {
     <LegalLayout
       eyebrow="Termini dello studio"
       title="Termini di utilizzo"
-      updated="October 11, 2026"
+      updated="11 ottobre 2026"
       path="/terms"
       description="Terms for using the PrismWave Studio website, free audit tools, and web design and development services."
     >
       <p>
-        These Termini di utilizzo apply to your access to the PrismWave Studio
-        website and its tools. By using the website, you agree to comply
-        with these terms and applicable law. Mandatory rights under
-        applicable consumer or other laws are not excluded or limited
-        by these terms.
+        Le presenti condizioni disciplinano l'accesso al sito PrismWave Studio e ai relativi strumenti. Utilizzando il sito, accetti di rispettare queste condizioni e la normativa applicabile. I diritti inderogabili riconosciuti dalla normativa a tutela dei consumatori o da altre disposizioni di legge non sono esclusi né limitati.
       </p>
 
       <LegalSection title="I servizi">
         <p>
-          PrismWave Studio offers website strategy, design, development,
-          automated website audits, and related digital services. The
-          exact services available may change over time.
+          PrismWave Studio offre servizi di strategia, progettazione e sviluppo di siti web, analisi automatizzate e servizi digitali correlati. I servizi effettivamente disponibili possono variare nel tempo.
         </p>
         <p>
-          Website descriptions, example work, starting prices, estimates,
-          and timelines are informational unless expressly confirmed in
-          a written project agreement.
+          Le descrizioni del sito, i lavori dimostrativi, i prezzi di partenza, le stime e le tempistiche hanno carattere informativo, salvo conferma esplicita in un accordo di progetto scritto.
         </p>
       </LegalSection>
 
       <LegalSection title="Progetti a pagamento e pagamenti">
         <p>
-          Before a paid project begins, the studio and client should agree
-          in writing on the scope, deliverables, price, timeline, payment
-          schedule, revision process, responsibilities, and any relevant
-          third-party costs.
+          Prima dell'avvio di un progetto a pagamento, lo studio e il cliente concordano per iscritto l'ambito del lavoro, i risultati da consegnare, il prezzo, le tempistiche, il piano dei pagamenti, le modalità di revisione, le rispettive responsabilità e gli eventuali costi di terze parti.
         </p>
         <p>
-          Work begins according to that agreement. Changes to the agreed
-          scope may require a revised price or timeline. Any cancellation,
-          refund, warranty, or remedy will be governed by the project
-          agreement and applicable law.
+          Il lavoro inizia secondo quanto stabilito nell'accordo. Le modifiche all'ambito concordato possono comportare una revisione del prezzo o delle tempistiche. Eventuali cancellazioni, rimborsi, garanzie o rimedi sono disciplinati dall'accordo di progetto e dalla normativa applicabile.
         </p>
         <p>
-          Nothing in these terms removes a mandatory right or remedy that
-          applies to a customer under the law governing the transaction.
+          Nessuna disposizione delle presenti condizioni elimina diritti o rimedi inderogabili riconosciuti al cliente dalla legge applicabile alla transazione.
         </p>
       </LegalSection>
 
       <LegalSection title="Analisi gratuita del sito">
         <p>
-          The free audit provides automated, directional checks based on
-          the submitted URL and the content or signals accessible to the
-          tool. Results may be incomplete, outdated, or inaccurate and
-          should be reviewed by a qualified person before important
-          decisions are made.
+          L'analisi gratuita esegue controlli automatici e indicativi sulla base dell'indirizzo inviato e dei contenuti o segnali accessibili allo strumento. I risultati possono essere incompleti, non aggiornati o imprecisi e devono essere verificati da una persona qualificata prima di prendere decisioni importanti.
         </p>
         <p>
-          The audit is not a security penetration test, legal opinion,
-          accessibility certification, SEO guarantee, or promise of
-          traffic, revenue, rankings, or business performance.
+          L'analisi non costituisce un test di penetrazione informatica, un parere legale, una certificazione di accessibilità, una garanzia SEO né una promessa di traffico, ricavi, posizionamento o risultati commerciali.
         </p>
         <p>
-          The audit is provided without a charge unless a separate written
-          agreement says otherwise. Any optional paid work must be agreed
-          separately before it begins.
+          L'analisi è gratuita, salvo diverso accordo scritto. Qualsiasi attività facoltativa a pagamento deve essere concordata separatamente prima dell'inizio.
         </p>
       </LegalSection>
 
       <LegalSection title="Responsabilità nell'utilizzo dell'analisi">
         <p>
-          You must be authorised to submit the URL and must not use the
-          audit to interfere with another service, bypass access controls,
-          send malicious input, or perform unlawful or abusive activity.
+          Devi essere autorizzato a inviare l'indirizzo web e non puoi utilizzare l'analisi per interferire con altri servizi, aggirare controlli di accesso, inviare contenuti dannosi o svolgere attività illecite o abusive.
         </p>
         <p>
-          Do not submit passwords, private access links, confidential
-          information, or personal data you do not have permission to
-          share. The audit may not work with every website or configuration.
+          Non inviare password, collegamenti ad accesso riservato, informazioni confidenziali o dati personali che non sei autorizzato a condividere. L'analisi potrebbe non funzionare con tutti i siti o tutte le configurazioni.
         </p>
       </LegalSection>
 
       <LegalSection title="Proprietà intellettuale e materiali consegnati">
         <p>
-          The website, its branding, original content, and studio tools
-          belong to the studio or their respective rights holders, except
-          where a different licence or ownership arrangement applies.
-          You may not copy or redistribute protected material except as
-          permitted by law or an applicable licence.
+          Il sito, il marchio, i contenuti originali e gli strumenti dello studio appartengono allo studio o ai rispettivi titolari dei diritti, salvo diversa licenza o disposizione sulla proprietà. Non puoi copiare o ridistribuire materiale protetto, tranne nei casi consentiti dalla legge o da una licenza applicabile.
         </p>
         <p>
-          Ownership and usage rights for client deliverables are governed
-          by the relevant written project agreement. Unless that agreement
-          says otherwise, third-party software, fonts, stock assets,
-          hosting, domains, and licensed materials remain subject to
-          their own terms.
+          La proprietà e i diritti di utilizzo dei materiali consegnati al cliente sono disciplinati dal relativo accordo scritto. Salvo diversa indicazione nell'accordo, software, caratteri tipografici, risorse di archivio, hosting, domini e materiali concessi in licenza da terze parti restano soggetti alle rispettive condizioni.
         </p>
         <p>
-          The studio may show completed client work in its portfolio only
-          where the project agreement permits it or the client has
-          separately approved that use.
+          Lo studio può mostrare nel proprio portfolio i lavori completati per i clienti solo quando l'accordo di progetto lo consente o il cliente ha autorizzato separatamente tale utilizzo.
         </p>
       </LegalSection>
 
       <LegalSection title="Servizi di terze parti">
         <p>
-          The website may link to or integrate with services operated by
-          third parties. Those services have their own terms, privacy
-          notices, availability, and security practices. The studio does
-          not control third-party services and is not responsible for
-          their independent operation.
+          Il sito può contenere collegamenti o integrazioni con servizi gestiti da terze parti. Tali servizi sono soggetti alle proprie condizioni, informative privacy, disponibilità e misure di sicurezza. Lo studio non controlla i servizi di terzi e non è responsabile del loro funzionamento autonomo.
         </p>
       </LegalSection>
 
       <LegalSection title="Disponibilità e modifiche">
         <p>
-          We may update, suspend, or discontinue parts of the website or
-          free tools as the studio develops. We aim to keep the website
-          available but do not promise uninterrupted or error-free
-          operation.
+          Con l'evoluzione dello studio, possiamo aggiornare, sospendere o interrompere parti del sito o degli strumenti gratuiti. Ci impegniamo a mantenere il sito disponibile, ma non garantiamo un funzionamento continuo o privo di errori.
         </p>
       </LegalSection>
 
       <LegalSection title="Responsabilità">
         <p>
-          To the extent permitted by applicable law, the studio is not
-          responsible for losses caused by reliance on incomplete
-          automated audit results, interruptions outside its reasonable
-          control, or misuse of the website by a visitor.
+          Nei limiti consentiti dalla legge applicabile, lo studio non è responsabile delle perdite derivanti dall'affidamento su risultati incompleti di analisi automatizzate, da interruzioni al di fuori del proprio ragionevole controllo o dall'uso improprio del sito da parte di un visitatore.
         </p>
         <p>
-          Nothing in these terms excludes or limits liability where that
-          exclusion or limitation is prohibited by law. Any liability
-          terms for a paid project should be agreed separately and
-          reviewed for the applicable jurisdiction.
+          Nessuna disposizione delle presenti condizioni esclude o limita responsabilità quando tale esclusione o limitazione è vietata dalla legge. Le condizioni di responsabilità relative a un progetto a pagamento devono essere concordate separatamente e verificate rispetto alla giurisdizione applicabile.
         </p>
       </LegalSection>
 
       <LegalSection title="Modifiche ai presenti termini">
         <p>
-          These terms may be updated as the website, services, or legal
-          requirements change. The date at the top indicates when this
-          page was last updated. Any project-specific agreement continues
-          to govern that project where its terms apply.
+          Le presenti condizioni possono essere aggiornate in caso di modifiche al sito, ai servizi o agli obblighi normativi. La data indicata in alto segnala l'ultimo aggiornamento della pagina. Gli accordi specifici continuano a disciplinare i rispettivi progetti nei limiti in cui le loro disposizioni sono applicabili.
         </p>
       </LegalSection>
 
       <LegalSection title="Contatti">
         <p>
-          Questions about these terms can be sent to{" "}
+          Per domande sulle presenti condizioni, puoi scrivere a{" "}
           <a
             className="text-amber underline underline-offset-4"
             href={`mailto:${CONTACT_EMAIL}`}
