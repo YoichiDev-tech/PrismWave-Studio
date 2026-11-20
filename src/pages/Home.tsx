@@ -109,18 +109,18 @@ export default function Home() {
 
       <AiMetadata
         map={[
-          "Hero and free audit",
-          "How working with us works",
-          "What the audit checks",
-          "Audit findings format",
-          "Audit in action sample report",
-          "Who this is for",
-          "Selected work",
-          "Pricing and estimator",
-          "Process",
-          "About",
+          "Presentazione e analisi gratuita",
+          "Come lavoriamo",
+          "Cosa verifica l'analisi",
+          "Formato dei risultati dell'analisi",
+          "Esempio pratico di report",
+          "A chi ci rivolgiamo",
+          "Progetti selezionati",
+          "Prezzi e configuratore",
+          "Processo",
+          "Chi siamo",
           "FAQ",
-          "Contact and booking",
+          "Contatti e prenotazioni",
         ]}
         intent="Help a small-business owner run a free site audit, understand the findings, and start a fixed-scope website fix or rebuild with PrismWave Studio."
         tags={[
@@ -132,9 +132,9 @@ export default function Home() {
         ]}
         extract={{
           title: "PrismWave Studio",
-          audience: "Founders, creators, and small businesses",
-          primaryActions: "Run a free audit or request a project scope",
-          location: "Online studio",
+          audience: "Fondatori, creativi e piccole imprese",
+          primaryActions: "Avviare un'analisi gratuita o richiedere la definizione di un progetto",
+          location: "Studio digitale",
         }}
       />
 
