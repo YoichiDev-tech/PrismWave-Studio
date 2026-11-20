@@ -25,7 +25,7 @@ export default function Projects() {
           "PrismWave",
         ]}
         extract={{
-          title: "PrismWave Studio Concept Demos",
+          title: "Progetti dimostrativi PrismWave Studio",
           audience: "Fondatori e piccole imprese",
           primaryActions: "Aprire una demo o avviare un'analisi gratuita",
         }}
