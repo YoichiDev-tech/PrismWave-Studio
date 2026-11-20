@@ -12,10 +12,10 @@ const caseStudies = [
 export default function CaseStudiesIndex() {
   return <div className="min-h-screen bg-ink text-paper">
     <SEO title="Casi studio" description="Una selezione di casi studio PrismWave Studio su strategia di prodotto, SaaS e flussi operativi." path="/case-studies" />
-    <AiMetadata map={["Casi studio", "OpsRook-VI", "Bloom Market"]} intent="Help visitors review PrismWave Studio case studies and the problems behind each project." tags={["case studies", "product design", "SaaS", "PrismWave Studio"]} extract={{ title: "PrismWave Studio Case Studies", audience: "Prospective clients and product teams", primaryActions: "Open a case study" }} />
+    <AiMetadata map={["Casi studio", "OpsRook-VI", "Bloom Market"]} intent="Aiutare i visitatori a consultare i casi studio di PrismWave Studio e i problemi affrontati in ciascun progetto." tags={["casi studio", "progettazione di prodotto", "SaaS", "PrismWave Studio"]} extract={{ title: "Casi studio di PrismWave Studio", audience: "Potenziali clienti e team di prodotto", primaryActions: "Aprire un caso studio" }} />
     <header className="border-b border-ink-line"><div className="mx-auto max-w-5xl px-6 py-6"><Link to="/" className="font-mono text-xs uppercase tracking-wide text-paper/60">← Torna allo studio</Link></div></header>
     <main className="mx-auto max-w-5xl px-6 py-20">
-      <AiIntent id="case-studies-intent">Introduce selected PrismWave Studio case studies and direct visitors to project breakdowns.</AiIntent>
+      <AiIntent id="case-studies-intent">Presentare una selezione di casi studio PrismWave Studio e accompagnare i visitatori nell’analisi dei singoli progetti.</AiIntent>
       <p className="font-mono text-[11px] uppercase tracking-widest text-amber">Progetti selezionati</p>
       <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">Casi studio</h1>
       <p className="mt-5 max-w-2xl leading-relaxed text-paper/65">Uno sguardo più approfondito alle sfide affrontate: dal posizionamento ai percorsi dei clienti, fino a processi operativi più integrati.</p>
