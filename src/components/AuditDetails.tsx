@@ -15,7 +15,7 @@ const CHECKS = [
     desc: "Sicurezza HTTPS, meta description, tag title e metadati Open Graph per le anteprime sui social.",
   },
   {
-    title: "Leggibilità per i sistemi AI",
+    title: "Leggibilità per i sistemi di IA",
     desc: "Struttura semantica, gerarchia dei titoli, dati strutturati (JSON-LD) e testi alternativi delle immagini, utili all'accessibilità e ai sistemi automatici.",
   },
 ];
