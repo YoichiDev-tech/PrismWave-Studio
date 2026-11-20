@@ -69,7 +69,7 @@ function CopyButton({ code }: { code: string }) {
 }
 
 export default function Lab() {
-  const [replayKey, setReplayKey] = useState(0);
+  const [replayKey, setRipetiKey] = useState(0);
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
@@ -82,7 +82,7 @@ export default function Lab() {
       <AiMetadata
         map={["Introduzione al laboratorio", "Elenco dei componenti", "Anteprime interattive", "Codice copiabile"]}
         intent="Permettere ai visitatori di esaminare, provare e copiare i componenti dell'interfaccia utilizzati da PrismWave Studio."
-        tags={["component library", "frontend patterns", "React components", "UI snippets", "web design lab"]}
+        tags={["libreria di componenti", "modelli frontend", "componenti React", "frammenti di interfaccia", "laboratorio web"]}
         extract={{ title: "Laboratorio PrismWave Studio", audience: "Sviluppatori e designer", primaryActions: "Esaminare un componente, provarlo o copiarne il codice", format: "Raccolta pubblica di componenti" }}
       />
       
@@ -126,7 +126,7 @@ export default function Lab() {
           </h1>
           <p className="mt-5 max-w-xl text-ink-soft">
             A running sample of what's actually shipped on this site — free to inspect, copy, and
-            adapt. Every piece here also gets a short breakdown on{" "}
+            modifica. Ogni elemento è accompagnato da una breve spiegazione su{" "}
             <a
               href={THREADS_URL}
               target="_blank"
@@ -188,10 +188,10 @@ export default function Lab() {
                         </Reveal>
                         <button
                           type="button"
-                          onClick={() => setReplayKey((k) => k + 1)}
+                          onClick={() => setRipetiKey((k) => k + 1)}
                           className="font-mono text-[11px] uppercase tracking-wide text-amber underline underline-offset-4"
                         >
-                          Replay
+                          Ripeti
                         </button>
                       </div>
                     )}
@@ -206,7 +206,7 @@ export default function Lab() {
                       onClick={() => setOpenId(isOpen ? null : item.id)}
                       className="font-mono text-[11px] uppercase tracking-wide text-ink-soft underline underline-offset-4 hover:text-paper transition-colors"
                     >
-                      {isOpen ? "Hide code" : "View code →"}
+                      {isOpen ? "Nascondi il codice" : "Visualizza il codice →"}
                     </button>
                   </div>
 
@@ -231,7 +231,7 @@ export default function Lab() {
             className="mt-4 inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.02]"
             style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
           >
-            Start a project &rarr;
+            Avvia un progetto &rarr;
           </Link>
           </Reveal>
         </section>
