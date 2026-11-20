@@ -24,9 +24,9 @@ export default function Products() {
       <AiMetadata
         map={["Introduzione ai prodotti", "Griglia dei prodotti", "Piè di pagina dello studio"]}
         intent="Mostrare i prodotti di PrismWave Studio e invitare i visitatori a esplorarli o ad avviare un'analisi."
-         tags={["products", "tools", "directory", "PrismWave"]}
+         tags={["prodotti", "strumenti", "directory", "PrismWave"]}
         extract={{
-          title: "PrismWave Studio Products",
+          title: "Prodotti PrismWave Studio",
           audience: "Fondatori, sviluppatori indipendenti e piccole imprese",
           primaryActions: "Aprire un prodotto o avviare un'analisi gratuita",
         }}
