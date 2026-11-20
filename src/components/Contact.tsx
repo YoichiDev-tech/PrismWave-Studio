@@ -125,7 +125,7 @@ export default function Contact({ intent, onIntentChange, prefill }: ContactProp
     <Section
       id="contact"
       ai="cta"
-      intent="Capture a project inquiry with the visitor's selected intent and scope, or let them book a call."
+      intent="Raccogliere una richiesta di progetto in base all'esigenza e all'ambito selezionati dal visitatore, oppure permettere di prenotare una chiamata."
       labelledBy="contact-title"
       className="bg-ink py-16 md:py-24"
     >
