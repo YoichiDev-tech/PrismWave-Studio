@@ -19,18 +19,18 @@ export default function BloomMock() {
             Bloom Market
           </p>
           <h4 className="mt-2 font-display text-3xl font-bold leading-[0.95]" style={{ color: "#3A1220" }}>
-            Fresh
+            Fiori freschi
             <br />
-            drops
+            ogni
             <br />
-            weekly
+            settimana
           </h4>
         </div>
         <span
           className="absolute bottom-0 right-1 rounded-full px-3 py-1.5 font-display text-[10px] font-bold"
           style={{ background: "#3A1220", color: "#FFE8D6" }}
         >
-          Shop now
+          Acquista ora
         </span>
       </div>
     </BrowserChrome>
