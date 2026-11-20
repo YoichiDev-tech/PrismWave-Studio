@@ -37,7 +37,7 @@ export default function ProductCard({ product }: Props) {
           ? "Disponibile"
           : product.status === "beta"
           ? "Versione beta"
-          : "Concept dimostrativo"}
+          : "Progetto dimostrativo"}
       </p>
     </Link>
   );
