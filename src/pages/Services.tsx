@@ -193,9 +193,9 @@ export default function Services({ onSelectIntent }: ServicesProps) {
           </h2>
           <ol className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
-              ['1. Baseline', 'Misuriamo velocità, esperienza da smartphone e metadati prima di intervenire.'],
-              ['2. Fix', 'Risolviamo prima il problema principale, con un ambito definito e concordato.'],
-              ['3. Prove', 'Ripetiamo i controlli e ti mostriamo il prima e il dopo, così puoi verificare il risultato.'],
+              ['1. Valutazione iniziale', 'Misuriamo velocità, esperienza da smartphone e metadati prima di intervenire.'],
+              ['2. Intervento', 'Risolviamo prima il problema principale, con un ambito definito e concordato.'],
+              ['3. Verifica', 'Ripetiamo i controlli e ti mostriamo il prima e il dopo, così puoi verificare il risultato.'],
             ].map(([h, p]) => (
               <li key={h} className="rounded-2xl border border-ink-line bg-ink-2/40 p-5">
                 <p className="font-display font-semibold text-amber">{h}</p>
