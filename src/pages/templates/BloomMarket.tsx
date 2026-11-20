@@ -64,7 +64,7 @@ export default function BloomMarket() {
 
       <main data-ai="main-content">
         <section aria-labelledby="bloom-hero" aria-describedby="bloom-hero-intent" role="region" data-ai="hero" className="relative overflow-hidden px-6 pb-20 pt-10">
-          <AiIntent id="bloom-hero-intent">Introduce Bloom Market and direct visitors toward shopping or starting a flower subscription.</AiIntent>
+          <AiIntent id="bloom-hero-intent">Presentare Bloom Market e guidare i visitatori verso l'acquisto o l'attivazione di un abbonamento floreale.</AiIntent>
           <div aria-hidden="true" className="absolute -right-16 top-0 h-64 w-64 rotate-12 rounded-[45%]" style={{ background: PINK, opacity: 0.9 }} />
           <div aria-hidden="true" className="absolute bottom-0 left-[-4rem] h-48 w-48 -rotate-6 rounded-[45%]" style={{ background: YELLOW, opacity: 0.85 }} />
           <div className="relative mx-auto max-w-6xl">
@@ -76,19 +76,19 @@ export default function BloomMarket() {
         </section>
 
         <section id="shop" aria-labelledby="bloom-products" aria-describedby="bloom-products-intent" role="region" data-ai="products" className="px-6 py-16">
-          <AiIntent id="bloom-products-intent">Present the current weekly flower and plant products with prices.</AiIntent>
+          <AiIntent id="bloom-products-intent">Presentare i fiori e le piante disponibili questa settimana, con i relativi prezzi.</AiIntent>
           <div className="mx-auto max-w-6xl"><div className="flex items-end justify-between"><h2 id="bloom-products" className="text-3xl font-bold" style={{ fontFamily: ROUND }}>I preferiti della settimana</h2><span className="text-sm font-semibold underline underline-offset-4">Visualizza tutti</span></div>
             <div className="mt-10 grid gap-6 sm:grid-cols-3" role="list">{PRODUCTS.map((p) => { const Art = p.art; return <article key={p.name} role="listitem" data-ai="product" className="rounded-3xl border-2 p-4" style={{ borderColor: PLUM }}><div className="flex h-40 items-center justify-center rounded-2xl p-3" style={{ background: p.bg }}><Art className="h-full w-full" /></div><div className="mt-4 flex items-center justify-between"><p className="font-semibold">{p.name}</p><span className="rounded-full px-3 py-1 text-sm font-bold" style={{ background: PLUM, color: CREAM }}>{p.price}</span></div></article>; })}</div>
           </div>
         </section>
 
         <section id="subscribe" aria-labelledby="bloom-subscribe" aria-describedby="bloom-subscribe-intent" role="region" data-ai="cta" className="px-6 py-4">
-          <AiIntent id="bloom-subscribe-intent">Offer recurring delivery options and encourage visitors to subscribe and save.</AiIntent>
+          <AiIntent id="bloom-subscribe-intent">Presentare le opzioni di consegna ricorrente e invitare i visitatori ad abbonarsi risparmiando.</AiIntent>
           <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 rounded-3xl px-8 py-12 text-center sm:flex-row sm:text-left" style={{ background: PLUM, color: CREAM }}><div><h2 id="bloom-subscribe" className="text-3xl font-bold" style={{ fontFamily: ROUND }}>Non restare mai senza fiori.</h2><p className="mt-2 max-w-md" style={{ opacity: 0.75 }}>Ogni settimana, ogni due settimane o una volta al mese: scegli la frequenza, al resto pensiamo noi.</p></div><a href="#" className="shrink-0 rounded-full px-7 py-3.5 text-sm font-bold transition-all duration-200 hover:scale-105 hover:shadow-xl" style={{ background: YELLOW, color: PLUM, fontFamily: ROUND }}>Abbonati e risparmia il 15%</a></div>
         </section>
 
         <section aria-labelledby="bloom-about" aria-describedby="bloom-about-intent" role="region" data-ai="about" className="px-6 py-16">
-          <AiIntent id="bloom-about-intent">Tell the story of Bloom Market and connect the storefront to its local flower-growing roots.</AiIntent>
+          <AiIntent id="bloom-about-intent">Raccontare la storia di Bloom Market e collegare il negozio alle sue radici nella floricoltura locale.</AiIntent>
           <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center"><div className="grid grid-cols-3 gap-3">{GRID_TILES.map((tile, i) => { const Art = tile.art; return <div key={i} className="flex aspect-square items-center justify-center rounded-2xl p-4" style={{ background: tile.bg, opacity: 0.9 }}><Art className="h-full w-full" /></div>; })}</div><div><p className="text-xs font-bold uppercase tracking-widest" style={{ opacity: 0.55 }}>La nostra storia</p><h2 id="bloom-about" className="mt-3 text-3xl font-bold" style={{ fontFamily: ROUND }}>Tutto è iniziato su un banco del mercato, un sabato del 2021.</h2><p className="mt-4" style={{ opacity: 0.75 }}>Bloom Market è passato da un semplice banco pieghevole a un servizio di consegna settimanale in tutta la città: gli stessi bouquet preparati a mano e gli stessi coltivatori locali, con molte più case da raggiungere.</p></div></div>
         </section>
       </main>
