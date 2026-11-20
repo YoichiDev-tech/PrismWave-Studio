@@ -47,16 +47,16 @@ export default function AuditUserVoice() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-            See what other users think
+            Leggi le opinioni degli altri utenti
           </p>
           <h2
             id="user-voice-title"
             className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl"
           >
-            Feedback from people who ran the audit.
+            Commenti di chi ha utilizzato lo strumento di analisi.
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-            Only notes we have checked and been allowed to show. Nothing is auto-published.
+            Mostriamo solo commenti verificati e autorizzati. Nessun contenuto viene pubblicato automaticamente.
           </p>
         </Reveal>
 
@@ -79,7 +79,7 @@ export default function AuditUserVoice() {
                   “{t.text}”
                 </blockquote>
                 <figcaption className="mt-4 font-mono text-[11px] text-ink-soft">
-                  {[t.name ?? "Anonymous", t.business].filter(Boolean).join(" · ")}
+                  {[t.name ?? "Anonimo", t.business].filter(Boolean).join(" · ")}
                 </figcaption>
               </figure>
             ))}
@@ -91,7 +91,7 @@ export default function AuditUserVoice() {
             href="/reviews"
             className="font-mono text-[12px] uppercase tracking-wide text-ink-soft underline underline-offset-4 hover:text-amber"
           >
-            See all approved feedback →
+            Leggi tutti i commenti approvati →
           </a>
         </p>
       </div>
