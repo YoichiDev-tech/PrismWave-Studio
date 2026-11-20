@@ -97,7 +97,7 @@ export default function AuditReport() {
         }
         description={
           report
-            ? `Analisi automatizzata di ${report.finalUrl}: ${report.overall}/100 per velocità, dispositivi mobili, design e leggibilità per i sistemi AI.`
+            ? `Analisi automatizzata di ${report.finalUrl}: ${report.overall}/100 per velocità, dispositivi mobili, design e leggibilità per i sistemi di IA.`
             : "Report di analisi del sito condiviso da PrismWave Studio."
         }
         path={id ? `/audit/${id}` : "/audit"}
