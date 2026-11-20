@@ -40,7 +40,7 @@ export default function BloomMarket() {
     <div ai-tag="template" data-ai="page" style={{ background: CREAM, color: PLUM, fontFamily: "'Inter', sans-serif" }} className="min-h-screen cursor-default">
       <SEO
         title="Bloom Market — Modello dimostrativo"
-        description="A bright, fast storefront template for flower delivery and small retail businesses, built by PrismWave Studio."
+        description="Un modello luminoso e veloce per negozi di fiori e piccole attività commerciali, realizzato da PrismWave Studio."
         path="/work/bloom-market"
       />
       <AiMetadata
