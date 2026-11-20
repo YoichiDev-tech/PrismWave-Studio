@@ -21,12 +21,12 @@ export default function CaseStudyPage({ onSelectIntent }: CaseStudyPageProps) {
       <div className="grain min-h-screen bg-ink">
         <Nav onSelectIntent={setIntent} />
         <main className="px-6 py-32 text-center">
-          <p className="text-ink-soft">Case study not found.</p>
+          <p className="text-ink-soft">Caso studio non trovato.</p>
           <Link
             to="/services"
             className="mt-4 inline-block font-display text-sm font-semibold text-amber hover:text-paper"
           >
-            Back to services
+            Torna ai servizi
           </Link>
         </main>
         <Footer />
@@ -37,7 +37,7 @@ export default function CaseStudyPage({ onSelectIntent }: CaseStudyPageProps) {
   return (
     <div className="grain min-h-screen bg-ink">
       <SEO
-        title={`${c.client} case study | PrismWave Studio`}
+        title={`Caso studio ${c.client} | PrismWave Studio`}
         description={c.summary}
         path={`/case-studies/${c.slug}`}
       />
@@ -54,20 +54,20 @@ export default function CaseStudyPage({ onSelectIntent }: CaseStudyPageProps) {
           </h1>
           <p className="mt-3 text-lg text-ink-soft">{c.summary}</p>
 
-          <h2 className="mt-10 font-display text-xl font-semibold text-paper">The problem</h2>
+          <h2 className="mt-10 font-display text-xl font-semibold text-paper">Il problema</h2>
           <p className="mt-2 text-ink-soft">{c.problem}</p>
 
-          <h2 className="mt-8 font-display text-xl font-semibold text-paper">What we changed</h2>
+          <h2 className="mt-8 font-display text-xl font-semibold text-paper">Cosa abbiamo modificato</h2>
           <p className="mt-2 text-ink-soft">{c.fix}</p>
 
-          <h2 className="mt-8 font-display text-xl font-semibold text-paper">Results</h2>
+          <h2 className="mt-8 font-display text-xl font-semibold text-paper">Risultati</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {c.metrics.map((m) => (
               <MetricRow key={m.label} m={m} />
             ))}
           </div>
           <p className="mt-3 font-mono text-[11px] text-ink-soft">
-            Measured with: {c.measuredWith}
+            Misurato con: {c.measuredWith}
           </p>
 
           {c.quote && (
@@ -93,7 +93,7 @@ export default function CaseStudyPage({ onSelectIntent }: CaseStudyPageProps) {
             className="mt-10 inline-block rounded-full px-6 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03] active:scale-[0.98]"
             style={{ background: 'linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)' }}
           >
-            Get the same check for your site
+            Richiedi la stessa analisi per il tuo sito
           </a>
         </article>
       </main>
