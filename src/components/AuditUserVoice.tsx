@@ -40,7 +40,7 @@ export default function AuditUserVoice() {
     <Section
       id="user-voice"
       ai="user-voice"
-      intent="Show approved feedback from people who ran the free audit or worked with the studio."
+      intent="Mostrare commenti approvati di persone che hanno utilizzato l'analisi gratuita o collaborato con lo studio."
       labelledBy="user-voice-title"
       className="border-y border-ink-line bg-ink py-14 md:py-16"
     >
