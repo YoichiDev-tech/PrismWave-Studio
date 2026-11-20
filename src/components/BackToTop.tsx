@@ -44,8 +44,8 @@ export default function BackToTop() {
     <button
       type="button"
       onClick={goTop}
-      aria-label="Back to top"
-      title="Back to top"
+      aria-label="Torna all'inizio"
+      title="Torna all'inizio"
       className={`fixed bottom-5 left-1/2 z-40 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-ink-line bg-ink-2 text-paper shadow-lg transition-all duration-300 hover:border-amber hover:text-amber focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber sm:bottom-6 ${
         visible
           ? "pointer-events-auto translate-y-0 opacity-100"
