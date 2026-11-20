@@ -8,7 +8,7 @@ function FieldingMock() {
     <BrowserChrome bg="#F1EBDF">
       <div className="flex h-full flex-col p-5" style={{ color: "#2B2416" }}>
         <p className="text-[9px] uppercase tracking-[0.25em]" style={{ fontFamily: "Georgia, serif" }}>
-          Est. 2019 — Fielding &amp; Rye
+          Dal 2019 — Fielding &amp; Rye
         </p>
         <h4 className="mt-2 text-2xl leading-none" style={{ fontFamily: "Georgia, serif" }}>
           The Weekly
@@ -21,7 +21,7 @@ function FieldingMock() {
           style={{ fontFamily: "Georgia, serif" }}
         >
           <p className="col-span-2 border-r pr-3" style={{ borderColor: "rgba(43,36,22,0.15)" }}>
-            Sourdough baked fresh each morning, delivered to five neighborhoods by nine. Order ahead
+            Pane a lievitazione naturale, preparato ogni mattina e consegnato in cinque quartieri entro le nove. Prenota in anticipo
             for weekend pickup.
           </p>
           <div className="flex flex-col justify-between">
@@ -29,9 +29,9 @@ function FieldingMock() {
               className="inline-block rounded-full px-2 py-1 text-center"
               style={{ background: "#C7401F", color: "#F1EBDF" }}
             >
-              Order
+              Ordina
             </span>
-            <span className="text-[8px] opacity-60">No. 04 / Bakery</span>
+            <span className="text-[8px] opacity-60">N. 04 / Panificio</span>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@ function NovaMock() {
           style={{ background: "#37E6C4" }}
         />
         <p className="font-mono text-[9px] uppercase tracking-widest text-white/50">
-          Nova Cloud — dashboard
+          Nova Cloud — pannello di controllo
         </p>
         <h4 className="mt-2 font-mono text-xl font-semibold">Uptime 99.98%</h4>
         <div className="mt-4 grid grid-cols-3 gap-2">
@@ -64,7 +64,7 @@ function NovaMock() {
         </div>
         <div className="mt-3 flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 font-mono text-[9px] text-white/60">
           <span className="h-1.5 w-1.5 rounded-full bg-[#37E6C4]" />
-          All systems operational
+          Tutti i sistemi funzionano
         </div>
       </div>
     </BrowserChrome>
