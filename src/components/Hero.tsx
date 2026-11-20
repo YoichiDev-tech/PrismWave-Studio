@@ -14,9 +14,9 @@ interface HeroProps {
 }
 
 const TRUST = [
-  "Fixed-scope pricing",
-  "You own the code",
-  "15-min review first",
+  "Prezzo definito in anticipo",
+  "Il codice è tuo",
+  "Prima, un confronto di 15 minuti",
 ];
 
 export default function Hero({
@@ -85,22 +85,22 @@ export default function Hero({
               <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-amber" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber" />
             </span>
-            Free website audit · Fixed-scope builds
+            Analisi gratuita del sito · Realizzazione a progetto
           </p>
 
           <h1
             id="hero-title"
             className="font-display text-[clamp(2.2rem,8vw,3.4rem)] font-semibold leading-[1.05] tracking-tight text-paper sm:text-6xl md:text-[3.5rem] lg:text-[3.8rem]"
           >
-            Is your website holding you back?
+            Il tuo sito sta frenando la tua attività?
             <br />
             <span className="flow-text">
-              Find out why and fix it.
+              Scopri perché. E risolvi.
             </span>
           </h1>
 
           <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft sm:text-lg">
-            Get a free audit, clear pricing, and a website built in 2–4 weeks.
+            Ricevi un'analisi gratuita, un preventivo chiaro e un sito realizzato in 2–4 settimane.
           </p>
 
           <ul className="mt-5 hidden flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-wide text-ink-soft sm:flex">
@@ -124,7 +124,7 @@ export default function Hero({
           />
 
           <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-wide text-ink-soft">
-            Just browsing{" "}
+            Stai solo dando un'occhiata?{" "}
             <a
               href="#work"
               onClick={() =>
@@ -137,7 +137,7 @@ export default function Hero({
               }
               className="text-paper underline underline-offset-4 transition-colors hover:text-amber"
             >
-              See concept demos →
+              Scopri i progetti dimostrativi →
             </a>
           </p>
         </div>

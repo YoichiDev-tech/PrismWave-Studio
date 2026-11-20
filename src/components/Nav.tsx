@@ -2,15 +2,15 @@ import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { Intent } from "../pages/Home";
 import { trackAction } from "../lib/track";
-import ThemeToggle from "./ThemeToggle";
+import TemaToggle from "./TemaToggle";
 
 const LINKS: { label: string; href: string; intent?: Intent }[] = [
-  { label: "Projects", href: "/projects" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Tools", href: "/tools" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Progetti", href: "/projects" },
+  { label: "Casi studio", href: "/case-studies" },
+  { label: "Strumenti", href: "/tools" },
+  { label: "Prezzi", href: "#pricing" },
+  { label: "Chi siamo", href: "#about" },
+  { label: "Contatti", href: "#contact" },
 ];
 
 interface NavProps {
@@ -119,16 +119,16 @@ export default function Nav({ onSelectIntent }: NavProps) {
         </ul>
 
         <div className="hidden items-center gap-3 md:flex">
-          <ThemeToggle />
+          <TemaToggle />
           <a
             href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
             onClick={() => {
               onSelectIntent("audit");
-              trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-desktop" } });
+              trackAction("cta_click", { metadata: { label: "Richiedi un'analisi gratuita", location: "nav-desktop" } });
             }}
             className="inline-block whitespace-nowrap rounded-full bg-paper px-4 py-2.5 min-[960px]:px-5 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
           >
-            Get a Free Audit
+            Richiedi un'analisi gratuita
           </a>
         </div>
 
@@ -136,22 +136,22 @@ export default function Nav({ onSelectIntent }: NavProps) {
           href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
           onClick={() => {
             onSelectIntent("audit");
-            trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile-bar" } });
+            trackAction("cta_click", { metadata: { label: "Richiedi un'analisi gratuita", location: "nav-mobile-bar" } });
           }}
           className="ml-auto mr-2 rounded-full bg-paper px-4 py-2 font-display text-[13px] font-semibold text-ink md:hidden"
         >
-          Free audit
+          Analisi gratuita
         </a>
 
         {/* Phones ≥400px: toggle in the bar. Smaller phones get it inside the menu instead */}
         <div className="mr-1 hidden min-[400px]:max-md:flex">
-          <ThemeToggle />
+          <TemaToggle />
         </div>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? "Chiudi menu" : "Apri menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
           className="relative -mr-2.5 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
@@ -207,16 +207,16 @@ export default function Nav({ onSelectIntent }: NavProps) {
             href={location.pathname === "/" ? "#audit-tool" : "/#audit-tool"}
             onClick={() => {
               onSelectIntent("audit");
-              trackAction("cta_click", { metadata: { label: "Get a Free Audit", location: "nav-mobile" } });
+              trackAction("cta_click", { metadata: { label: "Richiedi un'analisi gratuita", location: "nav-mobile" } });
               handleLinkClick();
             }}
             className="mt-3 inline-block rounded-full bg-paper px-5 py-2.5 font-display text-sm font-semibold text-ink"
           >
-            Get a Free Audit
+            Richiedi un'analisi gratuita
           </a>
           <div className="mt-4 hidden items-center justify-between border-t border-ink-line pt-4 max-[399px]:flex">
-            <span className="font-mono text-sm uppercase tracking-wide text-ink-soft">Theme</span>
-            <ThemeToggle />
+            <span className="font-mono text-sm uppercase tracking-wide text-ink-soft">Tema</span>
+            <TemaToggle />
           </div>
         </div>
       )}

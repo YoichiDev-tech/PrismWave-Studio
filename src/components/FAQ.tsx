@@ -4,36 +4,36 @@ import Section from "./Section";
 
 const FAQS = [
   {
-    q: "Why should I trust PrismWave with my website?",
-    a: "You can inspect the work before committing: the audit uses real signals from your site, pricing is visible upfront, and the portfolio shows live builds rather than vague promises. You keep ownership of the finished code, and every project starts with a clear scope and timeline.",
+    q: "Perché dovrei affidare il mio sito a PrismWave?",
+    a: "Puoi valutare il nostro approccio prima di impegnarti: l'analisi si basa su dati reali del tuo sito, i prezzi sono chiari fin dall'inizio e il portfolio mostra progetti consultabili. Il codice finale resta tuo e ogni progetto parte da ambito e tempistiche definiti.",
   },
   {
-    q: "Do I own the site after it's built?",
-    a: "Yes — you fully own the code, design, and all exported assets. Nothing is locked behind subscriptions or proprietary builders.",
+    q: "Il sito sarà mio una volta completato?",
+    a: "Sì. Sarai proprietario del codice, del design e di tutti i materiali consegnati. Nessun abbonamento obbligatorio o vincolo con piattaforme proprietarie.",
   },
   {
-    q: "How long does a project take?",
-    a: "Most landing pages take 3-7 days. Small business sites usually take 2-3 weeks depending on content readiness and revision rounds.",
+    q: "Quanto tempo richiede un progetto?",
+    a: "La maggior parte delle landing page richiede 3–7 giorni. I siti per piccole imprese richiedono in genere 2–3 settimane, in base ai contenuti e alle revisioni.",
   },
   {
-    q: "What happens if the project is not the right fit?",
-    a: "We start with a short conversation and a defined scope before any work begins. If the goals, budget, or timeline do not line up, I will say so and you can walk away without being pushed into a package.",
+    q: "E se il progetto non fosse adatto alle mie esigenze?",
+    a: "Iniziamo con una breve conversazione e definiamo l'ambito prima di cominciare. Se obiettivi, budget o tempistiche non sono compatibili, te lo dirò con trasparenza, senza pressioni.",
   },
   {
-    q: "What if I need changes after launch?",
-    a: "You can request additional updates anytime. Small fixes are quick; larger changes can be scoped as a mini-project.",
+    q: "E se avessi bisogno di modifiche dopo il lancio?",
+    a: "Puoi richiedere aggiornamenti anche dopo il lancio. Le piccole correzioni sono rapide; gli interventi più ampi possono essere pianificati come un nuovo incarico.",
   },
   {
-    q: "Do you offer hosting or maintenance?",
-    a: "Hosting and domains are handled by providers like Vercel or Namecheap. We do offer ongoing maintenance, but you stay in full control.",
+    q: "Offrite hosting o manutenzione?",
+    a: "Hosting e domini sono gestiti da fornitori come Vercel o Namecheap. Possiamo occuparci della manutenzione, ma mantieni sempre il pieno controllo.",
   },
   {
-    q: "What do you need from me to get started?",
-    a: "A short description of your business, your goals, any existing content, and examples of sites you like. That's enough to begin.",
+    q: "Di cosa avete bisogno per iniziare?",
+    a: "Bastano una breve descrizione della tua attività, i tuoi obiettivi, i contenuti già disponibili e qualche esempio di siti che apprezzi.",
   },
   {
-    q: "What if I don't have a logo or brand yet?",
-    a: "No problem — we can design a simple starter brand or work with neutral styling until you have a full identity.",
+    q: "E se non avessi ancora un logo o un'identità visiva?",
+    a: "Nessun problema: possiamo creare un'identità visiva essenziale oppure partire da uno stile neutro, da evolvere in seguito.",
   },
 ];
 
@@ -52,9 +52,9 @@ export default function FAQ() {
     >
       <div className="mx-auto max-w-3xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Frequently asked questions</p>
+          <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Domande frequenti</p>
           <h2 id="faq-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl">
-            Everything you need to know before we start.
+            Tutto quello che devi sapere prima di iniziare.
           </h2>
         </Reveal>
 

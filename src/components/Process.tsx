@@ -3,23 +3,23 @@ import Section from "./Section";
 
 const STEPS = [
   {
-    title: "Audit or short call",
-    desc: "Free site audit or a 15-minute review. You get clear findings and a realistic recommendation — fix, rebuild, or leave it.",
+    title: "Analisi o breve chiamata",
+    desc: "Analisi gratuita del sito o confronto di 15 minuti. Ricevi risultati chiari e una proposta realistica: correggere, rifare o non intervenire.",
   },
   {
-    title: "Written project summary",
-    desc: "One plain document: exact pages, features, timeline, and what's included or excluded. No vague proposals.",
+    title: "Riepilogo scritto del progetto",
+    desc: "Un documento semplice con pagine, funzionalità, tempistiche e attività incluse o escluse. Nessuna proposta vaga.",
   },
   {
-    title: "Simple agreement + deposit",
+    title: "Accordo e acconto",
     desc: "You receive a short agreement covering price, deposit, revisions, and ownership. Work starts only after deposit and signed terms.",
   },
   {
-    title: "Build & review rounds",
+    title: "Sviluppo e revisioni",
     desc: "Fixed-scope build to the timeline agreed in writing. You get the included revision rounds. No surprise hours or scope creep.",
   },
   {
-    title: "Launch & full handover",
+    title: "Pubblicazione e consegna",
     desc: "Deploy, connect domain if needed, handover the complete code and assets. You own 100%. Optional support after that.",
   },
 ];
@@ -36,13 +36,13 @@ export default function Process() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-            How it works
+            Come funziona
           </p>
           <h2
             id="process-title"
             className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl"
           >
-            Fixed scope. Written terms. No surprises.
+            Ambito definito. Accordi scritti. Nessuna sorpresa.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Every project follows the same path: clear findings, a written
@@ -77,7 +77,7 @@ export default function Process() {
         <Reveal delay={2} className="mt-10">
           <div className="mx-auto max-w-3xl rounded-2xl border border-ink-line bg-ink/60 px-6 py-5 text-center">
             <p className="text-sm leading-relaxed text-ink-soft">
-              <span className="font-semibold text-paper">How payment works:</span>{" "}
+              <span className="font-semibold text-paper">Come funziona il pagamento:</span>{" "}
               35% deposit to start after the agreement is signed, 65% on delivery.
               Scope is locked before work begins. Extra work outside the agreed
               summary is quoted separately — never billed as surprise hours.

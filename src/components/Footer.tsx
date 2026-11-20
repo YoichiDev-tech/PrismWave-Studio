@@ -2,19 +2,19 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 const MENU = [
-  { label: "Projects", href: "/projects" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Tools", href: "/tools" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Progetti", href: "/projects" },
+  { label: "Casi studio", href: "/case-studies" },
+  { label: "Strumenti", href: "/tools" },
+  { label: "Prezzi", href: "/#pricing" },
+  { label: "Chi siamo", href: "/#about" },
+  { label: "Contatti", href: "/#contact" },
 ];
 
 const STUDIO = [
-  { label: "History", href: "/history" },
-  { label: "Changelog", href: "/changelog" },
+  { label: "Storia", href: "/history" },
+  { label: "Novità", href: "/changelog" },
   { label: "Roadmap", href: "/roadmap" },
-  { label: "Revamp", href: "/revamp" },
+  { label: "Riprogettazione", href: "/revamp" },
 ];
 
 const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
@@ -71,7 +71,7 @@ export default function Footer() {
               PrismWave
             </Link>
             <p className="mt-3 max-w-xs text-sm text-ink-soft">
-              Websites for small businesses that want to look — and load — as good as they perform.
+              Siti web per piccole imprese: belli da vedere, veloci da usare e progettati per ottenere risultati.
             </p>
 
             <div className="mt-5 flex items-center gap-3">
@@ -116,33 +116,33 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Contact</p>
+              <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Contatti</p>
               <ul className="mt-4 space-y-2.5 text-sm text-paper/80">
                 <li>yoichi_dev@proton.me</li>
-                <li>Mon-Fri, 9:00am-5:30pm</li>
+                <li>Lun–ven, 9:00–17:30</li>
               </ul>
             </div>
           </div>
         </div>
 
         <div className="mt-10 border-t border-ink-line pt-6">
-          <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Legal &amp; regulatory</p>
+          <p className="font-mono text-[11px] uppercase tracking-widest text-ink-soft">Note legali e normative</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-paper/70">
             <Link to="/terms" className="inline-flex min-h-11 items-center transition-colors hover:text-paper">
-              Terms of Use
+              Termini di utilizzo
             </Link>
             <Link to="/privacy" className="inline-flex min-h-11 items-center transition-colors hover:text-paper">
               Privacy
             </Link>
             <Link to="/regulatory" className="inline-flex min-h-11 items-center transition-colors hover:text-paper">
-              Regulatory Information
+              Informazioni societarie
             </Link>
           </div>
         </div>
 
         <div className="mt-14 flex flex-col gap-4 border-t border-ink-line pt-6 font-mono text-[11px] uppercase tracking-wide text-ink-soft sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} PrismWave Studio. All rights reserved.</p>
-          <p>Designed &amp; built in-house.</p>
+          <p>© {new Date().getFullYear()} PrismWave Studio. Tutti i diritti riservati.</p>
+          <p>Ideato e sviluppato internamente.</p>
         </div>
       </div>
     </footer>

@@ -5,10 +5,10 @@ import BrandReel from "./BrandReel";
 // Merges the old About + Why Choose Us: the story (why hospitality matters)
 // and the proof (what you can rely on) belong together
 const PROMISES = [
-  { label: "Response time", value: "1 business day" },
-  { label: "Code ownership", value: "100% yours" },
+  { label: "Tempo di risposta", value: "1 giorno lavorativo" },
+  { label: "Proprietà del codice", value: "Interamente tuo" },
   { label: "Built with", value: "React & TypeScript" },
-  { label: "Pricing", value: "Fixed, no surprises" },
+  { label: "Pricing", value: "Prezzo definito, senza sorprese" },
 ];
 
 const STANDARDS = [
@@ -42,16 +42,16 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={2}>
-            <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Who we are</p>
+            <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">Chi siamo</p>
             <h2 id="about-title" className="mt-3 font-display text-3xl font-semibold tracking-tight text-paper md:text-4xl">
-              From hospitality to building digital experiences.
+              Dall'ospitalità alla creazione di esperienze digitali.
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-ink-soft">
               We're PrismWave Studio — a small studio with roots in hospitality and service businesses. Years of working directly with
               customers taught us how small businesses actually operate, and what a website has to do for them.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
-              PrismWave Studio is a web design and development studio that builds fast, modern, conversion-focused websites for small businesses. The studio offers free website audits, fixed-scope pricing, and delivery timelines agreed upfront for each project.
+              PrismWave Studio progetta e sviluppa siti web moderni e veloci per le piccole imprese, con l'obiettivo di trasformare le visite in contatti. Offriamo analisi gratuite, prezzi definiti e tempistiche concordate in anticipo.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
               So every project is built for clarity and real-world use: no bloated features, no confusing dashboards, no agency-style
@@ -76,7 +76,7 @@ export default function About() {
               className="group mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-8 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
               style={{ background: "linear-gradient(100deg, #FFB84D 0%, #FF7A59 100%)" }}
             >
-              Let's work together
+              Lavoriamo insieme
               <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
             </a>
           </Reveal>
