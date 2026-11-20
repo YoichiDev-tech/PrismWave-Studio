@@ -38,7 +38,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
   const handleRequestScope = () => {
     const addonLines = selectedAddons.length ? `\nServizi aggiuntivi:\n${selectedAddons.map((a) => `- ${a.label}`).join("\n")}` : "";
     const summary = [
-      `I'm interested in a fixed-scope project:`,
+      `Sono interessato a un progetto con ambito definito:`,
       `Ambito principale: ${plan.label} (stima $${minPrice.toLocaleString()}-$${maxPrice.toLocaleString()}, circa ${formatWeeks(totalWeeks)}).${addonLines}`,
       "",
       "Vorrei maggiori informazioni su tempistiche e prossimi passi.",
@@ -169,7 +169,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() =>
-                  trackAction("cta_click", { metadata: { label: "Book a free 15-min call", location: "pricing" } })
+                  trackAction("cta_click", { metadata: { label: "Prenota una chiamata gratuita di 15 minuti", location: "pricing" } })
                 }
                 className="font-mono text-[12px] uppercase tracking-wide text-ink-soft underline underline-offset-4 transition-colors hover:text-paper"
               >
