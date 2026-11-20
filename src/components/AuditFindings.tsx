@@ -25,7 +25,7 @@ export default function AuditFindings() {
     <Section
       id="audit-findings"
       ai="audit-findings"
-      intent="Explain the format and limitations of the automated website audit."
+      intent="Spiegare il formato e i limiti dell'analisi automatizzata del sito."
       labelledBy="audit-findings-title"
       className="grain relative overflow-hidden bg-ink py-16 md:py-24"
     >
