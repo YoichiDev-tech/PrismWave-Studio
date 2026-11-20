@@ -106,7 +106,7 @@ const projects: Project[] = [
   {
     name: "Fielding & Rye",
     category: "Panificio — riprogettazione completa",
-    desc: "An editorial, broadsheet-inspired site for a neighborhood bakery — hairline rules, serif type, and a menu that reads like a printed page.",
+    desc: "Un sito in stile editoriale per un panificio di quartiere, con linee sottili, caratteri serif e un menu che ricorda una pagina stampata.",
     mock: LedgerMock,
     hover: "slide",
     path: "/work/fielding-and-rye",
@@ -114,7 +114,7 @@ const projects: Project[] = [
   {
     name: "Nova Cloud",
     category: "SaaS — sito di prodotto",
-    desc: "A dark, data-forward dashboard-style site for a monitoring startup, built to make technical credibility legible at a glance.",
+    desc: "Un sito scuro, ricco di dati e ispirato ai pannelli di controllo, per una startup di monitoraggio: progettato per comunicare subito affidabilità tecnica.",
     mock: NovaMock,
     hover: "scan",
     path: "/work/nova-cloud",
@@ -122,7 +122,7 @@ const projects: Project[] = [
   {
     name: "Bloom Market",
     category: "Boutique — pagina di presentazione",
-    desc: "A playful, maximalist landing page for a flower and gift shop — big type, organic shapes, and a palette built to be shared.",
+    desc: "Una pagina di presentazione vivace e ricca di elementi visivi per un negozio di fiori e articoli da regalo, con caratteri ampi, forme organiche e una palette pensata per essere condivisa.",
     mock: BloomMock,
     hover: "wiggle",
     path: "/work/bloom-market/case-study",
