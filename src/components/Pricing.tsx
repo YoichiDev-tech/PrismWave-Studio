@@ -55,7 +55,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
     <Section
       id="pricing"
       ai="pricing"
-      intent="Present fixed-scope pricing, let visitors build an estimate, and turn it into a project inquiry."
+      intent="Presentare prezzi con ambito definito, permettere ai visitatori di creare una stima e trasformarla in una richiesta di progetto."
       labelledBy="pricing-title"
       className="grain relative overflow-hidden bg-ink py-16 md:py-24"
     >
