@@ -26,11 +26,11 @@ const DEMO_SITES: DemoSite[] = [
   {
     id: "aurora-fitness",
     name: "Aurora Fitness",
-    industry: "Fitness / gyms",
+    industry: "Fitness / palestre",
     url: "https://aurorafitness.example",
-    originalTitle: "Cardio. Weights. Results.",
-    originalSubtitle: "Open 7 days a week. First class always free.",
-    modernTitle: "Build your experience.",
+    originalTitle: "Cardio. Pesi. Risultati.",
+    originalSubtitle: "Aperti 7 giorni su 7. Prima lezione sempre gratuita.",
+    modernTitle: "Costruisci la tua esperienza.",
     modernSubtitle:
       "A confident, conversion-focused redesign built to turn visitors into booked trial classes.",
     accent: "#3fae6b",
