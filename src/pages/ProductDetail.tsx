@@ -12,12 +12,12 @@ export default function ProductDetail() {
     return (
       <div className="grain min-h-screen bg-ink text-paper">
         <main className="mx-auto max-w-6xl px-6 py-20">
-          <h1 className="font-display text-3xl font-semibold">Product not found</h1>
+          <h1 className="font-display text-3xl font-semibold">Prodotto non trovato</h1>
           <Link
             to="/products"
             className="mt-6 inline-block font-mono text-sm uppercase tracking-wide text-amber"
           >
-            ← Back to products
+            ← Torna ai prodotti
           </Link>
         </main>
       </div>
@@ -33,13 +33,13 @@ export default function ProductDetail() {
       />
 
       <AiMetadata
-        map={["Product detail", "Product overview", "Studio footer"]}
-        intent="Show a product detail page and invite visitors to explore or start an audit."
+        map={["Dettaglio del prodotto", "Panoramica del prodotto", "Piè di pagina dello studio"]}
+        intent="Mostrare la scheda di un prodotto e invitare i visitatori a esplorarlo o ad avviare un'analisi."
         tags={product.tags}
         extract={{
           title: product.name,
-          audience: "Founders and indie makers",
-          primaryActions: "Open product or run a free audit",
+          audience: "Fondatori e sviluppatori indipendenti",
+          primaryActions: "Aprire il prodotto o avviare un'analisi gratuita",
         }}
       />
 
@@ -49,7 +49,7 @@ export default function ProductDetail() {
             to="/products"
             className="font-mono text-[12px] uppercase tracking-wide text-paper/60 transition-colors hover:text-paper"
           >
-            ← Back to products
+            ← Torna ai prodotti
           </Link>
         </div>
       </header>
@@ -82,18 +82,18 @@ export default function ProductDetail() {
           rel="noopener noreferrer"
           className="mt-10 inline-block rounded-full bg-paper px-6 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
         >
-          Visit product →
+          Visita il prodotto →
         </a>
 
         <div className="mt-12 border-t border-ink-line pt-8">
           <p className="font-mono text-[12px] uppercase tracking-widest text-ink-soft">
-            Need a custom build?
+            Ti serve un progetto su misura?
           </p>
           <Link
             to="/#audit-tool"
             className="mt-3 inline-block rounded-full bg-paper px-6 py-3 font-display text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
           >
-            Get a Free Audit
+            Richiedi un'analisi gratuita
           </Link>
         </div>
       </main>
