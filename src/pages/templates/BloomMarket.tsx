@@ -21,9 +21,9 @@ const YELLOW = "#FFD23F";
 const MINT = "#8FD3C0";
 
 const PRODUCTS: { name: string; price: string; bg: string; art: ComponentType<{ className?: string }> }[] = [
-  { name: "Sunday Bouquet", price: "$38", bg: PINK, art: SundayBouquet },
-  { name: "Citrus & Herb Jar", price: "$22", bg: YELLOW, art: CitrusHerbJar },
-  { name: "Dried Bloom Bundle", price: "$28", bg: MINT, art: DriedBloomBundle },
+  { name: "Bouquet della domenica", price: "$38", bg: PINK, art: SundayBouquet },
+  { name: "Vaso agli agrumi e alle erbe", price: "$22", bg: YELLOW, art: CitrusHerbJar },
+  { name: "Composizione di fiori essiccati", price: "$28", bg: MINT, art: DriedBloomBundle },
 ];
 
 const GRID_TILES: { bg: string; art: ComponentType<{ className?: string }> }[] = [
@@ -46,8 +46,8 @@ export default function BloomMarket() {
       <AiMetadata
         map={["Presentazione del negozio di fiori", "Prodotti preferiti della settimana", "Offerta in abbonamento", "Storia del marchio"]}
         intent="Presentare un negozio di fiori con consegna a domicilio e guidare i visitatori verso l'acquisto o l'abbonamento."
-        tags={["flower shop", "ecommerce template", "flower delivery", "subscription commerce", "local retail"]}
-        extract={{ title: "Bloom Market", audience: "Persone interessate ad acquistare bouquet e piante facili da curare", primaryActions: "Acquistare la selezione settimanale o attivare un abbonamento", products: "Sunday Bouquet $38; Citrus & Herb Jar $22; Dried Bloom Bundle $28", cadence: "Nuova selezione ogni venerdì" }}
+        tags={["negozio di fiori", "modello e-commerce", "consegna di fiori", "commercio in abbonamento", "vendita al dettaglio locale"]}
+        extract={{ title: "Bloom Market", audience: "Persone interessate ad acquistare bouquet e piante facili da curare", primaryActions: "Acquistare la selezione settimanale o attivare un abbonamento", products: "Bouquet della domenica $38; Vaso agli agrumi e alle erbe $22; Composizione di fiori essiccati $28", cadence: "Nuova selezione ogni venerdì" }}
       />
       <BackToStudioBadge tone="light" />
       <PickThisTemplateBadge tone="light" />
