@@ -25,7 +25,7 @@ export default function AuditDetails() {
     <Section
       id="audit-details"
       ai="audit-details"
-      intent="Explain what the free website audit actually checks across four categories."
+      intent="Spiegare cosa verifica concretamente l'analisi gratuita del sito nelle quattro categorie previste."
       labelledBy="audit-details-title"
       className="border-y border-ink-line bg-ink-2 py-16 md:py-20"
     >
