@@ -1,1 +1,24 @@
-{\n  "compilerOptions": { "target": "ES2022", "module": "NodeNext", "moduleResolution": "NodeNext", "lib": ["ES2022"], "types": ["node"], "rootDir": ".", "outDir": "dist-server", "strict": true, "esModuleInterop": true, "skipLibCheck": true, "noUnusedLocals": true, "noUnusedParameters": true },\n  "include": ["server/**/*.ts"]\n}\n
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "ES2022"
+    ],
+    "types": [
+      "node"
+    ],
+    "rootDir": ".",
+    "outDir": "dist-server",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "include": [
+    "server/**/*.ts"
+  ]
+}
