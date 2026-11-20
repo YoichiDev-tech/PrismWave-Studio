@@ -20,9 +20,9 @@ function LedgerMock() {
           className="mt-2 text-2xl leading-none"
           style={{ fontFamily: "Georgia, serif" }}
         >
-          The Weekly
+          Il pane della settimana
           <br />
-          Loaf.
+          Pagnotta.
         </h4>
         <div
           className="mt-3 h-px w-full"
@@ -105,7 +105,7 @@ interface Project {
 const projects: Project[] = [
   {
     name: "Fielding & Rye",
-    category: "Bakery — full redesign",
+    category: "Panificio — riprogettazione completa",
     desc: "An editorial, broadsheet-inspired site for a neighborhood bakery — hairline rules, serif type, and a menu that reads like a printed page.",
     mock: LedgerMock,
     hover: "slide",
@@ -113,7 +113,7 @@ const projects: Project[] = [
   },
   {
     name: "Nova Cloud",
-    category: "SaaS — product site",
+    category: "SaaS — sito di prodotto",
     desc: "A dark, data-forward dashboard-style site for a monitoring startup, built to make technical credibility legible at a glance.",
     mock: NovaMock,
     hover: "scan",
@@ -121,7 +121,7 @@ const projects: Project[] = [
   },
   {
     name: "Bloom Market",
-    category: "Boutique — landing page",
+    category: "Boutique — pagina di presentazione",
     desc: "A playful, maximalist landing page for a flower and gift shop — big type, organic shapes, and a palette built to be shared.",
     mock: BloomMock,
     hover: "wiggle",
@@ -192,20 +192,20 @@ export default function Portfolio({ variant = "page" }: PortfolioProps) {
           <Reveal className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-xl">
               <p className="font-mono text-[12px] uppercase tracking-widest text-paper/50">
-                Concept demos
+                Progetti dimostrativi
               </p>
               <h2
                 id="work-title"
                 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl"
               >
-                Real quality for real verticals.
+                Qualità concreta per diversi settori.
               </h2>
             </div>
             <Link
               to="/projects"
               className="font-mono text-[12px] uppercase tracking-wide text-paper/60 underline underline-offset-4 transition-colors hover:text-amber"
             >
-              See all demos →
+              Esplora tutti i progetti dimostrativi →
             </Link>
           </Reveal>
 
@@ -235,10 +235,10 @@ export default function Portfolio({ variant = "page" }: PortfolioProps) {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="max-w-xl">
           <p className="font-mono text-[12px] uppercase tracking-widest text-paper/50">
-            Concept demos
+            Progetti dimostrativi
           </p>
           <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            Real quality for real verticals. No paid clients yet.
+            Qualità concreta per diversi settori. No paid clients yet.
           </h2>
           <p className="mt-4 text-paper/60">
             These are speculative builds that show the standard a paying client
