@@ -32,7 +32,7 @@ type Cart = Record<string, number>;
 export default function FieldingRye() {
   const [cart, setCart] = useState<Cart>({});
   const [name, setName] = useState("");
-  const [pickup, setPickup] = useState("Saturday 9:00");
+  const [pickup, setPickup] = useState("Sabato 9:00");
   const [note, setNote] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -77,7 +77,7 @@ export default function FieldingRye() {
       <AiMetadata
         map={["Presentazione del panificio", "Programma settimanale delle preparazioni", "Prodotti del giorno", "La nostra storia", "Orari e posizione", "Prenota in anticipo"]}
         intent="Presentare il modello di un panificio di quartiere e guidare i visitatori verso la prenotazione anticipata del pane."
-        tags={["bakery website", "restaurant website template", "local business", "sourdough bakery", "menu"]}
+        tags={["sito per panificio", "modello per ristorazione", "attività locale", "panificio artigianale", "menu"]}
         extract={{
           title: "Fielding & Rye",
           audience: "Clienti di un panificio di quartiere",
@@ -156,9 +156,9 @@ export default function FieldingRye() {
                   E
                 </span>
                 Ogni pagnotta di Fielding &amp; Rye inizia la sera prima: una lunga fermentazione a freddo che sviluppa gran parte del suo sapore.
-                the work while the neighborhood sleeps. We mill what we can locally, keep the ingredient list
+                Lavoriamo mentre il quartiere dorme. Maciniamo localmente tutto ciò che possiamo e manteniamo semplice l’elenco degli ingredienti.
                 Le quantità sono limitate e il sabato spesso esauriscono entro le undici. Se desideri una pagnotta specifica, prenotala in anticipo; altrimenti
-                you&apos;re passing by, the case rarely goes empty before noon.
+                Se passi di qui, troverai quasi sempre qualcosa in vetrina prima di mezzogiorno.
               </p>
             </article>
 
@@ -204,7 +204,7 @@ export default function FieldingRye() {
                 I prodotti di oggi
               </h2>
               <p className="text-[11px] uppercase tracking-widest" style={{ opacity: 0.55 }}>
-                04 items
+                4 prodotti
               </p>
             </div>
 
@@ -237,7 +237,7 @@ export default function FieldingRye() {
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
-                        aria-label={`Decrease ${item.name}`}
+                        aria-label={`Diminuisci la quantità di ${item.name}`}
                         onClick={() => setQty(item.no, -1)}
                         disabled={qty === 0}
                         className="flex h-9 w-9 items-center justify-center rounded-full border text-sm transition-opacity disabled:opacity-30 hover:opacity-80"
@@ -248,7 +248,7 @@ export default function FieldingRye() {
                       <span className="w-6 text-center font-mono text-sm">{qty}</span>
                       <button
                         type="button"
-                        aria-label={`Increase ${item.name}`}
+                        aria-label={`Aumenta la quantità di ${item.name}`}
                         onClick={() => setQty(item.no, 1)}
                         className="flex h-9 w-9 items-center justify-center rounded-full border text-sm transition-transform hover:scale-105 active:scale-95"
                         style={{ borderColor: RULE, background: qty > 0 ? INK : "transparent", color: qty > 0 ? PAPER : INK }}
@@ -299,7 +299,7 @@ export default function FieldingRye() {
                           {i.qty}× {i.name} — ${i.qty * i.price}
                         </li>
                       ))}
-                      <li className="pt-1 font-semibold">Total ${totalPrice}</li>
+                      <li className="pt-1 font-semibold">Totale ${totalPrice}</li>
                     </ul>
                   )}
                   <div className="grid gap-4 sm:grid-cols-2">
@@ -326,10 +326,10 @@ export default function FieldingRye() {
                         className="min-h-11 w-full rounded-sm border bg-transparent px-3"
                         style={{ borderColor: RULE, background: PAPER }}
                       >
-                        <option>Saturday 8:00</option>
-                        <option>Saturday 9:00</option>
-                        <option>Saturday 10:00</option>
-                        <option>Sunday 9:00</option>
+                        <option>Sabato 8:00</option>
+                        <option>Sabato 9:00</option>
+                        <option>Sabato 10:00</option>
+                        <option>Domenica 9:00</option>
                       </select>
                     </label>
                   </div>
@@ -342,7 +342,7 @@ export default function FieldingRye() {
                       onChange={(e) => setNote(e.target.value)}
                       className="min-h-11 w-full rounded-sm border bg-transparent px-3"
                       style={{ borderColor: RULE }}
-                      placeholder="Per favore, affettato"
+                      placeholder="Es. tagliare a fette"
                     />
                   </label>
                   <button
@@ -368,7 +368,7 @@ export default function FieldingRye() {
           className="border-t py-16"
           style={{ borderColor: RULE }}
         >
-          <AiIntent id="fielding-story-intent">Share the bakery&apos;s origin story and reinforce its neighborhood identity.</AiIntent>
+          <AiIntent id="fielding-story-intent">Raccontare le origini del panificio e rafforzarne il legame con il quartiere.</AiIntent>
           <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
             <div className="h-56 overflow-hidden rounded-sm border" style={{ borderColor: RULE }}>
               <OvenScene className="h-full w-full" />
@@ -378,7 +378,7 @@ export default function FieldingRye() {
                 La nostra storia
               </p>
               <blockquote id="fielding-story" className="mt-4 text-2xl leading-snug" style={{ fontFamily: SERIF }}>
-                &ldquo;We wanted a bakery that felt like it had always been on this corner — even on day one.&rdquo;
+                &ldquo;Volevamo creare un panificio che sembrasse essere sempre stato all’angolo di questa strada, fin dal primo giorno.&rdquo;
               </blockquote>
               <p className="mt-4 text-sm" style={{ opacity: 0.65 }}>
                 — I fondatori di Fielding &amp; Rye
