@@ -88,7 +88,7 @@ function BeforeSiteMock() {
           </p>
         </div>
         <div className="grid grid-cols-3 gap-1">
-          {["Home", "Servizi", "Contatti"].map((label) => (
+          {["Inizio", "Servizi", "Contatti"].map((label) => (
             <div
               key={label}
               className="border border-black/25 bg-[#c5d4e8] px-1 py-1.5 text-center text-[9px] font-semibold text-[#1e3a5f]"
