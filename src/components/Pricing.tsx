@@ -179,9 +179,7 @@ export default function Pricing({ onRequestScope }: PricingProps) {
           </div>
 
           <p className="mx-auto mt-4 max-w-3xl text-center font-mono text-[11px] leading-relaxed text-ink-soft">
-            {plan.excludes} The estimate is directional — scope is confirmed together before any work starts. 35% deposit
-            to start, 65% on delivery. Prices in USD unless agreed otherwise. No retainers, no surprise add-ons, no
-            locked-in platform.
+            {plan.excludes} La stima è indicativa: l'ambito viene confermato insieme prima dell'inizio dei lavori. È previsto un acconto del 35% all'avvio e il saldo del 65% alla consegna. Prezzi in USD, salvo diverso accordo. Nessun canone ricorrente, costo aggiuntivo a sorpresa o vincolo con una piattaforma.
           </p>
         </Reveal>
       </div>
