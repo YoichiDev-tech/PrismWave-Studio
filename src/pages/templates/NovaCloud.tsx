@@ -84,17 +84,17 @@ export default function NovaCloud() {
           <ul className="hidden gap-8 text-[13px] text-white/60 md:flex">
             <li>
               <a href="#features" className="transition-colors hover:text-white">
-                Product
+                Prodotto
               </a>
             </li>
             <li>
               <a href="#pricing" className="transition-colors hover:text-white">
-                Pricing
+                Prezzi
               </a>
             </li>
             <li>
               <a href="#features" className="transition-colors hover:text-white">
-                Docs
+                Documentazione
               </a>
             </li>
             <li className="text-white/35">Aggiornamenti</li>
@@ -119,7 +119,7 @@ export default function NovaCloud() {
           className="relative overflow-hidden"
         >
           <AiIntent id="nova-hero-intent">
-            Introduce Nova Cloud and direct technical teams toward a trustworthy uptime monitoring trial.
+            Presentare Nova Cloud e invitare i team tecnici a provare un servizio affidabile di monitoraggio della disponibilità.
           </AiIntent>
           <div
             aria-hidden="true"
@@ -140,7 +140,7 @@ export default function NovaCloud() {
               </h1>
               <p className="mt-5 max-w-md text-white/60">
                 Nova Cloud monitora ogni endpoint, individua la causa degli errori e avvisa la persona giusta
-                engineer before your customers notice.
+                prima che se ne accorgano i tuoi clienti.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -193,7 +193,7 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
               >
                 <div className="flex items-center justify-between">
                   <p className="text-[11px] uppercase tracking-widest text-white/45" style={{ fontFamily: MONO }}>
-                    p95 latency by region — click a bar
+                    Latenza p95 per area geografica — seleziona una barra
                   </p>
                 </div>
 
@@ -256,7 +256,7 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
           </AiIntent>
           <div className="mx-auto max-w-6xl px-6">
             <h2 id="nova-features" className="mt-3 text-3xl font-semibold">
-              Everything an on-call engineer actually opens.
+              Tutto ciò che serve a un tecnico durante la reperibilità.
             </h2>
 
             <div
@@ -296,13 +296,13 @@ p95 latency    ${REGIONS.find((r) => r.region === activeRegion)?.ms ?? 91}ms`}
             Provide quantitative proof points for uptime, alert latency, and customer adoption.
           </AiIntent>
           <h2 id="nova-stats" className="sr-only">
-            Nova Cloud performance statistics
+            Statistiche sulle prestazioni di Nova Cloud
           </h2>
           <div className="mx-auto grid max-w-6xl gap-8 px-6 sm:grid-cols-3">
             {[
-              { n: "99.98%", l: "Average uptime across customers" },
-              { n: "40ms", l: "Median alert-to-page latency" },
-              { n: "1,200+", l: "Teams monitoring on Nova" },
+              { n: "99.98%", l: "Disponibilità media del servizio" },
+              { n: "40ms", l: "Latenza mediana degli avvisi" },
+              { n: "1,200+", l: "Team che utilizzano Nova" },
             ].map((s) => (
               <article key={s.l} data-ai="stat">
                 <p className="text-3xl font-semibold" style={{ fontFamily: MONO, color: MINT }}>
