@@ -7,7 +7,7 @@ import SEO from "../../components/SEO";
 const metrics = [
   { value: "+45%", label: "Obiettivo indicativo di conversione delle prenotazioni" },
   { value: "-60%", label: "Obiettivo indicativo di riduzione delle assenze" },
-  { value: "10+ hrs", label: "Risparmio settimanale indicativo di tempo amministrativo" },
+  { value: "10+ ore", label: "Risparmio settimanale indicativo di tempo amministrativo" },
   { value: "99/100", label: "Obiettivo indicativo su Lighthouse" },
 ];
 
